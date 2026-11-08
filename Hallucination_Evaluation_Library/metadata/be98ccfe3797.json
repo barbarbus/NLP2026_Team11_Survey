@@ -1,0 +1,86 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2305.13669: The Knowledge Alignment Problem: Bridging Human and External Knowledge for Large Language Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "The Knowledge Alignment Problem: Bridging Human and External Knowledge for Large Language Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2305.13669v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Large language models often necessitate grounding on external knowledge to generate faithful and reliable answers. Yet even with the correct groundings in the reference, they can ignore them and rely on wrong groundings or their inherent biases to hallucinate when users, being largely unaware of the specifics of the stored information, pose questions that might not directly correlate with the retrieved groundings. In this work, we formulate this knowledge alignment problem and introduce MixAlign, a framework that interacts with both the human user and the knowledge base to obtain and integrate clarifications on how the user question relates to the stored information. MixAlign employs a language model to achieve automatic knowledge alignment and, if necessary, further enhances this alignment through human user clarifications. Experimental results highlight the crucial role of knowledge alignment in boosting model performance and mitigating hallucination, with improvements noted up to 22.2% and 27.1% respectively. We also demonstrate the effectiveness of MixAlign in improving knowledge alignment by producing high-quality, user-centered clarifications."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "The Knowledge Alignment Problem: Bridging Human and External..."
+  ],
+  "twitter:description": [
+    "Large language models often necessitate grounding on external knowledge to generate faithful and reliable answers. Yet even with the correct groundings in the reference, they can ignore them and..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "The Knowledge Alignment Problem: Bridging Human and External Knowledge for Large Language Models"
+  ],
+  "citation_author": [
+    "Zhang, Shuo",
+    "Pan, Liangming",
+    "Zhao, Junzhou",
+    "Wang, William Yang"
+  ],
+  "citation_date": [
+    "2023/05/23"
+  ],
+  "citation_online_date": [
+    "2024/06/13"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2305.13669"
+  ],
+  "citation_arxiv_id": [
+    "2305.13669"
+  ],
+  "citation_abstract": [
+    "Large language models often necessitate grounding on external knowledge to generate faithful and reliable answers. Yet even with the correct groundings in the reference, they can ignore them and rely on wrong groundings or their inherent biases to hallucinate when users, being largely unaware of the specifics of the stored information, pose questions that might not directly correlate with the retrieved groundings. In this work, we formulate this knowledge alignment problem and introduce MixAlign, a framework that interacts with both the human user and the knowledge base to obtain and integrate clarifications on how the user question relates to the stored information. MixAlign employs a language model to achieve automatic knowledge alignment and, if necessary, further enhances this alignment through human user clarifications. Experimental results highlight the crucial role of knowledge alignment in boosting model performance and mitigating hallucination, with improvements noted up to 22.2% and 27.1% respectively. We also demonstrate the effectiveness of MixAlign in improving knowledge alignment by producing high-quality, user-centered clarifications."
+  ]
+}

@@ -1,0 +1,97 @@
+Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics , pages 5008–5020
+July 5 - 10, 2020. c⃝2020 Association for Computational Linguistics
+5008
+Asking and Answering Questions to Evaluate the Factual Consistency of
+Summaries
+Alex Wang∗
+New York University
+alexwang@nyu.edu
+Kyunghyun Cho
+Facebook AI
+New York University
+CIFAR Associate Fellow
+kyunghyun.cho@nyu.edu
+Mike Lewis
+Facebook AI
+mikelewis@fb.com
+Abstract
+Practical applications of abstractive summa-
+rization models are limited by frequent factual
+inconsistencies with respect to their input. Ex-
+isting automatic evaluation metrics for summa-
+rization are largely insensitive to such errors.
+We propose QAGS,1 an automatic evaluation
+protocol that is designed to identify factual in-
+consistencies in a generated summary. QAGS
+is based on the intuition that if we ask ques-
+tions about a summary and its source, we will
+receive similar answers if the summary is fac-
+tually consistent with the source. To evaluate
+QAGS, we collect human judgments of factual
+consistency on model-generated summaries
+for the CNN/DailyMail (Hermann et al., 2015)
+and XSUM (Narayan et al., 2018) summariza-
+tion datasets. QAGS has substantially higher
+correlations with these judgments than other
+automatic evaluation metrics. Also, QAGS of-
+fers a natural form of interpretability: The an-
+swers and questions generated while comput-
+ing QAGS indicate which tokens of a summary
+are inconsistent and why. We believe QAGS
+is a promising tool in automatically generating
+usable and factually consistent text. Code for
+QAGS will be available at https://github.
+com/W4ngatang/qags.
+1 Introduction
+Automatic summarization aims to produce sum-
+maries that are succinct, coherent, relevant, and —
+crucially — factually correct. Recent progress in
+conditional text generation has led to models that
+can generate ﬂuent, topical summaries (Lewis et al.,
+2019). However, model-generated summaries fre-
+quently contain factual inconsistencies, limiting
+their applicability (Kryscinski et al., 2019a).
+The problem of factual inconsistency is due in
+part to the lack of automatic evaluation metrics
+that can detect such errors. Standard metrics for
+1Pronounced “kags”.
+evaluating generated text are predominantly based
+on counting n-grams, which weigh all n-grams
+equally and are insensitive to semantic errors. This
+inadequacy leaves human evaluation as the primary
+method for evaluating the factual consistencies,
+which has been noted to be challenging even for
+humans (Daume III and Marcu, 2005; Kryscinski
+et al., 2019b), in addition to being slow and costly.
+We argue that evaluation metrics that are able
+to capture subtle semantic errors are required to
+build better models. In this work, we introduce a
+general framework for evaluating conditional text
+generation that is designed to detect factual incon-
+sistencies in generated text with respect to some
+input. Our framework consists of three steps: (1)
+Given a generated text, a question generation (QG)
+model generates a set of questions about the text.
+(2) We then use question answering (QA) models
+to answer these questions given both the input and
+the generated text. (3) A quality score is computed
+based on the similarity of corresponding answers.
+This approach leverages recent progress in QA
+and QG to ask and answer human readable, on-
+topic questions (Devlin et al., 2019; Song et al.,
+2019). It only assumes access to a question answer-
+ing dataset to train the QG and QA models, and is
+applicable to any modality where a QA model is
+available, e.g. text, images, or knowledge graphs.
+We use this framework to develop QAGS (Ques-
+tion Answering and Generation for Summariza-
+tion), a metric for evaluating the factual consis-
+tency of abstractive document summaries. Com-
+pared to commonly used automatic metrics such
+as ROUGE (Lin, 2004), QAGS shows dramatically
+higher correlations with human judgements of fac-
+tuality, for example achieving a Pearson correlation
+coefﬁcient of 54.52 on the CNN/DailyMail sum-
+marization task, compared to 17.72 for ROUGE-2.
+QAGS also achieves new state-of-the-art results
+on evaluating the factuality of summaries, outper-

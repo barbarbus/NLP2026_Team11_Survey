@@ -1,0 +1,93 @@
+Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 5186–5200
+August 11-16, 2024 ©2024 Association for Computational Linguistics
+Quantifying Uncertainty in Answers from any Language Model and
+Enhancing their Trustworthiness
+Jiuhai Chen
+Cleanlab, University of Maryland
+jchen169@umd.edu
+Jonas Mueller
+Cleanlab
+jonas@cleanlab.ai
+Abstract
+We introduce BSD ETECTOR , a method for de-
+tecting bad and speculative answers from a pre-
+trained Large Language Model by estimating
+a numeric confidence score for any output it
+generated. Our uncertainty quantification tech-
+nique works for any LLM accessible only via
+a black-box API, whose training data remains
+unknown. By expending a bit of extra compu-
+tation, users of any LLM API can now get the
+same response as they would ordinarily, as well
+as a confidence estimate that cautions when
+not to trust this response. Experiments on both
+closed and open-form Question-Answer bench-
+marks reveal that BSD ETECTOR more accu-
+rately identifies incorrect LLM responses than
+alternative uncertainty estimation procedures
+(for both GPT-3 and ChatGPT). By sampling
+multiple responses from the LLM and consid-
+ering the one with the highest confidence score,
+we can additionally obtain more accurate re-
+sponses from the same LLM, without any extra
+training steps. In applications involving auto-
+mated evaluation with LLMs, accounting for
+our confidence scores leads to more reliable
+evaluation in both human-in-the-loop and fully-
+automated settings (across both GPT 3.5 and
+4).
+1 Introduction
+While the promise of Large Language Models
+(LLMs) and Agents (powered by LLMs) has be-
+come evident, their usage in high-value applica-
+tions remains limited by their unreliability. Ac-
+cessed via black-box APIs (via providers like Ope-
+nAI/Anthropic), today’s best LLMs have been
+trained to produce convincing-looking responses
+and thus often appear overconfident (Ji et al., 2023).
+For many input prompts encountered in the wild,
+the model cannot be certain about the desired re-
+sponse (perhaps because the prompt is vague or
+is related to a specific fact/event absent from the
+training dataset), yet these models output plausible-
+sounding yet wildly incorrect answers in such
+scenarios. This hallucination problem has also
+plagued traditional supervised learning systems,
+where it is traditionally addressed via uncertainty
+estimation to know when one can trust a model’s
+prediction (Gal and Ghahramani, 2016a; Lakshmi-
+narayanan et al., 2017; Guo et al., 2017; Liang et al.,
+2018; Fortunato et al., 2017; Gal and Ghahramani,
+2016b; Kuleshov et al., 2018).
+In traditional supervised learning, one has ac-
+cess to the training data of the model and its proba-
+bilistic estimates, as well as being able to modify
+the training procedure to improve model calibra-
+tion (Gal and Ghahramani, 2016a; Fortunato et al.,
+2017). Other traditional uncertainty estimation pro-
+cedures require the existence of a validation set
+that can be used for calibration (Angelopoulos and
+Bates, 2021). None of this is available for today’s
+best LLMs, which may be given any imaginable
+prompt rather than (input, output) pairs stemming
+from a limited distribution. Thus approaches to
+uncertainty estimation for black-box LLMs must
+wrap the inference procedure.
+Our proposed LLM’s uncertainty quantification
+technique, BSD ETECTOR , calls the LLM API mul-
+tiple times with varying prompts and sampling tem-
+perature values (see Figure 1). We expend extra
+computation in order to quantify how trustworthy
+the original LLM response is, a worthwhile trade-
+off for high-stakes applications. Our method is
+conceptually straightforward, generally applicable
+across LLM providers (as well as Agent frame-
+works (Chase, 2022) or any stochastic text→text
+mapping), and produces confidence scores whose
+values are reliably lower for responses from the
+LLM that are more likely bad.
+BSD ETECTOR confidence scores allow LLMs
+to be more safely used in high-stakes applications,
+since we can know which LLM outputs are not to
+be trusted. Depending on the application, we can
+5186

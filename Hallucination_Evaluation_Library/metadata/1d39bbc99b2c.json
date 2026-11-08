@@ -1,0 +1,89 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2311.09335: Investigating Hallucinations in Pruned Large Language Models for Abstractive Summarization"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Investigating Hallucinations in Pruned Large Language Models for Abstractive Summarization"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2311.09335v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Despite the remarkable performance of generative large language models (LLMs) on abstractive summarization, they face two significant challenges: their considerable size and tendency to hallucinate. Hallucinations are concerning because they erode reliability and raise safety issues. Pruning is a technique that reduces model size by removing redundant weights, enabling more efficient sparse inference. Pruned models yield downstream task performance comparable to the original, making them ideal alternatives when operating on a limited budget. However, the effect that pruning has upon hallucinations in abstractive summarization with LLMs has yet to be explored. In this paper, we provide an extensive empirical study across five summarization datasets, two state-of-the-art pruning methods, and five instruction-tuned LLMs. Surprisingly, we find that hallucinations are less prevalent from pruned LLMs than the original models. Our analysis suggests that pruned models tend to depend more on the source document for summary generation. This leads to a higher lexical overlap between the generated summary and the source document, which could be a reason for the reduction in hallucination risk."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Investigating Hallucinations in Pruned Large Language Models for..."
+  ],
+  "twitter:description": [
+    "Despite the remarkable performance of generative large language models (LLMs) on abstractive summarization, they face two significant challenges: their considerable size and tendency to..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Investigating Hallucinations in Pruned Large Language Models for Abstractive Summarization"
+  ],
+  "citation_author": [
+    "Chrysostomou, George",
+    "Zhao, Zhixue",
+    "Williams, Miles",
+    "Aletras, Nikolaos"
+  ],
+  "citation_doi": [
+    "10.1162/tacl_a_00695"
+  ],
+  "citation_date": [
+    "2023/11/15"
+  ],
+  "citation_online_date": [
+    "2024/10/24"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2311.09335"
+  ],
+  "citation_arxiv_id": [
+    "2311.09335"
+  ],
+  "citation_abstract": [
+    "Despite the remarkable performance of generative large language models (LLMs) on abstractive summarization, they face two significant challenges: their considerable size and tendency to hallucinate. Hallucinations are concerning because they erode reliability and raise safety issues. Pruning is a technique that reduces model size by removing redundant weights, enabling more efficient sparse inference. Pruned models yield downstream task performance comparable to the original, making them ideal alternatives when operating on a limited budget. However, the effect that pruning has upon hallucinations in abstractive summarization with LLMs has yet to be explored. In this paper, we provide an extensive empirical study across five summarization datasets, two state-of-the-art pruning methods, and five instruction-tuned LLMs. Surprisingly, we find that hallucinations are less prevalent from pruned LLMs than the original models. Our analysis suggests that pruned models tend to depend more on the source document for summary generation. This leads to a higher lexical overlap between the generated summary and the source document, which could be a reason for the reduction in hallucination risk."
+  ]
+}

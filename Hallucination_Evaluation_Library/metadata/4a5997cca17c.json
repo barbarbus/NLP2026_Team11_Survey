@@ -1,0 +1,89 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2310.07289: Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2310.07289v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Large language models (LLMs) outperform information retrieval techniques for downstream knowledge-intensive tasks when being prompted to generate world knowledge. However, community concerns abound regarding the factuality and potential implications of using this uncensored knowledge. In light of this, we introduce CONNER, a COmpreheNsive kNowledge Evaluation fRamework, designed to systematically and automatically evaluate generated knowledge from six important perspectives -- Factuality, Relevance, Coherence, Informativeness, Helpfulness and Validity. We conduct an extensive empirical analysis of the generated knowledge from three different types of LLMs on two widely studied knowledge-intensive tasks, i.e., open-domain question answering and knowledge-grounded dialogue. Surprisingly, our study reveals that the factuality of generated knowledge, even if lower, does not significantly hinder downstream tasks. Instead, the relevance and coherence of the outputs are more important than small factual mistakes. Further, we show how to use CONNER to improve knowledge-intensive tasks by designing two strategies: Prompt Engineering and Knowledge Selection. Our evaluation code and LLM-generated knowledge with human annotations will be released to facilitate future research."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Beyond Factuality: A Comprehensive Evaluation of Large Language..."
+  ],
+  "twitter:description": [
+    "Large language models (LLMs) outperform information retrieval techniques for downstream knowledge-intensive tasks when being prompted to generate world knowledge. However, community concerns..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators"
+  ],
+  "citation_author": [
+    "Chen, Liang",
+    "Deng, Yang",
+    "Bian, Yatao",
+    "Qin, Zeyu",
+    "Wu, Bingzhe",
+    "Chua, Tat-Seng",
+    "Wong, Kam-Fai"
+  ],
+  "citation_date": [
+    "2023/10/11"
+  ],
+  "citation_online_date": [
+    "2023/10/11"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2310.07289"
+  ],
+  "citation_arxiv_id": [
+    "2310.07289"
+  ],
+  "citation_abstract": [
+    "Large language models (LLMs) outperform information retrieval techniques for downstream knowledge-intensive tasks when being prompted to generate world knowledge. However, community concerns abound regarding the factuality and potential implications of using this uncensored knowledge. In light of this, we introduce CONNER, a COmpreheNsive kNowledge Evaluation fRamework, designed to systematically and automatically evaluate generated knowledge from six important perspectives -- Factuality, Relevance, Coherence, Informativeness, Helpfulness and Validity. We conduct an extensive empirical analysis of the generated knowledge from three different types of LLMs on two widely studied knowledge-intensive tasks, i.e., open-domain question answering and knowledge-grounded dialogue. Surprisingly, our study reveals that the factuality of generated knowledge, even if lower, does not significantly hinder downstream tasks. Instead, the relevance and coherence of the outputs are more important than small factual mistakes. Further, we show how to use CONNER to improve knowledge-intensive tasks by designing two strategies: Prompt Engineering and Knowledge Selection. Our evaluation code and LLM-generated knowledge with human annotations will be released to facilitate future research."
+  ]
+}

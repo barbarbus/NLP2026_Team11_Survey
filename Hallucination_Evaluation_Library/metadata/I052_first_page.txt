@@ -1,0 +1,94 @@
+INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG
+Uncertainty Estimation
+Alexandra Kuleshova1, Andrei Volodichev1, Daria Kotova1, Alexey Zaytsev1, 2,
+1Applied AI Institute, 2Risk AI Research Lab,
+Correspondence:bazarovaai.239@gmail.com
+Abstract
+While retrieval-augmented generation (RAG)
+enhances LLM performance, it does not elimi-
+nate hallucinations, making accurate detection
+essential. Uncertainty-based methods are at-
+tractive for this purpose because they can be
+integrated into real-world pipelines with little
+overhead. One of the most widely used uncer-
+tainty signals is predictive entropy. We show,
+however, that entropy can be unreliable in RAG
+settings and trace this limitation to two oppos-
+ing internal effects. Induction heads, which
+copy patterns from earlier context, causally
+support correct responses and lower predictive
+entropy, but they also appear to co-activate en-
+tropy neurons that push it back up. As a re-
+sult, correct, context-grounded responses can
+still receive high uncertainty scores. To ad-
+dress this, we propose INTRYGUE (Induction-
+Aware Entropy Gating for Uncertainty Estima-
+tion), a training-free, mechanistically grounded
+method that gates predictive entropy by an
+attention-based estimate of induction-head ac-
+tivity. Evaluated across four RAG-style bench-
+marks and six open-source LLMs (4B to 13B
+parameters), INTRYGUE performs competi-
+tively against a wide range of baselines, match-
+ing or exceeding the strongest of them in most
+settings. Our findings suggest that hallucina-
+tion detection in RAG benefits from combining
+predictive uncertainty with interpretable inter-
+nal signals of context utilization1.
+1 Introduction
+Large language models (LLMs) are widely de-
+ployed (Singh et al., 2025; Minaee et al., 2024),
+but their static memory is often insufficient. This is
+typically addressed with retrieval-augmented gener-
+ation (RAG), which provides the model with docu-
+ments retrieved from an external corpus (Fan et al.,
+2024; Lewis et al., 2020). Nonetheless, hallucina-
+tions persist even when relevant evidence is present
+1Our code is available at the following link
+Induction Heads
+Entropy Neurons Higher Entropy
+The   cat   sat   on   a  mat
+fox
+dog
+RAG Induction
+The   cat   sat   on   a  mat
+Context: Cats enjoy sitting on mats  ...
+Generation:
+Unsure
+Correct False
+Alarm
+LayerNorm
+1
+2
+3
+Figure 1: Opposing effects of induction heads on RAG
+uncertainty. ➀ Induction heads copy patterns from ear-
+lier context, supporting the correct answer and lowering
+predictive entropy. ➁ They also co-activate entropy
+neurons, which inflate the LayerNorm denominator and
+➂ raise predictive entropy. We argue that this second
+path can result in high uncertainty scores for context-
+grounded outputs, leading to false alarms.
+in the context (Zhang et al., 2025), so reliable de-
+tection methods remain essential for high-stakes
+applications.
+Uncertainty estimation (UE) provides a natu-
+ral basis for such detection: rather than relying
+on external models or multi-step verification (Es
+et al., 2024; Friel and Sanyal, 2023), it derives
+a confidence score from the model’s own pre-
+dictions (Fomicheva et al., 2020; Malinin and
+Gales, 2020; Kuhn et al., 2023; Qiu and Mi-
+ikkulainen, 2024; Qiao et al., 2026). Unfortu-
+nately, UE methods show limited effectiveness in
+RAG, failing to properly reflect the interaction be-
+tween the retrieved context and the generated re-
+sponse (Soudani et al., 2025). A few studies in-
+corporate this interaction into the uncertainty es-
+timates, at the cost of auxiliary models and ad-
+ditional generations (Soudani et al., 2025; Perez-
+Beltrachini and Lapata, 2025). A separate line of
+work forgoes uncertainty scores altogether, deriv-
+ing explicit signals of context utilization from the
+1
+arXiv:2603.21607v3  [cs.AI]  31 Aug 2026

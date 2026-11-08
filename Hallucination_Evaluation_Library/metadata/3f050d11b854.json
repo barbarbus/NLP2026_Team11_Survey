@@ -1,0 +1,92 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2306.01200: Multi-Dimensional Evaluation of Text Summarization with In-Context Learning"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Multi-Dimensional Evaluation of Text Summarization with In-Context Learning"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2306.01200v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Evaluation of natural language generation (NLG) is complex and multi-dimensional. Generated text can be evaluated for fluency, coherence, factuality, or any other dimensions of interest. Most frameworks that perform such multi-dimensional evaluation require training on large manually or synthetically generated datasets. In this paper, we study the efficacy of large language models as multi-dimensional evaluators using in-context learning, obviating the need for large training datasets. Our experiments show that in-context learning-based evaluators are competitive with learned evaluation frameworks for the task of text summarization, establishing state-of-the-art on dimensions such as relevance and factual consistency. We then analyze the effects of factors such as the selection and number of in-context examples on performance. Finally, we study the efficacy of in-context learning based evaluators in evaluating zero-shot summaries written by large language models such as GPT-3."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Multi-Dimensional Evaluation of Text Summarization with In-Context Learning"
+  ],
+  "twitter:description": [
+    "Evaluation of natural language generation (NLG) is complex and multi-dimensional. Generated text can be evaluated for fluency, coherence, factuality, or any other dimensions of interest. Most..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Multi-Dimensional Evaluation of Text Summarization with In-Context Learning"
+  ],
+  "citation_author": [
+    "Jain, Sameer",
+    "Keshava, Vaishakh",
+    "Sathyendra, Swarnashree Mysore",
+    "Fernandes, Patrick",
+    "Liu, Pengfei",
+    "Neubig, Graham",
+    "Zhou, Chunting"
+  ],
+  "citation_doi": [
+    "10.18653/v1/2023.findings-acl.537"
+  ],
+  "citation_date": [
+    "2023/06/01"
+  ],
+  "citation_online_date": [
+    "2023/06/01"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2306.01200"
+  ],
+  "citation_arxiv_id": [
+    "2306.01200"
+  ],
+  "citation_abstract": [
+    "Evaluation of natural language generation (NLG) is complex and multi-dimensional. Generated text can be evaluated for fluency, coherence, factuality, or any other dimensions of interest. Most frameworks that perform such multi-dimensional evaluation require training on large manually or synthetically generated datasets. In this paper, we study the efficacy of large language models as multi-dimensional evaluators using in-context learning, obviating the need for large training datasets. Our experiments show that in-context learning-based evaluators are competitive with learned evaluation frameworks for the task of text summarization, establishing state-of-the-art on dimensions such as relevance and factual consistency. We then analyze the effects of factors such as the selection and number of in-context examples on performance. Finally, we study the efficacy of in-context learning based evaluators in evaluating zero-shot summaries written by large language models such as GPT-3."
+  ]
+}

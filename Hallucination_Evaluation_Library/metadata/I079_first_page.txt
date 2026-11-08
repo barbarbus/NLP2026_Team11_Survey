@@ -1,0 +1,50 @@
+Published as a conference paper at ICLR 2024
+INSIDE: LLM S’ I NTERNAL STATES RETAIN THE
+POWER OF HALLUCINATION DETECTION
+Chao Chen1, Kai Liu 2, Ze Chen 1, Yi Gu 1, Yue Wu 1, Mingyuan Tao 1
+Zhihang Fu1∗, Jieping Y e1∗
+1Alibaba Cloud 2Zhejiang University
+{ercong.cc, zhihang.fzh, yejieping }@alibaba-inc.com
+ABSTRACT
+Knowledge hallucination have raised widespread concerns for the security and re-
+liability of deployed LLMs. Previous efforts in detecting hallucinations have been
+employed at logit-level uncertainty estimation or language-level self-consistency
+evaluation, where the semantic information is inevitably lost during the token-
+decoding procedure. Thus, we propose to explore the dense semantic information
+retained within LLMs’ INternal States for hallucInation DEtection (INSIDE). In
+particular, a simple yet effective EigenScore metric is proposed to better evaluate
+responses’ self-consistency, which exploits the eigenvalues of responses’ covari-
+ance matrix to measure the semantic consistency/diversity in the dense embed-
+ding space. Furthermore, from the perspective of self-consistent hallucination
+detection, a test time feature clipping approach is explored to truncate extreme
+activations in the internal states, which reduces overconfident generations and po-
+tentially benefits the detection of overconfident hallucinations. Extensive experi-
+ments and ablation studies are performed on several popular LLMs and question-
+answering (QA) benchmarks, showing the effectiveness of our proposal. 1
+1 I NTRODUCTION
+Large Language Models (LLMs) have recently achieved a milestone breakthrough and demonstrated
+impressive abilities in various applications (Ouyang et al., 2022; OpenAI, 2023). However, it has
+been widely observed that even the state-of-the-art LLMs often make factually incorrect or nonsense
+generations (Cohen et al., 2023; Ren et al., 2022; Kuhn et al., 2022), which is also known as knowl-
+edge hallucination (Ji et al., 2023). The potentially unreliable generations make it risky to deploy
+LLMs in practical scenarios. Therefore, hallucination detection, that is, accurately detecting and
+rejecting responses when hallucinations occur in LLMs, has attracted more and more attention from
+the academic community (Azaria & Mitchell, 2023; Ren et al., 2022; Kuhn et al., 2022).
+The token-level uncertainty estimation (e.g., predictive confidence or entropy) has shown its effi-
+cacy in hallucination detection on conventional NLP tasks (Malinin & Gales, 2020; Huang et al.,
+2023). However, how to derive the sentence-level uncertainty from the token-level remains a chal-
+lenge, especially for modern auto-regressive LLMs whose response contents are generally diverse
+and sophisticated (Malinin & Gales, 2020; Kuhn et al., 2022; Duan et al., 2023). Thus, to avoid
+complicated token-to-sentence uncertainty derivation, researchers propose to evaluate the sentence
+uncertainty by the output languages directly (Kadavath et al., 2022; Yin et al., 2023; Zhou et al.,
+2023). Among the recent advancements, prompting LLMs to generate multiple responses to the
+same question and evaluating the self-consistency of those responses has been proven effective in
+hallucination detection (Wang et al., 2022; Shi et al., 2022). However, such a post-hoc semantic
+measurement on decoded language sentences is inferior to precisely modeling the logical consis-
+tency/divergence Manakul et al. (2023); Zhang et al. (2023).
+Hence, instead of logit-level or language-level uncertainty estimation, this paper proposes to lever-
+age the internal states of LLMs to conduct hallucination detection. The motivation is intuitive:
+∗Corresponding Author
+1Code is available at https://github.com/alibaba/eigenscore
+1
+arXiv:2402.03744v2  [cs.CL]  21 Oct 2024

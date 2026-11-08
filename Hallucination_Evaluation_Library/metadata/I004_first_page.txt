@@ -1,0 +1,84 @@
+BAMBOO: A Comprehensive Benchmark for Evaluating Long Text
+Modeling Capacities of Large Language Models
+Zican Dong1, Tianyi Tang1, Junyi Li1,2, Wayne Xin Zhao1∗, Ji-Rong Wen1,3
+1Gaoling School of Artificial Intelligence, Renmin University of China
+2DIRO, Université de Montréal
+3School of Information, Renmin University of China
+{dongzican, steven_tang, lijunyi, jrwen}@ruc.edu.cn, batmanfly@gmail.com
+Abstract
+Large language models (LLMs) have achieved dramatic proficiency over NLP tasks with normal length. Recently,
+multiple studies have committed to extending the context length and enhancing the long text modeling capabilities of
+LLMs. To comprehensively evaluate the long context ability of LLMs, we proposeBAMBOO, a multi-task long context
+benchmark. BAMBOO has been designed with four principles: comprehensive capacity evaluation, avoidance of data
+contamination, accurate automatic evaluation, and different length levels. It consists of 10 datasets from 5 different
+long text understanding tasks,i.e., question answering, hallucination detection, text sorting, language modeling,
+and code completion, to cover various domains and core capacities of LLMs. We conduct experiments with five
+widely-used long-context models and further discuss five key questions for long text research. In the end, we discuss
+problems of current long-context models and point out future directions for enhancing long text modeling capacities.
+We release our data, prompts, and code athttps://github.com/RUCAIBox/BAMBOO.
+Keywords:BAMBOO, Long Text, Large Language Models, Benchmark, Evaluation
+1. Introduction
+Recently, large language models (LLMs) have
+exhibited huge success across various NLP
+tasks (Ouyang et al., 2022; Touvron et al., 2023a;
+Zhao et al., 2023). Despite their remarkable capac-
+ities, existing LLMs still face constraints due to their
+limited context length, suffering from performance
+decline when the input text exceeds their length
+limit. To enhance the capability of LLMs to model
+long texts, several studies extend the context win-
+dow through modifying position embeddings (kaio-
+kendev, 2023; Chen et al., 2023), and continuing to
+fine-tune the models on multi-turn conversations or
+long text datasets (Zheng et al., 2023). Moreover,
+numerous research also explores transforming the
+original long text into short segments within the
+context length based on context compression tech-
+niques (Zhou et al., 2023; Jiang et al., 2023).
+To push forward the research of long context
+modeling, it is crucial to establish an automatic, re-
+liable, and comprehensive evaluation benchmark
+for assessing the performance of LLMs in tasks
+involving lengthy text. In existing literature, several
+benchmarks have been proposed to evaluate the
+longcontextmodelingabilityofLLMs,suchasZero-
+SCROLLS (Shaham et al., 2023), L-Eval (An et al.,
+2023), and LongBench (Bai et al., 2023). However,
+a crucial aspect overlooked by these studies is the
+potential issue of data contamination (Golchin and
+Surdeanu, 2023),i.e., there might exist overlaps
+between the pre-training data and evaluation data.
+∗Corresponding author.
+In the meanwhile, these benchmarks consist of
+some text generation tasks evaluated by automatic
+metrics such as BLEU (Wang et al., 2023a). How-
+ever, these metrics are blamed for their inaccurate
+evaluation of model performance.
+Tothisend,wepropose BAMBOO,acomprehen-
+sive benchmark to analyze the long text modeling
+capacities of LLMs. In BAMBOO benchmark, we
+manually construct ten datasets from five tasks, in-
+cludingquestionanswering,hallucinationdetection,
+text sorting, language modeling, and code comple-
+tion. It comprehensively evaluates language gen-
+eration, knowledge utilization, reasoning, and tool
+manipulation abilities over long texts. We aim to en-
+sure that the salient information is spread through-
+out the complete long texts. Consequently, the
+LLM needs to model long-range dependencies to
+identify both the coarse-grained information related
+to the global comprehension of the complete text
+and fine-grained information about details across
+several sentences. Moreover, with datasets from
+multiple domains, BAMBOO can evaluate the per-
+formance of LLMs across various sources.
+BAMBOO is divided into two subsets atdifferent
+length levels, i.e., BAMBOO-4k and BAMBOO-16k,
+according to the number of tokens in the prompt1.
+Each subset has 1502 samples with an average
+lengthof3152and7500tokens, respectively. Toal-
+leviate thedata contaminationwith pre-training cor-
+pora, BAMBOO is constructed based on the data
+1All references to the number of tokens in our paper
+are computed using the gpt-3.5-turbo tokenizer.
+arXiv:2309.13345v3  [cs.CL]  19 Mar 2024

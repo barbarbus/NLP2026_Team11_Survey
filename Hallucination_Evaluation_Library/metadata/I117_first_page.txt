@@ -1,0 +1,50 @@
+Preprint
+MULTIHAL:
+MULTILINGUALDATASET FORKNOWLEDGE-GRAPH
+GROUNDEDEVALUATION OFLLM HALLUCINATIONS
+Ernests Lavrinovics∗ † Russa Biswas † Katja Hose ‡ Johannes Bjerva †
+† Department of Computer Science, Aalborg University
+‡ Institute of Logic and Computation, TU Wien
+ABSTRACT
+Large Language Models (LLMs) have inherent limitations of faithfulness and
+factuality, commonly referred to as hallucinations. Several benchmarks have been
+developed that provide a test bed for factuality evaluation within the context of
+English-centric datasets, while relying on supplementary informative context like
+web links or text passages but ignoring the available structured factual resources.
+To this end, Knowledge Graphs (KGs) have been identified as a useful aid for
+hallucination mitigation, as they provide a structured way to represent the facts
+about entities and their relations with minimal linguistic overhead. We bridge the
+lack of KG paths and multilinguality for factual language modeling within the
+existing hallucination evaluation benchmarks and propose a KG-based multilingual,
+multihop benchmark calledMultiHalframed for generative text evaluation. As part
+of our data collection pipeline, we mined 140k KG-paths from open-domain KGs,
+from which we pruned noisy KG-paths, curating a high-quality subset of 25.9k. Our
+baseline evaluation shows an absolute scale improvement by approximately 0.12 to
+0.36 points for the semantic similarity score, 0.16 to 0.36 for NLI entailment and
+0.29 to 0.42 for hallucination detection in KG-RAG over vanilla QA across multiple
+languages and multiple models, demonstrating the potential of KG integration.
+We anticipate MultiHal will foster future research towards several graph-based
+hallucination mitigation and fact-checking tasks.
+Code:https://github.com/ernlavr/multihal
+Data:https://huggingface.co/datasets/ernlavr/multihal
+1 INTRODUCTION
+Factual inconsistencies in LLM outputs, commonly referred to as hallucinations, are often a bottleneck
+for production-grade deployment of LLM systems (Huang et al., 2025a). Although hallucinations may
+be beneficial for tasks involving creativity (Jiang et al., 2024) or even drug discovery (Yuan & Färber,
+2025), they become a liability for other tasks that require factually consistent outputs, for example,
+information retrieval, summarization and question answering (Lavrinovics et al., 2025). Additionally,
+Huang et al. (2025a); Augenstein et al. (2024) suggests that hallucinations impair the trust and
+usefulness of AI systems, and even pose certain societal risks by enabling the generation of convincing
+misinformation (Augenstein et al., 2024; Puccetti et al., 2024). Hallucinations can stem from multiple
+shortcomings in model training, such as reinforcement learning from human feedback (RLHF) (Bai
+et al., 2022), in cases when human preferences are towards non-factual answers (Zhang et al., 2023),
+instruction tuning where given instructions exceed a model’s knowledge boundary (Zhang et al.,
+2023; Huang et al., 2025b), or due to lack of up-to-date knowledge. Furthermore, hallucinations
+occur with varied levels of frequency and intensity depending on the generated language (Chataigner
+et al., 2024; Qi et al., 2023). A general trend is observed that, in terms of factual consistency, English
+outputs are the most stable and overall factual quality decreases with lower resourced languages. This
+varied degree of factuality across languages only further impairs the usability and inclusiveness of
+LLMs in different applications.
+∗ Corresponding author. elav@cs.aau.dk
+1
+arXiv:2505.14101v2  [cs.CL]  23 Oct 2025

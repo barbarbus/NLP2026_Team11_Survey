@@ -1,0 +1,92 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2204.04991: TRUE: Re-evaluating Factual Consistency Evaluation"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "TRUE: Re-evaluating Factual Consistency Evaluation"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2204.04991v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Grounded text generation systems often generate text that contains factual inconsistencies, hindering their real-world applicability. Automatic factual consistency evaluation may help alleviate this limitation by accelerating evaluation cycles, filtering inconsistent outputs and augmenting training data. While attracting increasing attention, such evaluation metrics are usually developed and evaluated in silo for a single task or dataset, slowing their adoption. Moreover, previous meta-evaluation protocols focused on system-level correlations with human annotations, which leave the example-level accuracy of such metrics unclear. In this work, we introduce TRUE: a comprehensive survey and assessment of factual consistency metrics on a standardized collection of existing texts from diverse tasks, manually annotated for factual consistency. Our standardization enables an example-level meta-evaluation protocol that is more actionable and interpretable than previously reported correlations, yielding clearer quality measures. Across diverse state-of-the-art metrics and 11 datasets we find that large-scale NLI and question generation-and-answering-based approaches achieve strong and complementary results. We recommend those methods as a starting point for model and metric developers, and hope TRUE will foster progress towards even better evaluation methods."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "TRUE: Re-evaluating Factual Consistency Evaluation"
+  ],
+  "twitter:description": [
+    "Grounded text generation systems often generate text that contains factual inconsistencies, hindering their real-world applicability. Automatic factual consistency evaluation may help alleviate..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "TRUE: Re-evaluating Factual Consistency Evaluation"
+  ],
+  "citation_author": [
+    "Honovich, Or",
+    "Aharoni, Roee",
+    "Herzig, Jonathan",
+    "Taitelbaum, Hagai",
+    "Kukliansy, Doron",
+    "Cohen, Vered",
+    "Scialom, Thomas",
+    "Szpektor, Idan",
+    "Hassidim, Avinatan",
+    "Matias, Yossi"
+  ],
+  "citation_date": [
+    "2022/04/11"
+  ],
+  "citation_online_date": [
+    "2022/05/03"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2204.04991"
+  ],
+  "citation_arxiv_id": [
+    "2204.04991"
+  ],
+  "citation_abstract": [
+    "Grounded text generation systems often generate text that contains factual inconsistencies, hindering their real-world applicability. Automatic factual consistency evaluation may help alleviate this limitation by accelerating evaluation cycles, filtering inconsistent outputs and augmenting training data. While attracting increasing attention, such evaluation metrics are usually developed and evaluated in silo for a single task or dataset, slowing their adoption. Moreover, previous meta-evaluation protocols focused on system-level correlations with human annotations, which leave the example-level accuracy of such metrics unclear. In this work, we introduce TRUE: a comprehensive survey and assessment of factual consistency metrics on a standardized collection of existing texts from diverse tasks, manually annotated for factual consistency. Our standardization enables an example-level meta-evaluation protocol that is more actionable and interpretable than previously reported correlations, yielding clearer quality measures. Across diverse state-of-the-art metrics and 11 datasets we find that large-scale NLI and question generation-and-answering-based approaches achieve strong and complementary results. We recommend those methods as a starting point for model and metric developers, and hope TRUE will foster progress towards even better evaluation methods."
+  ]
+}

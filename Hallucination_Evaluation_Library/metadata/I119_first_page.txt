@@ -1,0 +1,92 @@
+When Models Lie, We Learn: Multilingual Span-Level Hallucination
+Detection with PsiloQA
+Elisei Rykov1, Kseniia Petrushina1,5, Maksim Savkin2,5, Valerii Olisov5,
+Artem Vazhentsev2,1,Kseniia Titova 3,1,Alexander Panchenko 1,2,
+Vasily Konovalov2,1,5, and Julia Belikova4,1
+1Skoltech, 2AIRI, 3MWS AI, 4Sber AI Lab,
+5Moscow Institute of Physics and Technology
+{Elisei.Rykov, A.Panchenko, Julia.Belikova}@skol.tech
+Abstract
+Hallucination detection remains a fundamen-
+tal challenge for the safe and reliable deploy-
+ment of large language models (LLMs), espe-
+cially in applications requiring factual accuracy.
+Existing hallucination benchmarks often op-
+erate at the sequence level and are limited to
+English, lacking the fine-grained, multilingual
+supervision needed for a comprehensive eval-
+uation. In this work, we introduce PsiloQA,
+a large-scale, multilingual dataset annotated
+with span-level hallucinations across 14 lan-
+guages. PsiloQA is constructed through an au-
+tomated three-stage pipeline: generating ques-
+tion–answer pairs from Wikipedia using GPT-
+4o, eliciting potentially hallucinated answers
+from diverse LLMs in a no-context setting, and
+automatically annotating hallucinated spans us-
+ing GPT-4o by comparing against golden an-
+swers and retrieved context. We evaluate a
+wide range of hallucination detection methods
+– including uncertainty quantification, LLM-
+based tagging, and fine-tuned encoder models
+– and show that encoder-based models achieve
+the strongest performance across languages.
+Furthermore, PsiloQA demonstrates effective
+cross-lingual generalization and supports ro-
+bust knowledge transfer to other benchmarks,
+all while being significantly more cost-efficient
+than human-annotated datasets. Our dataset
+and results advance the development of scal-
+able, fine-grained hallucination detection in
+multilingual settings.1
+1 Introduction
+Large Language Models (LLMs) became a cru-
+cial component in a wide range of text genera-
+tion applications, including summarization, trans-
+lation, and question-answering systems in various
+domains. However, even state-of-the-art models,
+such as GPT-4 (OpenAI, 2023), or open-weight
+models, such as LLaMa (Dubey et al., 2024)
+1https://github.com/s-nlp/psiloqa
+and DeepSeek (DeepSeek-AI et al., 2025) are in-
+evitably prone to production of hallucinations or
+unsupported facts in their generated output (Xiao
+and Wang, 2021; Dziri et al., 2022; Xu et al., 2024).
+This phenomenon poses a crucial obstacle for
+the real-world deployment of LLMs, particularly
+in safety-critical domains such as medicine (Ben
+Abacha and Demner-Fushman, 2019; He et al.,
+2025). A single hallucinated word can substan-
+tially alter the overall meaning of the generation,
+potentially causing harm to end-users. Conse-
+quently, hallucination detection has become a criti-
+cal challenge in the development and application
+of LLMs (Huang et al., 2025).
+Hallucination detection is typically categorized
+into three standard tasks:sequence-level,span-
+level, andentity-level. Sequence-level detection
+focuses on identifying entire generations that con-
+tain some factual inconsistencies. In contrast, span-
+level and entity-level detection addresses the more
+challenging task of precisely highlighting factually
+misaligned spans or individual entities within the
+generated text.
+Several approaches have been proposed for
+the detection of hallucination of LLMs. Uncer-
+tainty quantification (UQ) emerging as one of
+the most prominent research directions (Gal and
+Ghahramani, 2016; Shelmanov et al., 2021; Baan
+et al., 2023; Geng et al., 2024; Vashurin et al.,
+2025; Belikova et al., 2024). Recently, numerous
+UQ methods have been developed specifically for
+LLMs (Kuhn et al., 2023; Lin et al., 2023). How-
+ever, most of these methods focus on sequence-
+level verification (Farquhar et al., 2024), while
+only a few methods operate at the token or span
+level (Zhang et al., 2023; Fadeeva et al., 2024).
+While Rykov et al. (2025) proposed combining
+uncertainty estimation methods with a fine-tuned
+LLM, Qwen2.5-7B-Instruct, using a weighted aver-
+aging approach, where the weights were optimized
+separately for each language.
+arXiv:2510.04849v1  [cs.CL]  6 Oct 2025

@@ -1,0 +1,90 @@
+Multi-Dimensional Evaluation of Text Summarization with
+In-Context Learning
+Sameer Jain1 Vaishakh Keshava1 Swarnashree Mysore Sathyendra1
+Patrick Fernandes1,2 Pengfei Liu1 Graham Neubig1 Chunting Zhou3
+1Carnegie Mellon University 2Instituto Superior Técnico 3Facebook AI Research
+{sameerj, vkeshava, smysores}@cs.cmu.edu
+Abstract
+Evaluation of natural language generation
+(NLG) is complex and multi-dimensional. Gen-
+erated text can be evaluated for fluency, co-
+herence, factuality, or any other dimensions of
+interest. Most frameworks that perform such
+multi-dimensional evaluation require training
+on large manually or synthetically generated
+datasets. In this paper, we study the efficacy
+of large language models as multi-dimensional
+evaluators using in-context learning, obviating
+the need for large training datasets. Our ex-
+periments show that in-context learning-based
+evaluators are competitive with learned eval-
+uation frameworks for the task of text sum-
+marization, establishing state-of-the-art on di-
+mensions such as relevance and factual con-
+sistency. We then analyze the effects of fac-
+tors such as the selection and number of in-
+context examples on performance. Finally,
+we study the efficacy of in-context learning-
+based evaluators in evaluating zero-shot sum-
+maries written by large language models such
+as GPT-3. Our code is available at https:
+//github.com/JainSameer06/ICE
+1 Introduction
+Developing comprehensive evaluation frame-
+works (Deng et al., 2021; Yuan et al., 2021; Zhong
+et al., 2022) that can evaluate multiple human-
+interpretable dimensions, such as factual consis-
+tency (Kryscinski et al., 2020; Wang et al., 2020)
+and coherence (Dziri et al., 2019; Huang et al.,
+2020), is important for the advancement of Natural
+Language Generation (NLG). However, similarity-
+based metrics (Papineni et al., 2002; Lin, 2004;
+Sellam et al., 2020; Zhao et al., 2019; Zhang et al.,
+2020) still dominate NLG evaluation in practice.
+Compared to them, desired multi-dimensional eval-
+uators do not require reference texts for evaluation;
+and they can easily extend to new explainable eval-
+uation dimensions. Recently, Zhong et al. (2022)
+developed a unified evaluation framework that can
+Text: Cats and dogs have the advantage... 
+Summary: roland girous keeps a blood parrot... 
+Consistency: 1.0 
+Text: Jordan Henderson has provided Liverpool.. 
+Summary: jordan henderson is set to sign a... 
+Consistency: 0.67 
+Text: Arsenal playmaker Mesut Ozil seemed... 
+Summary: mesut ozil impressed on international... 
+Consistency: ___________ 
+Figure 1: Our prompt design to evaluate the consistency
+of the summary in red, illustrated using two in-context
+examples (in blue). To evaluate other aspects, we re-
+move the source text or replace it with a reference.
+generalize to multiple dimensions and text gener-
+ation tasks. However, it relies on the construction
+of synthetic and auxiliary data for the finetuning of
+a pre-trained language model, requiring in-depth
+knowledge and significant engineering effort for
+each dimension. Furthermore, the inclusion of
+new dimensions requires (continued) training of
+the model, and might affect the performance on
+other dimensions in unforeseen ways.
+In this work, we propose to use in-context learn-
+ing (Brown et al., 2020) with large language mod-
+els (LLMs) — a commonly used method to perform
+many tasks by utilizing only a few input-output ex-
+amples — to perform multi-dimensional text evalu-
+ation in a unified fashion. Compared to pre-trained
+evaluators that need specialized supervised training
+for each dimension, our In-Context learning-based
+Evaluator (ICE) framework is:
+• Learning-free. It does not require supervised
+fine-tuning on large annotated (synthetic) train-
+ing data, requiring only a handful of samples at
+inference time.
+• Extensible. To evaluate new dimensions, it does
+not rely on large amounts of human judgments
+or the construction of new synthetic data, using
+only a natural language prompt consisting of a
+small number of example pairs to ascertain the
+properties associated with a given quality aspect.
+arXiv:2306.01200v1  [cs.CL]  1 Jun 2023

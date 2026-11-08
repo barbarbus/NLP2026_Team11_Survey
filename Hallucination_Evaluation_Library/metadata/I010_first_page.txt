@@ -1,0 +1,71 @@
+Published as a conference paper at COLM 2024
+Fine-grained Hallucination Detection and Editing
+for Language Models
+Abhika Mishra1, Akari Asai1, Vidhisha Balachandran2, Yizhong Wang1
+Yulia Tsvetkov1, Graham Neubig2, Hannaneh Hajishirzi1,3
+1University of Washington
+2Carnegie Mellon University
+3Allen Institute for AI
+{abhikam,akari,yizhongw, yuliats, hannaneh }@cs.washington.edu,
+{vbalacha, gneubig }@cs.cmu.edu
+Abstract
+Large language models (LMs) are prone to generate factual errors, which
+are often called hallucinations. In this paper, we introduce a comprehensive
+taxonomy of hallucinations and argue that hallucinations manifest in di-
+verse forms, each requiring varying degrees of careful assessments to verify
+factuality. We propose a novel task of automatic fine-grained hallucina-
+tion detection and construct a new evaluation benchmark, FAVABENCH ,
+that includes about one thousand fine-grained human judgments on three
+LM outputs across various domains. Our analysis reveals that ChatGPT
+and Llama2-Chat (70B, 7B) exhibit diverse types of hallucinations in the
+majority of their outputs in information-seeking scenarios, highlighting the
+need to build fine-grained systems. To this end, we train FAVA, a powerful
+retrieval-augmented LM by carefully creating synthetic data to detect and
+correct fine-grained hallucinations. Our automatic and human evaluations
+show that FAVA significantly outperforms retrieval-augmented ChatGPT
+and GPT-4 on fine-grained hallucination detection. Furthermore, FAVA out-
+performs widely-used hallucination detection systems on binary detection
+and shows effectiveness in editing to improve the factuality.1
+Fine-grained Hallucination Detection 
+Messi is a soccer player in 
+<entity>BarcelonaMiami<entity>. 
+<invented>He is known for the 2017 
+film "The Messi Diaries”. </invented>
+Entity Relation
+Unverifiable
+SubjectiveInvented 
+Contradictory 
+Hallucination Types
+Messi is a soccer player in 
+Barcelona. He is known for the 2017 
+film "The Messi Diaries”.
+Binary (Coarse-grained) Hallucination Detection
+No further 
+context on 
+factuality errors
+LM Output
+Messi is a soccer player in Barcelona. He is 
+known for the 2017 film "The Messi Diaries”.
+[1] Messi is now a  captain for the 
+Major League Soccer club Inter 
+Miami.
+[2] Documentaries about Messi:  
+-Messi, Lionel Messi: The 
+Greatest… 
+References
+🪴FAVA
+Input: LM Output 
++ References
+Output: FA V A’s 
+Fine-grained 
+Detection + Editing
+Figure 1: Overview of our taxonomy, fine-grained hallucination detection task, and FAVA.
+1 Introduction
+Large language models (LMs; Brown et al. 2020) can generate highly fluent and plausible
+text. However, these models are prone to produce factually incorrect or unverifiable state-
+ments, often called hallucinations. This impedes their deployment in real-world applications
+for information-seeking contexts (Mallen et al., 2022; Asai et al., 2024). Prior work on hal-
+lucinations in natural language generation (NLG) often assumes the presence of a specific
+1Our code, data, and demo are available at https://fine-grained-hallucination.github.io/.
+1
+arXiv:2401.06855v4  [cs.CL]  12 Aug 2024

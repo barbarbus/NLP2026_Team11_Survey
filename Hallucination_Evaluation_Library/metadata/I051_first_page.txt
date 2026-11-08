@@ -1,0 +1,95 @@
+Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers), pages 15449–15470
+July 2-7, 2026 ©2026 Association for Computational Linguistics
+Hallucination Detection in LLMs with Topological Divergence on Attention
+Graphs
+Alexandra Bazarova1, Andrei Volodichev1, Aleksandr Yugay1, Andrey Shulga1, Alina Ermilova1,
+Konstantin Polev2, Julia Belikova2, Rauf Parchiev 2,
+Dmitry Simakov2, Maxim Savchenko2, Andrey Savchenko2,3,
+Serguei Barannikov∗1, 4, Alexey Zaytsev∗1,
+1Applied AI Institute, 2SB AI Lab,3 HSE University, 4CNRS, Universite Paris Cite
+Correspondence: bazarovaai.239@gmail.com
+Abstract
+Hallucinations remain a critical challenge for
+large language models (LLMs), particularly in
+Retrieval-Augmented Generation (RAG) set-
+tings where models may generate outputs un-
+supported by the provided context. To address
+this, we introduce TOHA, a TOpology-based
+HAllucination detector, which leverages a topo-
+logical divergence metric to quantify the struc-
+tural properties of graphs induced by atten-
+tion matrices. Examining the topological di-
+vergence between prompt and response sub-
+graphs in RAG settings reveals consistent pat-
+terns: higher divergence values in specific at-
+tention heads correlate with unfaithful outputs,
+independent of the dataset. Extensive exper-
+iments — including evaluations on question-
+answering and summarization tasks — show
+that our approach achieves state-of-the-art or
+competitive results across several benchmarks
+while requiring minimal annotated data and
+computational resources. Our findings indi-
+cate that the topological structure of attention
+matrices provides an efficient and robust met-
+ric for assessing the correctness of LLM’s re-
+sponses. Our source code is publicly available:
+https://github.com/sb-ai-lab/TOHA.
+1 Introduction
+Large language models (LLMs) have advanced sig-
+nificantly in recent years, with applications across
+various fields (Chkirbene et al., 2024). To en-
+sure factual reliability, modern LLMs are often
+combined with the retrieval-augmented generation
+(RAG) technique, which integrates relevant exter-
+nal knowledge from diverse databases directly into
+the generation process (Lewis et al., 2020).
+Despite these improvements, LLMs remain
+prone to producing so-called hallucinations, i.e.,
+content that is factually or contextually incor-
+rect (Huang et al., 2023; Li et al., 2024). Detecting
+hallucinations is crucial for the safe deployment of
+*Equal contribution.
+LLMs in sensitive fields, as erroneous outputs may
+seriously erode user trust. An effective detector
+would therefore expand the scope of LLM applica-
+tions while mitigating risks (Gao et al., 2024).
+Though many methods address this problem (Sa-
+hoo et al., 2024; Shorinwa et al., 2025), they often
+face significant practical constraints, such as the
+scarcity of annotated datasets (Zhang et al., 2023)
+required for supervised methods (Sky et al., 2024;
+Orgad et al., 2025), the high computational cost of
+generating multiple additional samples (Chen et al.,
+2024; Hou et al., 2025), or the inability of LLMs’
+output probabilities to fully represent the model’s
+true uncertainty (Fadeeva et al., 2024; Shelmanov
+et al., 2025).
+These challenges can be addressed by leveraging
+LLMs’ internal states, which are informative for
+the hallucination-detection problem (Azaria and
+Mitchell, 2023; Sriramanan et al., 2024; Gekhman
+et al., 2025). We introduce TOHA (a TOpology-
+based HAllucination detector), a training-free
+method designed for the RAG scenario that lever-
+ages the structure of LLM attention maps to iden-
+tify hallucinations. Our method requires minimal
+annotated data while avoiding the computational
+overhead of multiple generations, which makes
+TOHA both data- and compute-efficient.
+Our core insight is that the prompt-response in-
+terconnections within an LLM’s attention mech-
+anism reveal the extent to which a response is
+faithful to the original prompt. TOHA formalizes
+this idea by analyzing attention graphs — com-
+plete weighted graphs derived from LLM atten-
+tion maps, the representation prior used for topo-
+logical data analysis (TDA) in NLP (Kushnareva
+et al., 2021; Tulchinskii et al., 2023). Unlike exist-
+ing attention-based methods, which treat all atten-
+tion heads as equally important (Sriramanan et al.,
+2024; Binkowski et al., 2025) or ignore the geo-
+metric structure of attention maps (Sun et al., 2025;
+Vazhentsev et al., 2025), our approach leverages a
+1
+15449

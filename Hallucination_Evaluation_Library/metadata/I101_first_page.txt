@@ -1,0 +1,89 @@
+Human-like Summarization Evaluation with ChatGPT
+Mingqi Gao, Jie Ruan, Renliang Sun, Xunjian Yin, Shiping Yang, Xiaojun Wan
+Wangxuan Institute of Computer Technology, Peking University
+{gaomingqi, xjyin, wanxiaojun}@pku.edu.cn
+{ruanjie, sunrenliang}@stu.pku.edu.cn
+yangshiping@bupt.edu.cn
+Abstract
+Evaluating text summarization is a challeng-
+ing problem, and existing evaluation metrics
+are far from satisfactory. In this study, we ex-
+plored ChatGPT’s ability to perform human-
+like summarization evaluation using four hu-
+man evaluation methods on ﬁve datasets. We
+found that ChatGPT was able to complete
+annotations relatively smoothly using Likert
+scale scoring, pairwise comparison, Pyramid,
+and binary factuality evaluation. Additionally,
+it outperformed commonly used automatic
+evaluation metrics on some datasets. Further-
+more, we discussed the impact of different
+prompts, compared its performance with that
+of human evaluation, and analyzed the gener-
+ated explanations and invalid responses.
+1 Introduction
+Text summarization is a task that involves gen-
+erating a condensed version of one or multiple
+documents. Thanks to the advancements in deep
+learning-based techniques, automatic summariza-
+tion has made signiﬁcant strides. Speciﬁcally, the
+emergence of large language models such as In-
+structGPT has resulted in comparable performance
+to reference summaries written by humans, even in
+zero-shot settings (Zhang et al., 2023).
+Evaluating text summarization, like other text
+generation tasks, is a challenging problem. While
+human evaluation is considered the gold standard,
+it is expensive and time-consuming. As a result,
+automatic evaluation metrics play a crucial role.
+ROUGE (Lin, 2004) and its variants, which are
+based on reference summaries and n-gram match-
+ing, are widely accepted and used in various types
+of summarization. However, surface-level word
+matching cannot accurately reﬂect the quality of
+the summary. Additionally, it is challenging to eval-
+uate the factual accuracy of the summary without
+utilizing the source document. Recently, evalua-
+tion metrics based on pre-trained models such as
+BERTScore (Zhang et al., 2020) and BARTScore
+(Yuan et al., 2021) have achieved better correla-
+tion with human judgments. Factuality evaluation
+methods based on entailment classiﬁcation, such
+as FactCC (Kryscinski et al., 2020), and question
+answering, such as FEQA (Durmus et al., 2020),
+have also been used to evaluate the factual con-
+sistency of summaries. Despite the existence of
+advanced automatic evaluation metrics, their per-
+formance, usability, and interpretability are still far
+from satisfactory.
+Large language models (LLMs) offer completely
+different possibilities for the automatic evaluation
+of summarization. GPT-3 (Brown et al., 2020) has
+the ability of in-context learning, and instruction
+tuning allows LLMs to align with human evaluation
+(Ouyang et al., 2022). These two abilities make it
+possible for LLMs to mimic the behavior of human
+evaluators, who generally evaluate summaries by
+understanding examples and instructions. We re-
+fer to this automatic evaluation method that views
+large models as human evaluators as human-like
+automatic evaluation. The most prominent feature
+of this evaluation method is its ﬂexibility, which
+uniﬁes all types of automatic evaluation in form
+and can simulate many of the practices of human
+evaluators. Unlike previous automatic evaluation
+metrics that give one or more numerical values
+as evaluation results, the evaluation results of this
+human-like automatic evaluation are fully reﬂected
+in the generated responses, which may include scor-
+ing, comparison, labels, and explanations.
+We conducted an evaluation of the evaluation
+ability of ChatGPT, a recently popular LLM, us-
+ing four commonly used human evaluation meth-
+ods for summarization. The methods include Lik-
+ert scale scoring, pairwise comparison, Pyramid
+(Nenkova and Passonneau, 2004), and binary fac-
+tuality evaluation. Our ﬁndings indicate that Chat-
+GPT is capable of completing annotations rela-
+tively smoothly using these methods. In addition,
+arXiv:2304.02554v1  [cs.CL]  5 Apr 2023

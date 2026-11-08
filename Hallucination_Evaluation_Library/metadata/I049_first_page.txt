@@ -1,0 +1,79 @@
+Few-Shot Relation Extraction with Hybrid Visual Evidence
+Jiaying Gong, Hoda Eldardiry
+Virginia Tech
+Blacksburg, VA, USA
+{gjiaying, hdardiry}@vt.edu
+Abstract
+The goal of few-shot relation extraction is to predict relations between name entities in a sentence when only a
+few labeled instances are available for training. Existing few-shot relation extraction methods focus on uni-modal
+information such as text only. This reduces performance when there is no clear contexts between the name entities
+described in text. We propose a multi-modal few-shot relation extraction model (MFS-HVE) that leverages both
+textual and visual semantic information to learn a multi-modal representation jointly. The MFS-HVE includes semantic
+feature extractors and multi-modal fusion components. The MFS-HVE semantic feature extractors are developed
+to extract both textual and visual features. The visual features include global image features and local object
+features within the image. The MFS-HVE multi-modal fusion unit integrates information from various modalities using
+image-guided attention, object-guided attention, and hybrid feature attention to fully capture the semantic interaction
+between visual regions of images and relevant texts. Extensive experiments conducted on two public datasets
+demonstrate that semantic visual information significantly improves performance of few-shot relation prediction.
+Keywords:few-shot learning, relation extraction, multi-modal fusion
+1. Introduction
+Relation extraction aims to predict the relation be-
+tween two name entities in a sentence. To alle-
+viate the reliance on high-quality annotated data,
+few-shot learning has drawn more attention, re-
+quiring only a few labeled instances for training
+to adapt to new tasks. Existing few-shot relation
+extraction methods can be roughly divided into
+two categories. One category involves methods
+only using plain text data, without any auxiliary
+information. For example, meta-learning models
+prototypical networks (Gao et al., 2019), siamese
+neural networks (Yuan et al., 2017) are trained with
+only a few examples for each class to extract rela-
+tions. The other category introduces external data
+sources such as relation information (Liu et al.,
+2022a,b), concepts of entities (Y ang et al., 2021),
+side information (Gong and Eldardiry, 2021), exter-
+nal datasets (Geng et al., 2020), and graphs (Qu
+et al., 2020), to compensate the limited information
+in the above methods, to enhance the performance
+in few-shot relation extraction.
+Figure 1: An example of multi-modal relation ex-
+traction based on visual information.
+However, these methods mainly explore single-
+modality text-based data and may suffer a signifi-
+cant performance decline when texts lack contexts.
+For example, in Figure 1, given two name entities
+‘Dimitrie Popescu’ and ‘rower’, it is difficult for text-
+based models to detect the relation ‘sport’ without
+other supplementary information because the word
+‘sport’ or other similar words does not appear in the
+text. As a result, uni-modal models will incorrectly
+extract the relation ‘winner’ or ‘candidate’ of the two
+name entities according to the short given textual
+sentence. Even models using external information
+such as knowledge graphs or related words with
+similar meanings still can not correctly extract the
+relation due to the limited information in short given
+textual sentences.
+Therefore, we question that Can visual informa-
+tion be a good external source to supplement the
+missing contexts in textual sentences for few-shot
+relation extraction? In the above case, we can eas-
+ily classify the relation into ‘winner’ from the guid-
+ance of an image showing that a person is holding
+a trophy. Utilizing visual information to support con-
+textual information for texts involves multi-modal
+learning. However, fusing information from different
+modalities is also a challenging task. First, simply
+concatenating textual and visual features without
+considering semantic information may even have
+a negative impact on the performance as shown
+in Sec. 4.4. For example, in Figure 1, the multi-
+ple people’s faces in the background are noise for
+the image with the relation ‘sport’. Second, ex-
+isting multi-modal models (Sec. 2.2) mainly focus
+on fusing global visual features with text without
+considering the semantic information of visual ob-
+jects in images. In Figure 1, visual objects such as
+arXiv:2403.00724v1  [cs.CL]  1 Mar 2024

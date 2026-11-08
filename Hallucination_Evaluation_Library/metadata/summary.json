@@ -1,0 +1,18 @@
+{
+  "core": 16,
+  "important": 108,
+  "total": 124,
+  "code_archives": 12,
+  "pdf_bytes": 211602976,
+  "areas": {
+    "01_Definitions_Surveys": 1,
+    "02_Benchmarks": 23,
+    "03_Factuality_Entailment": 11,
+    "07_Judges_Human_Meta": 14,
+    "04_QA_Based_Metrics": 7,
+    "05_Evidence_RAG": 13,
+    "06_Uncertainty_Consistency": 28,
+    "08_Domain_Multilingual": 11
+  },
+  "excluded": 11
+}

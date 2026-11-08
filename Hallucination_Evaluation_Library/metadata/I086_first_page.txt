@@ -1,0 +1,94 @@
+QAFactEval: Improved QA-Based
+Factual Consistency Evaluation for Summarization
+Alexander R. Fabbri Chien-Sheng Wu
+Wenhao Liu Caiming Xiong
+Salesforce AI Research
+{afabbri, wu.jason, wenhao.liu, cxiong}@salesforce.com
+Abstract
+Factual consistency is an essential quality of
+text summarization models in practical set-
+tings. Existing work in evaluating this dimen-
+sion can be broadly categorized into two lines
+of research, entailment-based and question an-
+swering (QA)-based metrics, and different ex-
+perimental setups often lead to contrasting con-
+clusions as to which paradigm performs the
+best. In this work, we conduct an extensive
+comparison of entailment and QA-based met-
+rics, demonstrating that carefully choosing the
+components of a QA-based metric, especially
+question generation and answerability classiﬁ-
+cation, is critical to performance. Building on
+those insights, we propose an optimized met-
+ric, which we call QAF ACTEVAL, that leads
+to a 14% average improvement over previ-
+ous QA-based metrics on the SummaC fac-
+tual consistency benchmark, and also outper-
+forms the best-performing entailment-based
+metric. Moreover, we ﬁnd that QA-based
+and entailment-based metrics can offer com-
+plementary signals and be combined into a sin-
+gle metric for a further performance boost.
+1 Introduction
+Text summarization aims to compress long docu-
+ment(s) into a short and ﬂuent form that preserves
+salient information. The ﬁeld has beneﬁted from
+the application of pretrained methods (Liu and La-
+pata, 2019; Lewis et al., 2020; Zhang et al., 2020a).
+However, state-of-the-art models are not always
+factually consistent with the source documents they
+are conditioned on (Maynez et al., 2020; Fabbri
+et al., 2021). Thus, determining the factual consis-
+tency of a summary remains an essential task.
+Recent metrics for summarization factual consis-
+tency can be broadly split into two categories: 1)
+Entailment-based metrics that determine whether
+the content in the summary is entailed by the in-
+put document (Kryscinski et al., 2020; Koto et al.,
+Document
+The Knicks beat the Rockets. The fans were excited.
+Summary
+The Knicks beat the Bucks.
+Entailment Matrix Selected Answer
+[Contra, Neutral, Support] the Bucks
+[
+0.90 0 .07 0 .03
+0.02 0 .90 0 .08
+] Generated Question
+Who did the Knicks beat?
+QA Output
+the Rockets
+Max Support Score Answer Overlap Score
+0.08 0.20
+Table 1: Toy example of a factual inconsistency be-
+tween a summary and a source document. Left: The
+entailment-based metric computes the level of contra-
+diction, neutrality, and support between the summary
+and each source document sentence. The ﬁnal factual
+consistency metric is calculated as the maximum sup-
+port score over all source sentences. Right: The QA-
+based metric ﬁrst selects a noun-phrase answer from
+the summary. A QG model then generates an associ-
+ated question that a QA model answers based on the
+source document. The answer overlap score of the QA-
+based metric measures the semantic overlap between
+the QA model output and the selected answer as the
+ﬁnal metric score.
+2020) and 2) QA-based metrics that compute a
+factual consistency score based on a QA model’s
+ability to answer, using the input document, ques-
+tions generated from the summary (Wang et al.,
+2020a; Durmus et al., 2020). We provide an illus-
+trative example in Table 1 in which both metric
+types correctly identify the factual inconsistency
+and output a low score.
+Quantitative comparisons among entailment-
+based and QA-based metrics, however, often differ
+in their choices of baseline model and input granu-
+larity, evaluating on single datasets and drawing dif-
+fering conclusions as to the best paradigm. For ex-
+ample, some work reports entailment-based metrics
+as performing best (Koto et al., 2020; Maynez et al.,
+2020), while other work argues for QA metrics
+(Durmus et al., 2020; Wang et al., 2020b; Scialom
+arXiv:2112.08542v2  [cs.CL]  29 Apr 2022

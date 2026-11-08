@@ -1,0 +1,87 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2305.14623: Self-Checker: Plug-and-Play Modules for Fact-Checking with Large Language Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Self-Checker: Plug-and-Play Modules for Fact-Checking with Large Language Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2305.14623v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Fact-checking is an essential task in NLP that is commonly utilized for validating the factual accuracy of claims. Prior work has mainly focused on fine-tuning pre-trained languages models on specific datasets, which can be computationally intensive and time-consuming. With the rapid development of large language models (LLMs), such as ChatGPT and GPT-3, researchers are now exploring their in-context learning capabilities for a wide range of tasks. In this paper, we aim to assess the capacity of LLMs for fact-checking by introducing Self-Checker, a framework comprising a set of plug-and-play modules that facilitate fact-checking by purely prompting LLMs in an almost zero-shot setting. This framework provides a fast and efficient way to construct fact-checking systems in low-resource environments. Empirical results demonstrate the potential of Self-Checker in utilizing LLMs for fact-checking. However, there is still significant room for improvement compared to SOTA fine-tuned models, which suggests that LLM adoption could be a promising approach for future fact-checking research."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Self-Checker: Plug-and-Play Modules for Fact-Checking with Large..."
+  ],
+  "twitter:description": [
+    "Fact-checking is an essential task in NLP that is commonly utilized for validating the factual accuracy of claims. Prior work has mainly focused on fine-tuning pre-trained languages models on..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Self-Checker: Plug-and-Play Modules for Fact-Checking with Large Language Models"
+  ],
+  "citation_author": [
+    "Li, Miaoran",
+    "Peng, Baolin",
+    "Galley, Michel",
+    "Gao, Jianfeng",
+    "Zhang, Zhu"
+  ],
+  "citation_date": [
+    "2023/05/24"
+  ],
+  "citation_online_date": [
+    "2024/04/01"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2305.14623"
+  ],
+  "citation_arxiv_id": [
+    "2305.14623"
+  ],
+  "citation_abstract": [
+    "Fact-checking is an essential task in NLP that is commonly utilized for validating the factual accuracy of claims. Prior work has mainly focused on fine-tuning pre-trained languages models on specific datasets, which can be computationally intensive and time-consuming. With the rapid development of large language models (LLMs), such as ChatGPT and GPT-3, researchers are now exploring their in-context learning capabilities for a wide range of tasks. In this paper, we aim to assess the capacity of LLMs for fact-checking by introducing Self-Checker, a framework comprising a set of plug-and-play modules that facilitate fact-checking by purely prompting LLMs in an almost zero-shot setting. This framework provides a fast and efficient way to construct fact-checking systems in low-resource environments. Empirical results demonstrate the potential of Self-Checker in utilizing LLMs for fact-checking. However, there is still significant room for improvement compared to SOTA fine-tuned models, which suggests that LLM adoption could be a promising approach for future fact-checking research."
+  ]
+}

@@ -1,0 +1,83 @@
+Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics , pages 2214–2220
+Florence, Italy, July 28 - August 2, 2019. c⃝2019 Association for Computational Linguistics
+2214
+Ranking Generated Summaries by Correctness: An Interesting but
+Challenging Application for Natural Language Inference
+Tobias Falke1∗, Leonardo F . R. Ribeiro2, Prasetya Ajie Utama 2,
+Ido Dagan3 and Iryna Gurevych 2
+1Amazon, 2Research Training Group AIPHES and UKP Lab, Technische Universit¨at
+Darmstadt, Germany, 3Bar-Ilan University, Ramat-Gan, Israel
+falket@amazon.com,{ribeiro,utama}@aiphes.tu-darmstadt.de,
+dagan@cs.biu.ac.il, gurevych@ukp.informatik.tu-darmstadt.de
+Abstract
+While recent progress on abstractive summa-
+rization has led to remarkably ﬂuent sum-
+maries, factual errors in generated summaries
+still severely limit their use in practice. In
+this paper, we evaluate summaries produced
+by state-of-the-art models via crowdsourcing
+and show that such errors occur frequently, in
+particular with more abstractive models. We
+study whether textual entailment predictions
+can be used to detect such errors and if they
+can be reduced by reranking alternative pre-
+dicted summaries. That leads to an interesting
+downstream application for entailment mod-
+els. In our experiments, we ﬁnd that out-
+of-the-box entailment models trained on NLI
+datasets do not yet offer the desired perfor-
+mance for the downstream task and we there-
+fore release our annotations as additional test
+data for future extrinsic evaluations of NLI.
+1 Introduction
+The general success of deep learning tech-
+niques and the availability of large-scale single-
+document summarization datasets, such as the
+CNN-DailyMail (CNN-DM) corpus (Hermann
+et al., 2015), have recently led to a renewed in-
+terest in abstractive summarization. Following the
+pioneering works of Rush et al. (2015), Chopra
+et al. (2016) and Nallapati et al. (2016), many
+models have been developed in recent years that
+can all generate summaries by freely choosing
+words from a large vocabulary rather than reusing
+full sentences from the input document.
+While neural models have been very success-
+ful at producing ﬂuent text with this approach, a
+∗The work was done while the ﬁrst author was also afﬁli-
+ated to the research training group AIPHES at TU Darmstadt.
+Source Sentence: prince george could be days
+away of becoming an older brother as the
+duchess is due to give birth to her second child
+mid-to-late april.
+Summary Sentence: prince george is due to
+give birth to her second child mid-to-late april.
+Figure 1: Example of an incorrect summary sentence
+produced by PGC (see Section 4) on CNN-DM.
+downside is that there is less guarantee than in ex-
+tractive approaches that the content of the sum-
+mary is factually correct. Such models regularly
+introduce errors as illustrated in Figure 1, where
+the summary sentence is clearly not supported by
+the document. For sentence summarization, Cao
+et al. (2018) found up to 30% of summaries to be
+incorrect. That greatly reduces their usefulness, as
+a user cannot trust the content of the summary.
+In this paper, we follow the idea that all infor-
+mation in a summary should be entailed by the
+source document. We study the use of natural
+language inference (NLI) (Bowman et al., 2015),
+also known as textual entailment (Dagan et al.,
+2006), to detect factual errors. In particular, we
+test whether entailment predictions of NLI mod-
+els can be used to rerank generated summaries
+such that more correct ones are preferred. Such
+a reranking approach can be easily combined with
+any recent summarization model and allows us to
+clearly quantify the impact of using NLI.
+Our contributions and the organization of this
+paper are the following: First, we describe how the
+correctness of a generated summary can be ver-
+iﬁed efﬁciently via crowdsourcing. Second, we
+report correctness estimates for summaries gen-
+erated by three recent abstractive summarization

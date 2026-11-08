@@ -1,0 +1,90 @@
+Monitoring Decoding: Mitigating Hallucination via Evaluating the
+Factuality of Partial Response during Generation
+Yurui Chang, Bochuan Cao, Lu Lin
+College of Information Sciences and Technology
+Pennsylvania State University
+University Park, PA 16802
+{yuruic, bccao, lulin}@psu.edu
+Abstract
+While large language models have demon-
+strated exceptional performance across a wide
+range of tasks, they remain susceptible to hal-
+lucinations – generating plausible yet factually
+incorrect contents. Existing methods to miti-
+gating such risk often rely on sampling multi-
+ple full-length generations, which introduces
+significant response latency and becomes inef-
+fective when the model consistently produces
+hallucinated outputs with high confidence. To
+address these limitations, we introduceMoni-
+toring Decoding (MD), a novel framework that
+dynamically monitors the generation process
+and selectively applies in-process interventions,
+focusing on revising crucial tokens responsi-
+ble for hallucinations. Instead of waiting until
+completion of multiple full-length generations,
+we identify hallucination-prone tokens during
+generation using a monitor function, and fur-
+ther refine these tokens through a tree-based
+decoding strategy. This approach ensures an
+enhanced factual accuracy and coherence in
+the generated output while maintaining effi-
+ciency. Experimental results demonstrate that
+MD consistently outperforms self-consistency-
+based approaches in both effectiveness and effi-
+ciency, achieving higher factual accuracy while
+significantly reducing computational overhead.
+1 Introduction
+Large language models (LLMs), such as GPT-
+4 (Achiam et al., 2023) and Llama (Touvron et al.,
+2023), have achieved extraordinary success across
+various tasks, including question answering, sum-
+marization, and reasoning. Despite their impressive
+capabilities, even state-of-the-art models are known
+to generate non-factual responses that deviate from
+verifiable real-world facts (Zhang et al., 2023c;
+Azamfirei et al., 2023; McKenna et al., 2023).
+These hallucinations pose significant risks, poten-
+tially undermining the practical utility of LLMs and
+diminishing user trust. Consequently, mitigating
+hallucinations – ensuring that generated responses
+remain factually accurate and grounded in real-
+world knowledge – has emerged as an increasingly
+critical research focus.
+One common approach to reducing halluci-
+nations is based on theBest-of-N (BoN)strat-
+egy (Chen et al., 2023; Wang et al., 2022; Cheng
+et al., 2025), which involves generating multiple re-
+sponses for a given prompt and carefully selecting
+or integrating the most reliable output. Brown et al.
+have shown that model performance scales nearly
+log-linearly with the number of samples, highlight-
+ing the effectiveness of sampling-based strategies
+in enhancing output quality. Several other methods
+share this insight by prompting LLMs to merge or
+revise generated samples (Madaan et al., 2024), or
+by measuring self-consistency (Wang et al., 2024a;
+Chen et al., 2023; Wang et al., 2022) to select the
+optimal response. However, recent studies high-
+light limitations in these approaches: simple merg-
+ing or refinement strategies can still introduce fac-
+tual inaccuracies (Turpin et al., 2024; Xu et al.,
+2024b,a), and self-consistency alone does not en-
+sure factual correctness (Zhang et al., 2023a).
+To understand why these methods may fail, it
+is important to note that self-consistent responses
+can still contain hallucinations if the model ex-
+hibitsover-confidencein incorrect tokens. As il-
+lustrated in Figure 1, the most consistent response
+among sampled outputs may include a hallucinated
+token (e.g., “24”) with an extremely high probabil-
+ity. Such high-confidence errors can be particularly
+persistent, as generated responses often correlate
+strongly (Gallo et al., 2025), and the marginal ben-
+efits from sampling additional responses diminish
+over time (Wu et al., 2024; Brown et al., 2024).
+This observation leads to a fundamental question:
+Is it necessary to resample multiple full-length and
+highly similar responses to improve factuality?
+Interestingly, simply intervening the generation by
+arXiv:2503.03106v2  [cs.CL]  13 Sep 2025

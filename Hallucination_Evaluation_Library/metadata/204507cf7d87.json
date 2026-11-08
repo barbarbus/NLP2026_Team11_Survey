@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "FEQA: A Question Answering Evaluation Framework for Faithfulness Assessment in Abstractive Summarization"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2020.acl-main.454.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2020.acl-main.454/"
+  ],
+  "og:description": [
+    "Esin Durmus, He He, Mona Diab. Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics. 2020."
+  ]
+}

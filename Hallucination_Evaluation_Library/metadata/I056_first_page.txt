@@ -1,0 +1,74 @@
+Q2: Evaluating Factual Consistency in Knowledge-Grounded Dialogues
+via Question Generation and Question Answering
+Or Honovich1∗ Leshem Choshen1 Roee Aharoni2 Ella Neeman1
+Idan Szpektor2 Omri Abend1
+1The Hebrew University of Jerusalem; 2Google Research
+or.honovich@gmail.com
+{roeeaharoni,szpektor}@google.com
+Abstract
+Neural knowledge-grounded generative mod-
+els for dialogue often produce content that
+is factually inconsistent with the knowledge
+they rely on, making them unreliable and lim-
+iting their applicability. Inspired by recent
+work on evaluating factual consistency in ab-
+stractive summarization, we propose an au-
+tomatic evaluation metric for factual consis-
+tency in knowledge-grounded dialogue using
+automatic question generation and question an-
+swering. Our metric, denoted Q2, compares
+answer spans using natural language inference
+(NLI), instead of token-based matching as
+done in previous work. To foster proper eval-
+uation, we curate a novel dataset of dialogue
+system outputs for the Wizard-of-Wikipedia
+dataset, manually annotated for factual consis-
+tency. We perform a thorough meta-evaluation
+of Q2 against other metrics using this dataset
+and two others, where it consistently shows
+higher correlation with human judgements.
+1 Introduction
+Generative conversational agents show remarkable
+progress lately (Shuster et al., 2020; Adiwardana
+et al., 2020). Yet, generative dialogue models
+that are grounded by external knowledge sources
+still struggle to be consistent with that knowl-
+edge. Their output is often incompatible with the
+given knowledge or even completely “hallucinated”
+(Roller et al., 2020). Figure 1 depicts such incon-
+sistency by the dialogue system of Shuster et al.
+(2020) when evaluated on the Wizard of Wikipedia
+dataset (Dinan et al., 2019). Since inconsistent gen-
+erated text is usually ﬂuent and well-formed, these
+outputs could mislead users with false information,
+limiting the applicability of such systems.
+Factual inconsistency is often overlooked by
+evaluation methods for text generation (Celikyil-
+maz et al., 2020). Evaluation approaches that ad-
+dress this gap were recently proposed for tasks like
+∗ Work done during an internship at Google Research.
+Figure 1: An example from our dataset. Human mes-
+sages are in Blue, the generated response is in Orange
+and the grounding knowledge is in Black at the bottom.
+The factual inconsistency is marked in Red.
+machine translation and abstractive summarization
+(Sellam et al., 2020; Xu et al., 2020; Goodrich et al.,
+2019). Yet, evaluating grounded dialogues poses
+additional challenges, since dialogue outputs may
+refer to the dialogue history and include personal
+opinions, questions to the user, and general “chit-
+chat”, whose consistency with external knowledge
+is mostly irrelevant. Additionally, many of those
+metrics require gold-label human-constructed ref-
+erences, while dialogue is an open-ended task –
+making it less suitable for reference-based evalua-
+tion.
+In this work, we propose an automatic metric
+for evaluating the factual consistency of generative
+open-domain knowledge-grounded dialogue sys-
+tems which does not require gold-label reference
+responses. Our metric, denoted Q2, pairs automatic
+question generation (QG) and question answering
+(QA) for dialogue generation evaluation, inspired
+by recent work on factual consistency evaluation
+arXiv:2104.08202v2  [cs.CL]  9 Sep 2021

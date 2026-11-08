@@ -1,0 +1,88 @@
+On Faithfulness and Factuality in Abstractive Summarization
+Joshua Maynez∗ Shashi Narayan∗ Bernd Bohnet Ryan McDonald
+Google Research
+{joshuahm,shashinarayan,bohnetbd,ryanmcd}@google.com
+Abstract
+It is well known that the standard likelihood
+training and approximate decoding objectives
+in neural text generation models lead to less
+human-like responses for open-ended tasks
+such as language modeling and story gener-
+ation. In this paper we have analyzed limi-
+tations of these models for abstractive docu-
+ment summarization and found that these mod-
+els are highly prone to hallucinate content that
+is unfaithful to the input document. We con-
+ducted a large scale human evaluation of sev-
+eral neural abstractive summarization systems
+to better understand the types of hallucinations
+they produce. Our human annotators found
+substantial amounts of hallucinated content in
+all model generated summaries. However, our
+analysis does show that pretrained models are
+better summarizers not only in terms of raw
+metrics, i.e., ROUGE, but also in generating
+faithful and factual summaries as evaluated by
+humans. Furthermore, we show that textual en-
+tailment measures better correlate with faith-
+fulness than standard metrics, potentially lead-
+ing the way to automatic evaluation metrics as
+well as training and decoding criteria.1
+1 Introduction
+Current state of the art conditional text generation
+models accomplish a high level of ﬂuency and co-
+herence, mostly thanks to advances in sequence-
+to-sequence architectures with attention and copy
+(Sutskever et al., 2014; Bahdanau et al., 2015; Gu
+et al., 2016), fully attention-based Transformer ar-
+chitectures (Vaswani et al., 2017; Dai et al., 2019)
+and more recently pretrained language modeling
+for natural language understanding (Devlin et al.,
+2019; Radford et al., 2018; Yang et al., 2019; Liu
+et al., 2019). There has been a growing interest in
+∗ The ﬁrst two authors contributed equally.
+1Our human annotated summaries for faithfulness and fac-
+tuality will be released at https://github.com/google-research-
+datasets/xsum hallucination annotations.
+understanding how maximum likelihood training
+and approximate beam-search decoding in these
+models lead to less human-like text in open-ended
+text generation such as language modeling and
+story generation (Holtzman et al., 2020; Welleck
+et al., 2020; See et al., 2019). In this paper we
+investigate how these models are prone to gener-
+ate hallucinated text in conditional text generation,
+speciﬁcally, extreme abstractive document summa-
+rization (Narayan et al., 2018a).
+Document summarization — the task of produc-
+ing a shorter version of a document while preserv-
+ing its information content (Mani, 2001; Nenkova
+and McKeown, 2011) — requires models to gener-
+ate text that is not only human-like but also faith-
+ful and/or factual given the document. The exam-
+ple in Figure 1 illustrates that the faithfulness and
+factuality are yet to be conquered by conditional
+text generators. The article describes an event
+of “ Conservative MP Zac Smith winning the pri-
+mary for 2016 London mayoral election”, but sum-
+maries often forge entities (e.g., “Nigel Goldsmith”
+or “Zac Goldwin”) or information (e.g., “UKIP
+leader Nigel Goldsmith”, “Nigel Goldsmith win-
+ning the mayoral election”, “Sadiq Khan being the
+former London mayor” or “Zac Goldwin being the
+Labour’s candidate”) that are not supported by the
+document or are factually wrong. Interestingly, all
+summaries are topical and ﬂuent, and perform well
+in terms of ROUGE scores (Lin and Hovy, 2003).
+We conducted a large-scale human evaluation
+of hallucinated content in systems that use Re-
+current Neural Network (RNN) (See et al., 2017),
+Convolutional Neural Network (CNN) (Narayan
+et al., 2018a), and Transformers (Radford et al.,
+2019; Rothe et al., 2020), as well as human
+written summaries for the recently introduced
+eXtreme SUMmarization task ( XSUM, Narayan
+et al., 2018a). We seek to answer the following
+questions: (i) How frequently do abstractive sum-
+marizers hallucinate content?; (ii) Do models hal-
+arXiv:2005.00661v1  [cs.CL]  2 May 2020

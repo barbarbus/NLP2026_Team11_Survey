@@ -1,0 +1,88 @@
+Hallucination Detection in LLMs Using Spectral Features of Attention
+Maps
+Jakub Binkowski1, Denis Janiak1, Albert Sawczyn1
+Bogdan Gabrys2,Tomasz Kajdanowicz 1
+1Wroclaw University of Science and Technology,2University of Technology Sydney,
+Correspondence:jakub.binkowski@pwr.edu.pl
+Abstract
+Large Language Models (LLMs) have demon-
+strated remarkable performance across various
+tasks but remain prone to hallucinations. De-
+tecting hallucinations is essential for safety-
+critical applications, and recent methods lever-
+age attention map properties to this end, though
+their effectiveness remains limited. In this
+work, we investigate the spectral features of
+attention maps by interpreting them as adja-
+cency matrices of graph structures. We propose
+the LapEigvals method, which utilizes the top-
+k eigenvalues of the Laplacian matrix derived
+from the attention maps as an input to halluci-
+nation detection probes. Empirical evaluations
+demonstrate that our approach achieves state-
+of-the-art hallucination detection performance
+among attention-based methods. Extensive ab-
+lation studies further highlight the robustness
+and generalization of LapEigvals, paving the
+way for future advancements in the hallucina-
+tion detection domain.
+1 Introduction
+The recent surge of interest in Large Language
+Models (LLMs), driven by their impressive perfor-
+mance across various tasks, has led to significant
+advancements in their training, fine-tuning, and ap-
+plication to real-world problems. Despite progress,
+many challenges remain unresolved, particularly
+in safety-critical applications with a high cost of
+errors. A significant issue is that LLMs are prone
+to hallucinations, i.e. generating "content that is
+nonsensical or unfaithful to the provided source
+content" (Farquhar et al., 2024; Huang et al., 2023).
+Since eliminating hallucinations is impossible (Lee,
+2023; Xu et al., 2024), there is a pressing need for
+methods to detect when a model produces hallu-
+cinations. In addition, examining the internal be-
+havior of LLMs in the context of hallucinations
+may yield important insights into their characteris-
+tics and support further advancements in the field.
+Recent studies have shown that hallucinations can
+be detected using internal states of the model, e.g.,
+hidden states (Chen et al., 2024) or attention maps
+(Chuang et al., 2024a), and that LLMs can inter-
+nally "know when they do not know" (Azaria and
+Mitchell, 2023; Orgad et al., 2025). We show that
+spectral features of attention maps coincide with
+hallucinations and, building on this observation,
+propose a novel method for their detection.
+As highlighted by (Barbero et al., 2024), atten-
+tion maps can be viewed as weighted adjacency
+matrices of graphs. Building on this perspective,
+we performed statistical analysis and demonstrated
+that the eigenvalues of a Laplacian matrix derived
+from attention maps serve as good predictors of hal-
+lucinations. We propose the LapEigvals method,
+which utilizes the top-k eigenvalues of the Lapla-
+cian as input features of a probing model to de-
+tect hallucinations. We share full implementa-
+tion in a public repository: https://github.com/
+graphml-lab-pwr/lapeigvals.
+We summarize our contributions as follows:
+(1) We perform statistical analysis of the Lapla-
+cian matrix derived from attention maps and
+show that it could serve as a better predictor
+of hallucinations compared to the previous
+method relying on the log-determinant of the
+maps.
+(2) Building on that analysis and advancements
+in the graph-processing domain, we propose
+leveraging the top-k eigenvalues of the Lapla-
+cian matrix as features for hallucination de-
+tection probes and empirically show that it
+achieves state-of-the-art performance among
+attention-based approaches.
+(3) Through extensive ablation studies, we
+demonstrate properties, robustness and gener-
+alization of LapEigvals and suggest promis-
+ing directions for further development.
+1
+arXiv:2502.17598v2  [cs.LG]  18 Oct 2025

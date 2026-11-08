@@ -1,0 +1,85 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2303.15621: ChatGPT as a Factual Inconsistency Evaluator for Text Summarization"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "ChatGPT as a Factual Inconsistency Evaluator for Text Summarization"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2303.15621v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "The performance of text summarization has been greatly boosted by pre-trained language models. A main concern of existing methods is that most generated summaries are not factually inconsistent with their source documents. To alleviate the problem, many efforts have focused on developing effective factuality evaluation metrics based on natural language inference, question answering, and syntactic dependency et al. However, these approaches are limited by either their high computational complexity or the uncertainty introduced by multi-component pipelines, resulting in only partial agreement with human judgement. Most recently, large language models(LLMs) have shown excellent performance in not only text generation but also language comprehension. In this paper, we particularly explore ChatGPT's ability to evaluate factual inconsistency under a zero-shot setting by examining it on both coarse-grained and fine-grained evaluation tasks including binary entailment inference, summary ranking, and consistency rating. Experimental results indicate that ChatGPT generally outperforms previous evaluation metrics across the three tasks, indicating its great potential for factual inconsistency evaluation. However, a closer inspection of ChatGPT's output reveals certain limitations including its preference for more lexically similar candidates, false reasoning, and inadequate understanding of instructions."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "ChatGPT as a Factual Inconsistency Evaluator for Text Summarization"
+  ],
+  "twitter:description": [
+    "The performance of text summarization has been greatly boosted by pre-trained language models. A main concern of existing methods is that most generated summaries are not factually inconsistent..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "ChatGPT as a Factual Inconsistency Evaluator for Text Summarization"
+  ],
+  "citation_author": [
+    "Luo, Zheheng",
+    "Xie, Qianqian",
+    "Ananiadou, Sophia"
+  ],
+  "citation_date": [
+    "2023/03/27"
+  ],
+  "citation_online_date": [
+    "2023/04/13"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2303.15621"
+  ],
+  "citation_arxiv_id": [
+    "2303.15621"
+  ],
+  "citation_abstract": [
+    "The performance of text summarization has been greatly boosted by pre-trained language models. A main concern of existing methods is that most generated summaries are not factually inconsistent with their source documents. To alleviate the problem, many efforts have focused on developing effective factuality evaluation metrics based on natural language inference, question answering, and syntactic dependency et al. However, these approaches are limited by either their high computational complexity or the uncertainty introduced by multi-component pipelines, resulting in only partial agreement with human judgement. Most recently, large language models(LLMs) have shown excellent performance in not only text generation but also language comprehension. In this paper, we particularly explore ChatGPT's ability to evaluate factual inconsistency under a zero-shot setting by examining it on both coarse-grained and fine-grained evaluation tasks including binary entailment inference, summary ranking, and consistency rating. Experimental results indicate that ChatGPT generally outperforms previous evaluation metrics across the three tasks, indicating its great potential for factual inconsistency evaluation. However, a closer inspection of ChatGPT's output reveals certain limitations including its preference for more lexically similar candidates, false reasoning, and inadequate understanding of instructions."
+  ]
+}

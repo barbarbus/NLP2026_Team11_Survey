@@ -1,0 +1,52 @@
+Published as a conference paper at ICLR 2024
+ATTENTION SATISFIES : A C ONSTRAINT -SATISFACTION
+LENS ON FACTUAL ERRORS OF LANGUAGE MODELS
+Mert Yuksekgonul†‡
+Stanford University
+Varun Chandrasekaran‡
+University of Illinois Urbana-Champaign
+Erik Jones‡
+UC Berkeley
+Suriya Gunasekar Ranjita Naik Hamid Palangi Ece Kamar Besmira Nushi †
+Microsoft Research
+ABSTRACT
+We investigate the internal behavior of Transformer-based Large Language Models
+(LLMs) when they generate factually incorrect text. We propose modeling factual
+queries as constraint satisfaction problems and use this framework to investigate
+how the LLM interacts internally with factual constraints. We find a strong positive
+relationship between the LLM’s attention to constraint tokens and the factual
+accuracy of generations. We curate a suite of 10 datasets containing over 40,000
+prompts to study the task of predicting factual errors with the Llama-2 family across
+all scales (7B, 13B, 70B). We propose SAT Probe, a method probing attention
+patterns, that can predict factual errors and fine-grained constraint satisfaction,
+and allow early error identification. The approach and findings take another step
+towards using the mechanistic understanding of LLMs to enhance their reliability.1
+1 I NTRODUCTION
+Large language models (LLMs) encode substantial knowledge (Petroni et al., 2019; Srivastava
+et al., 2022), yet they are prone to generating factually incorrect text. For instance, LLMs can
+generate confident-appearing completions with hallucinations (Zhang et al., 2023; Ji et al., 2023),
+fabricating entities or factual claims. As LLMs reach wider audiences and are used for safety-critical
+applications, understanding the factuality of generations rises to paramount importance. However,
+our understanding of how LLMs process factual queries and produce errors is nascent. Existing
+approaches fall into two categories: i) treat the LLM as a black box and query it about generated
+factual claims, or ii) use white-box methods to study how LLMs internally process factual queries.
+Black-box approaches center on analyzing the consistency of the claims of an LLM using follow-up
+questions with other LLMs (Cohen et al., 2023) or having the LLM self-critique (Zhang et al., 2023;
+Manakul et al., 2023). However, explanations from LLMs are suggested to be unreliable (Turpin et al.,
+2023) or to convey contradictory signals, e.g., LLMs can produce an answer and then acknowledge
+that it is wrong (Zhang et al., 2023; Mündler et al., 2023). Further, black-box methods typically
+involve multiple generations from LLMs, which may be prohibitively expensive to use in practice.
+Mechanistic white-box approaches investigate the internal mechanisms of LLMs to dissect factual
+recall. For instance, Meng et al. (2022); Geva et al. (2023) focus on facts with the (subject, relation,
+object) structure (e.g., Paris, capital of, France) and propose insightful mechanisms of how an LLM
+recalls a fact. They suggest that the multi-layer perceptron layers store facts, and attention layers
+transfer factual information from the subject tokens. However, these works focus on when the LLM
+generates factually correct responses. Mechanisms leading to factual errors are scarcely explored.
+Our Contributions: We investigate the internal mechanisms of LLMs, specifically the attention pat-
+terns, when they produce factual errors. We propose to view factual queries as constraint satisfaction
+1Our datasets, evaluation protocol, and methods will be released at https://github.com/
+microsoft/mechanistic-error-probe.
+†Correspondence to merty@stanford.edu and besmira.nushi@microsoft.com.
+‡This work was done while at Microsoft Research.
+1
+arXiv:2309.15098v2  [cs.CL]  17 Apr 2024

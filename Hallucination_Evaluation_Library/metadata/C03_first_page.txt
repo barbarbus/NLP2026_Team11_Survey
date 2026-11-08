@@ -1,0 +1,89 @@
+Siren’s Song in the AI Ocean:
+A Survey on Hallucination in Large Language Models
+Yue Zhang♠∗, Yafu Li♢ , Leyang Cui♡†, Deng Cai♡ , Lemao Liu♡
+Tingchen Fu⋆ , Xinting Huang♡ , Enbo Zhao♡ , Yu Zhang♠ , Yulong Chen♢
+Chen Xu♡, Longyue Wang♡ , Anh Tuan Luu☼ , Wei Bi♡ , Freda Shi , Shuming Shi♡
+♡ Tencent AI lab ♠ Soochow University ♢Zhejiang University
+⋆ Renmin University of China ☼ Nanyang Technological University
+ Toyota Technological Institute at Chicago
+Abstract
+While large language models (LLMs) have
+demonstrated remarkable capabilities across
+a range of downstream tasks, a significant
+concern revolves around their propensity to
+exhibithallucinations: LLMs occasionally
+generate content that diverges from the user
+input, contradicts previously generated con-
+text, or misaligns with established world
+knowledge. This phenomenon poses a sub-
+stantial challenge to the reliability of LLMs
+in real-world scenarios. In this paper, we
+survey recent efforts on the detection, ex-
+planation, and mitigation of hallucination,
+with an emphasis on the unique challenges
+posed by LLMs. We present taxonomies
+of the LLM hallucination phenomena and
+evaluation benchmarks, analyze existing ap-
+proaches aiming at mitigating LLM halluci-
+nation, and discuss potential directions for
+future research.
+1 Introduction
+Large language models (LLMs), particularly char-
+acterized by their substantial number of param-
+eters, have arisen as a promising cornerstone
+for the development of natural language pro-
+cessing (NLP) and artificial intelligence (Zhao
+et al., 2023c). With proper alignment techniques,
+such as supervised finetuning (SFT; Zhang et al.,
+2023b) and reinforcement learning from human
+feedback (RLHF; Ouyang et al., 2022; Fernandes
+et al., 2023), recent LLMs (OpenAI, 2023a; Tou-
+vron et al., 2023b; OpenAI, 2023b) have exhibited
+strong capabilities in solving various downstream
+tasks.
+Nonetheless, as exemplified in Figure 1, LLMs,
+despite their remarkable success, occasionally
+∗ This survey paper was completed during Yue Zhang
+(yzhang21@stu.suda.edu.cn), Yafu Li, Tingchen Fu, Yu
+Zhang and Chen Xu’s internships at Tencent AI Lab.
+† Corresponding author (leyangcui@tencent.com).
+produce outputs that, while seemingly plausible,
+deviate from users’ input (Adlakha et al., 2023),
+previously generated context (Liu et al., 2022),
+or factual knowledge (Min et al., 2023; Muhlgay
+et al., 2023; Li et al., 2023a)—this phenomenon
+is commonly referred to as hallucination, which
+significantly undermines the reliability of LLMs
+in real-world scenarios (Kaddour et al., 2023).
+For instance, LLMs can potentially fabricate er-
+roneous medical diagnoses or treatment plans that
+lead to tangible real-life risks (Umapathi et al.,
+2023).
+While hallucination in conventional natural lan-
+guage generation (NLG) settings has been widely
+studied (Ji et al., 2023), understanding and ad-
+dressing the hallucination problem within the
+realm of LLMs encounters more significant chal-
+lenges introduced by:
+1.Massive training data: in contrast to care-
+fully curating data for a specific task, LLM pre-
+training uses trillions of tokens obtained from
+the web, making it difficult to eliminate fabri-
+cated, outdated or biased information;
+2.Versatility of LLMs: general-purpose LLMs
+are expected to excel in cross-task, cross-
+lingual, and cross-domain settings, posing
+challenges for comprehensive evaluation and
+mitigation of hallucination.
+3.Imperceptibility of errors: as a byproduct of
+their strong abilities, LLMs may generate false
+information that initially seems to be highly
+plausible, making it challenging for models or
+even humans to detect hallucinations.
+In addition, the RLHF process (Ouyang et al.,
+2022), the vague knowledge boundary (Ren et al.,
+2023) and the black-box property of LLMs (Sun
+et al., 2022) also complicate the detection, expla-
+nation, and mitigation of hallucination in LLMs.
+There has been a notable upsurge in cutting-edge
+arXiv:2309.01219v3  [cs.CL]  14 Sep 2025

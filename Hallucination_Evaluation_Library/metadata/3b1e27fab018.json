@@ -1,0 +1,90 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2609.00581: Enoki: Efficient Multi-Level Hallucination Detection"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Enoki: Efficient Multi-Level Hallucination Detection"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2609.00581v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Ensuring factuality remains a critical challenge for deploying LLMs in high-stakes settings. Existing hallucination detectors usually operate at a single level: claim-level methods provide interpretable factual units, while span-level methods localize unsupported text. Bridging these views is costly, as LLM-heavy pipelines require multiple decomposition and verification calls, and modular systems need additional claim-to-span alignment. We propose Enoki, an Open Information Extraction framework for multi-level hallucination detection. Enoki extracts text-anchored relational facts, verifies them against evidence, and projects unsupported facts back to hallucinated spans. This shared representation enables claim-level verification and span-level localization without requiring separate alignment. Enoki supports LLM-based, encoder-based, and rule-based extraction regimes, balancing accuracy and inference cost through a common interface. Experiments show that Enoki remains competitive with strong claim-level systems while using fewer resources and achieves superior performance on fine-grained span- and entity-level localization. We also release EnokiQA, a dual-granularity dataset with aligned claim-level verification and span-level localization annotations."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Enoki: Efficient Multi-Level Hallucination Detection"
+  ],
+  "twitter:description": [
+    "Ensuring factuality remains a critical challenge for deploying LLMs in high-stakes settings. Existing hallucination detectors usually operate at a single level: claim-level methods provide..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Enoki: Efficient Multi-Level Hallucination Detection"
+  ],
+  "citation_author": [
+    "Rykov, Elisei",
+    "Ionov, Timur",
+    "Ivanov, Nikolay",
+    "Savkin, Maksim",
+    "Makarenko, Maksim",
+    "Panchenko, Alexander",
+    "Konovalov, Vasily",
+    "Belikova, Julia"
+  ],
+  "citation_date": [
+    "2026/09/01"
+  ],
+  "citation_online_date": [
+    "2026/09/04"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2609.00581"
+  ],
+  "citation_arxiv_id": [
+    "2609.00581"
+  ],
+  "citation_abstract": [
+    "Ensuring factuality remains a critical challenge for deploying LLMs in high-stakes settings. Existing hallucination detectors usually operate at a single level: claim-level methods provide interpretable factual units, while span-level methods localize unsupported text. Bridging these views is costly, as LLM-heavy pipelines require multiple decomposition and verification calls, and modular systems need additional claim-to-span alignment. We propose Enoki, an Open Information Extraction framework for multi-level hallucination detection. Enoki extracts text-anchored relational facts, verifies them against evidence, and projects unsupported facts back to hallucinated spans. This shared representation enables claim-level verification and span-level localization without requiring separate alignment. Enoki supports LLM-based, encoder-based, and rule-based extraction regimes, balancing accuracy and inference cost through a common interface. Experiments show that Enoki remains competitive with strong claim-level systems while using fewer resources and achieves superior performance on fine-grained span- and entity-level localization. We also release EnokiQA, a dual-granularity dataset with aligned claim-level verification and span-level localization annotations."
+  ]
+}

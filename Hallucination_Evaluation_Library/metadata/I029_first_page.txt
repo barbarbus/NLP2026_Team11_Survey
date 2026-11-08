@@ -1,0 +1,80 @@
+Beyond Factuality: A Comprehensive Evaluation of Large Language
+Models as Knowledge Generators
+Liang Chen1, Yang Deng2, Yatao Bian3†, Zeyu Qin4,
+Bingzhe Wu3, Tat-Seng Chua2, Kam-Fai Wong1†
+1The Chinese University of Hong Kong, 2National University of Singapore, 3Tencent AI Lab
+4The Hong Kong University of Science and Technology
+lchen@se.cuhk.edu.hk
+Abstract
+Large language models (LLMs) outperform
+information retrieval techniques for down-
+stream knowledge-intensive tasks when being
+prompted to generate world knowledge. Yet,
+community concerns abound regarding the fac-
+tuality and potential implications of using this
+uncensored knowledge. In light of this, we in-
+troduce CONNER, a COmpreheNsive kNowledge
+Evaluation fRamework, designed to system-
+atically and automatically evaluate generated
+knowledge from six important perspectives –
+Factuality, Relevance, Coherence, Informative-
+ness, Helpfulness and V alidity. We conduct an
+extensive empirical analysis of the generated
+knowledge from three different types of LLMs
+on two widely-studied knowledge-intensive
+tasks, i.e., open-domain question answering
+and knowledge-grounded dialogue. Surpris-
+ingly, our study reveals that the factuality of
+generated knowledge, even if lower, does not
+significantly hinder downstream tasks. Instead,
+the relevance and coherence of the outputs are
+more important than small factual mistakes.
+Further, we show how to use CONNER to im-
+prove knowledge-intensive tasks by designing
+two strategies: Prompt Engineering and Knowl-
+edge Selection. Our evaluation code and LLM-
+generated knowledge with human annotations
+will be released1 to facilitate future research.
+1 Introduction
+The exceptional success of large language models
+(LLMs) like ChatGPT and GPT4 (Ouyang et al.,
+2022; OpenAI, 2023) has fueled a growing interest
+in substituting traditional models with LLMs to
+attain superior performance across various NLP
+tasks (Liu et al., 2023b; Jagerman et al., 2023;
+Wang et al., 2023). In open-domain question an-
+swering (QA) and knowledge-grounded dialogue,
+LLMs have demonstrated superior performance
+† Corresponding author.
+1https://github.com/ChanLiang/CONNER
+Figure 1: The CONNER Framework: Intrinsic evaluations
+probe the internal properties of acquired knowledge,
+while extrinsic evaluations assess its downstream im-
+pacts. This framework applies universally to two-stage
+processes in knowledge-intensive tasks.
+than information retrieval (IR) models (Karpukhin
+et al., 2020) when it comes to generating world
+knowledge (Yu et al., 2023; Liu et al., 2022) for the
+downstream tasks. However, the knowledge gener-
+ated may contain inherent issues, such as false state-
+ments or off-topic information. Therefore, the lack
+of extensive evaluation of this knowledge raises
+concerns about its use in downstream tasks.
+To this end, four lines of research emerge.
+Firstly, human evaluations are conducted to as-
+sess the generated knowledge from diverse per-
+spectives (Li et al., 2022; Yu et al., 2023; Liu et al.,
+2023a). However, their time-consuming nature
+and subjectivity often encounter issues of scalabil-
+ity and reproducibility. Secondly, datasets have
+been constructed to evaluate open-domain gener-
+ation with the aid of references (Honovich et al.,
+2021; Glover et al., 2022a; Lee et al., 2023; Li
+et al., 2023). These methods, while more objec-
+tive, are limited by their dependence on human-
+labelled references, impacting their real-world ap-
+plicability and generalizability to dynamically gen-
+erated content. Thirdly, self-evaluation methods
+(Kadavath et al., 2022b; Manakul et al., 2023) esti-
+mate a model’s uncertainty in its generated content.
+arXiv:2310.07289v1  [cs.CL]  11 Oct 2023

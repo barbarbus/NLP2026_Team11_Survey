@@ -1,0 +1,87 @@
+Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics , pages 2734–2744
+April 19 - 23, 2021. ©2021 Association for Computational Linguistics
+2734
+On Hallucination and Predictive Uncertainty in
+Conditional Language Generation
+Yijun Xiao, William Yang Wang
+University of California, Santa Barbara
+{yijunxiao,william}@cs.ucsb.edu
+Abstract
+Despite improvements in performances on dif-
+ferent natural language generation tasks, deep
+neural models are prone to hallucinating facts
+that are incorrect or nonexistent. Different
+hypotheses are proposed and examined sepa-
+rately for different tasks, but no systematic ex-
+planations are available across these tasks. In
+this study, we draw connections between hal-
+lucinations and predictive uncertainty in con-
+ditional language generation. We investigate
+their relationship in both image captioning and
+data-to-text generation and propose a simple
+extension to beam search to reduce hallucina-
+tion. Our analysis shows that higher predictive
+uncertainty corresponds to a higher chance of
+hallucination. Epistemic uncertainty is more
+indicative of hallucination than aleatoric or to-
+tal uncertainties. It helps to achieve better re-
+sults of trading performance in standard metric
+for less hallucination with the proposed beam
+search variant.
+1 Introduction
+Modern deep neural network models have brought
+drastic improvements of generation quality mea-
+sured by standard metrics on different natural lan-
+guage generation (NLG) tasks. However, along
+with these improvements, researchers ﬁnd that neu-
+ral models are more prone to a phenomenon called
+hallucination, where models generate description
+tokens that are not supported by the source inputs.
+This phenomenon seriously damages the applicabil-
+ity of neural language generation models in practice
+where information accuracy is vital.
+Hallucination has been observed in various con-
+ditional NLG tasks such as image captioning
+(Rohrbach et al., 2018), data-to-text generation
+(Wiseman et al., 2017; Nie et al., 2019; Parikh
+et al., 2020), abstractive summarization (Cao et al.,
+2018; Durmus et al., 2020), and neural machine
+translation (NMT) (M ¨uller et al., 2019). These
+studies tackle hallucinations within a speciﬁc task
+and give possible explanations of why hallucina-
+tions occur. For example, Rohrbach et al. (2018)
+attributes object hallucination in image caption-
+ing to visual misclassiﬁcation and over-reliance on
+language priors; Nie et al. (2019) believes hallu-
+cination in neural surface realization comes from
+the misalignment between meaning representations
+and their corresponding references in the dataset;
+M¨uller et al. (2019) claims that hallucinations in
+NMT are mainly due to domain shift.
+We believe that there is a common theme across
+all the hallucination explanations in conditional
+NLG tasks: predictive uncertainty. In language
+generation, predictive uncertainty quantiﬁes the en-
+tropy of the token probability distributions a model
+predicts. There are multiple sources of uncertainty.
+Two major ones frequently studied are aleatoric and
+epistemic uncertainties, where the former comes
+from the data or measurements, and the latter is
+concerned with the model. With recent progress
+in Bayesian neural networks (BNNs) (Hinton and
+Van Camp, 1993; Neal, 1995) and uncertainty quan-
+tiﬁcation (Blundell et al., 2015; Gal and Ghahra-
+mani, 2016; Lakshminarayanan et al., 2017), we
+are able to quantify both parts of predictive uncer-
+tainty in neural NLG.
+This study draws connections between halluci-
+nation and predictive uncertainty and empirically
+investigates their relationship in image captioning
+and data-to-text generation tasks. We propose an
+uncertainty-aware beam search algorithm to reduce
+the chance of hallucination by penalizing parts or
+the entirety of the predictive uncertainty during
+model decoding. We ﬁnd that the choice of un-
+certainty matters, and penalizing epistemic uncer-
+tainty yields better results compared to penalizing
+aleatoric or total uncertainty. Our contributions are:

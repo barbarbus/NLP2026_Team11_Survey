@@ -1,0 +1,88 @@
+DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness
+Rohan Bhatnagar * 1 Youran Sun* 2 Chi Andrew Zhang 3 Yixin Wen†4 Haizhao Yang †1 2
+Abstract
+LLMs often produce fluent but incorrect answers,
+yet detecting such hallucinations typically re-
+quires multiple sampling passes or post-hoc veri-
+fication, adding significant latency and cost. We
+hypothesize that intermediate layers encode confi-
+dence signals that are lost in the final output layer,
+and propose a lightweight probe to read these
+signals directly from hidden states. The probe
+adds less than 0.1% computational overhead and
+can run fully in parallel with generation, enabling
+hallucination detection before the answer is pro-
+duced. Building on this, we develop an LLM
+router that answers confident queries immediately
+while delegating uncertain ones to stronger mod-
+els. Despite its simplicity, our method achieves
+SOTA AUROC on 10 out of 12 settings across
+four QA benchmarks and three LLM families,
+with gains of up to 13 points over prior methods,
+and generalizes across dataset shifts without re-
+training.
+1. Introduction
+Large language models (LLMs) have made remarkable
+progress recently (Yang et al., 2025; Comanici et al., 2025)
+and are being applied in an increasing number of real-world
+scenarios. However, hallucination, which refers to situations
+where a model produces information that appears plausible
+but is actually false or not supported by facts, undermines
+users’ trust in LLMs and limits their use in critical settings.
+Therefore, developing effective methods for hallucination
+detection is critical. Ideally, such methods should main-
+tain real-time responsiveness without increasing response
+latency or significantly increasing generation costs.
+*Equal contribution 1Department of Computer Science, Uni-
+versity of Maryland, College Park, MD, USA 2Department
+of Mathematics, University of Maryland, College Park, MD,
+USA 3Department of Statistics, University of Chicago, Chicago,
+IL, USA 4Department of Geography, University of Florida,
+Gainesville, FL, USA. Correspondence to: Yixin Wen
+<yixin.wen@ufl.edu>, Haizhao Yang<hzyang@umd.edu>.
+Preprint. January 30, 2026.
+Existing methods fall into two categories. Sampling-based
+approaches, such as Semantic Entropy (Farquhar et al.,
+2024), generate multiple answers and compute semantic
+uncertainty, but require multiple forward passes, incurring a
+high computational cost that is incompatible with real-time
+requirements. Representation-based approaches, such as
+HaloScope (Du et al., 2024), train classifiers on final-layer
+hidden states to predict hallucination risk, but final-layer rep-
+resentations have already been projected toward the token
+space, potentially discarding internal confidence signals.
+We propose a lightweight hallucination-detection method
+based on intermediate representations that predicts hal-
+lucination risk efficiently and accurately. Unlike prior
+representation-based methods that assume a fixed low-
+dimensional truth subspace, our approach detects represen-
+tational instability before projection to token space. The
+additional computation introduced by our method is less
+than 0.1% of that required to generate a single token, so our
+approach adds negligible cost to generation. Moreover, the
+detector can be evaluated in parallel with inference, without
+adding extra latency for the user. In essence, we aim to build
+a “lie detector” or “mind reader” for LLMs.
+With an effective hallucination detector, we can build an
+LLM routerthat adaptively allocates computation. Given a
+user query, the default LLM begins generating a response
+while our detector estimates the risk of hallucination in par-
+allel. Because the detector can rely solely on the question’s
+intermediate representations, it can run concurrently with
+generation. If the predicted risk is low, the system returns
+the generated response as usual; otherwise, it routes the
+query to a slower but more reliable pipeline (e.g., a stronger
+model, reasoning-augmented generation, cross-model veri-
+fication, or retrieval-augmented generation (RAG)). In the
+low-risk case, this design introduces zero additional latency;
+in the fallback case, the extra delay is less than the time to
+generate a single token.
+Our motivation follows naturally from recent evidence
+that LLMs perform substantial hidden consideration dur-
+ing forward propagation. Prior work (Lindsey et al., 2025;
+Chen et al., 2025) suggests that intermediate representa-
+tions encode reasoning, planning, and control signals that
+guide generation, yet these signals may not be faithfully
+expressed in the final text. This motivates directly reading
+1
+arXiv:2601.14210v2  [cs.CL]  29 Jan 2026

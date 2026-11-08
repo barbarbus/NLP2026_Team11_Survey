@@ -1,0 +1,292 @@
+{
+  "applicable-device": [
+    "pc,mobile"
+  ],
+  "viewport": [
+    "width=device-width,initial-scale=1.0,maximum-scale=5,user-scalable=yes"
+  ],
+  "360-site-verification": [
+    "5a2dc4ab3fcb9b0393241ffbbb490480"
+  ],
+  "msapplication-tilecolor": [
+    "#000000"
+  ],
+  "msapplication-config": [
+    ""
+  ],
+  "theme-color": [
+    "#000000"
+  ],
+  "application-name": [
+    "Nature"
+  ],
+  "access": [
+    "Yes"
+  ],
+  "journal_id": [
+    "41586"
+  ],
+  "dc.title": [
+    "Detecting hallucinations in large language models using semantic entropy"
+  ],
+  "dc.source": [
+    "Nature 2024 630:8017"
+  ],
+  "dc.format": [
+    "text/html"
+  ],
+  "dc.publisher": [
+    "Nature Publishing Group"
+  ],
+  "dc.date": [
+    "2024-06-19"
+  ],
+  "dc.type": [
+    "OriginalPaper"
+  ],
+  "dc.language": [
+    "En"
+  ],
+  "dc.copyright": [
+    "2024 The Author(s)"
+  ],
+  "dc.rights": [
+    "2024 The Author(s)"
+  ],
+  "dc.rightsagent": [
+    "journalpermissions@springernature.com"
+  ],
+  "dc.description": [
+    "Large language model (LLM) systems, such as ChatGPT1 or Gemini2, can show impressive reasoning and question-answering capabilities but often ‘hallucinate’ false outputs and unsubstantiated answers3,4. Answering unreliably or without the necessary information prevents adoption in diverse fields, with problems including fabrication of legal precedents5 or untrue facts in news articles6 and even posing a risk to human life in medical domains such as radiology7. Encouraging truthfulness through supervision or reinforcement has&nbsp;been only partially successful8. Researchers need a general method for detecting hallucinations in LLMs that works even with new and unseen questions to which humans might not know the answer. Here we develop new methods grounded in statistics, proposing entropy-based uncertainty estimators for LLMs to detect a subset of hallucinations—confabulations—which are arbitrary and incorrect generations. Our method addresses the fact that one idea can be expressed in many ways by computing uncertainty at the level of meaning rather than specific sequences of words. Our method works across datasets and tasks without a priori knowledge of the task, requires no task-specific data and robustly generalizes to new tasks not seen before. By detecting when a prompt is likely to produce a confabulation, our method helps users understand when they must take extra care with LLMs and opens up new possibilities for using LLMs that are otherwise prevented by their unreliability. Hallucinations (confabulations) in large language model systems can be tackled by measuring uncertainty about the meanings of generated responses rather than the text itself&nbsp;to improve question-answering accuracy."
+  ],
+  "prism.issn": [
+    "1476-4687"
+  ],
+  "prism.publicationname": [
+    "Nature"
+  ],
+  "prism.publicationdate": [
+    "2024-06-19"
+  ],
+  "prism.volume": [
+    "630"
+  ],
+  "prism.number": [
+    "8017"
+  ],
+  "prism.section": [
+    "OriginalPaper"
+  ],
+  "prism.startingpage": [
+    "625"
+  ],
+  "prism.endingpage": [
+    "630"
+  ],
+  "prism.copyright": [
+    "2024 The Author(s)"
+  ],
+  "prism.rightsagent": [
+    "journalpermissions@springernature.com"
+  ],
+  "prism.url": [
+    "https://www.nature.com/articles/s41586-024-07421-0"
+  ],
+  "prism.doi": [
+    "doi:10.1038/s41586-024-07421-0"
+  ],
+  "citation_pdf_url": [
+    "https://www.nature.com/articles/s41586-024-07421-0.pdf"
+  ],
+  "citation_fulltext_html_url": [
+    "https://www.nature.com/articles/s41586-024-07421-0"
+  ],
+  "citation_journal_title": [
+    "Nature"
+  ],
+  "citation_journal_abbrev": [
+    "Nature"
+  ],
+  "citation_publisher": [
+    "Nature Publishing Group"
+  ],
+  "citation_issn": [
+    "1476-4687"
+  ],
+  "citation_title": [
+    "Detecting hallucinations in large language models using semantic entropy"
+  ],
+  "citation_volume": [
+    "630"
+  ],
+  "citation_issue": [
+    "8017"
+  ],
+  "citation_publication_date": [
+    "2024/06"
+  ],
+  "citation_online_date": [
+    "2024/06/19"
+  ],
+  "citation_firstpage": [
+    "625"
+  ],
+  "citation_lastpage": [
+    "630"
+  ],
+  "citation_article_type": [
+    "Article"
+  ],
+  "citation_fulltext_world_readable": [
+    ""
+  ],
+  "citation_language": [
+    "en"
+  ],
+  "dc.identifier": [
+    "doi:10.1038/s41586-024-07421-0"
+  ],
+  "doi": [
+    "10.1038/s41586-024-07421-0"
+  ],
+  "size": [
+    "180228"
+  ],
+  "citation_doi": [
+    "10.1038/s41586-024-07421-0"
+  ],
+  "citation_springer_api_url": [
+    "http://api.springer.com/xmldata/jats?q=doi:10.1038/s41586-024-07421-0&api_key="
+  ],
+  "description": [
+    "Large language model (LLM) systems, such as ChatGPT1 or Gemini2, can show impressive reasoning and question-answering capabilities but often ‘hallucinate’ false outputs and unsubstantiated answers3,4. Answering unreliably or without the necessary information prevents adoption in diverse fields, with problems including fabrication of legal precedents5 or untrue facts in news articles6 and even posing a risk to human life in medical domains such as radiology7. Encouraging truthfulness through supervision or reinforcement has&nbsp;been only partially successful8. Researchers need a general method for detecting hallucinations in LLMs that works even with new and unseen questions to which humans might not know the answer. Here we develop new methods grounded in statistics, proposing entropy-based uncertainty estimators for LLMs to detect a subset of hallucinations—confabulations—which are arbitrary and incorrect generations. Our method addresses the fact that one idea can be expressed in many ways by computing uncertainty at the level of meaning rather than specific sequences of words. Our method works across datasets and tasks without a priori knowledge of the task, requires no task-specific data and robustly generalizes to new tasks not seen before. By detecting when a prompt is likely to produce a confabulation, our method helps users understand when they must take extra care with LLMs and opens up new possibilities for using LLMs that are otherwise prevented by their unreliability. Hallucinations (confabulations) in large language model systems can be tackled by measuring uncertainty about the meanings of generated responses rather than the text itself&nbsp;to improve question-answering accuracy."
+  ],
+  "dc.creator": [
+    "Farquhar, Sebastian",
+    "Kossen, Jannik",
+    "Kuhn, Lorenz",
+    "Gal, Yarin"
+  ],
+  "dc.subject": [
+    "Computer science",
+    "Information technology"
+  ],
+  "citation_reference": [
+    "GPT-4 technical report. Preprint at \n                  https://arxiv.org/abs/2303.08774\n                  \n                 (2023).",
+    "Gemini: a family of highly capable multimodal models. Preprint at \n                  https://arxiv.org/abs/2312.11805\n                  \n                 (2023).",
+    "Xiao, Y. & Wang, W. Y. On hallucination and predictive uncertainty in conditional language generation. In Proc. 16th Conference of the European Chapter of the Association for Computational Linguistics 2734–2744 (Association for Computational Linguistics, 2021).",
+    "Rohrbach, A., Hendricks, L. A., Burns, K., Darrell, T. & Saenko, K. Object hallucination in image captioning. In Proc. 2018 Conference on Empirical Methods in Natural Language Processing (eds Riloff, E., Chiang, D., Hockenmaier, J. & Tsujii, J.) 4035–4045 (Association for Computational Linguistics, 2018).",
+    "Weiser, B. Lawyer who used ChatGPT faces penalty for made up citations. The New York Times (8 Jun 2023).",
+    "Opdahl, A. L. et al. Trustworthy journalism through AI. Data Knowl. Eng. 146, 102182 (2023).",
+    "citation_journal_title=Radiology; citation_title=ChatGPT and other large language models are double-edged swords; citation_author=Y Shen; citation_volume=307; citation_publication_date=2023; citation_pages=e230163; citation_doi=10.1148/radiol.230163; citation_id=CR7",
+    "Schulman, J. Reinforcement learning from human feedback: progress and challenges. Presented at the Berkeley EECS Colloquium. YouTube \n                  www.youtube.com/watch?v=hhiLw5Q_UFg\n                  \n                 (2023).",
+    "Ji, Z. et al. Survey of hallucination in natural language generation. ACM Comput. Surv.55, 248 (2023).",
+    "Maynez, J., Narayan, S., Bohnet, B. & McDonald, R. On faithfulness and factuality in abstractive summarization. In Proc. 58th Annual Meeting of the Association for Computational Linguistics (eds Jurafsky, D., Chai, J., Schluter, N. & Tetreault, J.) 1906–1919 (Association for Computational Linguistics, 2020).",
+    "Filippova, K. Controlled hallucinations: learning to generate faithfully from noisy data. In Findings of the Association for Computational Linguistics: EMNLP 2020 (eds Webber, B., Cohn, T., He, Y. & Liu, Y.) 864–870 (Association for Computational Linguistics, 2020).",
+    "citation_journal_title=J. Hist. Neurosci.; citation_title=Confabulations: a conceptual history; citation_author=G Berrios; citation_volume=7; citation_publication_date=1998; citation_pages=225-241; citation_doi=10.1076/jhin.7.3.225.1855; citation_id=CR12",
+    "Lin, S., Hilton, J. & Evans, O. Teaching models to express their uncertainty in words. Transact. Mach. Learn. Res. (2022).",
+    "Evans, O. et al. Truthful AI: developing and governing AI that does not lie. Preprint at \n                  https://arxiv.org/abs/2110.06674\n                  \n                 (2021).",
+    "Amodei, D. et al. Concrete problems in AI safety. Preprint at \n                  https://arxiv.org/abs/1606.06565\n                  \n                 (2016).",
+    "citation_journal_title=Transact. Assoc. Comput. Linguist.; citation_title=How can we know when language models know? On the calibration of language models for question answering; citation_author=Z Jiang, J Araki, H Ding, G Neubig; citation_volume=9; citation_publication_date=2021; citation_pages=962-977; citation_doi=10.1162/tacl_a_00407; citation_id=CR16",
+    "Desai, S. & Durrett, G. Calibration of pre-trained transformers. In Proc. 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (eds Webber, B., Cohn, T., He, Y. & Liu, Y.) 295–302 (Association for Computational Linguistics, 2020).",
+    "Glushkova, T., Zerva, C., Rei, R. & Martins, A. F. Uncertainty-aware machine translation evaluation. In Findings of the Association for Computational Linguistics: EMNLP 2021 (eds Moens, M-F., Huang, X., Specia, L. & Yih, S.) 3920–3938 (Association for Computational Linguistics, 2021).",
+    "citation_journal_title=Transact. Assoc. Comput. Linguist.; citation_title=Uncertainty estimation and reduction of pre-trained models for text regression; citation_author=Y Wang, D Beck, T Baldwin, K Verspoor; citation_volume=10; citation_publication_date=2022; citation_pages=680-696; citation_doi=10.1162/tacl_a_00483; citation_id=CR19",
+    "Baker, S. & Kanade, T. Hallucinating faces. In Proc. Fourth IEEE International Conference on Automatic Face and Gesture Recognition. 83–88 (IEEE, Catalogue no PR00580, 2002).",
+    "Eliot, L. AI ethics lucidly questioning this whole hallucinating AI popularized trend that has got to stop. Forbes Magazine (24 August 2022).",
+    "Shanahan, M. Talking about large language models. Commun. Assoc. Comp. Machinery 67, 68–79 (2024).",
+    "citation_journal_title=Neural Comput.; citation_title=Information-based objective functions for active data selection; citation_author=DJC MacKay; citation_volume=4; citation_publication_date=1992; citation_pages=590-604; citation_doi=10.1162/neco.1992.4.4.590; citation_id=CR23",
+    "Kadavath, S. et al. Language models (mostly) know what they know. Preprint at \n                  https://arxiv.org/abs/2207.05221\n                  \n                 (2022).",
+    "citation_journal_title=Ann. Math. Stat.; citation_title=On a measure of the information provided by an experiment; citation_author=DV Lindley; citation_volume=27; citation_publication_date=1956; citation_pages=986-1005; citation_doi=10.1214/aoms/1177728069; citation_id=CR25",
+    "Xiao, T. Z., Gomez, A. N. & Gal, Y. Wat zei je? Detecting out-of-distribution translations with variational transformers. In Workshop on Bayesian Deep Learning at the Conference on Neural Information Processing Systems (NeurIPS, Vancouver, 2019).",
+    "Christiano, P., Cotra, A. & Xu, M. Eliciting Latent Knowledge (Alignment Research Center, 2021); \n                  https://docs.google.com/document/d/1WwsnJQstPq91_Yh-Ch2XRL8H_EpsnjrC1dwZXR37PC8/edit\n                  \n                .",
+    "Negri, M., Bentivogli, L., Mehdad, Y., Giampiccolo, D. & Marchetti, A. Divide and conquer: crowdsourcing the creation of cross-lingual textual entailment corpora. In Proc. 2011 Conference on Empirical Methods in Natural Language Processing 670–679 (Association for Computational Linguistics, 2011).",
+    "Honovich, O. et al. TRUE: Re-evaluating factual consistency evaluation. In Proc. Second DialDoc Workshop on Document-grounded Dialogue and Conversational Question Answering 161–175 (Association for Computational Linguistics, 2022).",
+    "Falke, T., Ribeiro, L. F. R., Utama, P. A., Dagan, I. & Gurevych, I. Ranking generated summaries by correctness: an interesting but challenging application for natural language inference. In Proc. 57th Annual Meeting of the Association for Computational Linguistics 2214–2220 (Association for Computational Linguistics, 2019).",
+    "citation_journal_title=Trans. Assoc. Comput. Linguist.; citation_title=SummaC: re-visiting NLI-based models for inconsistency detection in summarization; citation_author=P Laban, T Schnabel, PN Bennett, MA Hearst; citation_volume=10; citation_publication_date=2022; citation_pages=163-177; citation_doi=10.1162/tacl_a_00453; citation_id=CR31",
+    "Joshi, M., Choi, E., Weld, D. S. & Zettlemoyer, L. TriviaQA: a large scale distantly supervised challenge dataset for reading comprehension. In Proc. 55th Annual Meeting of the Association for Computational Linguistics 1601–1611 (Association for Computational Linguistics. 2017).",
+    "Rajpurkar, P., Zhang, J., Lopyrev, K. & Liang, P. SQuAD: 100,000+ questions for machine compression of text. In Proc. 2016 Conference on Empirical Methods in Natural Language Processing (eds Su, J., Duh, K. & Carreras, X.) 2383–2392 (Association for Computational Linguistics, 2016).",
+    "citation_journal_title=BMC Bioinformatics; citation_title=An overview of the BIOASQ large-scale biomedical semantic indexing and question answering competition; citation_author=G Tsatsaronis; citation_volume=16; citation_publication_date=2015; citation_doi=10.1186/s12859-015-0564-6; citation_id=CR34",
+    "Lee, K., Chang, M.-W. & Toutanova, K. Latent retrieval for weakly supervised open domain question answering. In Proc. 57th Annual Meeting of the Association for Computational Linguistics 6086–6096 (Association for Computational Linguistics, 2019).",
+    "Kwiatkowski, T. et al. Natural questions: a benchmark for question answering research. Transact. Assoc. Comput. Linguist. 7, 452–466 (2019).",
+    "Patel, A., Bhattamishra, S. & Goyal, N. Are NLP models really able to solve simple math word problems? In Proc. 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (eds Toutanova, K. et al.) 2080–2094 (Assoc. Comp. Linguistics, 2021).",
+    "Touvron, H. et al. Llama 2: open foundation and fine-tuned chat models. Preprint at \n                  https://arxiv.org/abs/2307.09288\n                  \n                 (2023).",
+    "Penedo, G. et al. The RefinedWeb dataset for Falcon LLM: outperforming curated corpora with web data, and web data only. In Proc. 36th Conference on Neural Information Processing Systems (eds Oh, A. et al.) 79155–79172 (Curran Associates, 2023)",
+    "Jiang, A. Q. et al. Mistral 7B. Preprint at \n                  https://arxiv.org/abs/2310.06825\n                  \n                 (2023).",
+    "Manakul, P., Liusie, A. & Gales, M. J. F. SelfCheckGPT: Zero-Resource Black-Box hallucination detection for generative large language models. In Findings of the Association for Computational Linguistics: EMNLP 2023 (eds Bouamor, H., Pino, J. & Bali, K.) 9004–9017 (Assoc. Comp. Linguistics, 2023).",
+    "Mukhoti, J., Kirsch, A., van Amersfoort, J., Torr, P. H. & Gal, Y. Deep deterministic uncertainty: a new simple baseline. In IEEE/CVF Conference on Computer Vision and Pattern Recognition 24384–24394 (Computer Vision Foundation, 2023).",
+    "Schuster, T., Chen, S., Buthpitiya, S., Fabrikant, A. & Metzler, D. Stretching sentence-pair NLI models to reason over long documents and clusters. In Findings of the Association for Computational Linguistics: EMNLP 2022 (eds Goldberg, Y. et al.) 394–412 (Association for Computational Linguistics, 2022).",
+    "Barnes, B. & Christiano, P. Progress on AI Safety via Debate. AI Alignment Forum \n                  www.alignmentforum.org/posts/Br4xDbYu4Frwrb64a/writeup-progress-on-ai-safety-via-debate-1\n                  \n                 (2020).",
+    "Irving, G., Christiano, P. & Amodei, D. AI safety via debate. Preprint at \n                  https://arxiv.org/abs/1805.00899\n                  \n                 (2018).",
+    "citation_journal_title=Struct. Saf.; citation_title=Aleatory or epistemic? Does it matter?; citation_author=A Kiureghian, O Ditlevsen; citation_volume=31; citation_publication_date=2009; citation_pages=105-112; citation_doi=10.1016/j.strusafe.2008.06.020; citation_id=CR46",
+    "Malinin, A. & Gales, M. Uncertainty estimation in autoregressive structured prediction. In Proceedings of the International Conference on Learning Representations \n                  https://openreview.net/forum?id=jN5y-zb5Q7m\n                  \n                 (2021).",
+    "Murray, K. & Chiang, D. Correcting length bias in neural machine translation. In Proc. Third Conference on Machine Translation (eds Bojar, O. et al.) 212–223 (Assoc. Comp. Linguistics, 2018).",
+    "Holtzman, A., Buys, J., Du, L., Forbes, M. & Choi, Y. The curious case of neural text degeneration. In Proceedings of the International Conference on Learning Representations \n                  https://openreview.net/forum?id=rygGQyrFvH\n                  \n                 (2020).",
+    "Fan, A., Lewis, M. & Dauphin, Y. Hierarchical neural story generation. In Proc. 56th Annual Meeting of the Association for Computational Linguistics (eds Gurevych, I. & Miyao, Y.) 889–898 (Association for Computational Linguistics, 2018).",
+    "Speaks, J. in The Stanford Encyclopedia of Philosophy (ed. Zalta, E. N.) (Metaphysics Research Lab, Stanford Univ., 2021).",
+    "citation_journal_title=Mech. Transl. Comput. Linguist.; citation_title=Paraphrase generation and information retrieval from stored text; citation_author=PW Culicover; citation_volume=11; citation_publication_date=1968; citation_pages=78-88; citation_id=CR52",
+    "citation_journal_title=Mach. Transl.; citation_title=Measuring machine translation quality as semantic equivalence: a metric based on entailment features; citation_author=S Padó, D Cer, M Galley, D Jurafsky, CD Manning; citation_volume=23; citation_publication_date=2009; citation_pages=181-193; citation_doi=10.1007/s10590-009-9060-y; citation_id=CR53",
+    "citation_journal_title=J. Artif. Intell. Res.; citation_title=A survey of paraphrasing and textual entailment methods; citation_author=I Androutsopoulos, P Malakasiotis; citation_volume=38; citation_publication_date=2010; citation_pages=135-187; citation_doi=10.1613/jair.2985; citation_id=CR54",
+    "MacCartney, B. Natural Language Inference (Stanford Univ., 2009).",
+    "He, P., Liu, X., Gao, J. & Chen, W. Deberta: decoding-enhanced BERT with disentangled attention. In International Conference on Learning Representations \n                  https://openreview.net/forum?id=XPZIaotutsD\n                  \n                 (2021).",
+    "citation_journal_title=Adv. Neural Inf. Process. Syst.; citation_title=Language models are few-shot learners; citation_author=T Brown; citation_volume=33; citation_publication_date=2020; citation_pages=1877-1901; citation_id=CR57",
+    "Williams, A., Nangia, N. & Bowman, S. R. A broad-coverage challenge corpus for sentence understanding through inference. In Proc. 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (eds Walker, M. et al.) 1112–1122 (Assoc. Comp. Linguistics, 2018).",
+    "Yu, L., Hermann, K. M., Blunsom, P. & Pulman, S. Deep learning for answer sentence selection. Preprint at \n                  https://arxiv.org/abs/1412.1632\n                  \n                 (2014).",
+    "Socher, R., Huang, E., Pennin, J., Manning, C. D. & Ng, A. Dynamic pooling and unfolding recursive autoencoders for paraphrase detection. In Proceedings of the 24th Conference on Neural Information Processing Systems (eds Shawe-Taylor, J. et al.) (2011)",
+    "He, R., Ravula, A., Kanagal, B. & Ainslie, J. Realformer: Transformer likes residual attention. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (eds Zhong, C., et al.) 929–943 (Assoc. Comp. Linguistics, 2021).",
+    "Tay, Y. et al. Charformer: fast character transformers via gradient-based subword tokenization. In Proceedings of the International Conference on Learning Representations \n                  https://openreview.net/forum?id=JtBRnrlOEFN\n                  \n                 (2022).",
+    "Kane, H., Kocyigit, Y., Abdalla, A., Ajanoh, P. & Coulibali, M. Towards neural similarity evaluators. In Workshop on Document Intelligence at the 32nd conference on Neural Information Processing (2019).",
+    "Lebret, R., Grangier, D. & Auli, M. Neural text generation from structured data with application to the biography domain. In Proc. 2016 Conference on Empirical Methods in Natural Language Processing (eds Su, J. et al.) 1203–1213 (Association for Computational Linguistics, 2016).",
+    "Kossen, J., jlko/semantic_uncertainty: Initial release v.1.0.0. Zenodo \n                  https://doi.org/10.5281/zenodo.10964366\n                  \n                 (2024)."
+  ],
+  "citation_author": [
+    "Farquhar, Sebastian",
+    "Kossen, Jannik",
+    "Kuhn, Lorenz",
+    "Gal, Yarin"
+  ],
+  "citation_author_institution": [
+    "OATML, Department of Computer Science, University of Oxford, Oxford, UK",
+    "OATML, Department of Computer Science, University of Oxford, Oxford, UK",
+    "OATML, Department of Computer Science, University of Oxford, Oxford, UK",
+    "OATML, Department of Computer Science, University of Oxford, Oxford, UK"
+  ],
+  "access_endpoint": [
+    "https://www.nature.com/platform/readcube-access"
+  ],
+  "twitter:site": [
+    "@nature"
+  ],
+  "twitter:card": [
+    "summary_large_image"
+  ],
+  "twitter:image:alt": [
+    "Content cover image"
+  ],
+  "twitter:title": [
+    "Detecting hallucinations in large language models using semantic entropy"
+  ],
+  "twitter:description": [
+    "Nature - Hallucinations (confabulations) in large language model systems can be tackled by measuring uncertainty about the meanings of generated responses rather than the text itself to improve..."
+  ],
+  "twitter:image": [
+    "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-024-07421-0/MediaObjects/41586_2024_7421_Fig1_HTML.png"
+  ],
+  "og:url": [
+    "https://www.nature.com/articles/s41586-024-07421-0"
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "Nature"
+  ],
+  "og:title": [
+    "Detecting hallucinations in large language models using semantic entropy - Nature"
+  ],
+  "og:description": [
+    "Hallucinations (confabulations) in large language model systems can be tackled by measuring uncertainty about the meanings of generated responses rather than the text itself&nbsp;to improve question-answering accuracy."
+  ],
+  "og:image": [
+    "https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41586-024-07421-0/MediaObjects/41586_2024_7421_Fig1_HTML.png"
+  ]
+}

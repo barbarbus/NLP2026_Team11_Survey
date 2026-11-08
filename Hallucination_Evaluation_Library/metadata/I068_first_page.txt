@@ -1,0 +1,98 @@
+Distinguishing Ignorance from Error in LLM Hallucinations
+Adi Simhi1 Jonathan Herzig2 Idan Szpektor2 Yonatan Belinkov1
+1Technion – Israel Institute of Technology
+2Google Research
+Abstract
+Large language models (LLMs) are susceptible
+to hallucinations—factually incorrect outputs—
+leading to a large body of work on detecting
+and mitigating such cases. We argue that it
+is important to distinguish between two types
+of hallucinations: ones where the model does
+not hold the correct answer in its parameters,
+which we term HK−, and ones where the model
+answers incorrectly despite having the required
+knowledge, termed HK+. We first find that
+HK+ hallucinations are prevalent and occur
+across models and datasets. Then, we demon-
+strate that distinguishing between these two
+cases is beneficial for mitigating hallucinations.
+Importantly, we show that different models
+hallucinate on different examples, which mo-
+tivates constructing model-specific hallucina-
+tion datasets for training detectors. Overall,
+our findings draw attention to classifying types
+of hallucinations and provide means to handle
+them more effectively. 1
+1 Introduction
+LLMs are prone to generate outputs that lack grounding
+in the model’s input or in real-world facts, as well as
+outputs that may be inconsistent with earlier generations
+within the same session (Ji et al., 2023; Sharma et al.,
+2023; Kalai and Vempala, 2023). These issues, collec-
+tively known as hallucinations, are critical to address
+due to their impact on LLM reliability.
+Numerous studies have focused on the detection and
+mitigation of hallucinations (e.g. Li et al., 2023; Zhang
+et al., 2024a; Marks and Tegmark, 2023; Chen et al.,
+2024; CH-Wang et al., 2023). However, existing work
+does not fully investigate the different causes of halluci-
+nations, often blending two distinct types:
+HK− The model lacks the required information for a
+correct answer, leading it to hallucinate.
+HK+ Although the model generates correct answers
+under certain prompts, it still produces incorrect
+responses in different but similar prompt settings.
+adi.simhi@campus.technion.ac.il
+1Code and datasets at https://github.com/
+technion-cs-nlp/hallucination-mitigation .
+These types represent fundamentally different prob-
+lems, requiring different solutions: When a model lacks
+knowledge, it should consult external sources or abstain,
+but when a model inherently holds the knowledge in its
+parameters, it may be possible to prompt it or intervene
+in its computation to obtain the correct answer.
+In this work, we demonstrate the prevalence of HK+,
+showing that it occurs in up to 24% of cases (Section
+3.3). Importantly, we observe that HK+ errors manifest
+even when using mild prompts that neither contain mis-
+information nor induce hallucination-prone scenarios.
+Thus, these hallucinations are not merely a consequence
+of flawed human prompts but can arise independently.
+To study HK+, HK−, and factually-correct exam-
+ples, we developed an automatic approach to collect
+Wrong Answers despite having Correct Knowledge
+(WACK). Our approach (Figure 1) constructs amodel-
+specific hallucination dataset that labeled hallucination
+types — HK− and HK+— by introducing novel ways
+of constructing HK+. The process assesses the target
+model’s knowledge by inspecting the number of cor-
+rect responses in a neutral prompt out of multiple out-
+put samples for questions with curated known answers.
+For questions in which the model indicates knowledge,
+W ACK explores altered prompt settings, which induce
+hallucinations in scenarios that mimic typical interac-
+tions with an LLM. These prompts reveal HK+ ex-
+amples, in which the model answers incorrectly even
+though it holds the knowledge for a correct answer.
+After establishing the prevalence ofHK+ and creating
+a framework to investigate the hallucination cases, we
+provide a proof of concept showing that mitigation can
+benefit from distinguishing HK+ from HK− (Section
+4.1). Next, we investigate how different types of halluci-
+nations (HK− and HK+) are represented within models.
+We do this by training linear classifiers on each model’s
+internal states, a common technique in hallucination
+detection research (CH-Wang et al., 2023; Azaria and
+Mitchell, 2023). While prior work focuses on detecting
+whether any hallucination occurs, we demonstrate that
+simple classifiers can distinguish between the two hallu-
+cination types to some extent (Section 4.2). To further
+demonstrate the utility of our setup for investigating
+HK+, we show that HK+ generalizes across different
+prompt settings; a classifier trained on examples from
+one prompting setting is able to predict hallucinations
+in another setting (Section 5.2).
+Our last contribution shows that the W ACK datasets
+1
+arXiv:2410.22071v2  [cs.CL]  18 Feb 2025

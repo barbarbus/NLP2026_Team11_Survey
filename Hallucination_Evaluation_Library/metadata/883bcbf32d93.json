@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2024.naacl-long.20.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2024.naacl-long.20/"
+  ],
+  "og:description": [
+    "Jon Saad-Falcon, Omar Khattab, Christopher Potts, Matei Zaharia. Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2024."
+  ]
+}

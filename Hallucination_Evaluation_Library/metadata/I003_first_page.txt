@@ -1,0 +1,92 @@
+A Token-level Reference-free Hallucination Detection Benchmark for
+Free-form Text Generation
+Tianyu Liu1 2 ∗ Yizhe Zhang3 Chris Brockett4 Yi Mao4
+Zhifang Sui1 Weizhu Chen4 Bill Dolan4
+1 Peking University 2 Tencent Cloud Xiaowei 3 Meta AI 4 Microsoft Corporation
+{tianyu0421,szf}@pku.edu.cn , yizhe.zhang@hotmail.com
+{chrisbkt,maoyi,wzchen,billdol}@microsoft.com
+Abstract
+Large pretrained generative models like GPT-
+3 often suffer from hallucinating non-existent
+or incorrect content, which undermines their
+potential merits in real applications. Exist-
+ing work usually attempts to detect these
+hallucinations based on a corresponding or-
+acle reference at a sentence or document
+level. However ground-truth references may
+not be readily available for many free-form
+text generation applications, and sentence- or
+document-level detection may fail to provide
+the ﬁne-grained signals that would prevent
+fallacious content in real time. As a ﬁrst
+step to addressing these issues, we propose
+a novel token-level, reference-free hallucina-
+tion detection task and an associated anno-
+tated dataset named H ADES (HAllucination
+DEtection data Set) 1. To create this dataset,
+we ﬁrst perturb a large number of text
+segments extracted from English language
+Wikipedia, and then verify these with crowd-
+sourced annotations. To mitigate label imbal-
+ance during annotation, we utilize an iterative
+model-in-loop strategy. We conduct compre-
+hensive data analyses and create multiple base-
+line models.
+1 Introduction
+Automatic text generation using neural natural lan-
+guage generation (NLG) systems is increasingly
+ﬂuent and thus seemingly plausible in many real-
+world applications. Large-scale pretrained mod-
+els like GPT-3 (Brown et al., 2020) are proven to
+be powerful in understanding and performing free
+form text generation tasks at human-quality level
+with a few in-context examples, which dramati-
+cally reduces the manual labor needed in many
+text-based applications and services. Despite their
+great success, however, neural NLG systems using
+∗Work was done when Tianyu (intern) and Yizhe was at
+Microsoft.
+1Code and data are provided in https://github.
+com/microsoft/HaDes
+very large pre-trained models struggle to gener-
+ate factually accurate and trustworthy text (Devlin
+et al., 2019; Radford et al., 2019), and exhibit a
+propensity to hallucinate non-existent or incorrect
+content that is unacceptable in most user-oriented
+applications. This poses a major challenge for de-
+ploying production NLG systems with realtime
+generation, where post-examination is impossible.
+Existing work has sought to detect hallucination
+and quantitatively measure generation consistency
+against a provided reference. Such reference-based
+hallucination detection has been proposed for ab-
+stractive summarization (Maynez et al., 2020), ma-
+chine translation (Wang and Sennrich, 2020), data-
+to-text generation (Rebuffel et al., 2021), and im-
+age caption generation (Rohrbach et al., 2018). For
+many free-form text generation tasks, however, ref-
+erences are not readily available. For example, in
+a production NLG system such as a social chatbot
+using real-time response generation or a document
+auto-completion system, the generation model of-
+ten cannot pair its outputs with sufﬁcient reference
+information, rendering reference-based methods
+less applicable:i) It may be difﬁcult to even know
+where to obtain the reference, as obtaining it may
+be as hard as generating consistent information in
+the ﬁrst place;ii) Generation may be at a real-time
+online setting that demands leveraging only exist-
+ing context to create new content.
+One common setup for qualitatively measuring
+the level of hallucination is performed at sentence-
+or document-level (Dhingra et al., 2019; Scialom
+et al., 2019). Related tasks such as fake news detec-
+tion (Zellers et al., 2019) or fact checking (Thorne
+and Vlachos, 2018) also adopt this strategy. How-
+ever, sentence- or document-level detection may
+not always provide high-resolution signals sufﬁ-
+cient to pinpoint the hallucinated text, or can only
+judge whether a generated sentence or a document
+as a whole is a hallucinated artifact. Consequently,
+these high-level strategies may be insufﬁcient to
+arXiv:2104.08704v2  [cs.CL]  2 Apr 2022

@@ -1,0 +1,94 @@
+Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, pages 10425–10447
+November 4-9, 2025 ©2025 Association for Computational Linguistics
+Towards Faithful Natural Language Explanations:
+A Study Using Activation Patching in Large Language Models
+Wei Jie Y eo1, Ranjan Satapathy 2, Erik Cambria 1
+1Nanyang Technological University
+2Institute of High Performance Computing (IHPC),
+Agency for Science, Technology and Research (A∗STAR), Singapore
+yeow0082@e.ntu.edu.sg,satapathy_ranjan@ihpc.a-star.edu.sg,cambria@ntu.edu.sg
+Abstract
+Large Language Models (LLMs) are capable of
+generating persuasive Natural Language Expla-
+nations (NLEs) to justify their answers. How-
+ever, the faithfulness of these explanations
+should not be readily trusted at face value.
+Recent studies have proposed various meth-
+ods to measure the faithfulness of NLEs, typ-
+ically by inserting perturbations at the expla-
+nation or feature level. We argue that these
+approaches are neither comprehensive nor cor-
+rectly designed according to the established
+definition of faithfulness. Moreover, we high-
+light the risks of grounding faithfulness find-
+ings on out-of-distribution samples. In this
+work, we leverage a causal mediation tech-
+nique called activation patching, to measure
+the faithfulness of an explanation towards sup-
+porting the explained answer. Our proposed
+metric, Causal Faithfulness quantifies the con-
+sistency of causal attributions between expla-
+nations and the corresponding model outputs
+as the indicator of faithfulness. We exper-
+imented across models varying from 2B to
+27B parameters and found that models that
+underwent alignment-tuning tend to produce
+more faithful and plausible explanations. We
+posit that Causal Faithfulness is a promising
+improvement over existing faithfulness tests
+by taking into account the model’s internal
+computations and avoiding out-of-distribution
+concerns that could otherwise undermine the
+validity of faithfulness assessments. We
+release the code in https://github.com/
+SenticNet/causal-faithfulness
+1 Introduction
+The advent of Large Language Models (LLMs) has
+revolutionized the field of Natural Language Pro-
+cessing (NLP), enabling machines to perform con-
+siderably well across a wide array of tasks ranging
+from commonsense reasoning (Mao et al., 2024)
+to producing high-quality training data (Yeo et al.,
+2024).
+Moreover, LLMs can generate highly plausible
+Natural Language Explanations (NLE) to support
+their answer (Cambria et al., 2023a, 2024a), such
+as adopting the Chain-of-Thought (CoT) prompt-
+ing method (Wei et al., 2022). Despite their ap-
+parent sophistication, the trustworthiness of these
+explanations is not guaranteed and their underlying
+faithfulness (Jie et al., 2024) should be carefully
+scrutinized. However, it is unclear among the ex-
+isting approaches (Atanasova et al., 2023; Lanham
+et al., 2023; Wiegreffe et al., 2020; Parcalabescu
+and Frank, 2023; Shen et al., 2025), which is best
+suited to measure the faithfulness. A commonly ref-
+erenced definition of faithfulness follows as such:
+"The faithfulness of an interpretation is a measure
+of how well it accurately reflects the underlying rea-
+soning process of the model" (Jacovi and Goldberg,
+2020). Following this definition, we can be certain
+that a truly faithful explanation leads to goals such
+as instilling trust (Cambria et al., 2023b; Yeo et al.,
+2025; Cambria, 2024; Cambria et al., 2024b; Ong
+et al., 2024) in the receiving audience or enabling
+actionable insights given the information revealed
+by the explanation.
+A recent work, Parcalabescu and Frank (2023)
+argues that existing faithfulness tests are not de-
+signed to measure the faithfulness under the refer-
+enced definition, but rather the ability of models to
+return consistent answers under various perturbed
+settings. Albeit these tests are still considered valid,
+the findings of these tests may be unreliable and
+inconsistent across different benchmarks. In this
+work, we study the internal computations of the
+model to assess the level of faithfulness of an ex-
+planation in supporting the explained answer. We
+borrow insights from works that perform Activa-
+tion Patching (AP), also known as causal tracing
+on the LLM internal states (Meng et al., 2022; Vig
+et al., 2020; Zhang and Nanda, 2023), and show
+how the derived causal effects can be used to mea-
+sure the faithfulness of a model’s NLE.
+10425

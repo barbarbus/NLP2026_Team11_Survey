@@ -1,0 +1,91 @@
+ALIGN SCORE : Evaluating Factual Consistency
+with A Unified Alignment Function
+Yuheng Zha Yichi Yang Ruichen Li Zhiting Hu
+UC San Diego
+{yzha, yiy067, rul014, zhh019}@ucsd.edu
+Abstract
+Many text generation applications require the
+generated text to be factually consistent with
+input information. Automatic evaluation of fac-
+tual consistency is challenging. Previous work
+has developed various metrics that often de-
+pend on specific functions, such as natural lan-
+guage inference (NLI) or question answering
+(QA), trained on limited data. Those metrics
+thus can hardly assess diverse factual incon-
+sistencies (e.g., contradictions, hallucinations)
+that occur in varying inputs/outputs (e.g., sen-
+tences, documents) from different tasks. In
+this paper, we propose ALIGN SCORE , a new
+holistic metric that applies to a variety of fac-
+tual inconsistency scenarios as above. ALIGN -
+SCORE is based on a general function of infor-
+mation alignment between two arbitrary text
+pieces. Crucially, we develop a unified train-
+ing framework of the alignment function by
+integrating a large diversity of data sources,
+resulting in 4.7M training examples from 7
+well-established tasks (NLI, QA, paraphrasing,
+fact verification, information retrieval, seman-
+tic similarity, and summarization). We conduct
+extensive experiments on large-scale bench-
+marks including 22 evaluation datasets, where
+19 of the datasets were never seen in the align-
+ment training. ALIGN SCORE achieves substan-
+tial improvement over a wide range of previous
+metrics. Moreover, ALIGN SCORE (355M pa-
+rameters) matches or even outperforms metrics
+based on ChatGPT and GPT-4 that are orders
+of magnitude larger.1
+1 Introduction
+Recent systems for natural language generation,
+such as summarization and dialogue systems, can
+produce fluent and coherent text. However, studies
+show the generated text can often contain factual
+consistency errors, such as contradictions with in-
+put information or hallucinations irrelevant to the
+1Our code is available at https://github.com/
+yuh-zha/AlignScore.
+context (Cao et al., 2018; Kryscinski et al., 2019;
+Nie et al., 2019a; Tan et al., 2020; Maynez et al.,
+2020; Deng et al., 2021).
+It is thus crucial to develop automatic metrics
+that evaluate factual consistency of a claim (e.g.,
+generated text) with regard to acontext (e.g., model
+input). The evaluation, however, has long been a
+challenge. Recent work has devised various met-
+rics based on specific pretrained functions, such as
+natural language inference (NLI) (Honovich et al.,
+2022a; Mishra et al., 2021; Kryscinski et al., 2020;
+Utama et al., 2022; Laban et al., 2022) and question
+answering (QA) (Durmus et al., 2020; Fabbri et al.,
+2022; Honovich et al., 2021; Fabbri et al., 2022).
+Specifically, an NLI-based metric measures if the
+claim is entailed by the context; while a QA-based
+metric first creates (question, answer) pairs from
+the claim and then checks if answering the ques-
+tions with a QA model conditioning on the context
+will lead to the same answers.
+However, by relying on specific functions trained
+with only narrow data (i.e., NLI or QA datasets),
+previous metrics have limited generalizability and
+fail to apply to diverse evaluation scenarios, in-
+cluding different types of factual consistency er-
+rors and varying lengths and characteristics of con-
+texts/claims from different tasks and domains. For
+instance, a metric trained exclusively with NLI data
+of sentences in a certain domain tends to have diffi-
+culty in evaluating summaries of long documents
+in a different domain (Mishra et al., 2021; Laban
+et al., 2022). The limitations motivate a more holis-
+tic metric that develops a general understanding
+of factual consistency and generalizes to diverse
+evaluation scenarios.
+In this paper, we propose ALIGN SCORE , a new
+general factual consistency metric based on a uni-
+fied text-to-text information alignment function. In
+particular, we unify a wide range of data sources,
+and use the massive diverse data to train a gen-
+eral information alignment model that estimates
+1
+arXiv:2305.16739v1  [cs.CL]  26 May 2023

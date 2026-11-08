@@ -1,0 +1,94 @@
+Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 17986–18002
+July 27 - August 1, 2025 ©2025 Association for Computational Linguistics
+ICR Probe: Tracking Hidden State Dynamics for Reliable Hallucination
+Detection in LLMs
+Zhenliang Zhang1,2, Xinyu Hu1, Huixuan Zhang1
+Junzhe Zhang1, Xiaojun Wan1
+1Wangxuan Institute of Computer Technology, Peking University
+2School of Software and Microelectronics, Peking University
+{zhenliang,zhanghuixuan,junzhezhang}@stu.pku.edu.cn
+{huxinyu,wanxiaojun}@pku.edu.cn
+Abstract
+Large language models (LLMs) excel at vari-
+ous natural language processing tasks, but their
+tendency to generate hallucinations undermines
+their reliability. Existing hallucination detec-
+tion methods leveraging hidden states predom-
+inantly focus on static and isolated represen-
+tations, overlooking their dynamic evolution
+across layers, which limits efficacy. To address
+this limitation, we shift the focus to the hidden
+state update process and introduce a novel met-
+ric, the ICR Score (Information Contribution to
+Residual Stream), which quantifies the contri-
+bution of modules to the hidden states’ update.
+We empirically validate that the ICR Score is ef-
+fective and reliable in distinguishing hallucina-
+tions. Building on these insights, we propose a
+hallucination detection method, the ICR Probe,
+which captures the cross-layer evolution of hid-
+den states. Experimental results show that the
+ICR Probe achieves superior performance with
+significantly fewer parameters. Furthermore,
+ablation studies and case analyses offer deeper
+insights into the underlying mechanism of this
+method, improving its interpretability.
+1 Introduction
+Large language models (LLMs) demonstrate re-
+markable performance across various natural lan-
+guage processing tasks (Zhang et al., 2023). How-
+ever, these models are still prone to generating hal-
+lucinations, which are nonsensical or irrelevant con-
+tent that deviates from the intended output (Ji et al.,
+2023). This issue highlights the critical need for
+effective methods of hallucination detection.
+Various methods for hallucination detection ex-
+ist. Mainstream approaches analyze generated out-
+put through consistency checks or reference com-
+parisons (Manakul et al., 2023), while probability-
+based methods focus on logit probability uncer-
+tainty (Ren et al., 2022). Another approach exam-
+ines hidden states (e.g., embedding vectors) across
+LLM layers to detect hallucinations (Chen et al.,
+2024a,c). Methods based on output or logit prob-
+abilities often require ground truth references or
+multiple generations for consistency. In contrast,
+hidden state based detection offers the advantage
+of being reference-free, eliminating the need for
+external sources.
+Current hallucination detection methods based
+on hidden states can be broadly categorized into
+training-based and training-free methods. Training-
+based methods often involve training individual or
+combination probes (Azaria and Mitchell, 2023;
+CH-Wang et al., 2024), or using semantic entropy
+probes (Kossen et al., 2024), whereas training-free
+methods calculate detection metrics directly from
+hidden states (Sriramanan et al., 2024). However,
+existing methods typically focus on static, high-
+dimensional hidden states (around 4000 dimen-
+sions), which limits feature extraction capabilities.
+These methods make it challenging to capture the
+updates of hidden states and the cross-layer evolu-
+tion of the residual stream, ultimately restricting
+the effectiveness of hallucination detection.
+To overcome these limitations, we introduce
+a novel approach that shifts the focus from the
+hidden states themselves to their update pro-
+cess across layers . Specifically, the ICR Score
+(Information Contribution to Residual Stream)
+quantifies the contribution of different modules
+(e.g., FFN or self-attention) to hidden state updates
+at each layer. Empirical results demonstrate that
+the ICR Score captures a stable and consistent pat-
+tern of residual stream updates, showing strong
+potential for distinguishing hallucinations.
+We further introduce the ICR Probe, which ag-
+gregates ICR Scores across all layers to capture
+the comprehensive dynamics of the residual stream.
+Experimental results on three mainstream open-
+source LLMs demonstrate that the ICR Probe ef-
+fectively detects hallucinations and outperforms
+previous methods across multiple datasets. Addi-
+tionally, ablation studies are conducted to reveal
+17986

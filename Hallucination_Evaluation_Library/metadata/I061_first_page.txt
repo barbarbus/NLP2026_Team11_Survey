@@ -1,0 +1,93 @@
+A Stitch in Time Saves Nine: Detecting and Mitigating Hallucinations of
+LLMs by Validating Low-Confidence Generation
+Neeraj Varshney♢∗ Wenlin Yao♣ Hongming Zhang♣
+Jianshu Chen♣ Dong Yu♣
+♢Arizona State University ♣ Tencent AI Lab, Bellevue, W A
+♢nvarshn2@asu.edu
+♣{wenlinyao, hongmzhang, jianshuchen, dyu}@global.tencent.com
+Abstract
+Recently developed large language models
+have achieved remarkable success in generat-
+ing fluent and coherent text. However, these
+models often tend to ‘hallucinate’ which crit-
+ically hampers their reliability. In this work,
+we address this crucial problem and propose
+an approach that actively detects and mitigates
+hallucinations during the generation process.
+Specifically, we first identify the candidates of
+potential hallucination leveraging the model’s
+logit output values, check their correctness
+through a validation procedure, mitigate the
+detected hallucinations, and then continue with
+the generation process. Through extensive ex-
+periments with GPT-3.5 (text-davinci-003) on
+the ‘article generation task’, we first demon-
+strate the individual efficacy of our detection
+and mitigation techniques. Specifically, the de-
+tection technique achieves a recall of ∼ 88%
+and the mitigation technique successfully mit-
+igates 57.6% of the correctly detected halluci-
+nations. Importantly, our mitigation technique
+does not introduce new hallucinations even in
+the case of incorrectly detected hallucinations,
+i.e., false positives. Then, we show that the pro-
+posed active detection and mitigation approach
+successfully reduces the hallucinations of the
+GPT-3.5 model from 47.5% to 14.5% on aver-
+age. We further demonstrate the effectiveness
+and wide applicability of our approach through
+additional studies including performance on dif-
+ferent types of questions (multi-hop and false
+premise questions) and with another LLM from
+a different model family (Vicuna). In summary,
+our work contributes to improving the reliabil-
+ity and trustworthiness of large language mod-
+els, a crucial step en route to enabling their
+widespread adoption in real-world applications.
+1 Introduction
+Recently developed large language models such as
+GPT-3 (Brown et al., 2020), InstructGPT (Ouyang
+∗Work done during internship at Tencent AI Lab
+GPT-3.5
+ (text-davinci-003)
+Active Detection
+and Mitigation
+0
+10
+20
+30
+40
+50
+60% Hallucination
+47.5
+14.5
+ lower is better
+Figure 1: Comparing percentage of hallucinations (on
+the ‘article generation task’) in the output of GPT-3.5
+(text-davinci-003) and our proposed active detection and
+mitigation approach.
+et al., 2022), PaLM (Chowdhery et al., 2022),
+LLaMA (Touvron et al., 2023), and several oth-
+ers (Taori et al., 2023; Scao et al., 2022; Wei et al.,
+2022a; Wang et al., 2022) have achieved remark-
+able performance on a wide range of language un-
+derstanding tasks. Furthermore, they have been
+shown to possess an impressive ability to generate
+fluent and coherent text. Despite all these abilities,
+their tendency to ‘hallucinate’ critically ham-
+pers their reliability and limits their widespread
+adoption in real-world applications.
+Hallucination in the context of language models
+refers to the generation of text or responses that
+seem syntactically sound, fluent, and natural but
+are factually incorrect, nonsensical, or unfaithful
+to the provided source input (Maynez et al., 2020;
+Holtzman et al., 2020; Ji et al., 2023; Koehn and
+Knowles, 2017). These hallucinations can lead to
+serious consequences such as spreading of misin-
+formation and violation of privacy. Thus, in this
+work, we focus on the crucial problem of ‘ ad-
+dressing’ large language models’ hallucinations.
+We propose to actively ‘detect’ and ‘mitigate’
+hallucinations during the generation process. This
+arXiv:2307.03987v2  [cs.CL]  12 Aug 2023

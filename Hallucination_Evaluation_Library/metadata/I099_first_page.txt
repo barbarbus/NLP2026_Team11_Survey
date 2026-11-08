@@ -1,0 +1,33 @@
+Extinction time of an epidemic with infection age
+dependent infectivity
+Anicet Mougabe–Peurkor *, Ibrahima Dram ´e †, Modeste N’zi ‡
+and Etienne Pardoux **
+April 5, 2023
+Abstract
+This paper studies the distribution function of the time of extinction of a subcritical epidemic,
+when a large enough proportion of the population has been immunized and/or the infectivity of the
+infectious individuals has been reduced, so that the effective reproduction number is less than one.
+We do that for a SIR/SEIR model, where infectious individuals have an infection age dependent
+infectivity, as in the model introduced in the 1927 seminal paper of Kermack and McKendrick [9].
+Our main conclusion is that simplifying the model as an ODE SIR model, as it is largely done in
+the epidemics literature, introduces a biais toward shorter extinction time.
+Keywords: Epidemic model; Branching process; Extinction time; Infection age dependent infectiv-
+ity; ODE SIR model; Effective reproduction number.
+1 Introduction
+Consider an epidemic which is declining: the number M of infected individuals is moderate, and
+decreases, while the total size N of the population is much larger. In such a phase, the approximation
+by the deterministic model is no longer valid. Rather, as the initial phase of an epidemic, the ﬁnal
+phase can be well approximated by a branching process, in this case a subcritical branching process.
+The extinction time is thus random. It is of interest to have some information on the distribution
+function of this extinction time. Indeed, if the subcriticality is due in part to some rules imposed
+to the population, like mask wearing in public transport, classrooms, workplace, theaters etc., it is
+important to evaluate how long such rules must be maintained.
+Our epidemic model is a SIR/SEIR model, i.e. we assume that after having been infected and having
+recovered, an individual remains immune to the disease for ever. This is not quite realistic. However,
+if the duration of the studied period is not too long, then the number of individuals who loose their
+*Universit´e F´elix Houphouet Boigny, Abidjan, Cˆote d’Ivoire. mougabeanicet@yahoo.fr
+† Universit´e Cheikh Anta Diop de Dakar, FST, LMA, 16180 Dakar-Fann, S´en´egal. iboudrame87@gmail.com
+‡ Universit´e F´elix Houphouet Boigny, Abidjan, Cˆote d’Ivoire. modestenzi@yahoo.fr
+**Aix Marseille Univ, CNRS, I2M, Marseille, France . etienne.pardoux@univ-amu.fr
+1
+arXiv:2304.01379v1  [math.PR]  3 Apr 2023

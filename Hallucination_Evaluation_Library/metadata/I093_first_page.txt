@@ -1,0 +1,70 @@
+Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing , pages 3607–3625
+December 6-10, 2023 ©2023 Association for Computational Linguistics
+The Curious Case of Hallucinatory (Un)answerability: Finding Truths in
+the Hidden States of Over-Confident Large Language Models
+Aviv Slobodkin1, Omer Goldman1, Avi Caciularu1,2, Ido Dagan1, Shauli Ravfogel1
+1Bar-Ilan University 2Google Research
+{lovodkin93, omer.goldman, shauli321}@gmail.com
+avica@google.com
+dagan@cs.biu.ac.il
+Abstract
+Large language models (LLMs) have been
+shown to possess impressive capabilities, while
+also raising crucial concerns about the faith-
+fulness of their responses. A primary issue
+arising in this context is the management of
+(un)answerable queries by LLMs, which of-
+ten results in hallucinatory behavior due to
+overconfidence. In this paper, we explore
+the behavior of LLMs when presented with
+(un)answerable queries. We ask: do mod-
+els represent the fact that the question is
+(un)answerable when generating a hallucina-
+tory answer? Our results show strong indica-
+tions that such models encode the answerability
+of an input query, with the representation of the
+first decoded token often being a strong indica-
+tor. These findings shed new light on the spatial
+organization within the latent representations of
+LLMs, unveiling previously unexplored facets
+of these models. Moreover, they pave the way
+for the development of improved decoding tech-
+niques with better adherence to factual gen-
+eration, particularly in scenarios where query
+(un)answerability is a concern.1
+1 Introduction
+Modern large language models (LLMs) have been
+tantalizing the NLP community in the last couple
+of years (Brown et al., 2020; Chen et al., 2021;
+Chung et al., 2022), demonstrating great potential
+for both research and commercial use, but these
+models are of course not problem-free. Among
+their unfavorable behaviors it is possible to find
+toxicity (Welbl et al., 2021; Deshpande et al., 2023),
+bias (Nadeem et al., 2021; Abid et al., 2021), and
+hallucination (Manakul et al., 2023; Ji et al., 2023).
+One of the settings in which LLMs are notori-
+ously prone to hallucinate is when presented with
+(un)answerable questions (Sulem et al., 2021; Asai
+1Our code is publicly available at https://github.com/
+lovodkin93/unanswerability
+(a) SQuAD
+(b) NQ
+(c) MuSiQue
+Figure 1: 3D PCA projection of the last hidden layer’s
+embedding of Flan-UL2 on each of the three bench-
+marks. The left images show the embeddings with
+the regular prompt, and the right ones — with a hint-
+including prompt. Blue and red dots are examples
+correctly detected by the model as answerable and
+(un)answerable, respectively, while the pink dots are
+for (un)answerable examples that the model provided
+answers to. The figures show the good separability be-
+tween the three groups.
+and Choi, 2021; Amayuelas et al., 2023). Recent
+works in this setting, which is the focus of this
+work, suggested using models’ confidence as an
+indication of answerability (Yin et al., 2023), and
+some suggested further finetuning to enhance the
+probability of detecting (un)answerable questions
+3607

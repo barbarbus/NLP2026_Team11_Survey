@@ -1,0 +1,90 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2402.03744: INSIDE: LLMs' Internal States Retain the Power of Hallucination Detection"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "INSIDE: LLMs' Internal States Retain the Power of Hallucination Detection"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2402.03744v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Knowledge hallucination have raised widespread concerns for the security and reliability of deployed LLMs. Previous efforts in detecting hallucinations have been employed at logit-level uncertainty estimation or language-level self-consistency evaluation, where the semantic information is inevitably lost during the token-decoding procedure. Thus, we propose to explore the dense semantic information retained within LLMs' \\textbf{IN}ternal \\textbf{S}tates for halluc\\textbf{I}nation \\textbf{DE}tection (\\textbf{INSIDE}). In particular, a simple yet effective \\textbf{EigenScore} metric is proposed to better evaluate responses' self-consistency, which exploits the eigenvalues of responses' covariance matrix to measure the semantic consistency/diversity in the dense embedding space. Furthermore, from the perspective of self-consistent hallucination detection, a test time feature clipping approach is explored to truncate extreme activations in the internal states, which reduces overconfident generations and potentially benefits the detection of overconfident hallucinations. Extensive experiments and ablation studies are performed on several popular LLMs and question-answering (QA) benchmarks, showing the effectiveness of our proposal."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "INSIDE: LLMs' Internal States Retain the Power of..."
+  ],
+  "twitter:description": [
+    "Knowledge hallucination have raised widespread concerns for the security and reliability of deployed LLMs. Previous efforts in detecting hallucinations have been employed at logit-level..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "INSIDE: LLMs' Internal States Retain the Power of Hallucination Detection"
+  ],
+  "citation_author": [
+    "Chen, Chao",
+    "Liu, Kai",
+    "Chen, Ze",
+    "Gu, Yi",
+    "Wu, Yue",
+    "Tao, Mingyuan",
+    "Fu, Zhihang",
+    "Ye, Jieping"
+  ],
+  "citation_date": [
+    "2024/02/06"
+  ],
+  "citation_online_date": [
+    "2024/10/21"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2402.03744"
+  ],
+  "citation_arxiv_id": [
+    "2402.03744"
+  ],
+  "citation_abstract": [
+    "Knowledge hallucination have raised widespread concerns for the security and reliability of deployed LLMs. Previous efforts in detecting hallucinations have been employed at logit-level uncertainty estimation or language-level self-consistency evaluation, where the semantic information is inevitably lost during the token-decoding procedure. Thus, we propose to explore the dense semantic information retained within LLMs' \\textbf{IN}ternal \\textbf{S}tates for halluc\\textbf{I}nation \\textbf{DE}tection (\\textbf{INSIDE}). In particular, a simple yet effective \\textbf{EigenScore} metric is proposed to better evaluate responses' self-consistency, which exploits the eigenvalues of responses' covariance matrix to measure the semantic consistency/diversity in the dense embedding space. Furthermore, from the perspective of self-consistent hallucination detection, a test time feature clipping approach is explored to truncate extreme activations in the internal states, which reduces overconfident generations and potentially benefits the detection of overconfident hallucinations. Extensive experiments and ablation studies are performed on several popular LLMs and question-answering (QA) benchmarks, showing the effectiveness of our proposal."
+  ]
+}

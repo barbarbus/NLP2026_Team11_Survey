@@ -1,0 +1,86 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2404.12041: A Survey of Automatic Hallucination Evaluation on Natural Language Generation"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "A Survey of Automatic Hallucination Evaluation on Natural Language Generation"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2404.12041v4"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "The rapid advancement of Large Language Models (LLMs) has brought a pressing challenge: how to reliably assess hallucinations to guarantee model trustworthiness. Although Automatic Hallucination Evaluation (AHE) has become an indispensable component of this effort, the field remains fragmented in its methodologies, limiting both conceptual clarity and practical progress. This survey addresses this critical gap through a systematic analysis of 105 evaluation methods, revealing that 77.1% specifically target LLMs, a paradigm shift that demands new evaluation frameworks. We formulate a structured framework to organize the field, based on a survey of foundational datasets and benchmarks and a taxonomy of evaluation methodologies, which together systematically document the evolution from pre-LLM to post-LLM approaches. Beyond taxonomical organization, we identify fundamental limitations in current approaches and their implications for real-world deployment. To guide future research, we delineate key challenges and propose strategic directions, including enhanced interpretability mechanisms and integration of application-specific evaluation criteria, ultimately providing a roadmap for developing more robust and practical hallucination evaluation systems."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "A Survey of Automatic Hallucination Evaluation on Natural Language..."
+  ],
+  "twitter:description": [
+    "The rapid advancement of Large Language Models (LLMs) has brought a pressing challenge: how to reliably assess hallucinations to guarantee model trustworthiness. Although Automatic Hallucination..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "A Survey of Automatic Hallucination Evaluation on Natural Language Generation"
+  ],
+  "citation_author": [
+    "Qi, Siya",
+    "Gui, Lin",
+    "He, Yulan",
+    "Yuan, Zheng"
+  ],
+  "citation_date": [
+    "2024/04/18"
+  ],
+  "citation_online_date": [
+    "2025/10/20"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2404.12041"
+  ],
+  "citation_arxiv_id": [
+    "2404.12041"
+  ],
+  "citation_abstract": [
+    "The rapid advancement of Large Language Models (LLMs) has brought a pressing challenge: how to reliably assess hallucinations to guarantee model trustworthiness. Although Automatic Hallucination Evaluation (AHE) has become an indispensable component of this effort, the field remains fragmented in its methodologies, limiting both conceptual clarity and practical progress. This survey addresses this critical gap through a systematic analysis of 105 evaluation methods, revealing that 77.1% specifically target LLMs, a paradigm shift that demands new evaluation frameworks. We formulate a structured framework to organize the field, based on a survey of foundational datasets and benchmarks and a taxonomy of evaluation methodologies, which together systematically document the evolution from pre-LLM to post-LLM approaches. Beyond taxonomical organization, we identify fundamental limitations in current approaches and their implications for real-world deployment. To guide future research, we delineate key challenges and propose strategic directions, including enhanced interpretability mechanisms and integration of application-specific evaluation criteria, ultimately providing a roadmap for developing more robust and practical hallucination evaluation systems."
+  ]
+}

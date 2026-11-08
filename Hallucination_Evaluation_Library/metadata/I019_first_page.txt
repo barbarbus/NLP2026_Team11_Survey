@@ -1,0 +1,41 @@
+Learning to Reason for Hallucination Span
+Detection
+Hsuan Su♡♢∗ Ting-Yao Hu♢ Hema Swetha Koppula♢ Kundan Krishna♢ Hadi Pouransari♢
+Cheng-Yu Hsieh♢ Cem Koc♢ Joseph Yitan Cheng♢ Oncel Tuzel♢ Raviteja Vemulapalli♢
+♡NationalTaiwanUniversity ♢Apple
+Largelanguagemodels(LLMs)oftengeneratehallucinations—unsupportedcontentthatunderminesreliability.While
+mostpriorworksframehallucinationdetectionasabinarytask,manyreal-worldapplicationsrequireidentifyinghalluci-
+natedspans,whichisamulti-stepdecisionmakingprocess.Thisnaturallyraisesthequestionofwhetherexplicitrea-
+soningcanhelpthecomplextaskofdetectinghallucinationspans.Toanswerthisquestion,wefirstevaluatepretrained
+modelswithandwithoutChain-of-Thought(CoT)reasoning,andshowthatCoTreasoninghasthepotentialtogenerate
+atleastonecorrectanswerwhensampledmultipletimes.Motivatedbythis,weproposeRL4HS,areinforcementlearning
+frameworkthatincentivizesreasoningwithaspan-levelrewardfunction.RL4HSbuildsonGroupRelativePolicyOptimiza-
+tionandintroducesClass-AwarePolicyOptimizationtomitigaterewardimbalanceissue.ExperimentsontheRAGTruth
+benchmark(summarization,questionanswering,data-to-text)showthatRL4HSsurpassespretrainedreasoningmodels
+andsupervisedfine-tuning,demonstratingthenecessityofreinforcementlearningwithspan-levelrewardsfordetecting
+hallucinationspans.
+Correspondence:Ting-YaoHu:tingyao_hu@apple.com;RavitejaVemulapalli:r_vemulapalli@apple.com
+Date:October10,2025
+1 Introduction
+Over the past few years, Large Language Models (LLMs) have demonstrated remarkable capabilities across a
+wide range of natural language processing tasks (Xie et al., 2023; Zhang et al., 2023; Gao et al., 2024; OpenAI
+et al., 2024). However, they are still prone to generatinghallucinations—content that is not supported by the
+input context or the underlying knowledge sources (Zhu et al., 2024; Kalai et al., 2025; Huang et al., 2025).
+Hallucinations pose critical risks in downstream applications such as summarization and long-form question
+answering, where reliability and factual consistency with respect to the input context are paramount. Hence,
+the ability to detect hallucinations is crucial for successful real-world deployment of LLMs.
+Most existing research works focus onbinary hallucination detectionproblem, where the goal is to determine
+if the model output contains hallucinations or not (Yang et al., 2024a,b; Tang et al., 2024; Ravi et al., 2024; Ji
+et al., 2024; Chuang et al., 2024). While useful, this formulation is limited: in many real-world applications,
+one often needs to know which specific spans in the model output are hallucinated in order to assess the
+reliability of the generated content. This motivates the problem ofhallucination span detection, where the
+goal is to precisely locate unsupported content in the model output (Wu et al., 2023; Ogasa and Arase, 2025).
+Recently,reasoning—the process of systematically arriving at conclusions by generating and utilizing inter-
+mediate steps—has been shown to significantly enhance the capabilities of LLMs in solving complex tasks
+such as mathematics (Shao et al., 2024; Yu et al., 2025) and coding (Liu and Zhang, 2025; Chen et al., 2025).
+Hallucination span detection is also a complex multi-step decision making process as it requires carefully
+analyzing the model output to extract all the stated facts and verifying whether each of these facts is fully
+supported by the input context, and could benefit significantly from a learned reasoning process.
+* Work done during an internship at Apple.
+1
+arXiv:2510.02173v2  [cs.CL]  8 Oct 2025

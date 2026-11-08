@@ -1,0 +1,92 @@
+Fact-Checking Complex Claims with Program-Guided Reasoning
+Liangming Pan1,2 Xiaobao Wu3 Xinyuan Lu4 Anh Tuan Luu3
+William Yang Wang1 Min-Y en Kan4 Preslav Nakov2
+1 University of California, Santa Barbara 2 Mohamed bin Zayed University of Artiﬁcial Intelligence
+3 Nanyang Technological University 4 National University of Singapore
+liangmingpan@ucsb.edu xiaobao002@e.ntu.edu.sg luxinyuan@u.nus.edu
+anhtuan.luu@ntu.edu.sg william@cs.ucsb.edu
+kanmy@comp.nus.edu.sg preslav.nakov@mbzuai.ac.ae
+Abstract
+Fact-checking real-world claims often re-
+quires collecting multiple pieces of evidence
+and applying complex multi-step reasoning.
+In this paper, we present Program-Guided
+Fact-Checking (PROGRAM FC), a novel fact-
+checking model that decomposes complex
+claims into simpler sub-tasks that can be
+solved using a shared library of specialized
+functions. We ﬁrst leverage the in-context
+learning ability of large language models to
+generate reasoning programs to guide the ver-
+iﬁcation process. Afterward, we execute the
+program by delegating each sub-task to the
+corresponding sub-task handler. This process
+makes our model both explanatory and data-
+efﬁcient, providing clear explanations of its
+reasoning process and requiring minimal train-
+ing data. We evaluate P ROGRAM FC on two
+challenging fact-checking datasets and show
+that it outperforms seven fact-checking base-
+lines across different settings of evidence avail-
+ability, with explicit output programs that ben-
+eﬁt human debugging.1
+1 Introduction
+The proliferation of disinformation, e.g., in social
+media, has made automated fact-checking a crucial
+application of natural language processing (NLP).
+Given a claim, the goal is to ﬁnd evidence and
+then to make a verdict about the claim’s veracity
+based on that evidence (Thorne and Vlachos, 2018;
+Glockner et al., 2022; Guo et al., 2022).
+Evaluating the veracity of real-world claims of-
+ten involves collecting multiple pieces of evidence
+and applying complex reasoning (Jiang et al., 2020;
+Nguyen et al., 2020; Aly and Vlachos, 2022; Chen
+et al., 2022a). For instance, consider the claim
+“ Both James Cameron and the director of the ﬁlm
+Interstellar were born in Canada”. It may be chal-
+lenging to ﬁnd direct evidence on the web that
+1The program code and the data are publicly available at
+https://github.com/mbzuai-nlp/ProgramFC
+refutes or supports this claim. Instead, a human
+fact-checker needs to decompose the claim, gather
+multiple pieces of evidence, and perform step-by-
+step reasoning (Nakov et al., 2021a), as illustrated
+in Figure 1. This makes verifying complex claims
+much more challenging than the typical setting ex-
+plored in previous work, where information from
+a single article is sufﬁcient to support/refute the
+claim (Thorne et al., 2018; Saakyan et al., 2021;
+Schuster et al., 2021; Pan et al., 2021; Wadden
+et al., 2022a; Krishna et al., 2022).
+Besides multi-step reasoning, we still need to
+consider two key aspects for developing a reliable
+fact-checking system: (i) Explanability: The model
+should not only predict the veracity of the claim,
+but it should also provide a clear explanation of its
+reasoning process to help users understand and trust
+the results. (ii) Data efﬁciency: Human annotation
+is often time-consuming, costly, and potentially
+biased, making it difﬁcult to collect sufﬁcient high-
+quality labeled data for model training, particularly
+for complex claims. Therefore, it is desirable to
+build a model that can perform well with minimal
+or no training data. Despite a few models (Zhou
+et al., 2019; Zhong et al., 2020; Aly and Vlachos,
+2022) being proposed to facilitate multi-step rea-
+soning in fact-checking, they either lack explain-
+ability in their reasoning process or require a large
+number of task-speciﬁc training examples.
+In this paper, we present Program-Guided Fact-
+Checking (PROGRAM FC), a novel fact-checking
+framework that is both explanatory and data-
+efﬁcient. Figure 1 illustrates our approach. To
+verify complex claims, PROGRAM FC decomposes
+them into simpler sub-tasks that can be solved us-
+ing a shared library of specialized sub-task func-
+tions. To be speciﬁc,PROGRAM FC begins by gen-
+erating a reasoning program for the input claim,
+which is a sequence of sub-tasks (e.g., S1-S4 in Fig-
+ure 1) in the form ofACTION [ARGUMENT ], where
+ACTION and ARGUMENT deﬁne the type and the
+arXiv:2305.12744v1  [cs.CL]  22 May 2023

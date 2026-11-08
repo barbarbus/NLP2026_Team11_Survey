@@ -1,0 +1,8 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1.0"
+  ],
+  "description": [
+    "REFUTE evaluates whether AI models understand what scientific evidence allows, what would overturn a claim, and when confidence is justified. Latest Truth Scores across 20 models and 320 questions."
+  ]
+}

@@ -1,0 +1,117 @@
+SELF CHECK GPT: Zero-Resource Black-Box Hallucination Detection
+for Generative Large Language Models
+Potsawee Manakul, Adian Liusie, Mark J. F. Gales
+ALTA Institute, Department of Engineering, University of Cambridge
+pm574@cam.ac.uk, al826@cam.ac.uk, mjfg@eng.cam.ac.uk
+Abstract
+Generative Large Language Models (LLMs)
+such as GPT-3 are capable of generating highly
+fluent responses to a wide variety of user
+prompts. However, LLMs are known to hal-
+lucinate facts and make non-factual statements
+which can undermine trust in their output. Ex-
+isting fact-checking approaches either require
+access to the output probability distribution
+(which may not be available for systems such
+as ChatGPT) or external databases that are in-
+terfaced via separate, often complex, modules.
+In this work, we propose "SelfCheckGPT", a
+simple sampling-based approach that can be
+used to fact-check the responses of black-box
+models in a zero-resource fashion, i.e. with-
+out an external database. SelfCheckGPT lever-
+ages the simple idea that if an LLM has knowl-
+edge of a given concept, sampled responses
+are likely to be similar and contain consistent
+facts. However, for hallucinated facts, stochas-
+tically sampled responses are likely to diverge
+and contradict one another. We investigate this
+approach by using GPT-3 to generate passages
+about individuals from the WikiBio dataset, and
+manually annotate the factuality of the gener-
+ated passages. We demonstrate that SelfCheck-
+GPT can: i) detect non-factual and factual sen-
+tences; and ii) rank passages in terms of factu-
+ality. We compare our approach to several base-
+lines and show that our approach has consider-
+ably higher AUC-PR scores in sentence-level
+hallucination detection and higher correlation
+scores in passage-level factuality assessment
+compared to grey-box methods.1
+1 Introduction
+Large Language Models (LLMs) such as GPT-3
+(Brown et al., 2020) and PaLM (Chowdhery et al.,
+2022) are capable of generating fluent and realistic
+responses to a variety of user prompts. They have
+been used in many applications such as automatic
+1Code and dataset can be found on the project page at
+https://github.com/potsawee/selfcheckgpt.
+LLM
+e.g. GPT-3
+Giuseppe Mariani was
+an Italian professional
+footballer who played
+as a forward. He was
+born in Milan, Italy. He
+died in Rome, Italy.
+[truncated]
+Giuseppe Mariani was an
+Italian painter, sculptor,
+and engraver. He was
+born in Naples, Italy, in
+1882, and died in Paris,
+France, in 1944.
+[truncated]
+Giuseppe Mariani was an
+Italian violinist,
+pedagogue and
+composer. He was born
+in Pavia, Italy, on 4 June
+1836. [truncated]
+Stochastically-generated responses
+SelfCheckGPT Score
+(e.g. how often is the sentence supported by the samples)
+N samples
+Does {sample1}
+support {sentence}?
+Answer: [Yes/No]
+LLM
+sample1 sampleN
+Does {sampleN}
+support {sentence}?
+Answer: [Yes/No]
+LLM's passage
+to be evaluated at
+sentence-level 
+...
+...
+No Yes No... ...
+Figure 1: SelfCheckGPT with Prompt. Each LLM-generated
+sentence is compared against stochastically generated re-
+sponses with no external database. A comparison method
+can be, for example, through LLM prompting as shown above.
+tools to draft reports, virtual assistants and sum-
+marization systems. Despite the convincing and
+realistic nature of LLM-generated texts, a growing
+concern with LLMs is their tendency to halluci-
+nate facts. It has been widely observed that mod-
+els can confidently generate fictitious information,
+and worryingly there are few, if any, existing ap-
+proaches to suitably identify LLM hallucinations.
+A possible approach of hallucination detection
+is to leverage existing intrinsic uncertainty metrics
+to determine the parts of the output sequence that
+the system is least certain of (Yuan et al., 2021; Fu
+et al., 2023). However, uncertainty metrics such
+as token probability or entropy require access to
+token-level probability distributions, information
+which may not be available to users for example
+when systems are accessed through limited exter-
+nal APIs. An alternate approach is to leverage
+fact-verification approaches, where evidence is re-
+trieved from an external database to assess the ve-
+racity of a claim (Thorne et al., 2018; Guo et al.,
+2022). However, facts can only be assessed relative
+to the knowledge present in the database. Addition-
+1
+arXiv:2303.08896v3  [cs.CL]  11 Oct 2023

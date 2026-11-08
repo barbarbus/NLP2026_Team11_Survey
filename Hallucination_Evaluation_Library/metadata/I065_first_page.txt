@@ -1,0 +1,90 @@
+ChatGPT as a Factual Inconsistency Evaluator for Text Summarization
+Zheheng Luo, Qianqian Xie ∗, Sophia Ananiadou
+Department of Computer Science, The University of Manchester
+{zheheng.luo, qianqian.xie, sophia.ananiadou}@manchester.ac.uk
+Abstract
+The performance of text summarization has
+been greatly boosted by pre-trained language
+models. A main concern of existing methods
+is that most generated summaries are not factu-
+ally inconsistent with their source documents.
+To alleviate the problem, many efforts have fo-
+cused on developing effective factuality eval-
+uation metrics based on natural language in-
+ference, question answering, and syntactic de-
+pendency et al. However, these approaches
+are limited by either their high computational
+complexity or dependence on annotated data.
+Most recently, large language models(LLMs)
+such as ChatGPT have shown excellent perfor-
+mance in not only text generation but also lan-
+guage comprehension. In this paper, we par-
+ticularly explore ChatGPT’s ability to evaluate
+factual inconsistency under a zero-shot setting
+by examining it on both coarse-grained and
+ﬁne-grained evaluation tasks including binary
+entailment inference, summary ranking, and
+consistency rating. Experimental results indi-
+cate that ChatGPT generally outperforms pre-
+vious evaluation metrics across the three tasks,
+indicating its great potential for factual incon-
+sistency evaluation. However, a closer inspec-
+tion of ChatGPT’s output reveals certain lim-
+itations including its preference for more lex-
+ically similar candidates, false reasoning, and
+inadequate understanding of instructions.
+1 Introduction
+Recently, pre-trained language models have greatly
+improved the performance of automatic text sum-
+marization (Liu and Lapata, 2019; Lewis et al.,
+2020; Zhang et al., 2020). However, a major
+concern that has limited existing state-of-the-art
+text summarization methods is factual inconsis-
+tency, namely, the generated summaries contain-
+ing information that is not entailed by input doc-
+uments1 (Kry´sci´nski et al., 2020; Maynez et al.,
+∗Corresponding author
+1the problem is also referred to as unfaithfulness, we use
+these terms interchangeably in the following
+2020). To ﬁll the gap, signiﬁcant efforts have been
+made in developing automatic evaluation metrics
+for assessing the factuality of generated summaries,
+such as semi-supervised method FactCC (Kry ´s-
+ci´nski et al., 2020), question-answering based ap-
+proach FEQA (Wang et al., 2020) and QuestE-
+val (Scialom et al., 2021), and natural language
+inference (NLI) based method SummaC (Laban
+et al., 2022). Nevertheless, existing evaluation
+metrics either have high computational complexity
+which requires training on a huge amount of data
+or rely on multi-model combined pipelines, putting
+in more uncertainties during inferences. More-
+over, evaluations based on these metrics exhibit lim-
+ited agreement with human assessments (Pagnoni
+et al., 2021). Inspired by the ability of pre-trained
+language models (PLMs) on natural language un-
+derstanding and generation, a few efforts have
+been devoted to building data and computational-
+efﬁcient evaluation metrics based on PLMs like
+BARTScore (Yuan et al., 2021).
+Most recently, large language models (LLMs),
+such as GPT-3 (Brown et al., 2020), Instruct-
+GPT (Ouyang et al., 2022), PaLM (Chowdhery
+et al., 2022), and BLOOM (Scao et al., 2022), have
+dwarfed small scale ﬁne-tuned models in various
+natural language processing tasks often requiring
+only few-shot or zero-shot learning. These LLMs
+have demonstrated exceptional performance not
+only in natural language understanding and gen-
+eration but also in their ability to perform infer-
+ence and reasoning tasks." Speciﬁcally, equipped
+with explicitly designed prompts, LLMs can better
+solve a range of various reasoning tasks in terms
+of arithmetics, symbolic, and logic (Kojima et al.,
+2022; Wei et al., 2022). Moreover, the most recent
+effort ChatGPT (OpenAI, 2022) in particular has
+been proven to obtain strong natural language infer-
+ence ability, surpassing ﬁne-tuned pre-trained lan-
+guage models (PLMs) on several datasets (Zhong
+et al., 2023). As a result, researchers have paid
+arXiv:2303.15621v2  [cs.CL]  13 Apr 2023

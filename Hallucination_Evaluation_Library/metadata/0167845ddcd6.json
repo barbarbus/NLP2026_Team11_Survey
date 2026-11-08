@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "HalluLens: LLM Hallucination Benchmark"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2025.acl-long.1176.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2025.acl-long.1176/"
+  ],
+  "og:description": [
+    "Yejin Bang, Ziwei Ji, Alan Schelten, Anthony Hartshorn, Tara Fowler, Cheng Zhang, Nicola Cancedda, Pascale Fung. Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2025."
+  ]
+}

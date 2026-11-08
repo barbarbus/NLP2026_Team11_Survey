@@ -1,0 +1,88 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2307.01723: Phase sensitivity of spatially broadband high-gain SU(1,1) interferometers"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Phase sensitivity of spatially broadband high-gain SU(1,1) interferometers"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2307.01723v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Nonlinear interferometers are promising tools for quantum metrology, as they are characterized by an improved phase sensitivity scaling compared to linear interferometers operating with classical light. However, the multimodeness of the light generated in these interferometers results in the destruction of their phase sensitivity, requiring advanced interferometric configurations for multimode light. Moreover, in contrast to the single-mode case, time-ordering effects play an important role for the high-gain regime in the multimode scenario and must be taken into account for a correct estimation of the phase sensitivity. In this work, we present a theoretical description of spatially multimode SU(1,1) interferometers operating at low and high parametric gains. Our approach is based on a step-by-step solution of a system of integro-differential equations for each nonlinear interaction region. We focus on interferometers with diffraction compensation, where focusing elements such as a parabolic mirror are used to compensate for the divergence of the light. We investigate plane-wave and Gaussian pumping and show that for any parametric gain, there exists a region of phases for which the phase sensitivity surpasses the standard shot-noise scaling and discuss the regimes where it approaches the Heisenberg scale. Finally, we arrive at insightful analytical expressions for the phase sensitivity that are valid for both low and high parametric gain and demonstrate how it depends on the number of spatial modes of the system."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Phase sensitivity of spatially broadband high-gain SU(1,1) interferometers"
+  ],
+  "twitter:description": [
+    "Nonlinear interferometers are promising tools for quantum metrology, as they are characterized by an improved phase sensitivity scaling compared to linear interferometers operating with classical..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Phase sensitivity of spatially broadband high-gain SU(1,1) interferometers"
+  ],
+  "citation_author": [
+    "Scharwald, D.",
+    "Meier, T.",
+    "Sharapova, P. R."
+  ],
+  "citation_doi": [
+    "10.1103/PhysRevResearch.5.043158"
+  ],
+  "citation_date": [
+    "2023/07/04"
+  ],
+  "citation_online_date": [
+    "2023/07/04"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2307.01723"
+  ],
+  "citation_arxiv_id": [
+    "2307.01723"
+  ],
+  "citation_abstract": [
+    "Nonlinear interferometers are promising tools for quantum metrology, as they are characterized by an improved phase sensitivity scaling compared to linear interferometers operating with classical light. However, the multimodeness of the light generated in these interferometers results in the destruction of their phase sensitivity, requiring advanced interferometric configurations for multimode light. Moreover, in contrast to the single-mode case, time-ordering effects play an important role for the high-gain regime in the multimode scenario and must be taken into account for a correct estimation of the phase sensitivity. In this work, we present a theoretical description of spatially multimode SU(1,1) interferometers operating at low and high parametric gains. Our approach is based on a step-by-step solution of a system of integro-differential equations for each nonlinear interaction region. We focus on interferometers with diffraction compensation, where focusing elements such as a parabolic mirror are used to compensate for the divergence of the light. We investigate plane-wave and Gaussian pumping and show that for any parametric gain, there exists a region of phases for which the phase sensitivity surpasses the standard shot-noise scaling and discuss the regimes where it approaches the Heisenberg scale. Finally, we arrive at insightful analytical expressions for the phase sensitivity that are valid for both low and high parametric gain and demonstrate how it depends on the number of spatial modes of the system."
+  ]
+}

@@ -1,0 +1,92 @@
+Contextualized Sequence Likelihood: Enhanced Confidence Scores for
+Natural Language Generation
+Zhen Lin1, Shubhendu Trivedi, Jimeng Sun1,2
+1University of Illinois at Urbana-Champaign
+2Carle’s Illinois College of Medicine, University of Illinois at Urbana-Champaign,
+Correspondence: zhenlin4@illinois.edu
+Abstract
+The advent of large language models (LLMs)
+has dramatically advanced the state-of-the-art
+in numerous natural language generation tasks.
+For LLMs to be applied reliably, it is essential
+to have an accurate measure of their confidence.
+Currently, the most commonly used confidence
+score function is the likelihood of the generated
+sequence, which, however, conflates seman-
+tic and syntactic components. For instance, in
+question-answering (QA) tasks, an awkward
+phrasing of the correct answer might result
+in a lower probability prediction. Addition-
+ally, different tokens should be weighted differ-
+ently depending on the context. In this work,
+we propose enhancing the predicted sequence
+probability by assigning different weights to
+various tokens using attention values elicited
+from the base LLM. By employing a valida-
+tion set, we can identify the relevant attention
+heads, thereby significantly improving the reli-
+ability of the vanilla sequence probability con-
+fidence measure. We refer to this new score
+as the Contextualized Sequence Likelihood
+(CSL). CSL is easy to implement, fast to com-
+pute, and offers considerable potential for fur-
+ther improvement with task-specific prompts.
+Across several QA datasets and a diverse ar-
+ray of LLMs, CSL has demonstrated signif-
+icantly higher reliability than state-of-the-art
+baselines in predicting generation quality, as
+measured by the AUROC or AUARC. The
+code to replicate our experiments is available
+at https://github.com/zlin7/ContextSL.
+1 Introduction
+The development of large language models (LLMs)
+has afforded tremendous advancements in natu-
+ral language generation (NLG). Recently, LLMs
+have been widely applied across various natural
+language domains (Zhang et al., 2023; Wang et al.,
+2023a; Alves et al., 2023; Zhang et al., 2024),
+even extending to tasks and domains traditionally
+dominated by other machine learning algorithms,
+such as graph data (Fatemi et al., 2024), tabular
+data (Borisov et al., 2023; Hegselmann et al., 2023),
+time series (Gruver et al., 2023; Rasul et al., 2024),
+predictive chemistry (Jablonka et al., 2024; Shi
+et al., 2023), computer vision (Wang et al., 2023b),
+amongst others. As LLMs continue to demonstrate
+outstanding performance, their reliability is increas-
+ingly scrutinized. Uncertainty quantification, an
+area of research that can provide some guidance
+on reliability, has recently gained much attention.
+Despite its long history in other machine learning
+tasks (Gawlikowski et al., 2023), our understand-
+ing of uncertainty quantification in NLG remains
+relatively limited.
+During pre-training, (autoregressive) LLMs are
+optimized to predict high logits for the target token
+to minimize (variants of) the negative log likeli-
+hood. Consequently, one of the most natural and
+widely used confidence scores in selective NLG,
+conformal NLG, or uncertainty quantification is
+the (sometimes normalized) likelihood of the se-
+quence, equivalent to the sum/mean of token logits.
+At first glance, sequence likelihood appears to be
+the most faithful reflection of a model’s confidence,
+as it represents the (log of) the predicted probabil-
+ity of the output sequence, or log ˆp(s|x). However,
+this measure often lacks proper contextualization
+and disregards the specific nature of the task at
+hand. ˆp(s|x) conflates syntactic and semantic like-
+lihoods, though we typically prioritize the semantic
+aspect, to a varying degree depending on the task.
+For example, depending on whether the question
+is “Which country won the World Cup in 2022”
+or “When did Messi win the World Cup,” the an-
+swer “Messi emerged victorious in the 2022 World
+Cup” could be considered correct or incorrect. Fur-
+ther, the somewhat unusual expression here could
+adversely impact ˆp(s|x).
+Despite its limitations, relatively limited atten-
+tion has been paid to improving the vanilla se-
+quence likelihood. A recent study by Duan et al.
+1
+arXiv:2406.01806v1  [cs.CL]  3 Jun 2024

@@ -1,0 +1,81 @@
+Do Androids Know They’re Only Dreaming of Electric Sheep?
+Sky CH-Wang◦∗ Benjamin Van Durme• Jason Eisner• Chris Kedzie•
+◦Department of Computer Science, Columbia University
+•Microsoft
+skywang@cs.columbia.edu, chriskedzie@microsoft.com
+Abstract
+We design probes trained on the internal rep-
+resentations of a transformer language model
+to predict its hallucinatory behavior on three
+grounded generation tasks. To train the probes,
+we annotate for span-level hallucination on
+both sampled (organic) and manually edited
+(synthetic) reference outputs. Our probes are
+narrowly trained and we find that they are sen-
+sitive to their training domain: they generalize
+poorly from one task to another or from syn-
+thetic to organic hallucinations. However, on
+in-domain data, they can reliably detect halluci-
+nations at many transformer layers, achieving
+95% of their peak performance as early as layer
+4. Here, probing proves accurate for evaluating
+hallucination, outperforming several contem-
+porary baselines and even surpassing an expert
+human annotator in response-level detection F1.
+Similarly, on span-level labeling, probes are on
+par or better than the expert annotator on two
+out of three generation tasks. Overall, we find
+that probing is a feasible and efficient alterna-
+tive to language model hallucination evaluation
+when model states are available.
+1 Introduction
+Do language models know when they’re hallucinat-
+ing?1 Detecting hallucinations in grounded gen-
+eration tasks (such as document summarization)
+is commonly framed as a textual entailment prob-
+lem (Ji et al., 2023), with prior work largely fo-
+cused on creating or applying secondary detection
+models trained on and applied to surface text (see
+Falke et al. (2019); Huang et al. (2020); Kryscinski
+et al. (2020); Goyal and Durrett (2020); Mishra
+et al. (2021); and others). In this work, we explore
+the degree to which the generation model itself—
+a decoder-only transformer— already encodes the
+desired diagnostic information in its feed-forward
+∗ Work performed as an intern at Microsoft Semantic
+Machines. Code and data available at https://github.com/
+microsoft/llm_generation_probes.
+1That is, do they know their electric sheep are ungrounded?
+(First Token   Last Token)
+T oken In Generated Response
+Transformer Layer
+(Deep   Shallow)
+(Grounded   Hallucination)
+T oken Hallucination Prediction by Single Layer Classifiers
+Figure 1: Prediction of hallucination in one generated
+response by probing the hidden states of a transformer
+during decoding. The true annotated span of hallucina-
+tion within the response is boxed in white; rows repre-
+sent probes trained to detect hallucination from different
+transformer layers, with columns representing their pre-
+diction for each token in a generated response.
+and self-attention output states. We train span-level
+probes supervised at the token-level and response-
+level probes for hallucination on several grounded
+generation tasks and show that hallucination with
+respect to grounding data is detectable from an
+transformer’s hidden states, in line with similar
+results on probing ungrounded (i.e., closed-book
+QA) generation (Mielke et al., 2022; Azaria and
+Mitchell, 2023).
+As a language model generates a response, we
+apply our probes to its encoded tokens to deter-
+mine whether the current token is likely to be a
+hallucination. Related work has argued that these
+encodings are full of meta-information about the
+model’s generation process. For example, salient
+information for generation can be localized to spe-
+cific model layers and time steps (Geva et al., 2021;
+Meng et al., 2022, 2023), and hidden states can en-
+code the model’s confidence about the correctness
+arXiv:2312.17249v2  [cs.CL]  8 Jun 2024

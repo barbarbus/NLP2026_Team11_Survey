@@ -1,0 +1,96 @@
+Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics:
+Human Language Technologies (V olume 1: Long Papers), pages 1090–1111
+June 16-21, 2024 ©2024 Association for Computational Linguistics
+Language Models Hallucinate, but May Excel at Fact Verification
+Jian Guan1∗, Jesse Dodge2, David Wadden2, Minlie Huang1†, Hao Peng3*
+1The CoAI group, DCST, Institute for Artificial Intelligence,
+1State Key Lab of Intelligent Technology and Systems,
+1Beijing National Research Center for Information Science and Technology,
+1Tsinghua University, Beijing 100084, China.
+2Allen Institute for AI, 3University of Illinois Urbana-Champaign
+j-guan19@mails.tsinghua.edu.cn, jessed@allenai.org, davidw@allenai.org,
+aihuang@tsinghua.edu.cn, haopeng@illinois.edu
+Abstract
+Recent progress in natural language process-
+ing (NLP) owes much to remarkable advances
+in large language models (LLMs). Neverthe-
+less, LLMs frequently “hallucinate,” resulting
+in non-factual outputs. Our carefully-designed
+human evaluation substantiates the serious hal-
+lucination issue, revealing that even GPT-3.5
+produces factual outputs less than 25% of the
+time. This underscores the importance of fact
+verifiers in order to measure and incentivize
+progress. Our systematic investigation affirms
+that LLMs can be repurposed as effective fact
+verifiers with strong correlations with human
+judgments. Surprisingly, FLAN-T5 11B, the
+least factual generator in our study, performs
+the best as a fact verifier, even outperforming
+more capable LLMs like GPT3.5 and Chat-
+GPT. Delving deeper, we analyze the reliance
+of these LLMs on high-quality evidence, as
+well as their deficiencies in robustness and gen-
+eralization ability. Our study presents insights
+for developing trustworthy generation models.
+1 Introduction
+LLMs have demonstrated remarkable performance
+across various natural language generation (NLG)
+tasks (Brown et al., 2020; OpenAI, 2023; Chowdh-
+ery et al., 2022). However, they persistently suffer
+from the hallucination problem (Bang et al., 2023),
+often generating non-factual and sometimes mis-
+leading outputs. This is quantitatively substantiated
+by the first part of this paper. In our carefully de-
+signed human evaluation of several current LLMs,
+GPT-3.5 only manages to produce factual outputs
+less than 25% of the time; other models perform
+even worse. Such underperformance is achieved
+on Wikipedia, a domain that they have been ex-
+tensively trained in and intuitively “familiar with.”
+Our findings highlight the serious challenge that
+* This work was partially done when Jian Guan and Hao
+Peng were at Allen Institute for AI.
+†Corresponding author.
+the hallucination issue presents, and underscore
+the crucial importance of developing effective fact
+verification methods (Vlachos and Riedel, 2014).
+These methods are central to evaluating and incen-
+tivizing progress in improving LLMs’ factuality.
+In the second part of the paper, we explore the
+prospect of leveraging instruction-tuned LLMs for
+fact verification. We hypothesize that, despite strug-
+gling to generate factual outputs, they may still
+be able to judge whether a piece of text is fac-
+tual—a task that intuitively appears easier, at least
+for sentence-level judgments. Our systematic in-
+vestigation affirms this hypothesis, especially when
+LLMs are augmented with retrieval components.
+Specifically, given a statement to be verified, we
+retrieve evidence from an external corpus and re-
+frame the statement and evidence into a prompt to
+instruct an LLM to judge the factuality. We then
+normalize the LLM’s generation probabilities of
+pre-defined answers as the factuality score, which
+shows stronger correlations with human judgments
+than previous statistical and model-based methods.
+Extensive experiments further reveal that FLAN-
+T511B (Chung et al., 2022), the least factual gen-
+erator in our study, even surprisingly outperforms
+GPT3.5 and ChatGPT for fact verification.
+We further analyze the LLM-based fact veri-
+fiers from the following perspectives: (1) Influ-
+ence of given evidence: ChatGPT is susceptible
+to irrelevant evidence but deals with relevant but
+counterfactual evidence better than FLAN-T511B.
+(2) Robustness: GPT variants are less robust to
+different prompts than FLAN-T5 11 B; (3) Gener-
+alization ability: It is more difficult to evaluate
+sentences that are from larger generators, depen-
+dent on the context or involving numerals. Eval-
+uating paragraphs is also challenging, and can be
+facilitated by aggregating judgments of individual,
+de-contextualized sentences rather than evaluating
+them directly. Our contributions are as follows:
+I. Well-designed human evaluation affirms the seri-
+1090

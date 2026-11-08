@@ -1,0 +1,85 @@
+ENOKI: Efficient Multi-Level Hallucination Detection
+Elisei Rykov, Timur Ionov, Nikolay Ivanov, Maksim Savkin,
+Maksim Makarenko,Alexander Panchenko,Vasily Konovalov,Julia Belikova
+Abstract
+Ensuring factuality remains a critical challenge
+for deploying LLMs in high-stakes settings. Ex-
+isting hallucination detectors usually operate at
+a single level: claim-level methods provide in-
+terpretable factual units, while span-level meth-
+ods localize unsupported text. Bridging these
+views is costly, as LLM-heavy pipelines require
+multiple decomposition and verification calls,
+and modular systems need additional claim-
+to-span alignment. We propose ENOKI 1, an
+Open Information Extraction framework for
+multi-level hallucination detection. ENOKIex-
+tracts text-anchored relational facts, verifies
+them against evidence, and projects unsup-
+ported facts back to hallucinated spans. This
+shared representation enables claim-level veri-
+fication and span-level localization without re-
+quiring separate alignment. ENOKIsupports
+LLM-based, encoder-based, and rule-based ex-
+traction regimes, balancing accuracy and infer-
+ence cost through a common interface. Exper-
+iments show that ENOKIremains competitive
+with strong claim-level systems while using
+fewer resources and achieves superior perfor-
+mance on fine-grained span- and entity-level
+localization. We also release ENOKIQA, a dual-
+granularity dataset with aligned claim-level
+verification and span-level localization anno-
+tations.
+1 Introduction
+Large language models (LLMs) are increasingly
+used in knowledge-intensive applications, yet they
+often generate fluent statements that lack support-
+ing evidence or external factual knowledge. This
+problem, commonly known as hallucination, re-
+mains a central obstacle to reliable deployment (Ji
+et al., 2023; Huang et al., 2025). In high-stakes
+and retrieval-grounded settings, users often need
+1Code and datasets are available at: https://github.
+com/s-nlp/Enoki
+Question:Where was Lucien Tesnière born?
+Context:born inMont-Saint-Aignan, France, in 1893...
+Answer:Tesnière was born in Montpellier, in 1893.
+Claim-level: Tesnière was born in Montpellier, in 1893.
+Span-level:Tesnière was born in Montpellier, in 1893.
+ENOKI:
+Tesnière | was born | in 1893 entailed
+Tesnière | was born | in Montpellier not entailed
+Projection:Tesnière was born in Montpellier , in 1893.
+Figure 1: ENOKIverifies text-anchored facts and projects
+unsupported facts back to localized answer spans.
+more than just a binary factuality score. Instead, an
+actionable feedback that identifies which parts of
+an answer are unsupported is needed (Mishra et al.,
+2024; Niu et al., 2024; Kovács and Recski, 2025;
+Asai et al., 2024).
+Hallucination detection is commonly studied at
+different levels of granularity. Claim-level methods
+decompose generated answers into factual units
+and verify each unit independently, providing in-
+terpretable evidence for factuality judgments (Min
+et al., 2023; Wei et al., 2024; Song et al., 2024).
+However, their reliability depends on decomposi-
+tion quality: omitted arguments, modifiers, tem-
+poral conditions, or relations can cause the veri-
+fier to assess a proposition that differs from the
+original answer. Span-level methods instead lo-
+calize the exact text fragments responsible for un-
+supported content, which is useful for inspection,
+editing, and correction (Liu et al., 2022; Mishra
+et al., 2024; Niu et al., 2024; Kovács and Recski,
+2025). Yet span labels alone do not expose the
+factual structure being checked. Figure 1 illus-
+trates this complementarity: claim-level detection
+treats the full answer statement as a single unsup-
+ported unit, whereas span-level detection precisely
+localizes the erroneous fragment but does not, by
+itself, expose the corresponding factual units or
+proposition-level verification decisions. ENOKI
+1
+arXiv:2609.00581v2  [cs.CL]  4 Sep 2026

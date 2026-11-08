@@ -1,0 +1,20 @@
+Large Legal Fictions:
+Profiling Legal Hallucinations in Large Language
+Models*
+Matthew Dahl,† Varun Magesh,‡ Mirac Suzgun,§ Daniel E. Ho¶
+April 25, 2024
+Journal of Legal Analysis (forthcoming)
+*We thank Neel Guha, Sandy Handan-Nader, Adam T. Kalai, Peter Maldonado, Chris Manning, Joel Niklaus,
+Kit Rodolfa, Faiz Surani, Andrea Vallebueno, and three anonymous reviewers for helpful discussions and feedback.
+Our replication materials are available in the Harvard Dataverse (https://doi.org/10.7910/DVN/V4ON8H) and our data
+for future benchmarking is available on HuggingFace (https://huggingface.co/datasets/reglab/legal_hallucinations).
+Address correspondence to Matthew Dahl, 125 Prospect St., New Haven, CT 06511; email: matthew.dahl@yale.edu.
+†J.D. Candidate, Yale Law School, and Ph.D. Student, Yale University Department of Political Science.
+‡Research Fellow, Regulation, Evaluation, and Governance Lab, Stanford University.
+§J.D. Candidate, Stanford Law School, and Ph.D. Candidate, Stanford University Department of Computer Sci-
+ence.
+¶William Benjamin Scott and Luna M. Scott Professor of Law, Professor of Political Science, Senior Fellow at
+Stanford Institute for Economic Policy Research, and Faculty Director of the Regulation, Evaluation, and Governance
+Lab, Stanford University.
+1
+arXiv:2401.01301v2  [cs.CL]  21 Jun 2024

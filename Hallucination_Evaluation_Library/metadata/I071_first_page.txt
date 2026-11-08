@@ -1,0 +1,92 @@
+Do Not Design, Learn: A Trainable Scoring Function
+for Uncertainty Estimation in Generative LLMs
+Duygu Nur Yaldiz1∗ Yavuz Faruk Bakman1∗ Baturalp Buyukates2
+Chenyang Tao3† Anil Ramakrishna3† Dimitrios Dimitriadis3†
+Jieyu Zhao1 Salman Avestimehr1
+1University of Southern California 2University of Birmingham 3Amazon AI
+{yaldiz, ybakman}@usc.edu
+Abstract
+Uncertainty estimation (UE) of generative large
+language models (LLMs) is crucial for eval-
+uating the reliability of generated sequences.
+A significant subset of UE methods utilize to-
+ken probabilities to assess uncertainty, aggre-
+gating multiple token probabilities into a sin-
+gle UE score using a scoring function. Ex-
+isting scoring functions for probability-based
+UE, such as length-normalized scoring and se-
+mantic contribution-based weighting, are de-
+signed to solve certain aspects of the problem
+but exhibit limitations, including the inability
+to handle biased probabilities and complex se-
+mantic dependencies between tokens. To ad-
+dress these issues, in this work, we propose
+Learnable Response Scoring (LARS) function,
+a novel scoring function that leverages super-
+vised data to capture complex dependencies
+between tokens and probabilities, thereby pro-
+ducing more reliable and calibrated response
+scores in computing the uncertainty of LLM
+generations. Our comprehensive experiments
+across question-answering and arithmetical rea-
+soning tasks with various datasets demonstrate
+that LARS significantly outperforms existing
+scoring functions, achieving improvements of
+up to 16% AUROC score.1
+1 Introduction
+Recent years have seen a transformative shift in AI
+with the rise of generative Large Language Models
+(LLMs). Their near-human capabilities in compre-
+hension, generation, and information processing
+have revolutionized human-machine interactions,
+driving widespread adoption across industries such
+as healthcare, law, finance, and marketing (Ye et al.,
+2023; OpenAI, 2023; Touvron et al., 2023; Huang
+et al., 2023). Given that LLMs can sometimes
+*Equal contribution.
+†This work does not relate to their position at Amazon.
+1Code is available at https://github.com/
+duygunuryldz/LARS and https://github.com/Ybakman/
+TruthTorchLM
+generate misleading or erroneous outputs (Ravi
+et al., 2024; O˘guz et al., 2024), it is crucial to eval-
+uate how much reliance should be placed on their
+responses. Detecting unreliable, factually incor-
+rect, or irrelevant outputs from LLMs is studied
+under the topic of hallucination detection (Li et al.,
+2023). Methods such as fact verification (Wang
+et al., 2024; Chern et al., 2023), cross examination
+(Cohen et al., 2023) and Uncertainty Estimation
+(UE) (Malinin and Gales, 2021) serve as tools for
+hallucination detection.
+The field of UE, well-established in classifica-
+tion tasks, has recently been adapted to generative
+LLMs. In the context of generative LLMs, UE is
+used to assess the model’s reliability for a given
+query (Kuhn et al., 2023). UE methods are particu-
+larly valuable as they differ from other hallucina-
+tion detection approaches by not relying on external
+resources, such as internet search tools (Chern et al.,
+2023) or a teacher model (Cohen et al., 2023). UE
+methods in generative LLMs can be broadly cate-
+gorized into two categories: 1) Probability-based
+methods (Malinin and Gales, 2021; Kuhn et al.,
+2023) that utilize token probabilities externally to
+predict uncertainty. 2) Non-probability-based meth-
+ods (Lyu et al., 2024; Chen et al., 2024) that employ
+heuristics without relying on token probabilities for
+estimation. This work focuses on probability-based
+methods due to their widespread use and promising
+performance in UE (Bakman et al., 2024; Duan
+et al., 2024; Kuhn et al., 2023), as well as their
+applicability to closed-source API models where
+token probabilities are accessible (OpenAI, 2023).
+Probability-based UE in LLMs requires aggre-
+gating multiple token probabilities into a single
+score, which can be done through a scoring func-
+tion. Length-Normalized Scoring (LNS) (Malinin
+and Gales, 2021; Kuhn et al., 2023) is a common ap-
+proach, which calculates the mean of log probabili-
+ties of an LLM’s output to mitigate bias in longer
+generations. Subsequent approaches by Bakman
+arXiv:2406.11278v3  [cs.CL]  12 Feb 2025

@@ -1,0 +1,94 @@
+Findings of the Association for Computational Linguistics: EMNLP 2025, pages 13587–13602
+November 4-9, 2025 ©2025 Association for Computational Linguistics
+INTEGROUND : On the Evaluation of Verification and Retrieval Planning in
+Integrative Grounding
+Cheng Jiayang♠ Qianqian Zhuang♠ Haorao Li♠
+Chunkit Chan♠ Xin Liu♠ Lin Qiu♡ Yangqiu Song♠
+♠The Hong Kong University of Science and Technology
+♡Shanghai Jiaotong University
+{jchengaj, yqsong}@cse.ust.hk
+Abstract
+Grounding large language models (LLMs) in
+external knowledge sources is a promising ap-
+proach to ensuring faithful and accurate pre-
+dictions. While existing grounding approaches
+work well for simple queries, many real-world
+information needs require synthesizing multi-
+ple pieces of evidence. We introduce "integra-
+tive grounding" — the challenge of retrieving
+and verifying multiple interdependent pieces of
+evidence to support a hypothesis query. To sys-
+tematically study this problem, we repurpose
+data from four domains for evaluating integra-
+tive grounding capabilities. Our investigation
+reveals two critical findings: First, when veri-
+fying groundedness, while LLMs are robust to
+redundant evidence, they tend to rationalize us-
+ing their internal knowledge when the provided
+grounding information is incomplete. Second,
+in examining retrieval planning strategies, we
+find that undirected planning can degrade per-
+formance through the introduction of noise,
+while premise abduction emerges as a promis-
+ing approach due to its logical constraints. Ad-
+ditionally, we observe that LLMs’ zero-shot
+self-reflection capabilities consistently enhance
+grounding quality. These insights provide valu-
+able directions for developing more effective
+integrative grounding systems. 1
+1 Introduction
+Large language models (LLMs) are notorious for
+their tendency to hallucinate – generating content
+that appears plausible but is factually incorrect or
+unsupported (Ji et al., 2023; Zhang et al., 2023).
+To alleviate this issue, grounding LLMs to external
+knowledge sources has emerged as a promising
+approach. By anchoring model outputs to verifiable
+information (Min et al., 2023; Rashkin et al., 2023;
+Asai et al., 2023), grounding has enabled LLMs
+with more faithful decision-making and responsible
+generation.
+1Our code is available at https://github.com/
+HKUST-KnowComp/InteGround.
+In typical grounding setups, systems retrieve rel-
+evant documents in response to a query. While
+this approach has shown success for simple queries
+where a single piece of evidence suffices, many
+real-world information needs are inherently com-
+plex and requiresynthesizing multiple pieces of
+evidenceto form a complete answer (Figure 1).
+For instance, answering questions about compar-
+ative analysis, multi-step reasoning (Yang et al.,
+2018; Trivedi et al., 2022), or claims requiring ev-
+idence from different sources (Min et al., 2023;
+Kamoi et al., 2023; Dalvi et al., 2021) often neces-
+sitates the integration of multiple pieces of infor-
+mation. We term this problem “integrative ground-
+ing”: given a hypothesis query, a grounding system
+needs to retrieve multiple interdependent pieces of
+evidence to support it.
+Despite its significance, the integrative ground-
+ing problem lacks systematic evaluation in current
+research. Existing work on Retrieval-augmented
+Generation (RAG) primarily focuses on end-to-end
+reasoning performance (Yao et al., 2022; Shinn
+et al., 2024), reasoning with pre-retrieved evi-
+dence (Fang et al., 2024), or post-generation evalu-
+ation in specific domains (Trautmann et al., 2024;
+Song et al., 2024). While these approaches implic-
+itly address aspects of integrative grounding, they
+offer no comprehensive analysis of the grounding
+problem itself. Similarly, research in automated
+theorem proving (Dalvi et al., 2021; Sprague et al.,
+2022) explores complex inference chains but oper-
+ates in restricted domains without robust evaluation
+of the broader integrative grounding challenges.
+While related fields like Natural Language Infer-
+ence (NLI) and automated proof generation have
+their own evaluation paradigms, they typically oper-
+ate under the assumption that sufficient evidence is
+provided. A critical gap remains in systematically
+evaluating grounding under the sub-optimal evi-
+dence conditions that are common in open-world
+settings. Our work addresses this gap by intro-
+13587

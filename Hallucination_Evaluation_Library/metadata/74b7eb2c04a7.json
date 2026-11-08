@@ -1,0 +1,106 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2307.11768: Question Decomposition Improves the Faithfulness of Model-Generated Reasoning"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Question Decomposition Improves the Faithfulness of Model-Generated Reasoning"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2307.11768v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "As large language models (LLMs) perform more difficult tasks, it becomes harder to verify the correctness and safety of their behavior. One approach to help with this issue is to prompt LLMs to externalize their reasoning, e.g., by having them generate step-by-step reasoning as they answer a question (Chain-of-Thought; CoT). The reasoning may enable us to check the process that models use to perform tasks. However, this approach relies on the stated reasoning faithfully reflecting the model's actual reasoning, which is not always the case. To improve over the faithfulness of CoT reasoning, we have models generate reasoning by decomposing questions into subquestions. Decomposition-based methods achieve strong performance on question-answering tasks, sometimes approaching that of CoT while improving the faithfulness of the model's stated reasoning on several recently-proposed metrics. By forcing the model to answer simpler subquestions in separate contexts, we greatly increase the faithfulness of model-generated reasoning over CoT, while still achieving some of the performance gains of CoT. Our results show it is possible to improve the faithfulness of model-generated reasoning; continued improvements may lead to reasoning that enables us to verify the correctness and safety of LLM behavior."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Question Decomposition Improves the Faithfulness of..."
+  ],
+  "twitter:description": [
+    "As large language models (LLMs) perform more difficult tasks, it becomes harder to verify the correctness and safety of their behavior. One approach to help with this issue is to prompt LLMs to..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Question Decomposition Improves the Faithfulness of Model-Generated Reasoning"
+  ],
+  "citation_author": [
+    "Radhakrishnan, Ansh",
+    "Nguyen, Karina",
+    "Chen, Anna",
+    "Chen, Carol",
+    "Denison, Carson",
+    "Hernandez, Danny",
+    "Durmus, Esin",
+    "Hubinger, Evan",
+    "Kernion, Jackson",
+    "Lukošiūtė, Kamilė",
+    "Cheng, Newton",
+    "Joseph, Nicholas",
+    "Schiefer, Nicholas",
+    "Rausch, Oliver",
+    "McCandlish, Sam",
+    "Showk, Sheer El",
+    "Lanham, Tamera",
+    "Maxwell, Tim",
+    "Chandrasekaran, Venkatesa",
+    "Hatfield-Dodds, Zac",
+    "Kaplan, Jared",
+    "Brauner, Jan",
+    "Bowman, Samuel R.",
+    "Perez, Ethan"
+  ],
+  "citation_date": [
+    "2023/07/17"
+  ],
+  "citation_online_date": [
+    "2023/07/25"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2307.11768"
+  ],
+  "citation_arxiv_id": [
+    "2307.11768"
+  ],
+  "citation_abstract": [
+    "As large language models (LLMs) perform more difficult tasks, it becomes harder to verify the correctness and safety of their behavior. One approach to help with this issue is to prompt LLMs to externalize their reasoning, e.g., by having them generate step-by-step reasoning as they answer a question (Chain-of-Thought; CoT). The reasoning may enable us to check the process that models use to perform tasks. However, this approach relies on the stated reasoning faithfully reflecting the model's actual reasoning, which is not always the case. To improve over the faithfulness of CoT reasoning, we have models generate reasoning by decomposing questions into subquestions. Decomposition-based methods achieve strong performance on question-answering tasks, sometimes approaching that of CoT while improving the faithfulness of the model's stated reasoning on several recently-proposed metrics. By forcing the model to answer simpler subquestions in separate contexts, we greatly increase the faithfulness of model-generated reasoning over CoT, while still achieving some of the performance gains of CoT. Our results show it is possible to improve the faithfulness of model-generated reasoning; continued improvements may lead to reasoning that enables us to verify the correctness and safety of LLM behavior."
+  ]
+}

@@ -1,0 +1,87 @@
+QuCo-RAG: Quantifying Uncertainty from the Pre-training Corpus for
+Dynamic Retrieval-Augmented Generation
+Dehai Min1, Kailin Zhang2, Tongtong Wu3, Lu Cheng1
+1University of Illinois at Chicago, 2New York University,3Monash University
+dmin10@uic.edu, kz2739@nyu.edu, tongtong.wu@monash.edu, lucheng@uic.edu
+Abstract
+Dynamic Retrieval-Augmented Generation
+adaptively determines when to retrieve dur-
+ing generation to mitigate hallucinations in
+large language models (LLMs). However,
+existing methods rely on model-internal sig-
+nals (e.g., logits, entropy), which are funda-
+mentally unreliable because LLMs are typi-
+cally ill-calibrated and often exhibit high con-
+fidence in erroneous outputs. We propose
+QuCo-RAG, which shifts fromsubjectivecon-
+fidence toobjectivestatistics computed from
+pre-training data. Our method quantifies uncer-
+tainty through two stages: (1) before genera-
+tion, we identify low-frequency entities indicat-
+ing long-tail knowledge gaps; (2) during gen-
+eration, we verify entity co-occurrence in the
+pre-training corpus, where zero co-occurrence
+often signals hallucination risk. Both stages
+leverage Infini-gram for millisecond-latency
+queries over 4 trillion tokens, triggering re-
+trieval when uncertainty is high. Experiments
+on multi-hop QA benchmarks show QuCo-
+RAG achieves EM gains of 5–12 points over
+state-of-the-art baselines with OLMo-2 models,
+and transfers effectively to models with undis-
+closed pre-training data (Llama-3, Qwen2.5,
+GPT-4.1/5-chat), improving EM by up to 14
+points. Generalization to long-form genera-
+tion and biomedical QA further validates the
+robustness of our paradigm. These results es-
+tablish corpus-grounded verification as a princi-
+pled, practically model-agnostic paradigm for
+dynamic RAG1.
+1 Introduction
+Retrieval-Augmented Generation (RAG) (Lewis
+et al., 2020; Gao et al., 2023b) mitigates LLM
+hallucinations by grounding generation in exter-
+nal evidence. Early RAG systems employ static
+strategies with a single retrieval step before genera-
+tion (Karpukhin et al., 2020; Shi et al., 2024; Min
+1Our code is publicly available at https://github.com/
+ZhishanQ/QuCo-RAG.
+Il    Seduttore   was   directed   by   Mario   Camerini  and…
+Pre-training CorpusEngineEntity Co-occurrence frequency: 0millisecondsPotential Hallucination
+Outputs:(b) QuCo-RAG: Quantifying Uncertainty via Corpus Statistics
+Question: Are the directors of Il Seduttore and The Trial of Joan of Arc from the same country?
+Il      Seduttore   was   directed   by   Mario   Camerini   and…
+HighUncertaintyLowUncertainty
+(a) DRAGIN: Token-level Uncertainty via Attention & EntropyOutputs:𝑼𝒏𝒄𝒆𝒓𝒕𝒂𝒊𝒏𝒕𝒚=	𝟏.𝟒𝟕	>	𝒕𝒉𝒓𝒆𝒔𝒉𝒐𝒍𝒅𝑼𝒏𝒄𝒆𝒓𝒕𝒂𝒊𝒏𝒕𝒚<	𝒕𝒉𝒓𝒆𝒔𝒉𝒐𝒍𝒅
+❌
+ ❌( Correct: Franco Rossi )( Token from the question )
+✅
+Query
+Figure 1: Comparison of retrieval triggering mecha-
+nisms. (a) DRAGIN relies on model-internal signals,
+incorrectly assigning high uncertainty to “Il” (a token
+from the question) while showing low uncertainty on the
+hallucinated director name. (b) QuCo-RAG correctly de-
+tects the hallucination through zero entity co-occurrence
+in the pre-training corpus.
+et al., 2025), but fall short for complex multi-step
+tasks where information needs emerge dynamically
+during generation (Su et al., 2025; Wang et al.,
+2025, 2023). This has driven the emergence of
+Dynamic RAG methods that adaptively determine
+when and what to retrieve based on the generation
+process (Jiang et al., 2023; Asai et al., 2024).
+Current dynamic RAG methods predominantly
+rely on quantifying uncertainty through model-
+internal signals such as token probability (Jiang
+et al., 2023) or entropy (Su et al., 2024; Li et al.,
+2025a) to determine when to retrieve. However,
+these methods assume internal signals reliably in-
+dicate generation correctness, an assumption that
+is fundamentally flawed (Li et al., 2024b). As illus-
+trated in Figure 1(a), the notable work DRAGIN
+(Su et al., 2024) exhibits low uncertainty when
+generating the incorrect director name “Mario
+Camerini”, yet assigns high uncertainty to “Il”, a
+token from the question. This failure reflects a
+arXiv:2512.19134v2  [cs.CL]  17 May 2026

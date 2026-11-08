@@ -1,0 +1,92 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2307.06908: Generating Benchmarks for Factuality Evaluation of Language Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Generating Benchmarks for Factuality Evaluation of Language Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2307.06908v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Before deploying a language model (LM) within a given domain, it is important to measure its tendency to generate factually incorrect information in that domain. Existing methods for factuality evaluation of LLM generation focus on facts sampled from the LM itself, and thus do not control the set of evaluated facts and might under-represent domain specific or rare facts. We propose FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality. FACTOR automatically transforms a factual corpus of interest into a benchmark evaluating an LM's propensity to generate true facts from the corpus vs. similar but incorrect statements. We use our framework to create three benchmarks: Wiki-FACTOR, News-FACTOR and Expert-FACTOR. We show that: (i) our benchmark scores increase with model size and improve when the LM is augmented with retrieval; (ii) benchmark score and perplexity do not always agree on model ranking; (iii) when perplexity and benchmark score disagree, the latter better reflects factuality in open-ended generation, as measured by human annotators. We make our data and code publicly available in https://github.com/AI21Labs/factor."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Generating Benchmarks for Factuality Evaluation of Language Models"
+  ],
+  "twitter:description": [
+    "Before deploying a language model (LM) within a given domain, it is important to measure its tendency to generate factually incorrect information in that domain. Existing methods for factuality..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Generating Benchmarks for Factuality Evaluation of Language Models"
+  ],
+  "citation_author": [
+    "Muhlgay, Dor",
+    "Ram, Ori",
+    "Magar, Inbal",
+    "Levine, Yoav",
+    "Ratner, Nir",
+    "Belinkov, Yonatan",
+    "Abend, Omri",
+    "Leyton-Brown, Kevin",
+    "Shashua, Amnon",
+    "Shoham, Yoav"
+  ],
+  "citation_date": [
+    "2023/07/13"
+  ],
+  "citation_online_date": [
+    "2024/02/04"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2307.06908"
+  ],
+  "citation_arxiv_id": [
+    "2307.06908"
+  ],
+  "citation_abstract": [
+    "Before deploying a language model (LM) within a given domain, it is important to measure its tendency to generate factually incorrect information in that domain. Existing methods for factuality evaluation of LLM generation focus on facts sampled from the LM itself, and thus do not control the set of evaluated facts and might under-represent domain specific or rare facts. We propose FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality. FACTOR automatically transforms a factual corpus of interest into a benchmark evaluating an LM's propensity to generate true facts from the corpus vs. similar but incorrect statements. We use our framework to create three benchmarks: Wiki-FACTOR, News-FACTOR and Expert-FACTOR. We show that: (i) our benchmark scores increase with model size and improve when the LM is augmented with retrieval; (ii) benchmark score and perplexity do not always agree on model ranking; (iii) when perplexity and benchmark score disagree, the latter better reflects factuality in open-ended generation, as measured by human annotators. We make our data and code publicly available in https://github.com/AI21Labs/factor."
+  ]
+}

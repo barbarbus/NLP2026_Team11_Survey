@@ -1,0 +1,44 @@
+Published in Transactions on Machine Learning Research (11/2025)
+Uncertainty Quantification for Language Models: A Suite of
+Black-Box, White-Box, LLM Judge, and Ensemble Scorers
+Dylan Boucharddylan.bouchard@cvshealth.com
+CVS Health, Wellesley, MA
+Mohit Singh Chauhanmohitsingh.chauhan@cvshealth.com
+CVS Health, Wellesley, MA
+Reviewed on OpenReview:https: // openreview. net/ forum? id= WOFspd4lq5
+Abstract
+HallucinationsareapersistentproblemwithLargeLanguageModels(LLMs). Asthesemod-
+elsbecomeincreasinglyusedinhigh-stakesdomains, suchashealthcareandfinance, theneed
+for effective hallucination detection is crucial. To this end, we outline a versatile framework
+for closed-book hallucination detection that practitioners can apply to real-world use cases.
+To achieve this, we adapt a variety of existing uncertainty quantification (UQ) techniques,
+including black-box UQ, white-box UQ, and LLM-as-a-Judge, transforming them as nec-
+essary into standardized response-level confidence scores ranging from 0 to 1. To enhance
+flexibility, we propose a tunable ensemble approach that incorporates any combination of
+the individual confidence scores. This approach enables practitioners to optimize the en-
+semble for a specific use case for improved performance. To streamline implementation, the
+full suite of scorers is offered in this paper’s companion Python toolkit,uqlm. To evaluate
+the performance of the various scorers, we conduct an extensive set of experiments using
+several LLM question-answering benchmarks. We find that our tunable ensemble typically
+surpasses its individual components and outperforms existing hallucination detection meth-
+ods. Our results demonstrate the benefits of customized hallucination detection strategies
+for improving the accuracy and reliability of LLMs.
+1 Introduction
+Large language models (LLMs) are being increasingly used in production-level applications, often in high-
+stakes domains such as healthcare or finance. Consequently, there is a rising need to monitor these systems
+for the accuracy and factual correctness of model outputs. In these sensitive use cases, even minor errors can
+pose serious safety risks while also leading to high financial costs and reputational damage. A particularly
+concerning risk for LLMs is hallucination, where LLM outputs sound plausible but contain content that is
+factually incorrect. Many studies have investigated hallucination risk for LLMs (see Huang et al. (2023);
+Tonmoy et al. (2024); Shorinwa et al. (2024); Huang et al. (2024) for surveys of the literature). Even recent
+models, such as OpenAI’s GPT-4.5, have been found to hallucinate as often as 37.1% on certain benchmarks
+(OpenAI, 2025), underscoring the ongoing challenge of ensuring reliability in LLM outputs.
+Hallucination detection methods typically involve comparing ground truth texts to generated content, com-
+paring source content to generated content, or quantifying uncertainty. Assessments that compare ground
+truth texts to generated content are typically conducted pre-deployment in order to quantify hallucination
+risk of an LLM for a particular use case. While important, this collection of techniques does not lend itself
+well to real-time evaluation and monitoring of systems already deployed to production. In contrast, tech-
+niques that compare source content to generated content or quantify uncertainty can compute response-level
+scores at generation time and hence can be used for real-time monitoring of production-level applications.
+1
+arXiv:2504.19254v4  [cs.CL]  12 Nov 2025

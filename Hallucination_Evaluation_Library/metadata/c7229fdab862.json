@@ -1,0 +1,91 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2308.11764: Halo: Estimation and Reduction of Hallucinations in Open-Source Weak Large Language Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Halo: Estimation and Reduction of Hallucinations in Open-Source Weak Large Language Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2308.11764v4"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Large Language Models (LLMs) have revolutionized Natural Language Processing (NLP). Although convenient for research and practical applications, open-source LLMs with fewer parameters often suffer from severe hallucinations compared to their larger counterparts. This paper focuses on measuring and reducing hallucinations in BLOOM 7B, a representative of such weaker open-source LLMs that are publicly available for research and commercial applications. We introduce HaloCheck, a lightweight BlackBox knowledge-free framework designed to quantify the severity of hallucinations in LLMs. Additionally, we explore techniques like knowledge injection and teacher-student approaches to alleviate hallucinations in low-parameter LLMs. Our experiments effectively demonstrate the reduction of hallucinations in challenging domains for these LLMs."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Halo: Estimation and Reduction of Hallucinations in Open-Source..."
+  ],
+  "twitter:description": [
+    "Large Language Models (LLMs) have revolutionized Natural Language Processing (NLP). Although convenient for research and practical applications, open-source LLMs with fewer parameters often suffer..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Halo: Estimation and Reduction of Hallucinations in Open-Source Weak Large Language Models"
+  ],
+  "citation_author": [
+    "Elaraby, Mohamed",
+    "Lu, Mengyin",
+    "Dunn, Jacob",
+    "Zhang, Xueying",
+    "Wang, Yu",
+    "Liu, Shizhu",
+    "Tian, Pingchuan",
+    "Wang, Yuping",
+    "Wang, Yuxuan"
+  ],
+  "citation_date": [
+    "2023/08/22"
+  ],
+  "citation_online_date": [
+    "2023/09/13"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2308.11764"
+  ],
+  "citation_arxiv_id": [
+    "2308.11764"
+  ],
+  "citation_abstract": [
+    "Large Language Models (LLMs) have revolutionized Natural Language Processing (NLP). Although convenient for research and practical applications, open-source LLMs with fewer parameters often suffer from severe hallucinations compared to their larger counterparts. This paper focuses on measuring and reducing hallucinations in BLOOM 7B, a representative of such weaker open-source LLMs that are publicly available for research and commercial applications. We introduce HaloCheck, a lightweight BlackBox knowledge-free framework designed to quantify the severity of hallucinations in LLMs. Additionally, we explore techniques like knowledge injection and teacher-student approaches to alleviate hallucinations in low-parameter LLMs. Our experiments effectively demonstrate the reduction of hallucinations in challenging domains for these LLMs."
+  ]
+}

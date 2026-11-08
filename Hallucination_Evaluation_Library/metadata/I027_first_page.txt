@@ -1,0 +1,87 @@
+Adversarial NLI for Factual Correctness in Text Summarisation Models
+Mario Barrantes ∗
+mariobarque@gmail.com
+Benedikt Herudek ∗
+benedikt.herudek@gmail.com
+Richard Wang ∗
+richcmwang@gmail.com
+Abstract
+We apply the Adversarial NLI dataset to train
+the NLI model and show that the model has the
+potential to enhance factual correctness in ab-
+stract summarization. We follow the work of
+Falke et al. (2019), which rank multiple gener-
+ated summaries based on the entailment proba-
+bilities between an source document and sum-
+maries and select the summary that has the
+highest entailment probability. The authors’
+earlier study concluded that current NLI mod-
+els are not sufﬁciently accurate for the ranking
+task. We show that the Transformer models
+ﬁne-tuned on the new dataset achieve signiﬁ-
+cantly higher accuracy and have the potential
+of selecting a coherent summary.
+1 Introduction
+Text summarization aims at compressing long tex-
+tual documents into a short form that contains es-
+sential information from the source. Recently pre-
+trained Transformer Architectures signiﬁcantly im-
+prove text summarization and achieve high bench-
+mark scores (Liu and Lapata, 2019). A commonly
+used metric to measure the quality of the sum-
+mary is ROUGE, which stands for Recall-Oriented
+Understudy for Gisting Evaluation (Lin, 2004).
+Rouge works by comparing the overlapping sub-
+sequence between an automatically produced sum-
+mary against a set of reference summaries. A sub-
+stantial criticism of ROUGE is that it allows sum-
+maries that contradict to the original text but still
+achieve a high score. Multiple studies (Kryscinski
+et al., 2019), (Falke et al., 2019) show that current
+SOTA abstractive summarization models generate
+more than a third of incorrect summaries, either
+producing new information or contradicting to the
+source document. Kryscinski et al. (2019) pointed
+out that ROUGE score is uncorrelated to human
+∗equal contribution
+evaluation, and does not ensure factual correctness.
+Another shortcoming of ROUGE is that it excludes
+semantically similar words between the reference
+summary and the generated summary. A summary
+of similar meaning to the reference summary may
+have low ROUGE score because it uses different
+words.
+Natural Language Inference (NLI) models have
+been incorporated into summarization model for
+improving factual correctness through multi-task
+learning (Guo et al., 2018) or selecting the gen-
+erated summary (Falke et al., 2019) that has the
+highest entailment probability. Our investigation
+follows the work of the later authors. Their
+method generates several abstractive summaries
+from the current state-of-art-method (Chen and
+Bansal, 2018), ranks them with the entailment prob-
+ability between the source document and each gen-
+erated summary, and selects the summary that has
+the highest probability. The authors found that cur-
+rent NLI models cannot perform well on such a
+task. Using a dataset created for investigating the
+applicability of NLI models to their ranking task,
+the authors show that in more than 34% of the time
+all current NLI models suggest a summary not en-
+tailed by the source document. They conclude that
+improving the factual correctness of abstractive
+summarization requires a new NLI model.
+Studies have shown that current NLI models do
+not genuinely learn to reason, but rather exploit spu-
+rious statistical patterns Gururangan et al. (2018)
+Poliak et al. (2018). Geirho et al. (2020) pointed
+out that such ”shortcut learning” is collective in
+deep learning models. Recently Nie et al. (2019)
+developed the Adversarial NLI dataset (ANLI) that
+aimed to improve these issues. The authors em-
+ploy an adversarial process between human and
+model to construct increasingly challenging exam-
+ples, pushing the model to learn correct reason-
+ing. We hypothesis that the ANLI trained models
+arXiv:2005.11739v1  [cs.CL]  24 May 2020

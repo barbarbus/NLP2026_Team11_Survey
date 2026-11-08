@@ -1,0 +1,88 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2304.02554: Human-like Summarization Evaluation with ChatGPT"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Human-like Summarization Evaluation with ChatGPT"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2304.02554v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Evaluating text summarization is a challenging problem, and existing evaluation metrics are far from satisfactory. In this study, we explored ChatGPT's ability to perform human-like summarization evaluation using four human evaluation methods on five datasets. We found that ChatGPT was able to complete annotations relatively smoothly using Likert scale scoring, pairwise comparison, Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic evaluation metrics on some datasets. Furthermore, we discussed the impact of different prompts, compared its performance with that of human evaluation, and analyzed the generated explanations and invalid responses."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Human-like Summarization Evaluation with ChatGPT"
+  ],
+  "twitter:description": [
+    "Evaluating text summarization is a challenging problem, and existing evaluation metrics are far from satisfactory. In this study, we explored ChatGPT's ability to perform human-like summarization..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Human-like Summarization Evaluation with ChatGPT"
+  ],
+  "citation_author": [
+    "Gao, Mingqi",
+    "Ruan, Jie",
+    "Sun, Renliang",
+    "Yin, Xunjian",
+    "Yang, Shiping",
+    "Wan, Xiaojun"
+  ],
+  "citation_date": [
+    "2023/04/05"
+  ],
+  "citation_online_date": [
+    "2023/04/05"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2304.02554"
+  ],
+  "citation_arxiv_id": [
+    "2304.02554"
+  ],
+  "citation_abstract": [
+    "Evaluating text summarization is a challenging problem, and existing evaluation metrics are far from satisfactory. In this study, we explored ChatGPT's ability to perform human-like summarization evaluation using four human evaluation methods on five datasets. We found that ChatGPT was able to complete annotations relatively smoothly using Likert scale scoring, pairwise comparison, Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic evaluation metrics on some datasets. Furthermore, we discussed the impact of different prompts, compared its performance with that of human evaluation, and analyzed the generated explanations and invalid responses."
+  ]
+}

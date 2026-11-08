@@ -1,0 +1,91 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2410.15999: Steering Knowledge Selection Behaviours in LLMs via SAE-Based Representation Engineering"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Steering Knowledge Selection Behaviours in LLMs via SAE-Based Representation Engineering"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2410.15999v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Large language models (LLMs) can store a significant amount of factual knowledge in their parameters. However, their parametric knowledge may conflict with the information provided in the context -- this phenomenon, known as \\emph{context-memory knowledge conflicts}, can lead to undesirable model behaviour, such as reliance on outdated or incorrect information. Analysing the internal activations of LLMs, we find that they can internally register the signals of knowledge conflict at mid-layers. Such signals allow us to detect whether a knowledge conflict occurs and use \\emph{inference-time} intervention strategies to resolve it. In this work, we propose \\textsc{SpARE}, a \\emph{training-free} representation engineering method that uses pre-trained sparse auto-encoders (SAEs) to control the knowledge selection behaviour of LLMs. \\textsc{SpARE} identifies the functional features that control the knowledge selection behaviours and applies them to edit the internal activations of LLMs at inference time. Our experimental results show that \\textsc{SpARE} can effectively control the usage of either knowledge source to resolve knowledge conflict in open-domain question-answering tasks, surpassing existing representation engineering methods ($+10\\%$) as well as contrastive decoding methods ($+15\\%$)."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Steering Knowledge Selection Behaviours in LLMs via SAE-Based..."
+  ],
+  "twitter:description": [
+    "Large language models (LLMs) can store a significant amount of factual knowledge in their parameters. However, their parametric knowledge may conflict with the information provided in the context..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Steering Knowledge Selection Behaviours in LLMs via SAE-Based Representation Engineering"
+  ],
+  "citation_author": [
+    "Zhao, Yu",
+    "Devoto, Alessio",
+    "Hong, Giwon",
+    "Du, Xiaotang",
+    "Gema, Aryo Pradipta",
+    "Wang, Hongru",
+    "He, Xuanli",
+    "Wong, Kam-Fai",
+    "Minervini, Pasquale"
+  ],
+  "citation_date": [
+    "2024/10/21"
+  ],
+  "citation_online_date": [
+    "2025/02/09"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2410.15999"
+  ],
+  "citation_arxiv_id": [
+    "2410.15999"
+  ],
+  "citation_abstract": [
+    "Large language models (LLMs) can store a significant amount of factual knowledge in their parameters. However, their parametric knowledge may conflict with the information provided in the context -- this phenomenon, known as \\emph{context-memory knowledge conflicts}, can lead to undesirable model behaviour, such as reliance on outdated or incorrect information. Analysing the internal activations of LLMs, we find that they can internally register the signals of knowledge conflict at mid-layers. Such signals allow us to detect whether a knowledge conflict occurs and use \\emph{inference-time} intervention strategies to resolve it. In this work, we propose \\textsc{SpARE}, a \\emph{training-free} representation engineering method that uses pre-trained sparse auto-encoders (SAEs) to control the knowledge selection behaviour of LLMs. \\textsc{SpARE} identifies the functional features that control the knowledge selection behaviours and applies them to edit the internal activations of LLMs at inference time. Our experimental results show that \\textsc{SpARE} can effectively control the usage of either knowledge source to resolve knowledge conflict in open-domain question-answering tasks, surpassing existing representation engineering methods ($+10\\%$) as well as contrastive decoding methods ($+15\\%$)."
+  ]
+}

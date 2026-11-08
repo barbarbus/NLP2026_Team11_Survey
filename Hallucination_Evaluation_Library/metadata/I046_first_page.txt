@@ -1,0 +1,97 @@
+Complex Claim Verification with Evidence Retrieved in the Wild
+Jifan Chen Grace Kim Aniruddh Sriram Greg Durrett Eunsol Choi
+Department of Computer Science
+The University of Texas at Austin
+jf_chen@utexas.edu
+Abstract
+Retrieving evidence to support or refute claims
+is a core part of automatic fact-checking. Prior
+work makes simplifying assumptions in re-
+trieval that depart from real-world use cases:
+either no access to evidence, access to evidence
+curated by a human fact-checker, or access to
+evidence published after a claim was made. In
+this work, we present the first realistic pipeline
+to check real-world claims by retrieving raw
+evidence from the web. We restrict our re-
+triever to only search documents available prior
+to the claim’s making, modeling the realistic
+scenario of emerging claims. Our pipeline in-
+cludes five components: claim decomposition,
+raw document retrieval, fine-grained evidence
+retrieval, claim-focused summarization, and
+veracity judgment. We conduct experiments
+on complex political claims in the CLAIM DE-
+COMP dataset and show that the aggregated
+evidence produced by our pipeline improves
+veracity judgments. Human evaluation finds
+the evidence summary produced by our system
+is reliable (it does not hallucinate information)
+and relevant to answering key questions about a
+claim, suggesting that it can assist fact-checkers
+even when it does not reflect a complete evi-
+dence set.1
+1 Introduction
+To combat the rise of misinformation, the NLP
+community has developed automatic fact-checking
+tools. However, these automated systems are not
+ready for wide adoption at real fact-checking or-
+ganizations. Prior work handling real claims ei-
+ther relies on access to a document set which con-
+tains the “gold” evidence (Ferreira and Vlachos,
+2016; Alhindi et al., 2018; Hanselowski et al., 2019;
+Atanasova et al., 2020) or conducts unconstrained
+retrieval (Augenstein et al., 2019), which may re-
+trieve articles written by fact-checkers about the
+1Code and data available at https://github.com/
+jifan-chen/Fact-checking-via-Raw-Evidence
+Prior work: Evidence 
+published post-hoc
+Our focus: Raw evidence 
+available to fact-checkers
+Claim: James Quintero stated on October 10, 2016: 
+“When San Francisco banned plas2c grocery bags, you saw 
+the number of instances of people going to the ER … spike.”
+Fact-checking 
+ system
+Oct 10, 2016 Nov 23, 2016Feb 7, 2013
+Poli2Fact found that the 
+study methodology and 
+conclusions, were overly 
+simplis2c…
+Evidence Retrieval
+A research paper found plas2c 
+bags bans had signiﬁcant 
+nega2ve repercussions on 
+public health…
+… …
+Figure 1: Our fact-checking setting addresses realistic
+claims using evidence retrieved prior to when the claim
+was made.
+claim (example in Figure 1).
+We present the first study of fact-checking polit-
+ical claims under a realistic retrieval setting. Our
+retrieval over the web is restricted to documents au-
+thored before the time of the claim and not sourced
+from fact-checking websites, as shown by the left
+side of Figure 1. We propose a pipeline (illustrated
+in Figure 2) that builds upon prior work in fact
+checking as well as large language models (Brown
+et al., 2020) to handle the complexity of this setting.
+Our system first decomposes a claim into a series
+of subquestions (Chen et al., 2022a; Ousidhoum
+et al., 2022), targeting both explicit and implicit
+aspects of the claim. Each subquestion is fed into
+a commercial search engine to retrieve relevant
+documents, with the restrictions described above.
+Then, we conduct a second stage of fine-grained
+retrieval to isolate the most relevant portions of
+the documents. Finally, we use state-of-the-art lan-
+guage models (Brown et al., 2020; Ouyang et al.,
+2022) to generate claim-focused summaries from
+the retrieved content. These summaries can serve
+both as explanations for users as well as inputs to a
+classifier to determine the veracity based on these
+summaries.
+Evaluating individual components of our
+arXiv:2305.11859v2  [cs.CL]  15 Jun 2024

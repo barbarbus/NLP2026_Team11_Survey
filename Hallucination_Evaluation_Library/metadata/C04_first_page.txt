@@ -1,0 +1,42 @@
+A Survey of Automatic Hallucination Evaluation on Natural
+Language Generation
+Siya Qi siya.qi@kcl.ac.uk
+King’s College London
+Lin Gui lin.1.gui@kcl.ac.uk
+King’s College London
+Yulan He yulan.he@kcl.ac.uk
+King’s College London
+The Alan Turing Institute
+Zheng Yuan zheng.yuan1@sheffield.ac.uk
+The University of Sheffield
+Abstract
+The rapid advancement of Large Language Models (LLMs) has brought a pressing challenge:
+how to reliably assess hallucinations to guarantee model trustworthiness. Although Automatic
+Hallucination Evaluation (AHE) has become an indispensable component of this effort,
+the field remains fragmented in its methodologies, limiting both conceptual clarity and
+practical progress. This survey addresses this critical gap through a systematic analysis
+of 105 evaluation methods, revealing that 77.1% specifically target LLMs, a paradigm
+shift that demands new evaluation frameworks. We formulate a structured framework
+to organize the field, based on a survey of foundational datasets and benchmarks and
+a taxonomy of evaluation methodologies, which together systematically document the
+evolution from pre-LLM to post-LLM approaches. Beyond taxonomical organization, we
+identify fundamental limitations in current approaches and their implications for real-world
+deployment. To guide future research, we delineate key challenges and propose strategic
+directions, including enhanced interpretability mechanisms and integration of application-
+specific evaluation criteria, ultimately providing a roadmap for developing more robust and
+practical hallucination evaluation systems.1
+1 Introduction
+Hallucination in Natural Language Generation (NLG) typically refers to situations where generated text
+contradicts or lacks support from source input or external knowledge. While the termhallucinationis
+relatively recent, the underlying challenges of ensuring factual consistency and faithfulness have been a
+long-standing concern in the field. Early rule-based and template-based NLG systems, for instance, were
+designed to prioritize factual accuracy, often at the cost of linguistic fluency (Deemter, 2024; Ji et al., 2023;
+Gatt & Krahmer, 2018). As text generation models evolved, technologies like Large Language Models (LLMs)
+achieved grammatical correctness and fluency nearly indistinguishable from human writing (Dou et al., 2022;
+Brown et al., 2020). Consequently, hallucination has emerged as a prominent concern demanding urgent
+attention. Automatic hallucination evaluation will be crucial for advancing LLMs toward greater reliability
+and safety. This paper presents a survey of Automatic Hallucination Evaluation (AHE) methods, documenting
+current advances in hallucination detection while identifying future research directions.
+1The complete and updated list of AHE methods can be found athttps://github.com/siyaqi/Awesome-Hallu-Eval.
+1
+arXiv:2404.12041v4  [cs.CL]  20 Oct 2025

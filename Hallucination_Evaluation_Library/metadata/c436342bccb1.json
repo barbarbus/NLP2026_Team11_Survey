@@ -1,0 +1,86 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2603.21607: INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG Uncertainty Estimation"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG Uncertainty Estimation"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2603.21607v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "While retrieval-augmented generation (RAG) enhances LLM performance, it does not eliminate hallucinations, making accurate detection essential. Uncertainty-based methods are attractive for this purpose because they can be integrated into real-world pipelines with little overhead. One of the most widely used uncertainty signals is predictive entropy. We show, however, that entropy can be unreliable in RAG settings and trace this limitation to two opposing internal effects. Induction heads, which copy patterns from earlier context, causally support correct responses and lower predictive entropy, but they also appear to co-activate entropy neurons that push it back up. As a result, correct, context-grounded responses can still receive high uncertainty scores. To address this, we propose INTRYGUE (Induction-Aware Entropy Gating for Uncertainty Estimation), a training-free, mechanistically grounded method that gates predictive entropy by an attention-based estimate of induction-head activity. Evaluated across four RAG-style benchmarks and six open-source LLMs (4B to 13B parameters), INTRYGUE performs competitively against a wide range of baselines, matching or exceeding the strongest of them in most settings. Our findings suggest that hallucination detection in RAG benefits from combining predictive uncertainty with interpretable internal signals of context utilization."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG..."
+  ],
+  "twitter:description": [
+    "While retrieval-augmented generation (RAG) enhances LLM performance, it does not eliminate hallucinations, making accurate detection essential. Uncertainty-based methods are attractive for this..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG Uncertainty Estimation"
+  ],
+  "citation_author": [
+    "Kuleshova, Alexandra",
+    "Volodichev, Andrei",
+    "Kotova, Daria",
+    "Zaytsev, Alexey"
+  ],
+  "citation_date": [
+    "2026/03/23"
+  ],
+  "citation_online_date": [
+    "2026/08/31"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2603.21607"
+  ],
+  "citation_arxiv_id": [
+    "2603.21607"
+  ],
+  "citation_abstract": [
+    "While retrieval-augmented generation (RAG) enhances LLM performance, it does not eliminate hallucinations, making accurate detection essential. Uncertainty-based methods are attractive for this purpose because they can be integrated into real-world pipelines with little overhead. One of the most widely used uncertainty signals is predictive entropy. We show, however, that entropy can be unreliable in RAG settings and trace this limitation to two opposing internal effects. Induction heads, which copy patterns from earlier context, causally support correct responses and lower predictive entropy, but they also appear to co-activate entropy neurons that push it back up. As a result, correct, context-grounded responses can still receive high uncertainty scores. To address this, we propose INTRYGUE (Induction-Aware Entropy Gating for Uncertainty Estimation), a training-free, mechanistically grounded method that gates predictive entropy by an attention-based estimate of induction-head activity. Evaluated across four RAG-style benchmarks and six open-source LLMs (4B to 13B parameters), INTRYGUE performs competitively against a wide range of baselines, matching or exceeding the strongest of them in most settings. Our findings suggest that hallucination detection in RAG benefits from combining predictive uncertainty with interpretable internal signals of context utilization."
+  ]
+}

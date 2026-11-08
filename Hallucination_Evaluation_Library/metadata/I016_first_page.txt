@@ -1,0 +1,86 @@
+Hallucination Detection: A Probabilistic Framework Using Embeddings
+Distance Analysis
+Emanuele Ricco 1 Lorenzo Cima 2 3 Roberto Di Pietro 1
+Abstract
+Hallucinations are one of the major issues affect-
+ing LLMs, hindering their wide adoption in pro-
+duction systems. While current research solu-
+tions for detecting hallucinations are mainly based
+on heuristics, in this paper we introduce a math-
+ematically sound methodology to reason about
+hallucination, and leverage it to build a tool to
+detect hallucinations. To the best of our knowl-
+edge, we are the first to show that hallucinated
+content has structural differences with respect to
+correct content. To prove this result, we resort to
+the Minkowski distances in the embedding space.
+Our findings demonstrate statistically significant
+differences in the embedding distance distribu-
+tions, that are also scale free—they qualitatively
+hold regardless of the distance norm used and the
+number of keywords, questions, or responses. We
+leverage these structural differences to develop a
+tool to detect hallucinated responses, achieving
+an accuracy of 66% for a specific configuration
+of system parameters—comparable with the best
+results in the field. In conclusion, the suggested
+methodology is promising and novel, possibly
+paving the way for further research in the domain,
+also along the directions highlighted in our future
+work.
+1. Introduction
+Hallucinations in the context of artificial intelligence, partic-
+ularly in large language models (LLMs), refer to generating
+content that appears plausible or convincing while it is fac-
+tually incorrect, misleading, or entirely fabricated. These
+phenomena stem from the probabilistic and predictive mech-
+anisms underlying LLMs. Hallucinations can be classified
+1King-Abdullah University of Science and Technology
+(KAUST), CEMSE division, Thuwal, Saudi Arabia 2University
+of Pisa, Department of Information Engineering, Pisa, Italy
+3IIT-CNR, Pisa, Italy. Correspondence to: Emanuele Ricco
+<emaunele.ricco@kaust.edu.sa>.
+Copyright 2025 by the author(s)
+in intrinsic hallucinations, when the response has an oppo-
+site meaning with respect to the source material andextrinsic
+hallucinations, when the correctness of the response cannot
+be directly proved (Huang et al., 2023). Hallucinations
+can occur in various forms, including incorrect facts, non-
+sensical statements, or invented sentence, resulting from the
+model’s reliance on statistical patterns to generate responses
+and could be due to many causes. One possible cause is the
+existence of misleading information in the training data that
+could lead to produce erroneous answers—a modern version
+of the thrash-in-thrash-out paradigm (Lin et al., 2022b).
+An example of the danger of tainted data is the presence of
+sociocultural biases based on nationality stereotypes, that
+associate different entities not supported in the training data
+(Ladhak et al., 2023). The spreading of hallucinations in
+complex social networks could leverage public opinion and
+administrative processes from governments, possibly origi-
+nating social disorders and distrust in AI-generated content
+(Hao et al., 2024), in particular if incorrect information is
+spread in a coordinated manner (Cima et al., 2024a). Cur-
+rent detection strategies can be grouped in factuality and
+faithfulness approaches (Huang et al., 2023). While the
+first one involves a semiautomated fact-checking approach
+that needs human participation, (Chern et al., 2023), the
+second one requires contextual information to analyze the
+truthness (Fabbri et al., 2021). However, there have been
+no efforts into investigating the structural distinctions be-
+tween genuine and hallucinated responses in the context of
+hallucination detection. Our research addresses this gap by
+introducing a novel perspective: analyzing the embedding
+space to uncover patterns and discrepancies that differentiate
+authentic outputs from hallucinated ones. We aim to pave
+the way for a more robust and nuanced approach to detect
+hallucinations, offering a fresh direction for both theoretical
+and practical advancements in this field.
+1.1. Contributions
+Our contributions can be summarized as follows:
+• To the best of our knowledge, we are the first to propose
+a mathematically rigorous method, based on embed-
+ding distances, to evaluate the structural differences
+between genuine and hallucinated responses.
+1
+arXiv:2502.08663v1  [cs.CL]  10 Feb 2025

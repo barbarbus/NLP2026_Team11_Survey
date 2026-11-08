@@ -1,0 +1,103 @@
+TRUE: Re-evaluating Factual Consistency Evaluation
+Or HonovichT ∗ Roee AharoniG Jonathan HerzigG Hagai TaitelbaumG
+Vered CohenG Doron KuklianskyG Thomas ScialomM Idan SzpektorG
+Avinatan HassidimG Yossi MatiasG
+T Tel Aviv University GGoogle Research MMeta AI
+Tel Aviv, Israel Paris, France
+or.honovich@gmail.com
+{roeeaharoni,szpektor}@google.com
+Abstract
+Grounded text generation systems often gen-
+erate text that contains factual inconsistencies,
+hindering their real-world applicability. Auto-
+matic factual consistency evaluation may help
+alleviate this limitation by accelerating evalu-
+ation cycles, ﬁltering inconsistent outputs and
+augmenting training data. While attracting in-
+creasing attention, such evaluation metrics are
+usually developed and evaluated in silo for a
+single task or dataset, slowing their adoption.
+Moreover, previous meta-evaluation protocols
+focused on system-level correlations with hu-
+man annotations, which leave the example-
+level accuracy of such metrics unclear. In
+this work, we introduce TRUE: a comprehen-
+sive survey and assessment of factual consis-
+tency metrics on a standardized collection of
+existing texts from diverse tasks, manually
+annotated for factual consistency. Our stan-
+dardization enables an example-level meta-
+evaluation protocol that is more actionable
+and interpretable than previously reported cor-
+relations, yielding clearer quality measures.
+Across diverse state-of-the-art metrics and 11
+datasets we ﬁnd that large-scale NLI and
+question generation-and-answering-based ap-
+proaches achieve strong and complementary
+results. We recommend those methods as a
+starting point for model and metric developers,
+and hope TRUE will foster progress towards
+even better evaluation methods.1
+1 Introduction
+A core issue in deploying text generation mod-
+els for real-world applications is that they often
+generate factually inconsistent text with respect to
+the input they are conditioned on, or even com-
+pletely “hallucinate” (Lee et al., 2018; Rohrbach
+et al., 2018; Maynez et al., 2020; Zhao et al., 2020)
+as exempliﬁed in Table 1.
+∗ Work done during an internship at Google Research.
+1Our code is publicly available at http://www.
+github.com/google-research/true
+Summarization (Wang et al., 2020)
+Input
+Phyllis schlaﬂy, a leading ﬁgure in the
+us conservative movement, has died at
+her home in missouri, aged 92...
+Summary Us conservative activist phyllis schlaﬂy
+has died at the age of 87.
+Fact Veriﬁcation (Thorne et al., 2018)
+Evidence
+Ronald Bilius “Ron” Weasley is a
+character in J. K. Rowling’s Harry
+Potter ﬁctional series.
+Claim Ron Weasley is a President.
+Paraphrasing (Zhang et al., 2019)
+Input
+The tracks were produced by Tommy
+Lee, and feature Michael Beinhorn
+on drums.
+Paraphrase
+The tracks were produced by Michael
+Beinhorn and have Tommy Lee on
+drums.
+Knowledge-Grounded Dialogue (Honovich et al., 2021)
+Knowledge
+The ﬁrst ﬂip trick called a kickﬂip,
+originally called a "magic ﬂip," was
+invented by professional skateboarder
+Rodney Mullen.
+Response
+I remember the ﬁrst one was called
+magic ﬂip. It was called a magic ﬂip
+and was invented in the 60’s.
+Table 1: Factual inconsistencies (in red) from various
+tasks which are part of the TRUE study. The corre-
+sponding parts in the input/grounding are in blue.
+To tackle such inconsistencies, one would like
+to detect them automatically by predicting whether
+a generated text is factually consistent with respect
+to a grounding text (frequently referred to as the
+“input”, or the “knowledge”). Such automatic meth-
+ods attract increasing attention (Zhou et al., 2021;
+Deng et al., 2021) as they enable both better evalua-
+tion and better generation models by automatically
+ﬁltering training data (Gehrmann et al., 2021) or by
+augmenting training data for controlled generation
+(Rashkin et al., 2021b).
+While automatically evaluating factual consis-
+tency is an active line of work, there is no sin-
+gle agreed-upon meta-evaluation protocol for mea-
+suring the quality of such methods, and labeling
+schemes vary in their granularity. Works are usu-
+arXiv:2204.04991v3  [cs.CL]  3 May 2022

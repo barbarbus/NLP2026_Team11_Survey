@@ -1,0 +1,91 @@
+LM vs LM: Detecting Factual Errors via Cross Examination
+Roi Cohen1 May Hamri1 Mor Geva2 Amir Globerson1,3
+1Blavatnik School of Computer Science, Tel Aviv University
+2Google DeepMind 3Google Research
+{roi1, mayhamri}@mail.tau.ac.il, pipek@google.com, gamir@tauex.tau.ac.il
+Abstract
+A prominent weakness of modern language
+models (LMs) is their tendency to generate fac-
+tually incorrect text, which hinders their us-
+ability. A natural question is whether such fac-
+tual errors can be detected automatically. In-
+spired by truth-seeking mechanisms in law, we
+propose a factuality evaluation framework for
+LMs that is based on cross-examination. Our
+key idea is that an incorrect claim is likely to
+result in inconsistency with other claims that
+the model generates. To discover such incon-
+sistencies, we facilitate a multi-turn interaction
+between the LM that generated the claim and
+another LM (acting as an examiner) which in-
+troduces questions to discover inconsistencies.
+We empirically evaluate our method on factual
+claims made by multiple recent LMs on four
+benchmarks, ﬁnding that it outperforms exist-
+ing methods and baselines, often by a large
+gap. Our results demonstrate the potential of
+using interacting LMs to capture factual errors.
+1 Introduction
+Modern language models (LMs) often generate in-
+consistent (Elazar et al., 2021), non-attributable
+(Rashkin et al., 2021; Bohnet et al., 2022; Liu et al.,
+2023a), or factually incorrect text (Tam et al., 2022;
+Devaraj et al., 2022; Maynez et al., 2020), thus
+negatively impacting the reliability of these models
+(Amodei et al., 2016; Hendrycks et al., 2021). This
+has prompted the community to develop methods
+that calibrate the conﬁdence of model predictions
+to better align with their quality (Brundage et al.,
+2020). For example, prior methods have used prob-
+abilistic approaches (Jiang et al., 2020; Zablotskaia
+et al., 2023) clustering (Kuhn et al., 2023), ﬁne-
+tuning (Kadavath et al., 2022; Lin et al., 2022) and
+in-context learning (Alivanistos et al., 2022; Cohen
+et al., 2023).
+In this work, we take a different approach to
+this problem, motivated by truth-seeking mecha-
+nisms in law. Speciﬁcally, we consider the setting
+  The Greek god of marriage is Hera.
+Hymenaeus is considered the god of 
+marriage in Greek mythology….
+1. The Greek god of marriage is Hymenaeus.
+2. The name of the wife of Zeus in Greek 
+mythology is Hera.
+3. Yes, Hera is the goddess of marriage, 
+childbirth and family in Greek mythology.
+4. Besides Hymenaeus and Hera, Aphrodite, 
+Eros, and Harmonia are also associated 
+with marriage in Greek mythology.
+1. Who is the Greek god of marriage?
+2. What is the name of the wife of Zeus in 
+Greek mythology?
+3. Is Hera associated with marriage in any way?
+4. Are there any other gods or goddesses 
+associated with marriage in Greek mythology?
+Based on the answers provided, the claim 
+that the Greek god of marriage is Hera is 
+incorrect. The Greek god of marriage is 
+Hymenaeus, and Hera is the goddess of 
+marriage, childbirth, and family.
+Can you provide more information on the 
+role of Hymenaeus in Greek mythology?
+Figure 1: An example of our LM VLM approach. The
+ﬁrst line shows the statement made by the EXAMINEE
+LLM. Then an interaction between the EXAMINER and
+EXAMINEE takes place, and the E XAMINER arrives at
+a conclusion whether the original statement was correct
+or not (here it concludes that it was a false statement).
+where a witness is cross-examined in order to check
+whether their statement is factually correct or not.
+In such a setting, the examiner asks questions that
+aim to lead towards contradictory statements by the
+witness, while a contradiction implies that the wit-
+ness lied at least in some of the statements, hence
+the well known quote “Were you lying then or are
+you lying now?” (Wilder et al., 1957).
+To employ this mechanism to LM factual calibra-
+tion, we propose the following setting, illustrated in
+Figure 1. Our goal is to check whether a statement
+made by an LM ( “The Greek god of marriage is
+Hera”) is factually correct. We refer to the model
+arXiv:2305.13281v1  [cs.CL]  22 May 2023

@@ -1,0 +1,94 @@
+Findings of the Association for Computational Linguistics: EMNLP 2020 , pages 3592–3603
+November 16 - 20, 2020. c⃝2020 Association for Computational Linguistics
+3592
+Evaluating Factuality in Generation with Dependency-level Entailment
+Tanya Goyal and Greg Durrett
+Department of Computer Science
+The University of Texas at Austin
+tanyagoyal@utexas.edu, gdurrett@cs.utexas.edu
+Abstract
+Despite signiﬁcant progress in text generation
+models, a serious limitation is their tendency
+to produce text that is factually inconsistent
+with information in the input. Recent work
+has studied whether textual entailment systems
+can be used to identify factual errors; how-
+ever, these sentence-level entailment models
+are trained to solve a different problem than
+generation ﬁltering and they do not localize
+which part of a generation is non-factual. In
+this paper, we propose a new formulation of
+entailment that decomposes it at the level of
+dependency arcs. Rather than focusing on ag-
+gregate decisions, we instead ask whether the
+semantic relationship manifested by individ-
+ual dependency arcs in the generated output is
+supported by the input. Human judgments on
+this task are difﬁcult to obtain; we therefore
+propose a method to automatically create data
+based on existing entailment or paraphrase cor-
+pora. Experiments show that our dependency
+arc entailment model trained on this data can
+identify factual inconsistencies in paraphras-
+ing and summarization better than sentence-
+level methods or those based on question gen-
+eration, while additionally localizing the erro-
+neous parts of the generation.1
+1 Introduction
+The rise of pre-trained language models (Devlin
+et al., 2019; Radford et al., 2019) has led to strong
+text generation models for applications including
+summarization (Dong et al., 2019; Lewis et al.,
+2020), paraphrasing (Goyal and Durrett, 2020;
+Shen et al., 2020), story generation (Mao et al.,
+2019), and data augmentation (Yu et al., 2018;
+Zhang and Bansal, 2019). However, while these
+models generate ﬂuent and grammatical text, they
+are prone to making factual errors that contradict
+1Data and code available at https://github.com/
+tagoyal/dae-factuality
+Genera&on
+There was feverish 
+talk of a possible 
+military takeover.
+expl
+there was talk about the possibility 
+of a military coup.
+military coup was the feverish talk.
+There	was	talk	about	the	possibility	of	a	military	coup.
+amod
+nmod:about
+Hypothesis	2 Hypothesis	1
+military coup was the feverish talk.
+nsubj
+amodamod
+nsubj
+nmod:of
+Hypotheses
+Figure 1: Overview of our dependency arc entailment
+formulation using a ﬁltered set of Stanford Enhanced
+Dependencies. The DAE model makes independent
+factuality decisions for each dependency arc from the
+two generated hypotheses.
+the input text (Cao et al., 2018). Automatic metrics
+used to evaluate text generation, such as ROUGE
+and BERTScore (Zhang et al., 2020), are not corre-
+lated with the factual consistency or faithfulness of
+the generated text (Falke et al., 2019; Kry ´sci´nski
+et al., 2019). To address this, recent work has stud-
+ied the use of textual entailment models to rank and
+ﬁlter non-factual generations (Falke et al., 2019;
+Maynez et al., 2020). However, these models suf-
+fer from issues such as dataset biases (Gururangan
+et al., 2018; Zhou and Bansal, 2020) and a mis-
+match between the training data (entailment) and
+the test data (model generations).
+In this paper, we propose to decompose entail-
+ment decisions in a sentence to evaluate the faith-
+fulness of generated text in a more ﬁne-grained
+way. Rather than making a sentence-level entail-
+ment decision, we instead evaluate the entailment
+of dependency arcs of the generated sentence, as
+illustrated in Figure 1. This approach views depen-
+dency arcs as semantic units that can be interpreted
+in isolation. Each arc is therefore judged indepen-

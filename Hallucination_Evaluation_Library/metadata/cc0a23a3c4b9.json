@@ -1,0 +1,86 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2312.17249: Do Androids Know They're Only Dreaming of Electric Sheep?"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Do Androids Know They're Only Dreaming of Electric Sheep?"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2312.17249v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "We design probes trained on the internal representations of a transformer language model to predict its hallucinatory behavior on three grounded generation tasks. To train the probes, we annotate for span-level hallucination on both sampled (organic) and manually edited (synthetic) reference outputs. Our probes are narrowly trained and we find that they are sensitive to their training domain: they generalize poorly from one task to another or from synthetic to organic hallucinations. However, on in-domain data, they can reliably detect hallucinations at many transformer layers, achieving 95% of their peak performance as early as layer 4. Here, probing proves accurate for evaluating hallucination, outperforming several contemporary baselines and even surpassing an expert human annotator in response-level detection F1. Similarly, on span-level labeling, probes are on par or better than the expert annotator on two out of three generation tasks. Overall, we find that probing is a feasible and efficient alternative to language model hallucination evaluation when model states are available."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Do Androids Know They're Only Dreaming of Electric Sheep?"
+  ],
+  "twitter:description": [
+    "We design probes trained on the internal representations of a transformer language model to predict its hallucinatory behavior on three grounded generation tasks. To train the probes, we annotate..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Do Androids Know They're Only Dreaming of Electric Sheep?"
+  ],
+  "citation_author": [
+    "CH-Wang, Sky",
+    "Van Durme, Benjamin",
+    "Eisner, Jason",
+    "Kedzie, Chris"
+  ],
+  "citation_date": [
+    "2023/12/28"
+  ],
+  "citation_online_date": [
+    "2024/06/08"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2312.17249"
+  ],
+  "citation_arxiv_id": [
+    "2312.17249"
+  ],
+  "citation_abstract": [
+    "We design probes trained on the internal representations of a transformer language model to predict its hallucinatory behavior on three grounded generation tasks. To train the probes, we annotate for span-level hallucination on both sampled (organic) and manually edited (synthetic) reference outputs. Our probes are narrowly trained and we find that they are sensitive to their training domain: they generalize poorly from one task to another or from synthetic to organic hallucinations. However, on in-domain data, they can reliably detect hallucinations at many transformer layers, achieving 95% of their peak performance as early as layer 4. Here, probing proves accurate for evaluating hallucination, outperforming several contemporary baselines and even surpassing an expert human annotator in response-level detection F1. Similarly, on span-level labeling, probes are on par or better than the expert annotator on two out of three generation tasks. Overall, we find that probing is a feasible and efficient alternative to language model hallucination evaluation when model states are available."
+  ]
+}

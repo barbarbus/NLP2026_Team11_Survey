@@ -1,0 +1,85 @@
+The Internal State of an LLM Knows When It’s Lying
+Amos Azaria
+School of Computer Science,
+Ariel University, Israel
+Tom Mitchell
+Machine Learning Dept.,
+Carnegie Mellon University, Pittsburgh, PA
+Abstract
+While Large Language Models (LLMs) have
+shown exceptional performance in various
+tasks, one of their most prominent drawbacks
+is generating inaccurate or false information
+with a confident tone. In this paper, we provide
+evidence that the LLM’s internal state can be
+used to reveal the truthfulness of statements.
+This includes both statements provided to the
+LLM, and statements that the LLM itself gen-
+erates. Our approach is to train a classifier that
+outputs the probability that a statement is truth-
+ful, based on the hidden layer activations of
+the LLM as it reads or generates the statement.
+Experiments demonstrate that given a set of
+test sentences, of which half are true and half
+false, our trained classifier achieves an average
+of 71% to 83% accuracy labeling which sen-
+tences are true versus false, depending on the
+LLM base model. Furthermore, we explore
+the relationship between our classifier’s perfor-
+mance and approaches based on the probability
+assigned to the sentence by the LLM. We show
+that while LLM-assigned sentence probability
+is related to sentence truthfulness, this prob-
+ability is also dependent on sentence length
+and the frequencies of words in the sentence,
+resulting in our trained classifier providing a
+more reliable approach to detecting truthful-
+ness, highlighting its potential to enhance the
+reliability of LLM-generated content and its
+practical applicability in real-world scenarios.
+1 Introduction
+Large Language Models (LLMs) have recently
+demonstrated remarkable success in a broad range
+of tasks (Brown et al., 2020; Bommarito II and
+Katz, 2022; Driess et al., 2023; Bubeck et al., 2023).
+However, when composing a response, LLMs tend
+to hallucinate facts and provide inaccurate infor-
+mation (Ji et al., 2023). Furthermore, they seem to
+provide this incorrect information using confident
+and compelling language. The combination of a
+broad body of knowledge, along with the provision
+Pluto is the
+second largest smallest
+dwarf planetin our solarsystem.
+celestialbody in thesolar systemthat hasever beenclassifiedas a planet.
+only most
+Figure 1: A tree diagram that demonstrates how gener-
+ating words one at a time and committing to them may
+result in generating inaccurate information.
+of confident but incorrect information, may cause
+significant harm, as people may accept the LLM as
+a knowledgeable source, and fall for its confident
+and compelling language, even when providing
+false information.
+We believe that in order to perform well, an
+LLM must have some internal notion as to whether
+a sentence is true or false, as this information is
+required for generating (or predicting) following
+tokens. For example, consider an LLM generating
+the following false information “The sun orbits the
+Earth." After stating this incorrect fact, the LLM
+is more likely to attempt to correct itself by saying
+that this is a misconception from the past. But after
+stating a true fact, for example “The Earth orbits
+the sun," it is more likely to focus on other planets
+that orbit the sun. Therefore, we hypothesize that
+the truth or falsehood of a statement should be
+represented by, and therefore extractable from, the
+LLM’s internal state.
+Interestingly, retrospectively “understanding”
+that a statement that an LLM has just generated
+is false does not entail that the LLM will not gener-
+ate it in the first place. We identify three reasons for
+such behavior. The first reason is that an LLM gen-
+erates a token at a time, and it “commits” to each
+arXiv:2304.13734v2  [cs.CL]  17 Oct 2023

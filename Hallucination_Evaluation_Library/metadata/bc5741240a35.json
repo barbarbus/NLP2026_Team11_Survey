@@ -1,0 +1,87 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2601.14210: DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2601.14210v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "LLMs often produce fluent but incorrect answers, yet detecting such hallucinations typically requires multiple sampling passes or post-hoc verification, adding significant latency and cost. We hypothesize that intermediate layers encode confidence signals that are lost in the final output layer, and propose a lightweight probe to read these signals directly from hidden states. The probe adds less than 0.1\\% computational overhead and can run fully in parallel with generation, enabling hallucination detection before the answer is produced. Building on this, we develop an LLM router that answers confident queries immediately while delegating uncertain ones to stronger models. Despite its simplicity, our method achieves SOTA AUROC on 10 out of 12 settings across four QA benchmarks and three LLM families, with gains of up to 13 points over prior methods, and generalizes across dataset shifts without retraining."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness"
+  ],
+  "twitter:description": [
+    "LLMs often produce fluent but incorrect answers, yet detecting such hallucinations typically requires multiple sampling passes or post-hoc verification, adding significant latency and cost. We..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness"
+  ],
+  "citation_author": [
+    "Bhatnagar, Rohan",
+    "Sun, Youran",
+    "Zhang, Chi Andrew",
+    "Wen, Yixin",
+    "Yang, Haizhao"
+  ],
+  "citation_date": [
+    "2026/01/20"
+  ],
+  "citation_online_date": [
+    "2026/01/29"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2601.14210"
+  ],
+  "citation_arxiv_id": [
+    "2601.14210"
+  ],
+  "citation_abstract": [
+    "LLMs often produce fluent but incorrect answers, yet detecting such hallucinations typically requires multiple sampling passes or post-hoc verification, adding significant latency and cost. We hypothesize that intermediate layers encode confidence signals that are lost in the final output layer, and propose a lightweight probe to read these signals directly from hidden states. The probe adds less than 0.1\\% computational overhead and can run fully in parallel with generation, enabling hallucination detection before the answer is produced. Building on this, we develop an LLM router that answers confident queries immediately while delegating uncertain ones to stronger models. Despite its simplicity, our method achieves SOTA AUROC on 10 out of 12 settings across four QA benchmarks and three LLM families, with gains of up to 13 points over prior methods, and generalizes across dataset shifts without retraining."
+  ]
+}

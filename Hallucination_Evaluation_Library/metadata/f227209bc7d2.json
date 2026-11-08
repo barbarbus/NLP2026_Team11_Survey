@@ -1,0 +1,85 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2302.09664: Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2302.09664v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "We introduce a method to measure uncertainty in large language models. For tasks like question answering, it is essential to know when we can trust the natural language outputs of foundation models. We show that measuring uncertainty in natural language is challenging because of \"semantic equivalence\" -- different sentences can mean the same thing. To overcome these challenges we introduce semantic entropy -- an entropy which incorporates linguistic invariances created by shared meanings. Our method is unsupervised, uses only a single model, and requires no modifications to off-the-shelf language models. In comprehensive ablation studies we show that the semantic entropy is more predictive of model accuracy on question answering data sets than comparable baselines."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Semantic Uncertainty: Linguistic Invariances for Uncertainty..."
+  ],
+  "twitter:description": [
+    "We introduce a method to measure uncertainty in large language models. For tasks like question answering, it is essential to know when we can trust the natural language outputs of foundation..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation"
+  ],
+  "citation_author": [
+    "Kuhn, Lorenz",
+    "Gal, Yarin",
+    "Farquhar, Sebastian"
+  ],
+  "citation_date": [
+    "2023/02/19"
+  ],
+  "citation_online_date": [
+    "2023/04/15"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2302.09664"
+  ],
+  "citation_arxiv_id": [
+    "2302.09664"
+  ],
+  "citation_abstract": [
+    "We introduce a method to measure uncertainty in large language models. For tasks like question answering, it is essential to know when we can trust the natural language outputs of foundation models. We show that measuring uncertainty in natural language is challenging because of \"semantic equivalence\" -- different sentences can mean the same thing. To overcome these challenges we introduce semantic entropy -- an entropy which incorporates linguistic invariances created by shared meanings. Our method is unsupervised, uses only a single model, and requires no modifications to off-the-shelf language models. In comprehensive ablation studies we show that the semantic entropy is more predictive of model accuracy on question answering data sets than comparable baselines."
+  ]
+}

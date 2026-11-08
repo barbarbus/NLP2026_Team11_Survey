@@ -1,0 +1,326 @@
+# 阅读工作台
+
+## 124篇技术分类
+
+- [按计划书五类技术组织的完整分类与研究角色说明](Taxonomy_124.md)
+- [可筛选、统计的逐篇分类数据（CSV）](Taxonomy_124.csv)
+
+全文提取：124/124篇，共2395页。当前正文细读笔记：124/124篇；剩余0篇尚未完成逐篇精读。
+
+证据导航是程序扫描全文得到的页码索引，不是摘要或精读结论。每篇笔记均说明附录、补充材料和代码的实际核查范围及待办。完整工作尚未完成。
+
+## 已形成正文细读笔记
+
+- [C01_NLG_Hallucination_Survey](notes/core/C01_NLG_Hallucination_Survey.md)
+- [C02_LLM_Hallucination_Taxonomy](notes/core/C02_LLM_Hallucination_Taxonomy.md)
+- [C03_Sirens_Song](notes/core/C03_Sirens_Song.md)
+- [C04_Automatic_Evaluation_Survey](notes/core/C04_Automatic_Evaluation_Survey.md)
+- [C05_TruthfulQA](notes/core/C05_TruthfulQA.md)
+- [C06_HaluEval](notes/core/C06_HaluEval.md)
+- [C07_FActScore](notes/core/C07_FActScore.md)
+- [C08_SelfCheckGPT](notes/core/C08_SelfCheckGPT.md)
+- [C09_AlignScore](notes/core/C09_AlignScore.md)
+- [C10_Semantic_Entropy](notes/core/C10_Semantic_Entropy.md)
+- [C11_TRUE](notes/core/C11_TRUE.md)
+- [C12_RAGTruth](notes/core/C12_RAGTruth.md)
+- [C13_FELM](notes/core/C13_FELM.md)
+- [C14_Human_Evaluation_Survey](notes/core/C14_Human_Evaluation_Survey.md)
+- [C15_Hallucination_Audit](notes/core/C15_Hallucination_Audit.md)
+- [C16_Defining_Hallucination](notes/core/C16_Defining_Hallucination.md)
+- [I001_Factuality_Survey](notes/important/I001_Factuality_Survey.md)
+- [I002_PHD_Reverse_Validation](notes/important/I002_PHD_Reverse_Validation.md)
+- [I003_HADES](notes/important/I003_HADES.md)
+- [I004_BAMBOO](notes/important/I004_BAMBOO.md)
+- [I005_ETF](notes/important/I005_ETF.md)
+- [I006_ENOKI](notes/important/I006_ENOKI.md)
+- [I007_FRANK](notes/important/I007_FRANK.md)
+- [I008_FactCHD](notes/important/I008_FactCHD.md)
+- [I010_FAVA](notes/important/I010_FAVA.md)
+- [I011_FreshLLMs_FreshQA](notes/important/I011_FreshLLMs_FreshQA.md)
+- [I012_FACTOR](notes/important/I012_FACTOR.md)
+- [I013_HALoGEN](notes/important/I013_HALoGEN.md)
+- [I014_HalluLens](notes/important/I014_HalluLens.md)
+- [I015_EntFA_Factual_Hallucination](notes/important/I015_EntFA_Factual_Hallucination.md)
+- [I016_Embedding_Distance](notes/important/I016_Embedding_Distance.md)
+- [I017_HALO_HaloCheck](notes/important/I017_HALO_HaloCheck.md)
+- [I018_LLM_Fact_Verification](notes/important/I018_LLM_Fact_Verification.md)
+- [I019_RL4HS](notes/important/I019_RL4HS.md)
+- [I020_Monitoring_Decoding](notes/important/I020_Monitoring_Decoding.md)
+- [I021_RealTime_QA](notes/important/I021_RealTime_QA.md)
+- [I022_Self_Contradictory_Hallucinations](notes/important/I022_Self_Contradictory_Hallucinations.md)
+- [I023_Teaching_with_Lies](notes/important/I023_Teaching_with_Lies.md)
+- [I024_Dawn_After_Dark](notes/important/I024_Dawn_After_Dark.md)
+- [I026_FACTCHECKMATE](notes/important/I026_FACTCHECKMATE.md)
+- [I027_Adversarial_NLI](notes/important/I027_Adversarial_NLI.md)
+- [I029_CONNER_Beyond_Factuality](notes/important/I029_CONNER_Beyond_Factuality.md)
+- [I031_Dependency_Arc_Entailment](notes/important/I031_Dependency_Arc_Entailment.md)
+- [I032_FACTOOL](notes/important/I032_FACTOOL.md)
+- [I033_LLM_based_NLG_Evaluation](notes/important/I033_LLM_based_NLG_Evaluation.md)
+- [I034_ICE](notes/important/I034_ICE.md)
+- [I035_Faithfulness_and_Factuality](notes/important/I035_Faithfulness_and_Factuality.md)
+- [I036_NLI_Summary_Ranking](notes/important/I036_NLI_Summary_Ranking.md)
+- [I037_SummEval](notes/important/I037_SummEval.md)
+- [I040_Unanswerable_Beyond_SQuAD](notes/important/I040_Unanswerable_Beyond_SQuAD.md)
+- [I041_Correctness_and_Faithfulness_QA](notes/important/I041_Correctness_and_Faithfulness_QA.md)
+- [I042_FEQA](notes/important/I042_FEQA.md)
+- [I043_QuestEval](notes/important/I043_QuestEval.md)
+- [I044_ARES](notes/important/I044_ARES.md)
+- [I045_Can_LLMs_Express_Their_Uncertainty](notes/important/I045_Can_LLMs_Express_Their_Uncertainty.md)
+- [I046_Complex_Claim_Verification_with_Evidence_Retrieved_in_the_Wild](notes/important/I046_Complex_Claim_Verification_with_Evidence_Retrieved_in_the_Wild.md)
+- [I047_FACTKG](notes/important/I047_FACTKG.md)
+- [I048_ProgramFC](notes/important/I048_ProgramFC.md)
+- [I050_GraphEval](notes/important/I050_GraphEval.md)
+- [I051_TOHA](notes/important/I051_TOHA.md)
+- [I052_INTRYGUE](notes/important/I052_INTRYGUE.md)
+- [I053_InteGround](notes/important/I053_InteGround.md)
+- [I054_Q_Squared](notes/important/I054_Q_Squared.md)
+- [I055_QuCo_RAG](notes/important/I055_QuCo_RAG.md)
+- [I057_RAGAs](notes/important/I057_RAGAs.md)
+- [I058_Retrieving_Supporting_Evidence_for_LLMs_Generated_Answers](notes/important/I058_Retrieving_Supporting_Evidence_for_LLMs_Generated_Answers.md)
+- [I059_Self_Checker](notes/important/I059_Self_Checker.md)
+- [I060_BTProp](notes/important/I060_BTProp.md)
+- [I061_Stitch_in_Time](notes/important/I061_Stitch_in_Time.md)
+- [I062_QAGS](notes/important/I062_QAGS.md)
+- [I063_Attention_Satisfies](notes/important/I063_Attention_Satisfies.md)
+- [I064_Bold_Claims_or_Self_Doubt](notes/important/I064_Bold_Claims_or_Self_Doubt.md)
+- [I065_ChatGPT_Factual_Inconsistency](notes/important/I065_ChatGPT_Factual_Inconsistency.md)
+- [I066_Contextualized_Sequence_Likelihood](notes/important/I066_Contextualized_Sequence_Likelihood.md)
+- [I067_DRIFT](notes/important/I067_DRIFT.md)
+- [I068_Distinguishing_Ignorance_from_Error](notes/important/I068_Distinguishing_Ignorance_from_Error.md)
+- [I069_Do_Androids_Know](notes/important/I069_Do_Androids_Know.md)
+- [I070_Hallucinating_References](notes/important/I070_Hallucinating_References.md)
+- [I071_LARS](notes/important/I071_LARS.md)
+- [I072_Entity_Level_Consistency](notes/important/I072_Entity_Level_Consistency.md)
+- [I073_FactCC](notes/important/I073_FactCC.md)
+- [I074_SCALE_Long_Documents](notes/important/I074_SCALE_Long_Documents.md)
+- [I075_Generating_with_Confidence](notes/important/I075_Generating_with_Confidence.md)
+- [I076_LapEigvals](notes/important/I076_LapEigvals.md)
+- [I077_Hallucination_Snowballing](notes/important/I077_Hallucination_Snowballing.md)
+- [I078_ICR_Probe](notes/important/I078_ICR_Probe.md)
+- [I079_INSIDE](notes/important/I079_INSIDE.md)
+- [I080_RACE](notes/important/I080_RACE.md)
+- [I081_Just_Ask_for_Calibration](notes/important/I081_Just_Ask_for_Calibration.md)
+- [I082_Kernel_Language_Entropy](notes/important/I082_Kernel_Language_Entropy.md)
+- [I083_PTrue_PIK](notes/important/I083_PTrue_PIK.md)
+- [I084_MARS](notes/important/I084_MARS.md)
+- [I085_Hallucination_Predictive_Uncertainty](notes/important/I085_Hallucination_Predictive_Uncertainty.md)
+- [I086_QAFactEval](notes/important/I086_QAFactEval.md)
+- [I087_BSDetector](notes/important/I087_BSDetector.md)
+- [I088_SAC3](notes/important/I088_SAC3.md)
+- [I090_Semantic_Entropy_Probes](notes/important/I090_Semantic_Entropy_Probes.md)
+- [I091_Semantic_Uncertainty](notes/important/I091_Semantic_Uncertainty.md)
+- [I092_SummaC](notes/important/I092_SummaC.md)
+- [I093_Hallucinatory_Unanswerability](notes/important/I093_Hallucinatory_Unanswerability.md)
+- [I094_Internal_State_Knows](notes/important/I094_Internal_State_Knows.md)
+- [I095_TrueTeacher](notes/important/I095_TrueTeacher.md)
+- [I096_UQLM_Suite](notes/important/I096_UQLM_Suite.md)
+- [I097_ChainPoll](notes/important/I097_ChainPoll.md)
+- [I100_G_Eval](notes/important/I100_G_Eval.md)
+- [I101_Humanlike_Summarization_Evaluation](notes/important/I101_Humanlike_Summarization_Evaluation.md)
+- [I102_MTBench_Chatbot_Arena_Judges](notes/important/I102_MTBench_Chatbot_Arena_Judges.md)
+- [I103_SummEdits_Factual_Reasoners](notes/important/I103_SummEdits_Factual_Reasoners.md)
+- [I104_LM_vs_LM](notes/important/I104_LM_vs_LM.md)
+- [I105_FairEval](notes/important/I105_FairEval.md)
+- [I106_Lynx_HaluBench](notes/important/I106_Lynx_HaluBench.md)
+- [I107_Illusion_of_Progress](notes/important/I107_Illusion_of_Progress.md)
+- [I108_Why_ChatGPT_Falls_Short_Truthful_Answers](notes/important/I108_Why_ChatGPT_Falls_Short_Truthful_Answers.md)
+- [I109_mFACT_Multilingual_Summarisation](notes/important/I109_mFACT_Multilingual_Summarisation.md)
+- [I110_HalluQA_Chinese_LLMs](notes/important/I110_HalluQA_Chinese_LLMs.md)
+- [I111_HalOmi_Multilingual_MT](notes/important/I111_HalOmi_Multilingual_MT.md)
+- [I112_Large_Multilingual_Translation_Hallucinations](notes/important/I112_Large_Multilingual_Translation_Hallucinations.md)
+- [I113_Large_Legal_Fictions](notes/important/I113_Large_Legal_Fictions.md)
+- [I114_Needle_Haystack_NMT](notes/important/I114_Needle_Haystack_NMT.md)
+- [I115_Med_HALT](notes/important/I115_Med_HALT.md)
+- [I116_MedHallu](notes/important/I116_MedHallu.md)
+- [I117_MultiHal](notes/important/I117_MultiHal.md)
+- [I118_Optimal_Transport_Attention](notes/important/I118_Optimal_Transport_Attention.md)
+- [I119_PsiloQA](notes/important/I119_PsiloQA.md)
+
+## 全部论文及证据导航
+
+- [C01 Survey of Hallucination in Natural Language Generation](evidence/C01.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C02 A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions](evidence/C02.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C03 Siren's Song in the AI Ocean: A Survey on Hallucination in Large Language Models](evidence/C03.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C04 A Survey of Automatic Hallucination Evaluation on Natural Language Generation](evidence/C04.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C05 TruthfulQA: Measuring How Models Mimic Human Falsehoods](evidence/C05.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C06 HaluEval: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models](evidence/C06.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C07 FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation](evidence/C07.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C08 SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models](evidence/C08.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C09 AlignScore: Evaluating Factual Consistency with a Unified Alignment Function](evidence/C09.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C10 Detecting hallucinations in large language models using semantic entropy](evidence/C10.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C11 TRUE: Re-evaluating Factual Consistency Evaluation](evidence/C11.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C12 RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models](evidence/C12.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C13 FELM: Benchmarking Factuality Evaluation of Large Language Models](evidence/C13.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C14 Do My Eyes Deceive Me? A Survey of Human Evaluations of Hallucinations in NLG](evidence/C14.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C15 An Audit on the Perspectives and Challenges of Hallucinations in NLP](evidence/C15.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [C16 The Pitfalls of Defining Hallucination](evidence/C16.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I001 Factuality of Large Language Models: A Survey](evidence/I001.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I002 A New Benchmark and Reverse Validation Method for Passage-level Hallucination Detection](evidence/I002.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I003 A Token-level Reference-free Hallucination Detection Benchmark for Free-form Text Generation](evidence/I003.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I004 BAMBOO: A Comprehensive Benchmark for Evaluating Long Text Modeling Capacities of Large Language Models](evidence/I004.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I005 ETF: An Entity Tracing Framework for Hallucination Detection in Code Summaries](evidence/I005.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I006 Enoki: Efficient Multi-Level Hallucination Detection](evidence/I006.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I007 FRANK: A Benchmark for Factuality Metrics](evidence/I007.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I008 FactCHD: Benchmarking Fact-Conflicting Hallucination Detection](evidence/I008.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I010 Fine-grained Hallucination Detection and Editing for Language Models](evidence/I010.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I011 FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation](evidence/I011.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I012 Generating Benchmarks for Factuality Evaluation of Language Models](evidence/I012.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I013 HALoGEN: Fantastic LLM Hallucinations and Where to Find Them](evidence/I013.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I014 HalluLens: LLM Hallucination Benchmark](evidence/I014.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I015 Hallucinated but Factual! Inspecting the Factuality of Hallucinations in Abstractive Summarization](evidence/I015.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I016 Hallucination Detection: A Probabilistic Framework Using Embeddings Distance Analysis](evidence/I016.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I017 Halo: Estimation and Reduction of Hallucinations in Open-Source Weak Large Language Models](evidence/I017.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I018 Language Models Hallucinate, but May Excel at Fact Verification](evidence/I018.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I019 Learning to Reason for Hallucination Span Detection](evidence/I019.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I020 Monitoring Decoding: Mitigating Hallucination via Evaluating the Factuality of Partial Response during Generation](evidence/I020.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I021 RealTime QA: What's the Answer Right Now?](evidence/I021.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I022 Self-contradictory Hallucinations of Large Language Models: Evaluation, Detection and Mitigation](evidence/I022.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I023 Teaching with Lies: Curriculum DPO on Synthetic Negatives for Hallucination Detection](evidence/I023.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I024 The Dawn After the Dark: An Empirical Study on Factuality Hallucination in Large Language Models](evidence/I024.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I026 FactCheckmate: Preemptively Detecting and Mitigating Hallucinations in LMs](evidence/I026.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I027 Adversarial NLI for Factual Correctness in Text Summarisation Models](evidence/I027.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I029 Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators](evidence/I029.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I031 Evaluating Factuality in Generation with Dependency-level Entailment](evidence/I031.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I032 FacTool: Factuality Detection in Generative AI -- A Tool Augmented Framework for Multi-Task and Multi-Domain Scenarios](evidence/I032.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I033 LLM-based NLG Evaluation: Current Status and Challenges](evidence/I033.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I034 Multi-Dimensional Evaluation of Text Summarization with In-Context Learning](evidence/I034.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I035 On Faithfulness and Factuality in Abstractive Summarization](evidence/I035.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I036 Ranking Generated Summaries by Correctness: An Interesting but Challenging Application for Natural Language Inference](evidence/I036.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I037 SummEval: Re-evaluating Summarization Evaluation](evidence/I037.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I040 Do We Know What We Don’t Know? Studying Unanswerable Questions beyond SQuAD 2.0](evidence/I040.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I041 Evaluating Correctness and Faithfulness of Instruction-Following Models for Question Answering](evidence/I041.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I042 FEQA: A Question Answering Evaluation Framework for Faithfulness Assessment in Abstractive Summarization](evidence/I042.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I043 QuestEval: Summarization Asks for Fact-based Evaluation](evidence/I043.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I044 ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems](evidence/I044.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I045 Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs](evidence/I045.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I046 Complex Claim Verification with Evidence Retrieved in the Wild](evidence/I046.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I047 FactKG: Fact Verification via Reasoning on Knowledge Graphs](evidence/I047.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I048 Fact-Checking Complex Claims with Program-Guided Reasoning](evidence/I048.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I050 GraphEval: A Knowledge-Graph Based LLM Hallucination Evaluation Framework](evidence/I050.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I051 Hallucination Detection in LLMs with Topological Divergence on Attention Graphs](evidence/I051.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I052 INTRYGUE: Induction-Aware Entropy Gating for Reliable RAG Uncertainty Estimation](evidence/I052.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I053 InteGround: On the Evaluation of Verification and Retrieval Planning in Integrative Grounding](evidence/I053.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I054 Q2: Evaluating Factual Consistency in Knowledge-Grounded Dialogues via Question Generation and Question Answering](evidence/I054.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I055 QuCo-RAG: Quantifying Uncertainty from the Pre-training Corpus for Dynamic Retrieval-Augmented Generation](evidence/I055.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I057 RAGAs: Automated Evaluation of Retrieval Augmented Generation](evidence/I057.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I058 Retrieving Supporting Evidence for LLMs Generated Answers](evidence/I058.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I059 Self-Checker: Plug-and-Play Modules for Fact-Checking with Large Language Models](evidence/I059.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I060 A Probabilistic Framework for LLM Hallucination Detection via Belief Tree Propagation](evidence/I060.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I061 A Stitch in Time Saves Nine: Detecting and Mitigating Hallucinations of LLMs by Validating Low-Confidence Generation](evidence/I061.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I062 Asking and Answering Questions to Evaluate the Factual Consistency of Summaries](evidence/I062.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I063 Attention Satisfies: A Constraint-Satisfaction Lens on Factual Errors of Language Models](evidence/I063.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I064 Bold Claims or Self-Doubt? Factuality Hallucination Type Detection via Belief State](evidence/I064.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I065 ChatGPT as a Factual Inconsistency Evaluator for Text Summarization](evidence/I065.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I066 Contextualized Sequence Likelihood: Enhanced Confidence Scores for Natural Language Generation](evidence/I066.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I067 DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness](evidence/I067.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I068 Distinguishing Ignorance from Error in LLM Hallucinations](evidence/I068.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I069 Do Androids Know They're Only Dreaming of Electric Sheep?](evidence/I069.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I070 Do Language Models Know When They're Hallucinating References?](evidence/I070.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I071 Do Not Design, Learn: A Trainable Scoring Function for Uncertainty Estimation in Generative LLMs](evidence/I071.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I072 Entity-level Factual Consistency of Abstractive Text Summarization](evidence/I072.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I073 Evaluating the Factual Consistency of Abstractive Text Summarization](evidence/I073.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I074 Fast and Accurate Factual Inconsistency Detection Over Long Documents](evidence/I074.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I075 Generating with Confidence: Uncertainty Quantification for Black-box Large Language Models](evidence/I075.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I076 Hallucination Detection in LLMs Using Spectral Features of Attention Maps](evidence/I076.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I077 How Language Model Hallucinations Can Snowball](evidence/I077.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I078 ICRProbe: Tracking Hidden State Dynamics for Reliable Hallucination Detection in LLMs](evidence/I078.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I079 INSIDE: LLMs' Internal States Retain the Power of Hallucination Detection](evidence/I079.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I080 Joint Evaluation of Answer and Reasoning Consistency for Hallucination Detection in Large Reasoning Models](evidence/I080.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I081 Just Ask for Calibration: Strategies for Eliciting Calibrated Confidence Scores from Language Models Fine-Tuned with Human Feedback](evidence/I081.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I082 Kernel Language Entropy: Fine-grained Uncertainty Quantification for LLMs from Semantic Similarities](evidence/I082.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I083 Language Models (Mostly) Know What They Know](evidence/I083.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I084 MARS: Meaning-Aware Response Scoring for Uncertainty Estimation in Generative LLMs](evidence/I084.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I085 On Hallucination and Predictive Uncertainty in Conditional Language Generation](evidence/I085.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I086 QAFactEval: Improved QA-Based Factual Consistency Evaluation for Summarization](evidence/I086.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I087 Quantifying Uncertainty in Answers from any Language Model and Enhancing their Trustworthiness](evidence/I087.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I088 SAC3: Reliable Hallucination Detection in Black-Box Language Models via Semantic-aware Cross-check Consistency](evidence/I088.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I090 Semantic Entropy Probes: Robust and Cheap Hallucination Detection in LLMs](evidence/I090.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I091 Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation](evidence/I091.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I092 SummaC: Re-Visiting NLI-based Models for Inconsistency Detection in Summarization](evidence/I092.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I093 The Curious Case of Hallucinatory (Un)answerability: Finding Truths in the Hidden States of Over-Confident Large Language Models](evidence/I093.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I094 The Internal State of an LLM Knows When It's Lying](evidence/I094.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I095 TrueTeacher: Learning Factual Consistency Evaluation with Large Language Models](evidence/I095.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I096 Uncertainty Quantification for Language Models: A Suite of Black-Box, White-Box, LLM Judge, and Ensemble Scorers](evidence/I096.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I097 Chainpoll: A high efficacy method for LLM hallucination detection](evidence/I097.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I100 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment](evidence/I100.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I101 Human-like Summarization Evaluation with ChatGPT](evidence/I101.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I102 Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](evidence/I102.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I103 LLMs as Factual Reasoners: Insights from Existing Benchmarks and Beyond](evidence/I103.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I104 LM vs LM: Detecting Factual Errors via Cross Examination](evidence/I104.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I105 Large Language Models are not Fair Evaluators](evidence/I105.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I106 Lynx: An Open Source Hallucination Evaluation Model](evidence/I106.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I107 The Illusion of Progress: Re-evaluating Hallucination Detection in LLMs](evidence/I107.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I108 Why Does ChatGPT Fall Short in Providing Truthful Answers?](evidence/I108.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I109 Detecting and Mitigating Hallucinations in Multilingual Summarisation](evidence/I109.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I110 Evaluating Hallucinations in Chinese Large Language Models](evidence/I110.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I111 HalOmi: A Manually Annotated Benchmark for Multilingual Hallucination and Omission Detection in Machine Translation](evidence/I111.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I112 Hallucinations in Large Multilingual Translation Models](evidence/I112.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I113 Large Legal Fictions: Profiling Legal Hallucinations in Large Language Models](evidence/I113.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I114 Looking for a Needle in a Haystack: A Comprehensive Study of Hallucinations in Neural Machine Translation](evidence/I114.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I115 Med-HALT: Medical Domain Hallucination Test for Large Language Models](evidence/I115.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I116 MedHallu: A Comprehensive Benchmark for Detecting Medical Hallucinations in Large Language Models](evidence/I116.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I117 MultiHal: Multilingual Dataset for Knowledge-Graph Grounded Evaluation of LLM Hallucinations](evidence/I117.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I118 Optimal Transport for Unsupervised Hallucination Detection in Neural Machine Translation](evidence/I118.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+- [I119 When Models Lie, We Learn: Multilingual Span-Level Hallucination Detection with PsiloQA](evidence/I119.md) — 正文已细读，关键证据核查；完整附录/复现仍有待办
+
+## 综合与核查
+
+- [第1阶段综合](Research_Questions_Stage1.md)
+- [第2阶段综合](Research_Questions_Stage2.md)
+- [第3阶段综合](Research_Questions_Stage3.md)
+- [第4阶段综合](Research_Questions_Stage4.md)
+- [第5阶段综合](Research_Questions_Stage5.md)
+- [第6阶段综合](Research_Questions_Stage6.md)
+- [第7阶段综合](Research_Questions_Stage7.md)
+- [第8阶段综合](Research_Questions_Stage8.md)
+- [第9阶段综合](Research_Questions_Stage9.md)
+- [第10阶段综合](Research_Questions_Stage10.md)
+- [第11阶段综合](Research_Questions_Stage11.md)
+- [第12阶段综合](Research_Questions_Stage12.md)
+- [第13阶段综合](Research_Questions_Stage13.md)
+- [第14阶段综合](Research_Questions_Stage14.md)
+- [第15阶段综合](Research_Questions_Stage15.md)
+- [第16阶段综合](Research_Questions_Stage16.md)
+- [第17阶段综合](Research_Questions_Stage17.md)
+- [第18阶段综合](Research_Questions_Stage18.md)
+- [第19阶段综合](Research_Questions_Stage19.md)
+- [第20阶段综合](Research_Questions_Stage20.md)
+- [第21阶段综合](Research_Questions_Stage21.md)
+- [第22阶段综合](Research_Questions_Stage22.md)
+- [第23阶段综合](Research_Questions_Stage23.md)
+- [第24阶段综合](Research_Questions_Stage24.md)
+- [第25阶段综合](Research_Questions_Stage25.md)
+- [第26阶段综合](Research_Questions_Stage26.md)
+- [第27阶段综合](Research_Questions_Stage27.md)
+- [第28阶段综合](Research_Questions_Stage28.md)
+- [第29阶段综合](Research_Questions_Stage29.md)
+- [第30阶段综合](Research_Questions_Stage30.md)
+- [第31阶段综合](Research_Questions_Stage31.md)
+- [第32阶段综合](Research_Questions_Stage32.md)
+- [第33阶段综合](Research_Questions_Stage33.md)
+- [第34阶段综合](Research_Questions_Stage34.md)
+- [第35阶段综合](Research_Questions_Stage35.md)
+- [第36阶段综合](Research_Questions_Stage36.md)
+- [第37阶段综合](Research_Questions_Stage37.md)
+- [第38阶段综合](Research_Questions_Stage38.md)
+- [第39阶段综合](Research_Questions_Stage39.md)
+- [第40阶段综合](Research_Questions_Stage40.md)
+- [第41阶段综合](Research_Questions_Stage41.md)
+- [第42阶段综合](Research_Questions_Stage42.md)
+- [第43阶段综合](Research_Questions_Stage43.md)
+- [第44阶段综合](Research_Questions_Stage44.md)
+- [第45阶段综合](Research_Questions_Stage45.md)
+- [第46阶段综合](Research_Questions_Stage46.md)
+- [第47阶段综合](Research_Questions_Stage47.md)
+- [第48阶段综合](Research_Questions_Stage48.md)
+- [第49阶段综合](Research_Questions_Stage49.md)
+- [第50阶段综合](Research_Questions_Stage50.md)
+- [第51阶段综合](Research_Questions_Stage51.md)
+- [第52阶段综合](Research_Questions_Stage52.md)
+- [第53阶段综合](Research_Questions_Stage53.md)
+- [第54阶段综合](Research_Questions_Stage54.md)
+- [第55阶段综合](Research_Questions_Stage55.md)
+- [精读后研究地图](Research_Map_Reviewed.md)
+- [当前进度](current_summary.json)
+
+124篇已有逐篇正文精读笔记；附录、源码和模型复现的范围与未完成项以各笔记为准。阶段1汇总与ZIP为历史快照，当前以current_summary.json为准。

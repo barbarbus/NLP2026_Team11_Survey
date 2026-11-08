@@ -1,0 +1,85 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2404.12060: Environment-aware UAV Communications: CKM Construction and Predictive Beamforming"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Environment-aware UAV Communications: CKM Construction and Predictive Beamforming"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2404.12060v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Predictive millimeter-wave (mmWave) beamforming is a promising technique to enable low-latency and high-rate ground-air communications for cellular-connected unmanned aerial vehicles (UAVs). However, the high vulnerability of mmWave to blockages poses practical challenges to the implementation of such a technology. In this paper, we tackle the challenges by proposing a channel knowledge map (CKM)-assisted predictive beamforming approach based on the echoed joint communication and sensing signal, whereby the line-of-sight (LoS) link identification is performed via hypothesis testing using prior information provided by CKM. Depending on the identification result, extended Kalman filtering (EKF) is adopted to reliably track the target UAV. Furthermore, if the non-line-of-sight (NLoS) state is identified, the target UAV will be immediately connected to a candidate base station (BS), namely a handover will be triggered to alleviate the communication outage. The simulation results show that the proposed method can significantly enhance the UAV tracking and mmWave communication performance compared to the benchmarking schemes without using CKM or LoS identification."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Environment-aware UAV Communications: CKM Construction and..."
+  ],
+  "twitter:description": [
+    "Predictive millimeter-wave (mmWave) beamforming is a promising technique to enable low-latency and high-rate ground-air communications for cellular-connected unmanned aerial vehicles (UAVs)...."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Environment-aware UAV Communications: CKM Construction and Predictive Beamforming"
+  ],
+  "citation_author": [
+    "Zeng, Shiqi",
+    "Xu, Xiaoli",
+    "Zeng, Yong"
+  ],
+  "citation_date": [
+    "2024/04/18"
+  ],
+  "citation_online_date": [
+    "2024/04/18"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2404.12060"
+  ],
+  "citation_arxiv_id": [
+    "2404.12060"
+  ],
+  "citation_abstract": [
+    "Predictive millimeter-wave (mmWave) beamforming is a promising technique to enable low-latency and high-rate ground-air communications for cellular-connected unmanned aerial vehicles (UAVs). However, the high vulnerability of mmWave to blockages poses practical challenges to the implementation of such a technology. In this paper, we tackle the challenges by proposing a channel knowledge map (CKM)-assisted predictive beamforming approach based on the echoed joint communication and sensing signal, whereby the line-of-sight (LoS) link identification is performed via hypothesis testing using prior information provided by CKM. Depending on the identification result, extended Kalman filtering (EKF) is adopted to reliably track the target UAV. Furthermore, if the non-line-of-sight (NLoS) state is identified, the target UAV will be immediately connected to a candidate base station (BS), namely a handover will be triggered to alleviate the communication outage. The simulation results show that the proposed method can significantly enhance the UAV tracking and mmWave communication performance compared to the benchmarking schemes without using CKM or LoS identification."
+  ]
+}

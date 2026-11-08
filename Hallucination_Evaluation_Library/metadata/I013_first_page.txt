@@ -1,0 +1,98 @@
+Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 1402–1425
+July 27 - August 1, 2025 ©2025 Association for Computational Linguistics
+HAL OGEN
+ : Fantastic LLM Hallucinations
+and Where to Find Them
+Abhilasha Ravichander1* Shrusti Ghela1†* David Wadden2 Yejin Choi3
+1University of Washington, 2Google, 3Stanford University
+https://halogen-hallucinations.github.io
+aravicha@cs.washington.edu,yejinc@stanford.edu
+{shrustighela1, dave.wadden}@gmail.com
+Abstract
+Despite their impressive ability to generate
+high-quality and fluent text, generative large
+language models (LLMs) also produce hallu-
+cinations: statements that are misaligned with
+established world knowledge or provided in-
+put context. However, measuring hallucination
+can be challenging, as having humans verify
+model generations on-the-fly is both expensive
+and time-consuming. In this work, we release
+HAL OGEN
+ , a comprehensive hallucination
+benchmark consisting of: (1) 10,923 prompts
+for generative models spanning nine domains
+including programming, scientific attribution,
+and summarization, and (2) automatic high-
+precision verifiers for each use case that decom-
+pose LLM generations into atomic units, and
+verify each unit against a high-quality knowl-
+edge source. We use this framework to evaluate
+∼150,000 generations from 14 language mod-
+els, finding that even the best-performing mod-
+els are riddled with hallucinations (sometimes
+up to 86% of generated atomic facts depending
+on the domain). We further define a novel er-
+ror classification for LLM hallucinations based
+on whether they likely stem from incorrect rec-
+ollection of training data (Type A errors), or
+incorrect knowledge in training data (Type B
+errors), or are fabrication (Type C errors). We
+hope our framework provides a foundation to
+enable the principled study of why generative
+models hallucinate, and advances the develop-
+ment of trustworthy large language models.
+1 Introduction
+A practical challenge to deploying commercial
+large language models (LLMs) is their propensity
+to produce hallucinated output: facts that are not
+aligned with world knowledge, or with the input
+context provided by the user. LLM hallucinations
+*Equal Contribution
+†Independent researcher, work done in part while author
+was at the University of Washington.
+can cause potential downstream harms for real-
+world users (NIST, 2023). Yet, the reasons behind
+why models hallucinate are unknown. Worse, it is
+difficult to even measure the extent to which mod-
+els hallucinate, due to the open-ended nature of
+model generations, and the associated time, effort,
+and cost of human verification.
+In this work we address these challenges by
+(1) creating a comprehensive benchmark over di-
+verse domains to measure hallucination behavior
+in language models at scale, and (2) using this di-
+verse benchmark to investigate potential sources
+of language model hallucination in a range of sce-
+narios. To estimate the degree to which LLMs
+hallucinate, we introduce HAL OGEN
+ (eval-
+uating Hallucinations of Generative Models), a
+large-scale evaluation suite to measure hallucina-
+tion in long-form generations of LLMs (Figure 1).
+HAL OGEN
+ consists of prompts spanning nine
+use-cases, including tasks where a model response
+is expected ( response-based) and tasks where a
+model is expected to abstain from answering ( re-
+fusal-based). For each use case, we implement
+an automatic verifier that (1) decomposes a model
+generation into a series of meaningful atomic units
+specific to the use case, and (2) verifies the fac-
+tuality of each atomic unit using external tools,
+programs, or LLM-based classifiers.
+We evaluate the responses of 14 LLMs on this
+benchmark, spanning 150k model generations.
+Our experimental results show that even the best-
+performing LLM responses are riddled with hallu-
+cination errors, with hallucination scores ranging
+from 3% to 86% depending on the task for GPT-4 .
+Further, we find that no single domain is highly
+predictive of the extent to which models will hallu-
+cinate in other domains, highlighting the need for a
+diverse, multi-domain benchmark such as HAL O-
+GEN
+ . We also find LLMs frequently hallucinate
+responses in scenarios where they should abstain,
+with even the best-performing model responding
+1402

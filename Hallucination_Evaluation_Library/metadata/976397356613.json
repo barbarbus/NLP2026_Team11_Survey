@@ -1,0 +1,92 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2207.13332: RealTime QA: What's the Answer Right Now?"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "RealTime QA: What's the Answer Right Now?"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2207.13332v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "We introduce REALTIME QA, a dynamic question answering (QA) platform that announces questions and evaluates systems on a regular basis (weekly in this version). REALTIME QA inquires about the current world, and QA systems need to answer questions about novel events or information. It therefore challenges static, conventional assumptions in open-domain QA datasets and pursues instantaneous applications. We build strong baseline models upon large pretrained language models, including GPT-3 and T5. Our benchmark is an ongoing effort, and this paper presents real-time evaluation results over the past year. Our experimental results show that GPT-3 can often properly update its generation results, based on newly-retrieved documents, highlighting the importance of up-to-date information retrieval. Nonetheless, we find that GPT-3 tends to return outdated answers when retrieved documents do not provide sufficient information to find an answer. This suggests an important avenue for future research: can an open-domain QA system identify such unanswerable cases and communicate with the user or even the retrieval module to modify the retrieval results? We hope that REALTIME QA will spur progress in instantaneous applications of question answering and beyond."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "RealTime QA: What's the Answer Right Now?"
+  ],
+  "twitter:description": [
+    "We introduce REALTIME QA, a dynamic question answering (QA) platform that announces questions and evaluates systems on a regular basis (weekly in this version). REALTIME QA inquires about the..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "RealTime QA: What's the Answer Right Now?"
+  ],
+  "citation_author": [
+    "Kasai, Jungo",
+    "Sakaguchi, Keisuke",
+    "Takahashi, Yoichi",
+    "Bras, Ronan Le",
+    "Asai, Akari",
+    "Yu, Xinyan",
+    "Radev, Dragomir",
+    "Smith, Noah A.",
+    "Choi, Yejin",
+    "Inui, Kentaro"
+  ],
+  "citation_date": [
+    "2022/07/27"
+  ],
+  "citation_online_date": [
+    "2024/02/28"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2207.13332"
+  ],
+  "citation_arxiv_id": [
+    "2207.13332"
+  ],
+  "citation_abstract": [
+    "We introduce REALTIME QA, a dynamic question answering (QA) platform that announces questions and evaluates systems on a regular basis (weekly in this version). REALTIME QA inquires about the current world, and QA systems need to answer questions about novel events or information. It therefore challenges static, conventional assumptions in open-domain QA datasets and pursues instantaneous applications. We build strong baseline models upon large pretrained language models, including GPT-3 and T5. Our benchmark is an ongoing effort, and this paper presents real-time evaluation results over the past year. Our experimental results show that GPT-3 can often properly update its generation results, based on newly-retrieved documents, highlighting the importance of up-to-date information retrieval. Nonetheless, we find that GPT-3 tends to return outdated answers when retrieved documents do not provide sufficient information to find an answer. This suggests an important avenue for future research: can an open-domain QA system identify such unanswerable cases and communicate with the user or even the retrieval module to modify the retrieval results? We hope that REALTIME QA will spur progress in instantaneous applications of question answering and beyond."
+  ]
+}

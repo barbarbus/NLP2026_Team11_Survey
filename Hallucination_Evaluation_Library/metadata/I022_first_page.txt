@@ -1,0 +1,51 @@
+Published as a conference paper at ICLR 2024
+SELF -CONTRADICTORY HALLUCINATIONS OF LLM S:
+EVALUATION , D ETECTION AND MITIGATION
+Niels Mündler, Jingxuan He, Slobodan Jenko & Martin Vechev
+Department of Computer Science, ETH Zurich, Switzerland
+nmuendler@student.ethz.ch, jingxuan.he@inf.ethz.ch,
+sjenko@student.ethz.ch, martin.vechev@inf.ethz.ch
+ABSTRACT
+Large language models (large LMs) are susceptible to producing text that contains
+hallucinated content. An important instance of this problem is self-contradiction,
+where the LM generates two contradictory sentences within the same context. In
+this work, we present a comprehensive investigation into self-contradiction for
+various instruction-tuned LMs, covering evaluation, detection, and mitigation. Our
+primary evaluation task is open-domain text generation, but we also demonstrate the
+applicability of our approach to shorter question answering. Our analysis reveals
+the prevalence of self-contradictions, e.g., in 17.7% of all sentences produced by
+ChatGPT. We then propose a novel prompting-based framework designed to effec-
+tively detect and mitigate self-contradictions. Our detector achieves high accuracy,
+e.g., around 80% F1 score when prompting ChatGPT. The mitigation algorithm
+iteratively refines the generated text to remove contradictory information while
+preserving text fluency and informativeness. Importantly, our entire framework is
+applicable to black-box LMs and does not require retrieval of external knowledge.
+Rather, our method complements retrieval-based methods, as a large portion of
+self-contradictions (e.g., 35.2% for ChatGPT) cannot be verified using online text.
+Our approach is practically effective and has been released as a push-button tool to
+benefit the public at https://chatprotect.ai/.
+1 I NTRODUCTION
+Large language models (large LMs) are pretrained on massive text corpora (Chowdhery et al., 2022;
+Zhang et al., 2022; Touvron et al., 2023a) and fine-tuned to follow human instructions (Ouyang et al.,
+2022). Instruction-tuned LMs, such as ChatGPT (OpenAI, 2023a), have demonstrated remarkable
+zero-shot capabilities in solving natural language tasks (Bang et al., 2023; Qin et al., 2023; Zhong
+et al., 2023; OpenAI, 2023b). Therefore, they are being increasingly integrated into various aspects
+of daily life, including online search and professional environments (Mehdi, 2023; NerdyNav, 2023;
+Spataro, 2023). However, even widely adopted LMs such as ChatGPT and GPT-4 are prone to
+generating nonsensical or unfaithful content, commonly referred to as hallucinations (Bang et al.,
+2023; OpenAI, 2023b; Borji, 2023). This raises significant concerns regarding the trustworthiness
+of LMs (Weidinger et al., 2021; Zhuo et al., 2023; Reuters, 2023; Bose & Shepardson, 2023).
+Detecting and mitigating hallucinations still remains an open challenge (Ji et al., 2023), especially for
+state-of-the-art, proprietary LMs accessible only as black boxes (OpenAI, 2023a;b; Anthropic, 2023).
+Reasoning about Self-contradictory Hallucinations This work focuses on an important type of
+hallucination called self-contradiction, which occurs when an LM generates two logically inconsistent
+sentences given the same context. Our key insight is that self-contradiction can be leveraged
+to conveniently tackle non-factual model outputs. We exploit the fact that self-contradiction is
+guaranteed to reveal non-factuality, because two contradicting sentences cannot be simultaneously
+correct (Dowden, 2011). Moreover, removing conflicting information from a pair of contradictory
+sentences strictly decreases non-factuality. Importantly, both contradiction detection and removal can
+be accomplished by performing logical reasoning, a particular strength of modern LMs (Liu et al.,
+2023). This frees us from relying on externally retrieved knowledge (Peng et al., 2023) or comparing
+tens of samples (Manakul et al., 2023b), which can be difficult or too expensive in practice.
+1
+arXiv:2305.15852v3  [cs.CL]  15 Mar 2024

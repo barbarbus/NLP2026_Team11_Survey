@@ -1,0 +1,78 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "google-site-verification": [
+    "5fPGCLllnWrvFxH9QWI0l1TadV7byeEvfPcyK2VkS_s",
+    "Rp5zp04IKW-s1IbpTOGB7Z6XY60oloZD5C3kTM-AiY4"
+  ],
+  "generator": [
+    "InvenioRDM 15.0"
+  ],
+  "robots": [
+    "noindex, nofollow"
+  ],
+  "description": [
+    "We define cognometry as the empirical quantification of cognitive states in machine systems—refusal, confabulation, retrieval, reasoning, and adversarial drift—from signals already carried on the token stream and residual activations of a language model during inference. We publish three falsifiable laws of cognometry (vitals exist, vitals transfer across substrates, vitals are causally actionable) with cross-validated numerical support for each, and ship the first open-source instrument (styxx on PyPI) that realizes the measurement. The central empirical claim of this paper is narrower: a 9-signal logistic regression fused over text, entity, novelty, grounding, and NLI contradiction signals achieves cross-validated hallucination discrimination across 8 public benchmarks— HaluEval-QA, Dialog, Summarization, TruthfulQA, and four HaluBench subsets (DROP, PubMedQA, FinanceBench, RAGTruth)—with honest per-dataset performance ranging from near-perfect (AUC 0.998 on HaluEval-QA) to below chance (AUC 0.424 on DROP). We openly report and taxonomize the failure modes: reading- comprehension extractive-span errors and financial arithmetic errors are not detected by the present signal stack because both classes of error pass the entailment (NLI) and novelty bars by construction. Failure modes are declared in the weights module itself. This is the first 8-benchmark cross-validated hallucination detector in the open literature. Above-chance performance on 5/8 benchmarks with 3/8 near-perfect is the reproducible empirical floor we lay down. Two below-chance results are the reproducible research agenda we lay down. Manifesto: https://fathom.darkflobi.com/cognometry Software: github.com/fathom-lab/styxx | pip install styxx==4.0.1[nli] Leaderboard: fathom.darkflobi.com/cognometry/leaderboard"
+  ],
+  "citation_title": [
+    "Cognometry v0: 8-Benchmark Cross-Validated Hallucination Detection in Production LLMs"
+  ],
+  "citation_author": [
+    "Rodabaugh, Alexander",
+    "Flobi"
+  ],
+  "citation_doi": [
+    "10.5281/zenodo.19703527"
+  ],
+  "citation_keywords": [
+    "hallucination detection",
+    "large language models",
+    "cognometry",
+    "interpretability",
+    "cognitive states",
+    "NLI",
+    "entailment",
+    "benchmarking",
+    "cross-validation",
+    "reproducibility",
+    "AI safety",
+    "open science",
+    "residual stream",
+    "activation probing",
+    "HaluEval",
+    "TruthfulQA",
+    "HaluBench",
+    "styxx"
+  ],
+  "citation_abstract_html_url": [
+    "https://zenodo.org/records/19703527"
+  ],
+  "og:title": [
+    "Cognometry v0: 8-Benchmark Cross-Validated Hallucination Detection in Production LLMs"
+  ],
+  "og:description": [
+    "We define cognometry as the empirical quantification of cognitive states in machine systems—refusal, confabulation, retrieval, reasoning, and adversarial drift—from signals already carried on the token stream and residual activations of a language model during inference. We publish three falsifiable laws of cognometry (vitals exist, vitals transfer across substrates, vitals are causally actionable) with cross-validated numerical support for each, and ship the first open-source instrument (styxx on PyPI) that realizes the measurement. The central empirical claim of this paper is narrower: a 9-signal logistic regression fused over text, entity, novelty, grounding, and NLI contradiction signals achieves cross-validated hallucination discrimination across 8 public benchmarks— HaluEval-QA, Dialog, Summarization, TruthfulQA, and four HaluBench subsets (DROP, PubMedQA, FinanceBench, RAGTruth)—with honest per-dataset performance ranging from near-perfect (AUC 0.998 on HaluEval-QA) to below chance (AUC 0.424 on DROP). We openly report and taxonomize the failure modes: reading- comprehension extractive-span errors and financial arithmetic errors are not detected by the present signal stack because both classes of error pass the entailment (NLI) and novelty bars by construction. Failure modes are declared in the weights module itself. This is the first 8-benchmark cross-validated hallucination detector in the open literature. Above-chance performance on 5/8 benchmarks with 3/8 near-perfect is the reproducible empirical floor we lay down. Two below-chance results are the reproducible research agenda we lay down. Manifesto: https://fathom.darkflobi.com/cognometry Software: github.com/fathom-lab/styxx | pip install styxx==4.0.1[nli] Leaderboard: fathom.darkflobi.com/cognometry/leaderboard"
+  ],
+  "og:url": [
+    "https://zenodo.org/records/19703527"
+  ],
+  "og:site_name": [
+    "Zenodo"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:site": [
+    "@zenodo_org"
+  ],
+  "twitter:title": [
+    "Cognometry v0: 8-Benchmark Cross-Validated Hallucination Detection in Production LLMs"
+  ],
+  "twitter:description": [
+    "We define cognometry as the empirical quantification of cognitive states in machine systems—refusal, confabulation, retrieval, reasoning, and adversarial drift—from signals already carried on the token stream and residual activations of a language model during inference. We publish three falsifiable laws of cognometry (vitals exist, vitals transfer across substrates, vitals are causally actionable) with cross-validated numerical support for each, and ship the first open-source instrument (styxx on PyPI) that realizes the measurement. The central empirical claim of this paper is narrower: a 9-signal logistic regression fused over text, entity, novelty, grounding, and NLI contradiction signals achieves cross-validated hallucination discrimination across 8 public benchmarks— HaluEval-QA, Dialog, Summarization, TruthfulQA, and four HaluBench subsets (DROP, PubMedQA, FinanceBench, RAGTruth)—with honest per-dataset performance ranging from near-perfect (AUC 0.998 on HaluEval-QA) to below chance (AUC 0.424 on DROP). We openly report and taxonomize the failure modes: reading- comprehension extractive-span errors and financial arithmetic errors are not detected by the present signal stack because both classes of error pass the entailment (NLI) and novelty bars by construction. Failure modes are declared in the weights module itself. This is the first 8-benchmark cross-validated hallucination detector in the open literature. Above-chance performance on 5/8 benchmarks with 3/8 near-perfect is the reproducible empirical floor we lay down. Two below-chance results are the reproducible research agenda we lay down. Manifesto: https://fathom.darkflobi.com/cognometry Software: github.com/fathom-lab/styxx | pip install styxx==4.0.1[nli] Leaderboard: fathom.darkflobi.com/cognometry/leaderboard"
+  ],
+  "citation_pdf_url": [
+    "https://zenodo.org/records/19703527/files/cognometry-v0.pdf"
+  ]
+}

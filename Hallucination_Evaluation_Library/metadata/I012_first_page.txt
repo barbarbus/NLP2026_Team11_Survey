@@ -1,0 +1,92 @@
+Generating Benchmarks for Factuality Evaluation of Language Models
+Dor Muhlgay∗ Ori Ram Inbal Magar Yoav Levine Nir Ratner
+Yonatan Belinkov Omri Abend Kevin Leyton-Brown Amnon Shashua Yoav Shoham
+AI21 Labs
+Abstract
+Before deploying a language model (LM)
+within a given domain, it is important to mea-
+sure its tendency to generate factually incor-
+rect information in that domain. Existing meth-
+ods for factuality evaluation of LLM genera-
+tion focus on facts sampled from the LM itself,
+and thus do not control the set of evaluated
+facts and might under-represent domain spe-
+cific or rare facts. We propose FACTOR: Fac-
+tual Assessment via Corpus TransfORmation, a
+scalable approach for evaluating LM factuality.
+FACTOR automatically transforms a factual
+corpus of interest into a benchmark evaluat-
+ing an LM’s propensity to generate true facts
+from the corpus vs. similar but incorrect state-
+ments. We use our framework to create three
+benchmarks: Wiki-FACTOR, News-FACTOR
+and Expert-FACTOR. We show that: (i) our
+benchmark scores increase with model size and
+improve when the LM is augmented with re-
+trieval; (ii) benchmark score and perplexity do
+not always agree on model ranking; (iii) when
+perplexity and benchmark score disagree, the
+latter better reflects factuality in open-ended
+generation, as measured by human annotators.
+We make our data and code publicly available1.
+1 Introduction
+Despite rapid improvements in their capabilities,
+large Language Models (LMs) still tend to generate
+factually inaccurate or erroneous text (Lin et al.,
+2022; Maynez et al., 2020; Huang et al., 2020).
+Such phenomena can pose a significant hurdle to
+deploying LMs in important or sensitive settings,
+motivating the development of methods for evalu-
+ating LM factuality in open-ended generation.
+Methods for directly evaluating an LM’s propen-
+sity towards factual generation were recently pro-
+posed by Lee et al. (2022) and Min et al. (2023).
+These methods suggest sampling generations from
+∗Corresponding author: dorm@ai21.com
+1https://github.com/AI21Labs/factor
+Prefix: Steve Jobs had a long power 
+struggle with the company's board.
+Completions:
+(a) In 1985, he was forced out of Apple.
+(b) In 1985, he was forced out of NeXT.
+(c) In 1985, he quit Apple.
+(d) In 1988, he was forced out of Apple.
+LM
+✓
+✗
+✗
+✗
+(a)...
+(b)...
+(c)...
+(d)...
+Figure 1: Each example in our evaluation task (dubbed FAC-
+TOR) consists of a prefix and four completions, of which only
+one is factually correct (completion (a) in this example). The
+non-factual completions (b), (c) and (d), marked in red, are
+generated according to different factual error types, detailed in
+Table 1. The evaluated model assigns likelihood scores to each
+completion separately. It is considered “correct” if it assigns
+the highest likelihood to the factually correct completion over
+all non-factual alternatives.
+a model, applying an automatic pipeline for fact
+verification, and then assigning a score correspond-
+ing to the percentage of factually correct gener-
+ated statements. In task-specific domains, such
+as long-form question answering, evaluation is
+usually done by assessing the relevance of a sam-
+pled generation against a reference text (Lin, 2004;
+Fabbri et al., 2022). However, the sampling ap-
+proach may introduce bias: by scoring the accu-
+racy of facts that an LM tends to generate in an
+open-ended setting, high-likelihood facts are over-
+represented, while the “long-tail” of rare facts is
+under-represented.
+Currently, there are no metrics suited to measur-
+ing LM factuality with respect to acontrolled set of
+facts in a generation setting. A common proxy is
+measuring LM perplexity; this was widely adopted
+to evaluate retrieval-augmented LMs (Khandelwal
+et al., 2020; Borgeaud et al., 2022; Ram et al., 2023;
+Shi et al., 2023). However, perplexity is affected
+arXiv:2307.06908v2  [cs.CL]  4 Feb 2024

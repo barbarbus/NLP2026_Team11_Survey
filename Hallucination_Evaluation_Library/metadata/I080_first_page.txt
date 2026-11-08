@@ -1,0 +1,91 @@
+Joint Evaluation of Answer and Reasoning Consistency for
+Hallucination Detection in Large Reasoning Models
+Changyue Wang*1,2,Weihang Su 1,Qingyao Ai †2,1,Yiqun Liu 1
+1Department of Computer Science and Technology, Tsinghua University
+2Quan Cheng Laboratory
+Abstract
+Large Reasoning Models (LRMs) extend large
+language models with explicit, multi-step rea-
+soning traces to enhance transparency and per-
+formance on complex tasks. However, these
+reasoning traces can be redundant or logically
+inconsistent, becoming a new and hard-to-
+detect source of hallucination. Existing hal-
+lucination detection methods focus primarily
+on answer-level uncertainty and often fail to
+detect hallucinations or logical inconsistencies
+arising from the model’s reasoning trace. This
+oversight is particularly problematic for LRMs,
+where the explicit thinking trace is not only
+an important support to the model’s decision-
+making process but also a key source of po-
+tential hallucination. To this end, we propose
+RACE (Reasoning and Answer Consistency
+Evaluation), a novel framework specifically
+tailored for hallucination detection in LRMs.
+RACE operates by extracting essential reason-
+ing steps and computing four diagnostic signals:
+inter-sample consistency of reasoning traces,
+entropy-based answer uncertainty, semantic
+alignment between reasoning and answers, and
+internal coherence of reasoning. The joint uti-
+lization of these signals makes RACE a more
+robust detector of hallucinations in LRMs. Ex-
+periments across datasets and different LLMs
+demonstrate that RACE outperforms existing
+hallucination detection baselines, offering a ro-
+bust and generalizable solution for evaluating
+LRMs.1
+1 Introduction
+Large Reasoning Models (LRMs) have recently
+emerged as a subclass of large language models
+(LLMs) specifically optimized for long-sequence,
+stepwise reasoning (DeepSeek-AI et al., 2025;
+Team, 2025; GLM et al., 2024; OpenAI, 2024;
+*cy-wang24@mails.tsinghua.edu.cn
+†Corresponding Author: aiqy@tsinghua.edu.cn
+1The source code is available at
+https://github.com/bebr2/RACE
+DeepMind, 2025). These models are trained with
+large-scale supervised fine-tuning and reinforce-
+ment learning to produce not only final answers,
+but also explicit and often lengthy reasoning traces
+that outline the model’s decision-making process.
+Such traces have demonstrated clear advantages
+in complex tasks such as multi-hop question an-
+swering, code generation, and mathematical prob-
+lem solving (Zhong et al., 2024). While these ex-
+plicit reasoning traces enhance transparency and
+often boost task performance, they also introduce
+new challenges: they can be redundant or logically
+inconsistent (Arcuschin et al., 2025; Chen et al.,
+2025b). Such issues may lead the model to produce
+factually incorrect or misleading conclusions, even
+if the reasoning appears plausible. Consequently,
+hallucination detection (Zhang et al., 2023; Man-
+akul et al., 2023; Su et al., 2024b,d) for LRMs
+must consider not only whether the final answer is
+correct, but also whether the underlying reasoning
+trace is coherent and well-grounded.
+Despite these challenges, most existing black-
+box hallucination detection methods focus solely
+on output-level uncertainty, typically by sam-
+pling multiple answers and measuring their consis-
+tency (Grewal et al., 2024; Abdaljalil et al., 2025).
+Techniques like SelfCheckGPT (Manakul et al.,
+2023) and Semantic Entropy (Kuhn et al., 2023)
+follow this paradigm and are effective when model
+outputs are short and self-contained. However,
+such methods fail when applied to LRMs, where
+a significant portion of the inference behavior is
+embedded within the reasoning trace (Ke et al.,
+2025). In practice, multiple samples may converge
+on the same final answer but follow divergent or
+incoherent reasoning paths. These reasoning incon-
+sistencies often signal hallucinations that remain
+undetected when evaluation is limited to final an-
+swers. Therefore, hallucination detection in LRMs
+demands a broader perspective that explicitly in-
+corporates both the model’s reasoning trace and its
+1
+arXiv:2506.04832v2  [cs.CL]  15 Nov 2025

@@ -1,0 +1,94 @@
+Optimal Transport for Unsupervised Hallucination Detection
+in Neural Machine Translation
+Nuno M. Guerreiro1,2 Pierre Colombo4 Pablo Piantanida5 André F. T. Martins1,2,3
+1Instituto de Telecomunicações, Lisbon, Portugal
+2Instituto Superior Técnico & LUMLIS (Lisbon ELLIS Unit), University of Lisbon, Portugal
+3Unbabel, Lisbon, Portugal
+4MICS, CentraleSupélec, Université Paris-Saclay
+5ILLS - CNRS, CentraleSupélec
+miguelguerreironuno@gmail.com
+Abstract
+Neural machine translation (NMT) has be-
+come the de-facto standard in real-world ma-
+chine translation applications. However, NMT
+models can unpredictably produce severely
+pathological translations, known as hallucina-
+tions, that seriously undermine user trust. It
+becomes thus crucial to implement effective
+preventive strategies to guarantee their proper
+functioning. In this paper, we address the prob-
+lem of hallucination detection in NMT by fol-
+lowing a simple intuition: as hallucinations
+are detached from the source content, they ex-
+hibit cross-attention patterns that are statisti-
+cally different from those of good quality trans-
+lations. We frame this problem with an opti-
+mal transport formulation and propose a fully
+unsupervised, plug-in detector that can be used
+with any attention-based NMT model. Experi-
+mental results show that our detector not only
+outperforms all previous model-based detec-
+tors, but is also competitive with detectors that
+employ external models trained on millions of
+samples for related tasks such as quality esti-
+mation and cross-lingual sentence similarity.
+1 Introduction
+Neural machine translation (NMT) has achieved
+tremendous success (Vaswani et al., 2017; Kocmi
+et al., 2022), becoming the mainstream method
+in real-world applications and production systems
+for automatic translation. Although these mod-
+els are becoming evermore accurate, especially in
+high-resource settings, they may unpredictably pro-
+duce hallucinations. These are severely pathologi-
+cal translations that are detached from the source
+sequence content (Lee et al., 2018; Müller et al.,
+2020; Raunak et al., 2021; Guerreiro et al., 2023).
+Crucially, these errors have the potential to seri-
+ously harm user trust in hard-to-predict ways (Perez
+et al., 2022), hence the evergrowing need to develop
+security mechanisms. One appealing strategy to
+address this issue is to develop effective on-the-ﬂy
+detection systems.
+In this work, we focus on leveraging the cross-
+attention mechanism to develop a novel hallucina-
+tion detector. This mechanism is responsible for
+selecting and combining the information contained
+in the source sequence that is relevant to retain dur-
+ing translation. Therefore, as hallucinations are
+translations whose content is detached from the
+source sequence, it is no surprise that connections
+between anomalous attention patterns and hallu-
+cinations have been drawn before in the literature
+(Berard et al., 2019; Raunak et al., 2021; Ferrando
+et al., 2022). These patterns usually exhibit scat-
+tered source attention mass across the different to-
+kens in the translation (e.g. most source attention
+mass is concentrated on a few irrelevant tokens
+such as punctuation and the end-of-sequence to-
+ken). Inspired by such observations, previous work
+has designed ad-hoc heuristics to detect hallucina-
+tions that speciﬁcally target the anomalous maps.
+While such heuristics can be used to detect hallu-
+cinations to a satisfactory extent (Guerreiro et al.,
+2023), we argue that a more theoretically-founded
+way of using anomalous attention information for
+hallucination detection is lacking in the literature.
+Rather than aiming to ﬁnd particular patterns, we
+go back to the main deﬁnition of hallucinations and
+draw the following hypothesis: as hallucinations—
+contrary to good translations—are not supported by
+the source content, they may exhibit cross-attention
+patterns that are statistically different from those
+found in good quality translations. Based on this
+hypothesis, we approach the problem of hallu-
+cination detection as a problem of anomaly de-
+tection with an optimal transport (OT) formu-
+lation (Kantorovich, 2006; Peyré et al., 2019).
+Namely, we aim to ﬁnd translations with source
+attention mass distributions that are highly distant
+from those of good translations. Intuitively, the
+more distant a translation’s attention patterns are
+from those of good translations, the more anoma-
+lous it is in light of that distribution.
+arXiv:2212.09631v2  [cs.CL]  19 May 2023

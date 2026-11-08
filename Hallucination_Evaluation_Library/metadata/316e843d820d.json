@@ -1,0 +1,98 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2309.01219: Siren's Song in the AI Ocean: A Survey on Hallucination in Large Language Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Siren's Song in the AI Ocean: A Survey on Hallucination in Large Language Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2309.01219v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "While large language models (LLMs) have demonstrated remarkable capabilities across a range of downstream tasks, a significant concern revolves around their propensity to exhibit hallucinations: LLMs occasionally generate content that diverges from the user input, contradicts previously generated context, or misaligns with established world knowledge. This phenomenon poses a substantial challenge to the reliability of LLMs in real-world scenarios. In this paper, we survey recent efforts on the detection, explanation, and mitigation of hallucination, with an emphasis on the unique challenges posed by LLMs. We present taxonomies of the LLM hallucination phenomena and evaluation benchmarks, analyze existing approaches aiming at mitigating LLM hallucination, and discuss potential directions for future research."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Siren's Song in the AI Ocean: A Survey on Hallucination in..."
+  ],
+  "twitter:description": [
+    "While large language models (LLMs) have demonstrated remarkable capabilities across a range of downstream tasks, a significant concern revolves around their propensity to exhibit hallucinations:..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Siren's Song in the AI Ocean: A Survey on Hallucination in Large Language Models"
+  ],
+  "citation_author": [
+    "Zhang, Yue",
+    "Li, Yafu",
+    "Cui, Leyang",
+    "Cai, Deng",
+    "Liu, Lemao",
+    "Fu, Tingchen",
+    "Huang, Xinting",
+    "Zhao, Enbo",
+    "Zhang, Yu",
+    "Xu, Chen",
+    "Chen, Yulong",
+    "Wang, Longyue",
+    "Luu, Anh Tuan",
+    "Bi, Wei",
+    "Shi, Freda",
+    "Shi, Shuming"
+  ],
+  "citation_date": [
+    "2023/09/03"
+  ],
+  "citation_online_date": [
+    "2025/09/14"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2309.01219"
+  ],
+  "citation_arxiv_id": [
+    "2309.01219"
+  ],
+  "citation_abstract": [
+    "While large language models (LLMs) have demonstrated remarkable capabilities across a range of downstream tasks, a significant concern revolves around their propensity to exhibit hallucinations: LLMs occasionally generate content that diverges from the user input, contradicts previously generated context, or misaligns with established world knowledge. This phenomenon poses a substantial challenge to the reliability of LLMs in real-world scenarios. In this paper, we survey recent efforts on the detection, explanation, and mitigation of hallucination, with an emphasis on the unique challenges posed by LLMs. We present taxonomies of the LLM hallucination phenomena and evaluation benchmarks, analyze existing approaches aiming at mitigating LLM hallucination, and discuss potential directions for future research."
+  ]
+}

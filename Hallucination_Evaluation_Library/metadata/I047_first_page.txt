@@ -1,0 +1,77 @@
+FACTKG: Fact Veriﬁcation via Reasoning on Knowledge Graphs
+Jiho Kim1, Sungjin Park1, Yeonsu Kwon1, Yohan Jo2∗, James Thorne1, Edward Choi1
+1KAIST 2Amazon
+{jiho.kim, zxznm, yeonsu.k, thorne, edwardchoi}@kaist.ac.kr
+jyoha@amazon.com
+Abstract
+In real world applications, knowledge graphs
+(KG) are widely used in various domains (e.g.
+medical applications and dialogue agents).
+However, for fact veriﬁcation, KGs have
+not been adequately utilized as a knowledge
+source. KGs can be a valuable knowledge
+source in fact veriﬁcation due to their reli-
+ability and broad applicability. A KG con-
+sists of nodes and edges which makes it clear
+how concepts are linked together, allowing ma-
+chines to reason over chains of topics. How-
+ever, there are many challenges in understand-
+ing how these machine-readable concepts map
+to information in text. To enable the commu-
+nity to better use KGs, we introduce a new
+dataset, F ACTKG: Fact Veriﬁcation via Rea-
+soning on Knowledge Graphs. It consists of
+108k natural language claims with ﬁve types
+of reasoning: One-hop, Conjunction, Exis-
+tence, Multi-hop, and Negation. Furthermore,
+FACTKG contains various linguistic patterns,
+including colloquial style claims as well as
+written style claims to increase practicality.
+Lastly, we develop a baseline approach and
+analyze F ACTKG over these reasoning types.
+We believe F ACTKG can advance both relia-
+bility and practicality in KG-based fact veriﬁ-
+cation.1
+1 Introduction
+The wide spread risk of misinformation has in-
+creased the demand for fact-checking, that is, judg-
+ing whether a claim is true or false based on ev-
+idence. Accordingly, recent works on fact veriﬁ-
+cation have been developed with various sources
+of evidence, such as text (Thorne et al., 2018; Au-
+genstein et al., 2019; Jiang et al., 2020; Schuster
+et al., 2021; Park et al., 2021) and tables (Chen
+et al., 2019; Wang et al., 2021; Aly et al., 2021).
+Unfortunately, knowledge graphs (KG), one of the
+∗ This work is not associated with Amazon.
+1Data available at https://github.com/jiho283/
+FactKG.
+Figure 1: An example data from F ACTKG. To verify
+the claim whether it is S UPPORTED or R EFUTED , we
+use triples extracted from DBpedia as evidence.
+large-scale data forms, have not yet been fully uti-
+lized as a source of evidence. A KG is a valuable
+knowledge source due to two advantages.
+Firstly, KG-based fact veriﬁcation can provide
+more reliable reasoning: since the efﬁcacy of real-
+world fact-checking hinges on this reliability, re-
+cent studies have focused on justifying the deci-
+sions of a fact veriﬁcation system (Kotonya and
+Toni, 2020a). In most existing works, the justiﬁ-
+cation is based on the extractive summary of text
+evidence. Therefore, the inferential links between
+the evidence and the verdict are not clear (Kotonya
+and Toni, 2020b; Atanasova et al., 2020a,b). Com-
+pared to text and tables, a KG can simply represent
+reasoning process with logic rules on nodes and
+edges (Liang et al., 2022). This allows us to catego-
+rize common types of reasoning with the graphical
+structure, as shown in Table 1.
+Secondly, KG-based fact veriﬁcation techniques
+have broad applicability beyond the domain of fact-
+checking. For example, modern dialogue systems
+(e.g. Amazon Alexa (Amazon Staff, 2018), Google
+Assistant (Kale and Hewavitharana, 2018)) main-
+tain and communicate with internal knowledge
+graphs, and it is crucial to make sure that their con-
+arXiv:2305.06590v2  [cs.CL]  19 May 2023

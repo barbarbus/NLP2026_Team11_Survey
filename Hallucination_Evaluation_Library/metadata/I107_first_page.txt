@@ -1,0 +1,91 @@
+Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, pages 34728–34745
+November 4-9, 2025 ©2025 Association for Computational Linguistics
+The Illusion of Progress: Re-evaluating Hallucination Detection in LLMs
+Denis Janiak1 Jakub Binkowski1 Albert Sawczyn1 Bogdan Gabrys2
+Ravid Shwartz-Ziv3 Tomasz Kajdanowicz1
+1Wroclaw University of Science and Technology
+2University of Technology Sydney
+3New York University
+Abstract
+Large language models (LLMs) have revolu-
+tionized natural language processing, yet their
+tendency to hallucinate poses serious chal-
+lenges for reliable deployment. Despite numer-
+ous hallucination detection methods, their eval-
+uations often rely on ROUGE, a metric based
+on lexical overlap that misaligns with human
+judgments. Through comprehensive human
+studies, we demonstrate that while ROUGE
+exhibits high recall, its extremely low preci-
+sion leads to misleading performance estimates.
+In fact, several established detection meth-
+ods show performance drops of up to 45.9%
+when assessed using human-aligned metrics
+like LLM-as-Judge. Moreover, our analysis re-
+veals that simple heuristics based on response
+length can rival complex detection techniques,
+exposing a fundamental flaw in current evalua-
+tion practices. We argue that adopting semanti-
+cally aware and robust evaluation frameworks
+is essential to accurately gauge the true per-
+formance of hallucination detection methods,
+ultimately ensuring the trustworthiness of LLM
+outputs.
+1 Introduction
+Large language models (LLMs) have transformed
+natural language processing, but their tendency to
+hallucinate—generating fluent yet factually incor-
+rect outputs—poses a critical challenge for real-
+world applications (Huang et al., 2025). As LLMs
+are increasingly deployed in high-stakes scenarios,
+unsupervised hallucination detection has emerged
+as a promising solution, offering scalable evalu-
+ation without the generalization limitations of a
+supervised approach and costly annotation process
+(Su et al., 2024). A growing body of work has ex-
+plored this direction (Chen et al., 2024; Farquhar
+et al., 2024; Du et al., 2024; Nikitin et al., 2024;
+Qiu and Miikkulainen, 2024; Duan et al., 2024;
+Nguyen et al., 2025), often relying on ROUGE as
+the primary correctness metric. ROUGE, originally
+0.6 0.8
+Perplexity
+LN-Entropy
+Semantic
+Entropy
+Eigenscore
+eRank
+LogDet
+NQ-Open
+0.6 0.8
+SQuAD
+0.6 0.8
+Trivia-QA
+Figure 1: ROUGE-based evaluation fails to reliably
+capture true hallucination detection capabilities.Hal-
+lucination detection performance (AUROC) comparison
+of ROUGE-L and LLM-as-Judge evaluation across
+three datasets. Many methods show significant evalua-
+tion discrepancies.
+developed to assess summary quality based on lex-
+ical overlap (Lin, 2004), is used to approximate
+factual consistency by applying threshold-based
+heuristics: responses with low ROUGE overlap to
+reference answers are often labeled as hallucinated.
+However, the suitability of ROUGE for assessing
+the factual accuracy of Question Answering (QA)
+responses, specifically in identifying hallucinations,
+has been largely assumed rather than rigorously val-
+idated. This assumption is especially critical in QA,
+where short, entity-centric answers are thought to
+make ROUGE suitable. Our findings show that
+even in these contexts, ROUGE can be misleading.
+While prior critiques of ROUGE focus on its lim-
+itations in capturing fluency or adequacy in long-
+form summarization or dialogues (Honovich et al.,
+2022; Dziri et al., 2022; Zhong et al., 2022). In
+contrast, this paper presents a systematic, large-
+scale empirical investigation specifically evaluat-
+ing ROUGE’s efficacy in the context of QA hal-
+lucination detection. Our analysis goes beyond
+34728

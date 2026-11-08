@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "SummEval: Re-evaluating Summarization Evaluation"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2021.tacl-1.24.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2021.tacl-1.24/"
+  ],
+  "og:description": [
+    "Alexander R. Fabbri, Wojciech Kryściński, Bryan McCann, Caiming Xiong, Richard Socher, Dragomir Radev. Transactions of the Association for Computational Linguistics, Volume 9. 2021."
+  ]
+}

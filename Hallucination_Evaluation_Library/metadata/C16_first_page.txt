@@ -1,0 +1,38 @@
+Last Words
+The Pitfalls of Deﬁning Hallucination
+Kees van Deemter
+Utrecht University
+Department of Information and
+Computing Sciences
+c.j.vandeemter@uu.nl
+Despite impressive advances in Natural Language Generation (NLG) and Large Language
+Models (LLMs), researchers are still unclear about important aspects of NLG evaluation. To
+substantiate this claim, I examine current classiﬁcations of hallucination and omission in data-
+text NLG, and I propose a logic-based synthesis of these classﬁcations. I conclude by highlighting
+some remaining limitations of all current thinking about hallucination and by discussing impli-
+cations for LLMs.
+1. Introduction: Evaluating the Veracity of a Text
+When computers produce text, the quality of the texts is of paramount concern. For this
+reason, a substantial body of work across Natural Language Generation (NLG) focuses
+on evaluation of generated text. Evaluation can offer insight into various aspects of the
+quality of a generated text; indirectly, by looking at a range of generated texts, it can tell
+us how well a given NLG technique works.
+A key family of quality criteria, for most text genres at least, centers around what
+might be called the veracity of the text. I will take the view that assessing the veracity of
+a text means assessing whether the text “speaks the truth, the whole truth, and nothing
+but the truth”. Veracity is crucial: If a text is lacking in veracity, then any other virtues
+that it may possess—such as ﬂuency and clarity, for example—can only amplify the
+risks that arise when the text is read (cf., Crothers, Japkowicz, and Viktor 2023), because
+a well-written falsehood is more likely to be taken seriously than a badly written one.
+To obtain a clear perspective, I will focus on traditional NLG tasks ﬁrst, whose aim
+is to convert a structured input into a text. I will argue that, even with such a relatively
+simple task, when we assess the veracity of a text, we do not quite know what we are
+doing. I will highlight some ﬂaws in current analyses of hallucination, and I will offer
+a synthesis that does not suffer from these ﬂaws. After that, I will argue that all current
+analyses still suffer from some important limitations, and I will discuss implications for
+more complicated tasks, as addressed by Large Language Models (LLMs).
+Submission received: 6 October 2023; accepted for publication: 30 December 2023.
+https://doi.org/10.1162/coli a 00509
+© 2024 Association for Computational Linguistics
+Published under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+(CC BY-NC-ND 4.0) license

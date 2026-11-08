@@ -1,0 +1,50 @@
+Published as a conference paper at ICLR 2023
+SEMANTIC UNCERTAINTY : L INGUISTIC INVARIANCES
+FOR UNCERTAINTY ESTIMATION IN NATURAL
+LANGUAGE GENERATION
+Lorenz Kuhn, Yarin Gal, Sebastian Farquhar
+OATML Group, Department of Computer Science, University of Oxford
+lorenz.kuhn@cs.ox.ac.uk
+ABSTRACT
+We introduce a method to measure uncertainty in large language models. For
+tasks like question answering, it is essential to know when we can trust the natu-
+ral language outputs of foundation models. We show that measuring uncertainty
+in natural language is challenging because of ‘semantic equivalence’—different
+sentences can mean the same thing. To overcome these challenges we introduce
+semantic entropy—an entropy which incorporates linguistic invariances created
+by shared meanings. Our method is unsupervised, uses only a single model, and
+requires no modiﬁcations to ‘off-the-shelf’ language models. In comprehensive
+ablation studies we show that the semantic entropy is more predictive of model
+accuracy on question answering data sets than comparable baselines.
+1 I NTRODUCTION
+Despite progress in natural language generation (NLG) tasks like question answering or abstractive
+summarisation (Brown et al., 2020; Hoffmann et al., 2022; Chowdhery et al., 2022), there is little
+understanding of uncertainty in foundation models. Without measures of uncertainty in transformer-
+based systems it is hard to use generated language as a reliable source of information. Reliable
+measures of uncertainty have been identiﬁed as a key problem in building safer AI systems (Amodei
+et al., 2016; Hendrycks et al., 2022).
+Unfortunately, uncertainty in free-form NLG faces unique challenges. This limits how much we can
+learn from uncertainty estimation techniques in other applications of deep learning (Gal et al., 2016;
+Lakshminarayanan et al., 2017; Ovadia et al., 2019) which focuses especially on image classiﬁcation
+(Kendall & Gal, 2017) or regression in low-dimensional data spaces (Kuleshov et al., 2018).
+The key challenges come from the importance in language of meanings and form. This corresponds
+to what linguists and philosophers call the semantic content of a sentence and its syntactic or lexical
+form. Foundation models output token-likelihoods—representing lexical conﬁdence. But for almost
+all applications we care about meanings! For example, a model which is uncertain about whether to
+generate “France’s capital is Paris” or “Paris is France’s capital” is not uncertain in any important
+sense. Yet, at a token-level the model is uncertain between twoforms of the same meaning. Existing
+unsupervised methods (e.g., Malinin & Gales (2020)) ignore this distinction.
+To address semantic equivalence, we estimate semantic likelihoods—probabilities attached tomean-
+ings of text rather than standard sequence-likelihoods. We introduce an algorithm for clustering
+sequences that mean the same thing based on the principle that two sentences mean the same thing
+if you can infer each from the other. We then use these semantic-likelihoods to estimate seman-
+tic uncertainty—uncertainty over different meanings. In particular, we compute the entropy of the
+probability distribution over meanings. Adjusting for semantic equivalence in this way offers bet-
+ter uncertainty estimation than standard entropy and also greatly improves over methods for model
+self-evaluation (Kadavath et al., 2022). In addition, semantic entropy scales better with model size
+and makes better use of increasing numbers of samples than baselines.
+We further analyse major challenges for measuring uncertainty in NLG. We show empirically how
+sampling a set of model answers to estimate entropies in NLG must balance sample accuracy and
+diversity, which signiﬁcantly strengthens the baselines we compare against relative to prior imple-
+1
+arXiv:2302.09664v3  [cs.CL]  15 Apr 2023

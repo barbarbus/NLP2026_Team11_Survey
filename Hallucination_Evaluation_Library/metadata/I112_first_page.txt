@@ -1,0 +1,92 @@
+Hallucinations in Large Multilingual Translation Models
+Nuno M. Guerreiro1,3 Duarte M. Alves1,3 Jonas Waldendorf 4
+Barry Haddow4 Alexandra Birch4 Pierre Colombo5 André F. T. Martins1,2,3
+1Instituto de Telecomunicações, Lisbon, Portugal 2Unbabel, Lisbon, Portugal
+3Instituto Superior Técnico, University of Lisbon, Portugal
+4School of Informatics, University of Edinburgh
+5MICS, CentraleSupélec, Université Paris-Saclay
+miguelguerreironuno@gmail.com
+Abstract
+Large-scale multilingual machine transla-
+tion systems have demonstrated remarkable
+ability to translate directly between numer-
+ous languages, making them increasingly
+appealing for real-world applications. How-
+ever, when deployed in the wild, these mod-
+els may generate hallucinated translations
+which have the potential to severely under-
+mine user trust and raise safety concerns.
+Existing research on hallucinations has pri-
+marily focused on small bilingual models
+trained on high-resource languages, leaving
+a gap in our understanding of hallucinations
+in massively multilingual models across di-
+verse translation scenarios. In this work, we
+ﬁll this gap by conducting a comprehensive
+analysis on both the M2M family of con-
+ventional neural machine translation models
+and ChatGPT, a general-purpose large lan-
+guage model (LLM) that can be prompted
+for translation. Our investigation covers a
+broad spectrum of conditions, spanning over
+100 translation directions across various re-
+source levels and going beyond English-
+centric language pairs. We provide key in-
+sights regarding the prevalence, properties,
+and mitigation of hallucinations, paving the
+way towards more responsible and reliable
+machine translation systems.
+1 Introduction
+Recent advancements in large-scale multilingual
+machine translation have brought us closer to re-
+alizing a universal translation system: a single
+model capable of handling numerous languages
+and translation directions (Aharoni et al., 2019;
+Arivazhagan et al., 2019; Fan et al., 2020; Zhang
+et al., 2020; Wenzek et al., 2021; Goyal et al.,
+2022; NLLB Team et al., 2022). Concurrently,
+general-purpose large language models (LLMs)
+have exhibited a remarkable ability to general-
+ize to new tasks, including translation, where
+they are becoming increasingly stronger (Brown
+et al., 2020; Chowdhery et al., 2022; Hendy et al.,
+2023). Compared to traditional bilingual models,
+these systems can offer signiﬁcant performance
+improvements and greatly simplify engineering
+efforts, as a single model can be used for all lan-
+guage pairs (Arivazhagan et al., 2019). As a result,
+they are an increasingly attractive choice for real-
+world applications. However, when deployed in
+the wild, these models may still generate halluci-
+nations: highly pathological translations that can
+severely damage user trust and pose serious safety
+concerns (Perez et al., 2022; Kumar et al., 2022).
+The problem of hallucinations has long been
+recognized by researchers (Ji et al., 2022), and re-
+cent studies have contributed towards better un-
+derstanding, detection and mitigation of these
+pathological translations. However, these stud-
+ies have been conducted on small bilingual
+models (<100M parameters) trained on a single
+English-centric high-resourcelanguage pair (Rau-
+nak et al., 2021; Ferrando et al., 2022; Guerreiro
+et al., 2022b,a; Dale et al., 2022; Xu et al., 2023).
+This leaves a knowledge gap regarding the preva-
+lence and properties of hallucinations in large-
+scale translation models across different transla-
+tion directions, domains and data conditions.
+In this work, we aim to ﬁll this gap by investi-
+gating hallucinations on two different classes of
+models. The ﬁrst and main class in our analy-
+sis is the de facto standard approach of massively
+multilingual supervised models: we use the M2M-
+100 family of multilingual NMT models (Fan
+et al., 2020), which includes the largest open-
+source multilingual NMT model with 12B param-
+eters. The second class is the novel and promis-
+ing approach of leveraging generative LLMs for
+translation. Contrary to conventional NMT mod-
+els, these models are trained on massive amounts
+of monolingual data in many languages, with a
+strong bias towards English, and do not require
+arXiv:2303.16104v1  [cs.CL]  28 Mar 2023

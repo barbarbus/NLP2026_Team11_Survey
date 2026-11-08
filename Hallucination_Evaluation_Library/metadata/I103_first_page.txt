@@ -1,0 +1,106 @@
+LLMs as Factual Reasoners:
+Insights from Existing Benchmarks and Beyond
+Philippe Laban Wojciech Kry ´sci´nski Divyansh Agarwal Alexander R. Fabbri
+Caiming Xiong Shafiq Joty Chien-Sheng Wu
+Salesforce AI
+{plaban, wojciech.kryscinski, dagarwal, afabbri, cxiong, sjoty, wu.jason}@salesforce.com
+Abstract
+With the recent appearance of LLMs in practi-
+cal settings, having methods that can effectively
+detect factual inconsistencies is crucial to re-
+duce the propagation of misinformation and
+improve trust in model outputs. When testing
+on existing factual consistency benchmarks, we
+find that a few large language models (LLMs)
+perform competitively on classification bench-
+marks for factual inconsistency detection com-
+pared to traditional non-LLM methods. How-
+ever, a closer analysis reveals that most LLMs
+fail on more complex formulations of the task
+and exposes issues with existing evaluation
+benchmarks, affecting the evaluation precision.
+To address this, we propose a new protocol
+for inconsistency detection benchmark creation
+and implement it in a 10-domain benchmark
+called SUMM EDITS . This new benchmark is 20
+times more cost-effective per sample than previ-
+ous benchmarks and highly reproducible, as we
+estimate inter-annotator agreement at about 0.9.
+Most LLMs struggle on SUMM EDITS , with
+performance close to random chance. The best-
+performing model, GPT-4, is still 8% below
+estimated human performance, highlighting the
+gaps in LLMs’ ability to reason about facts and
+detect inconsistencies when they occur.
+1 Introduction
+With recent progress in generation capabilities
+of LLMs, automatic summarization is making
+its appearance in practical information consump-
+tion situations such as summarizing work meet-
+ings (Arabzadeh et al., 2022), health records (Jain
+et al., 2022), or scientific documents (Cachola et al.,
+2020). To ensure the safe and effective implementa-
+tion of these applications, it is essential to limit the
+reach of factually inconsistent summaries, a known
+issue with generated summaries (Kry´sci´nski et al.,
+2019; Maynez et al., 2020).
+Prior work (Kry´sci´nski et al., 2020; Fabbri et al.,
+2021; Gao and Wan, 2022) has annotated corpora
+Human 
+Perform.
+100%
+50%
+SummEdits Benchmark 
+Performance
+90.9
+82.4
+OpenAI
+70.7
+60.1
+51.9Dav1
+Dav2
+Dav3
+GPT4
+Google
+Bard 59.8
+Anthropic
+Claude 
+ v1.3 55.1Cmd-
+XL
+Cohere
+56.1
+Vicuna(random
+chance)
+63.7
+Best non-LLM: 65.769.0Bison
+Figure 1: SUMM EDITS is a benchmark to evaluate the
+factual reasoning abilities of LLMs, measuring if mod-
+els detect factual inconsistencies when they occur in
+summaries. Capable detection models can help build
+more reliable NLG systems.
+of model summaries with labels of factual con-
+sistency, finding that most abstractive summariza-
+tion systems produce a non-negligible portion of
+inconsistent summaries. In turn, such corpora
+are used to instantiate tasks such as inconsistency
+detection (ID) (Laban et al., 2022a; Tang et al.,
+2022), in which models are given (document,
+summary) pairs, and must identify whether the
+summary is consistent with the document.
+Recent investigations of using LLMs for evalua-
+tion have shown promising results across different
+NLP tasks (Liu et al., 2023; Fu et al., 2023), in-
+cluding factual consistency (Luo et al., 2023). In
+this work we continue this line of research and ex-
+plore applying LLMs as factuality evaluators in
+the context of text summarization. We first estab-
+lish baseline performance for a suite of LLMs on
+three existing consistency benchmarks. Accuracy
+results confirm that some LLMs perform compet-
+itively with state-of-the-art specialized methods
+such as QAFactEval (Fabbri et al., 2022). How-
+ever, a manual analysis of free-text explanations
+that LLMs generate reveals two key limitations
+of the accuracy-only analysis. Ideally, a model
+correctly predicting the consistency label of a sum-
+arXiv:2305.14540v1  [cs.CL]  23 May 2023

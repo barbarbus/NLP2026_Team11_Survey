@@ -1,0 +1,85 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2502.08663: Hallucination Detection: A Probabilistic Framework Using Embeddings Distance Analysis"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Hallucination Detection: A Probabilistic Framework Using Embeddings Distance Analysis"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2502.08663v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Hallucinations are one of the major issues affecting LLMs, hindering their wide adoption in production systems. While current research solutions for detecting hallucinations are mainly based on heuristics, in this paper we introduce a mathematically sound methodology to reason about hallucination, and leverage it to build a tool to detect hallucinations. To the best of our knowledge, we are the first to show that hallucinated content has structural differences with respect to correct content. To prove this result, we resort to the Minkowski distances in the embedding space. Our findings demonstrate statistically significant differences in the embedding distance distributions, that are also scale free -- they qualitatively hold regardless of the distance norm used and the number of keywords, questions, or responses. We leverage these structural differences to develop a tool to detect hallucinated responses, achieving an accuracy of 66\\% for a specific configuration of system parameters -- comparable with the best results in the field. In conclusion, the suggested methodology is promising and novel, possibly paving the way for further research in the domain, also along the directions highlighted in our future work."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Hallucination Detection: A Probabilistic Framework Using..."
+  ],
+  "twitter:description": [
+    "Hallucinations are one of the major issues affecting LLMs, hindering their wide adoption in production systems. While current research solutions for detecting hallucinations are mainly based on..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Hallucination Detection: A Probabilistic Framework Using Embeddings Distance Analysis"
+  ],
+  "citation_author": [
+    "Ricco, Emanuele",
+    "Cima, Lorenzo",
+    "Di Pietro, Roberto"
+  ],
+  "citation_date": [
+    "2025/02/10"
+  ],
+  "citation_online_date": [
+    "2025/02/10"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2502.08663"
+  ],
+  "citation_arxiv_id": [
+    "2502.08663"
+  ],
+  "citation_abstract": [
+    "Hallucinations are one of the major issues affecting LLMs, hindering their wide adoption in production systems. While current research solutions for detecting hallucinations are mainly based on heuristics, in this paper we introduce a mathematically sound methodology to reason about hallucination, and leverage it to build a tool to detect hallucinations. To the best of our knowledge, we are the first to show that hallucinated content has structural differences with respect to correct content. To prove this result, we resort to the Minkowski distances in the embedding space. Our findings demonstrate statistically significant differences in the embedding distance distributions, that are also scale free -- they qualitatively hold regardless of the distance norm used and the number of keywords, questions, or responses. We leverage these structural differences to develop a tool to detect hallucinated responses, achieving an accuracy of 66\\% for a specific configuration of system parameters -- comparable with the best results in the field. In conclusion, the suggested methodology is promising and novel, possibly paving the way for further research in the domain, also along the directions highlighted in our future work."
+  ]
+}

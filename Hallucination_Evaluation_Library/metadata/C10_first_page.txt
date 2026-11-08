@@ -1,0 +1,83 @@
+Nature | Vol 630 | 20 June 2024 | 625
+Article
+Detecting hallucinations in large language 
+models using semantic entropy
+Sebastian Farquhar1,2 ✉, Jannik Kossen1,2, Lorenz Kuhn1,2 & Yarin Gal1
+Large language model (LLM) systems, such as ChatGPT1 or Gemini2, can show 
+impressive reasoning and question-answering capabilities but often ‘hallucinate’  
+false outputs and unsubstantiated answers3,4. Answering unreliably or without the 
+necessary information prevents adoption in diverse fields, with problems including 
+fabrication of legal precedents5 or untrue facts in news articles6 and even posing a  
+risk to human life in medical domains such as radiology7. Encouraging truthfulness 
+through supervision or reinforcement has been only partially successful8. Researchers 
+need a general method for detecting hallucinations in LLMs that works even with new 
+and unseen questions to which humans might not know the answer. Here we develop 
+new methods grounded in statistics, proposing entropy-based uncertainty estimators 
+for LLMs to detect a subset of hallucinations—confabulations—which are arbitrary and 
+incorrect generations. Our method addresses the fact that one idea can be expressed 
+in many ways by computing uncertainty at the level of meaning rather than specific 
+sequences of words. Our method works across datasets and tasks without a priori 
+knowledge of the task, requires no task-specific data and robustly generalizes to new 
+tasks not seen before. By detecting when a prompt is likely to produce a confabulation, 
+our method helps users understand when they must take extra care with LLMs and 
+opens up new possibilities for using LLMs that are otherwise prevented by their 
+unreliability.
+‘Hallucinations’ are a critical problem9 for natural language genera-
+tion systems using large language models (LLMs), such as ChatGPT1 or 
+Gemini2, because users cannot trust that any given output is correct.
+Hallucinations are often defined as LLMs generating “content 
+that is nonsensical or unfaithful to the provided source content” 9– 11 
+but they have come to include a vast array of failures of faithfulness 
+and factuality. We focus on a subset of hallucinations which we call 
+‘confabulations’12 for which LLMs fluently make claims that are both 
+wrong and arbitrary—by which we mean that the answer is sensitive 
+to irrelevant details such as random seed. For example, when asked a 
+medical question “What is the target of Sotorasib?” an LLM confabu -
+lates by sometimes answering KRASG12 ‘C’ (correct) and other times 
+KRASG12 ‘D’ (incorrect) despite identical instructions. We distinguish 
+this from cases in which a similar ‘symptom’ is caused by the following 
+different mechanisms: when LLMs are consistently wrong as a result of 
+being trained on erroneous data such as common misconceptions13; 
+when the LLM ‘lies’ in pursuit of a reward14; or systematic failures of 
+reasoning or generalization. We believe that combining these dis -
+tinct mechanisms in the broad category hallucination is unhelpful. 
+Our method makes progress on a portion of the problem of providing 
+scalable oversight15 by detecting confabulations that people might 
+otherwise find plausible. However, it does not guarantee factuality 
+because it does not help when LLM outputs are systematically bad. Nev-
+ertheless, we significantly improve question-answering accuracy for 
+state-of-the-art LLMs, revealing that confabulations are a great source of  
+error at present.
+We show how to detect confabulations by developing a quantita -
+tive measure of when an input is likely to cause an LLM to generate 
+arbitrary and ungrounded answers. Detecting confabulations allows 
+systems built on LLMs to avoid answering questions likely to cause 
+confabulations, to make users aware of the unreliability of answers 
+to a question or to supplement the LLM with more grounded search 
+or retrieval. This is essential for the critical emerging field of free-  
+form generation in which naive approaches, suited to closed vocabu -
+lary and multiple choice, fail. Past work on uncertainty for LLMs has 
+focused on simpler settings, such as classifiers 16,17 and regressors18,19, 
+whereas the most exciting applications of LLMs relate to free-form 
+generations.
+The term hallucination in the context of machine learning originally 
+comes from filling in ungrounded details, either as a deliberate strat-
+egy20 or as a reliability problem4. The appropriateness of the meta-
+phor has been questioned as promoting undue anthropomorphism21. 
+Although we agree that metaphor must be used carefully with LLMs22, 
+the widespread adoption of the term hallucination reflects the fact 
+that it points to an important phenomenon. This work represents a 
+step towards making that phenomenon more precise.
+T o detect confabulations, we use probabilistic tools to define and 
+then measure the ‘semantic’ entropy of the generations of an LLM—an 
+entropy that is computed over meanings of sentences. High entropy 
+corresponds to high uncertainty23– 25—so semantic entropy is one way 
+to estimate semantic uncertainties. Semantic uncertainty, the broader 
+category of measures we introduce, could be operationalized with other 
+https://doi.org/10.1038/s41586-024-07421-0
+Received: 17 July 2023
+Accepted: 12 April 2024
+Published online: 19 June 2024
+Open access
+ Check for updates
+1OATML, Department of Computer Science, University of Oxford, Oxford, UK. 2These authors contributed equally: Sebastian Farquhar, Jannik Kossen, Lorenz Kuhn. ✉e-mail: sebfar@gmail.com

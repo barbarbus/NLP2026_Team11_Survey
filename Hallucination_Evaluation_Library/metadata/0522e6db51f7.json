@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "Towards Faithful Neural Table-to-Text Generation with Content-Matching Constraints"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2020.acl-main.101.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2020.acl-main.101/"
+  ],
+  "og:description": [
+    "Zhenyi Wang, Xiaoyang Wang, Bang An, Dong Yu, Changyou Chen. Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics. 2020."
+  ]
+}

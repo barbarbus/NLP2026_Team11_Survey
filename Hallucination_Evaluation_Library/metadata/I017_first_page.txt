@@ -1,0 +1,93 @@
+HALO: Estimation and Reduction of Hallucinations in Open-Source Weak
+Large Language Models
+Mohamed Elaraby ∗1 Mengyin Lu 2 Jacob Dunn 2 Xueying Zhang 2
+Yu Wang 2 Shizhu Liu 2 Pingchuan Tian 2 Yuping Wang 2 Yuxuan Wang 2
+1 University of Pittsburgh, Pittsburgh, PA, USA
+2 TikTok Inc., San Jose, CA, USA
+mse30@pitt.edu
+{mengyin.lu,denglelai,xueying.zhang,yuwang.0827,shizhu.liu}@bytedance.com
+Abstract
+Large Language Models (LLMs) have revolu-
+tionized Natural Language Processing (NLP).
+Although convenient for research and practi-
+cal applications, open-source LLMs with fewer
+parameters often suffer from severe halluci-
+nations compared to their larger counterparts.
+This paper focuses on measuring and reduc-
+ing hallucinations in BLOOM 7B, a representa-
+tive of such weaker open-source LLMs that are
+publicly available for research and commercial
+applications. We introduce HALO CHECK , a
+lightweight BlackBox knowledge-free frame-
+work designed to quantify the severity of hal-
+lucinations in LLMs. Additionally, we ex-
+plore techniques like knowledge injection and
+teacher-student approaches to alleviate hallu-
+cinations in low-parameter LLMs. Our exper-
+imentation, carried out on a domain-specific
+question answering dataset centered around the
+NBA domain, underscores the efficacy of our
+proposed methods in effectively estimating and
+reducing hallucinations in the generated output.
+https://github.com/EngSalem/HaLo
+1 Introduction
+Despite their remarkable capabilities in various nat-
+ural language processing tasks, LLMs often gen-
+erate inaccurate or misleading information, lead-
+ing to hallucination problems (Dong et al., 2022;
+Min et al., 2023; Manakul et al., 2023b). These
+hallucinations can manifest as the generation of
+fictional or fabricated details, making it difficult
+to rely on LLM outputs for critical applications.
+While previous research on hallucination mitiga-
+tion and detection has primarily focused on LLMs
+with parameters exceeding 100B parameters (such
+as GPT) (Brown et al., 2020; Ouyang et al., 2022;
+Bubeck et al., 2023), limited work has addressed
+smaller LLMs, which often lag behind larger mod-
+els in performance (Wang et al., 2023b,a). In this
+paper, we specifically address the estimation and
+∗Work conducted during an internship at TikTok US.
+mitigation of hallucinations in an open-source LLM
+with fewer parameters, namely BLOOM 7B (Scao
+et al., 2022), which is publicly available for both
+academic and commercial purposess 1.
+Our work aims to address three research ques-
+tions. RQ1: How can we quantify the severity
+of hallucinations in LLMs? In the context of ad-
+dressing hallucination reduction, our initial focus is
+on developing an automated and efficient method
+to estimate the severity of hallucinations present in
+model-generated outputs. To tackle this, we intro-
+duce HALO CHECK , a lightweight sampling-based
+BlackBox knowledge-free framework. This frame-
+work employs sentence-level entailment techniques
+to quantitatively assess the extent of hallucination
+within the generated output (as illustrated in Fig-
+ure 1 a.). Our approach aligns with other similar
+sampling-based BlackBox metrics (Manakul et al.,
+2023b), but also addresses their limitations in ac-
+curately estimating the severity of hallucinations.
+RQ2: How can we enhance the knowledge of
+LLMs without resorting to instruction tuning?
+We aim to enhance the knowledge of smaller LLMs
+through Knowledge Injection (KI) . This method
+involves fine-tuning the small LLM with domain-
+specific knowledge, without relying on manual in-
+structions or instructions obtained from stronger
+LLMs, which can be resource-intensive to gener-
+ate at scale. Additionally, instructions obtained
+from stronger LLMs might not be usable outside
+of research contexts 2. We explore two avenues
+for knowledge injection: entity summaries and
+entity triplets (as shown in Figure 1 b.), sourced
+from the WikiData knowledge base (Vrande ˇci´c
+and Krötzsch, 2014). Further details about this
+approach can be found in Section 4. RQ3: Can a
+1Stronger open-source LLMs have become available for
+both commercial and academic use during our research such as
+LLama2 (Touvron et al., 2023). We consider them as potential
+extensions for future work.
+2For example, Alpacha instructions are restricted to use
+beyond research purposes.
+arXiv:2308.11764v4  [cs.CL]  13 Sep 2023

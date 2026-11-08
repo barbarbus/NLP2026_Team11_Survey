@@ -1,0 +1,85 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2005.11739: Adversarial NLI for Factual Correctness in Text Summarisation Models"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Adversarial NLI for Factual Correctness in Text Summarisation Models"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2005.11739v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "We apply the Adversarial NLI dataset to train the NLI model and show that the model has the potential to enhance factual correctness in abstract summarization. We follow the work of Falke et al. (2019), which rank multiple generated summaries based on the entailment probabilities between an source document and summaries and select the summary that has the highest entailment probability. The authors' earlier study concluded that current NLI models are not sufficiently accurate for the ranking task. We show that the Transformer models fine-tuned on the new dataset achieve significantly higher accuracy and have the potential of selecting a coherent summary."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Adversarial NLI for Factual Correctness in Text Summarisation Models"
+  ],
+  "twitter:description": [
+    "We apply the Adversarial NLI dataset to train the NLI model and show that the model has the potential to enhance factual correctness in abstract summarization. We follow the work of Falke et al...."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Adversarial NLI for Factual Correctness in Text Summarisation Models"
+  ],
+  "citation_author": [
+    "Barrantes, Mario",
+    "Herudek, Benedikt",
+    "Wang, Richard"
+  ],
+  "citation_date": [
+    "2020/05/24"
+  ],
+  "citation_online_date": [
+    "2020/05/24"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2005.11739"
+  ],
+  "citation_arxiv_id": [
+    "2005.11739"
+  ],
+  "citation_abstract": [
+    "We apply the Adversarial NLI dataset to train the NLI model and show that the model has the potential to enhance factual correctness in abstract summarization. We follow the work of Falke et al. (2019), which rank multiple generated summaries based on the entailment probabilities between an source document and summaries and select the summary that has the highest entailment probability. The authors' earlier study concluded that current NLI models are not sufficiently accurate for the ranking task. We show that the Transformer models fine-tuned on the new dataset achieve significantly higher accuracy and have the potential of selecting a coherent summary."
+  ]
+}

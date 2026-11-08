@@ -1,0 +1,93 @@
+RAGTruth: A Hallucination Corpus for Developing Trustworthy
+Retrieval-Augmented Language Models
+Cheng Niu1, Yuanhao Wu1, Juno Zhu1, Siliang Xu1, Kashun Shum1,
+Randy Zhong1, Juntong Song1, and Tong Zhang2
+1NewsBreak
+2University of Illinois Urbana-Champaign
+cheng.niu@newsbreak.com
+Abstract
+Retrieval-augmented generation (RAG) has be-
+come a main technique for alleviating halluci-
+nations in large language models (LLMs). De-
+spite the integration of RAG, LLMs may still
+present unsupported or contradictory claims
+to the retrieved contents. In order to develop
+effective hallucination prevention strategies un-
+der RAG, it is important to create benchmark
+datasets that can measure the extent of halluci-
+nation. This paper presents RAGTruth, a cor-
+pus tailored for analyzing word-level hallucina-
+tions in various domains and tasks within the
+standard RAG frameworks for LLM applica-
+tions. RAGTruth comprises nearly 18,000 nat-
+urally generated responses from diverse LLMs
+using RAG. These responses have undergone
+meticulous manual annotations at both the indi-
+vidual case and word levels, incorporating eval-
+uations of hallucination intensity. We not only
+benchmark hallucination frequencies across dif-
+ferent LLMs, but also critically assess the ef-
+fectiveness of several existing hallucination de-
+tection methodologies. We show that using a
+high-quality dataset such as RAGTruth, it is
+possible to finetune a relatively small LLM and
+achieve a competitive hallucination detection
+performance when compared to the existing
+prompt-based approaches using state-of-the-art
+LLMs such as GPT-4. Furthermore, the fine-
+tuned model can effectively mitigate hallucina-
+tion in LLM responses.
+1 Introduction
+Large language models (LLMs) have achieved re-
+markable success in a variety of tasks, including
+text generation (Li et al., 2022), machine transla-
+tion (Kocmi and Federmann, 2023), and question
+answering (Zhao et al., 2023). However, one of the
+key challenges in deploying LLMs in real-world
+applications is their tendency to hallucinate (Kad-
+dour et al., 2023). Hallucination in the context
+of LLMs usually refers to a situation where the
+model generates content that is not based on fac-
+QUESTION : how to prepare to get an ultrasound?
+REFERENCE : Passage 1: 1 If you are just interested in
+checking the gender, you can go as early as 17 weeks. 2
+Any earlier, and the results may not be accurate, leading
+to an extra coat of paint for your bedroom. 3 To get good
+pictures, 3D ultrasounds are best performed between 20
+and 32 weeks, and the best pictures are between 24 and
+30 weeks.
+...
+RESPONSE : Based on the given passages, here’s how to
+prepare for an ultrasound:
+* For a gender reveal ultrasound, wait until at least 17
+weeks of pregnancy to ensure accurate results.
+* For 3D ultrasounds, schedule the appointment between
+20 and 32 weeks of pregnancy for the best pictures ...
+ANNOTATION
+Span: between 20 and 32 weeks of pregnancy for the best
+pictures
+Type: Evident Conflict
+Reason: Original: "the best pictures are between 24 and
+30 weeks", Generative: "between 20 and 32 weeks of
+pregnancy for the best pictures"
+Table 1: An example of RAGTruth data from the ques-
+tion answering task. It contains context, response gener-
+ated by LLM with and span-level annotation.
+tual or accurate information (Rawte et al., 2023).
+The occasional generation of outputs that appear
+plausible but are factually incorrect significantly
+undermine the reliability of LLMs in real-world
+scenarios, such as medical diagnoses (Pal et al.,
+2023) and news summarization (Shen et al., 2023).
+To reduce hallucination, various methods have
+been developed that can be applied at differ-
+ent stages of LLM lifecycle, including pre-
+training (Brown et al., 2020), supervised fine-
+tuning (Zhou et al., 2023; Zhang et al., 2023a),
+RLHF (Ouyang et al., 2022; Lin et al., 2022),
+and inference (Dhuliawala et al., 2023; Gao et al.,
+2023). In terms of detection, methods are devel-
+oped by examining the model’s intrinsic state (Guo
+et al., 2017), comparing it with external data
+and tools (Chern et al., 2023), or leveraging the
+arXiv:2401.00396v2  [cs.CL]  17 May 2024

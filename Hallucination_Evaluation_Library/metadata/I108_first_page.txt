@@ -1,0 +1,44 @@
+arXiv:2304.10513v3  [cs.CL]  3 Dec 2023
+Why Does ChatGPT Fall Short in Providing Truthful
+Answers?
+Shen Zheng∗ Jie Huang∗ Kevin Chen-Chuan Chang
+University of Illinois at Urbana-Champaign, USA
+{shenz2, jeffhj, kcchang}@illinois.edu
+Abstract
+Recent advancements in large language models, such as ChatG PT, have demon-
+strated signiﬁcant potential to impact various aspects of h uman life. However,
+ChatGPT still faces challenges in providing reliable and ac curate answers to user
+questions. To better understand the model’s particular wea knesses in providing
+truthful answers, we embark an in-depth exploration of open -domain question an-
+swering. Speciﬁcally, we undertake a detailed examination of ChatGPT’s failures,
+categorized into: comprehension, factuality, speciﬁcity, and inference. We fur-
+ther pinpoint factuality as the most contributing failure and identify two critical
+abilities associated with factuality: knowledge memorization and knowledge re-
+call. Through experiments focusing on factuality, we propose se veral potential en-
+hancement strategies. Our ﬁndings suggest that augmenting the model with gran-
+ular external knowledge and cues for knowledge recall can en hance the model’s
+factuality in answering questions.
+1 Introduction
+ChatGPT/GPT-4 [OpenAI, 2022, 2023] has gained substantial recognition for its practical applica-
+tions, providing useful and informative responses to a wide range of queries. Recent studies have
+conducted comprehensive technical evaluations of ChatGPT on numerous NLP tasks, demonstrating
+that ChatGPT outperforms other models across various tasks [Bubeck et al., 2023, Bang et al., 2023,
+Jiao et al., 2023, Qin et al., 2023].
+However, in spite of the impressive capabilities exhibited by ChatGPT, researchers have highlighted
+some challenges of ChatGPT, such as its inability to perform reliable reasoning [Bang et al., 2023],
+translate low-resource languages effectively [Jiao et al. , 2023], solve complex mathematical prob-
+lems [Frieder et al., 2023], and provide accurate informati on [Bang et al., 2023]. While these short-
+comings are documented, the speciﬁc limitations of ChatGPT that contribute to these challenges are
+not entirely clear in the existing literature. Taking quest ion answering as a representative example:
+Is the model’s failure due to its inability to reason or a lack of knowledge to answer the question? Is
+the issue a result of insufﬁcient knowledge, or does the mode l struggle to recall the internal knowl-
+edge with the question? Is the difﬁculty in recalling knowle dge the root cause, or does the model
+have trouble understanding the question’s context or inten t?
+In this study, we delve into an in-depth exploration of the we akness of ChatGPT in the context of
+complex open-domain question answering, as this task aligns closely with users’ everyday search de-
+mands and requires extensive knowledge as well as robust und erstanding and reasoning capabilities.
+Our goal is to identify common failure modes of ChatGPT in pro viding truthful answers, pinpoint
+the speciﬁc abilities in which ChatGPT is deﬁcient that cont ribute to these failures, and consider
+potential strategies for improvement.
+∗Equal contribution.
+ICBINB Workshop at NeurIPS 2023.

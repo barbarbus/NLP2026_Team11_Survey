@@ -1,0 +1,88 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2104.08202: $Q^{2}$: Evaluating Factual Consistency in Knowledge-Grounded Dialogues via Question Generation and Question Answering"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "$Q^{2}$: Evaluating Factual Consistency in Knowledge-Grounded Dialogues via Question Generation and Question Answering"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2104.08202v2"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Neural knowledge-grounded generative models for dialogue often produce content that is factually inconsistent with the knowledge they rely on, making them unreliable and limiting their applicability. Inspired by recent work on evaluating factual consistency in abstractive summarization, we propose an automatic evaluation metric for factual consistency in knowledge-grounded dialogue using automatic question generation and question answering. Our metric, denoted $Q^2$, compares answer spans using natural language inference (NLI), instead of token-based matching as done in previous work. To foster proper evaluation, we curate a novel dataset of dialogue system outputs for the Wizard-of-Wikipedia dataset, manually annotated for factual consistency. We perform a thorough meta-evaluation of $Q^2$ against other metrics using this dataset and two others, where it consistently shows higher correlation with human judgements."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "$Q^{2}$: Evaluating Factual Consistency in Knowledge-Grounded..."
+  ],
+  "twitter:description": [
+    "Neural knowledge-grounded generative models for dialogue often produce content that is factually inconsistent with the knowledge they rely on, making them unreliable and limiting their..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "$Q^{2}$: Evaluating Factual Consistency in Knowledge-Grounded Dialogues via Question Generation and Question Answering"
+  ],
+  "citation_author": [
+    "Honovich, Or",
+    "Choshen, Leshem",
+    "Aharoni, Roee",
+    "Neeman, Ella",
+    "Szpektor, Idan",
+    "Abend, Omri"
+  ],
+  "citation_date": [
+    "2021/04/16"
+  ],
+  "citation_online_date": [
+    "2021/09/09"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2104.08202"
+  ],
+  "citation_arxiv_id": [
+    "2104.08202"
+  ],
+  "citation_abstract": [
+    "Neural knowledge-grounded generative models for dialogue often produce content that is factually inconsistent with the knowledge they rely on, making them unreliable and limiting their applicability. Inspired by recent work on evaluating factual consistency in abstractive summarization, we propose an automatic evaluation metric for factual consistency in knowledge-grounded dialogue using automatic question generation and question answering. Our metric, denoted $Q^2$, compares answer spans using natural language inference (NLI), instead of token-based matching as done in previous work. To foster proper evaluation, we curate a novel dataset of dialogue system outputs for the Wizard-of-Wikipedia dataset, manually annotated for factual consistency. We perform a thorough meta-evaluation of $Q^2$ against other metrics using this dataset and two others, where it consistently shows higher correlation with human judgements."
+  ]
+}

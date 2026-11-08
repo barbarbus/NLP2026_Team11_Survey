@@ -1,0 +1,36 @@
+Environment-aware UA V Communications:
+CKM Construction and Predictive
+Beamforming
+Shiqi Zeng, Xiaoli Xu and Yong Zeng
+I. I NTRODUCTION
+A. Related Work
+B. Our Contributions
+II. S YSTEM MODEL
+As shown in Fig. 1, we consider a mmWave cellular-connected UA V system in a real urban environment,
+where the ground BS communicates with a single-antenna UA V and simultaneously tracks its state with the help
+of LPM. Without loss of generality, we assume that the space of interest is a cube, which can be defined by
+[qL
+x , qU
+x ] × [qL
+y , qU
+y ] × [qL
+z , qU
+z ] , with the subscripts L and U respectively denoting the lower and upper bounds of
+the 3D coordinate of the space. The LPM, denoted by MLoS, is a database stored at the BS, which returns the
+probability of LoS link between the BS and the potential UA V location q. The BS is equipped with Mt × Nt
+transmit antennas and Mr × Nr receive antennas, where the notations M and N represent the row and column
+number of each antenna array, respectively.
+x
+y
+z
+θ
+φ
+ 
+d
+Transmitted signal
+ Echo signal
+Target UAV
+Blocker
+BS CKM
+Fig. 1. System model.
+arXiv:2404.12060v1  [eess.SP]  18 Apr 2024

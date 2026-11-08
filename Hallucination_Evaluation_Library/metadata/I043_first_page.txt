@@ -1,0 +1,91 @@
+QuestEval: Summarization Asks for Fact-based Evaluation
+Thomas Scialom⋆‡, Paul-Alexis Dray ⋆, Patrick Gallinari‡, Sylvain Lamprier‡,
+Benjamin Piwowarski⋄‡, Jacopo Staiano ⋆, Alex Wang†
+⋄ CNRS, France
+‡ Sorbonne Université, CNRS, LIP6, F-75005 Paris, France
+⋆ reciTAL, Paris, France
+† New York University
+thomas@recital.ai
+Abstract
+Summarization evaluation remains an open
+research problem: current metrics such as
+ROUGE are known to be limited and to corre-
+late poorly with human judgments. To allevi-
+ate this issue, recent work has proposed evalua-
+tion metrics which rely on question answering
+models to assess whether a summary contains
+all the relevant information in its source doc-
+ument. Though promising, the proposed ap-
+proaches have so far failed to correlate better
+than ROUGE with human judgments.
+In this paper, we extend previous approaches
+and propose a uniﬁed framework, named
+QuestEval. In contrast to established
+metrics such as ROUGE or BERTScore,
+QuestEval does not require any ground-
+truth reference. Nonetheless, QuestEval
+substantially improves the correlation with hu-
+man judgments over four evaluation dimen-
+sions (consistency, coherence, ﬂuency, and rel-
+evance), as shown in the extensive experiments
+we report.
+1 Introduction
+The reliability of automatic evaluation metrics is
+an important factor for progress in artiﬁcial intelli-
+gence tasks, enabling the comparison and improve-
+ment of proposed systems. The design of reliable
+metrics for natural language generation (NLG) sys-
+tems is very challenging, and still an open research
+problem: Novikova et al. (2017); Peyrard (2019)
+showed that current metrics do not correlate well
+with human judgments, and argued for the develop-
+ment of new evaluation metrics.
+Among NLG tasks, summarization is one of the
+most difﬁcult to evaluate automatically. For a given
+document, the number of possible correct outputs
+is much larger than for other tasks such as machine
+translation. Thus, when only a single reference
+summary is given – as is typically the case for
+large-scale summarization datasets, the correlation
+of standard automatic evaluation metrics with hu-
+man judgments is low (Louis and Nenkova, 2013).
+Furthermore, since a summary must be shorter than
+the corresponding source document, information
+selection (Li et al., 2018) is critical so that the
+summary only contains the salient contents from
+its source document. For these reasons, n-gram
+based metrics, such as ROUGE (Lin, 2004), are
+known to poorly reﬂect human preference (Louis
+and Nenkova, 2013; Novikova et al., 2017; Paulus
+et al., 2017; Bhandari et al., 2020). Finally, it is
+crucial for reliable summarization to generate texts
+that are factually consistent with their source doc-
+uments. However, this aspect is not measured by
+n-grams based metrics. Notably, while recent state-
+of-the-art generative models (Lewis et al., 2019;
+Zhang et al., 2019a) produce ﬂuent summaries,
+they frequently contain false or unsupported in-
+formation (Kry´sci´nski et al., 2019), a phenomenon
+also known as neural hallucination (Rohrbach et al.,
+2018; Zhao et al., 2020).
+To overcome these limitations, a new approach
+to evaluate summarization systems has recently
+emerged, based on question generation (QG) and
+answering (QA) (Chen et al., 2017; Scialom et al.,
+2019; Eyal et al., 2019). These metrics measure
+to which extent a summary provides sufﬁcient in-
+formation to answer questions posed on its corre-
+sponding source document. They can be used to
+assess the factual consistency (i.e. precision) (Dur-
+mus et al., 2020; Wang et al., 2020) or the relevance
+(i.e. recall) (Scialom et al., 2019) of the evaluated
+summary, with respect to its source document. Al-
+though these works have introduced an interesting
+and novel method to evaluate summarization, with
+encouraging preliminary results, none of those met-
+rics is found to perform better than ROUGE (Fabbri
+et al., 2020): automatic evaluation of summariza-
+tion systems remains an open research problem
+(Kryscinski et al., 2019).
+Inspired by these works, and motivated to take
+arXiv:2103.12693v2  [cs.CL]  9 Apr 2021

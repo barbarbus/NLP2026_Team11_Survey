@@ -1,0 +1,81 @@
+Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing , pages 6528–6548
+November 12-16, 2024 ©2024 Association for Computational Linguistics
+An Audit on the Perspectives and Challenges of Hallucinations in NLP
+Pranav Narayanan Venkit1 Tatiana Chakravorti1 Vipul Gupta4 Heidi Biggs3
+Mukund Srinath1 Koustava Goswami2 Sarah Rajtmajer1 Shomir Wilson1
+1 College of Information Sciences and Technology, Pennsylvania State University
+2 Adobe Research 3 School of Interactive Computing, Georgia Institute of Technology
+4 Department of Computer Science & Engineering, Pennsylvania State University
+{pranav.venkit, tfc5416, vkg5164, mukund, smr48, shomir}@psu.edu
+hbiggs7@gatech.edu, koustavag@adobe.com
+Abstract
+We audit how hallucination in large lan-
+guage models (LLMs) is characterized in peer-
+reviewed literature, using a critical examina-
+tion of 103 publications across NLP research.
+Through the examination of the literature, we
+identify a lack of agreement with the term ‘hal-
+lucination’ in the field of NLP. Additionally,
+to compliment our audit, we conduct a survey
+with 171 practitioners from the field of NLP
+and AI to capture varying perspectives on hallu-
+cination. Our analysis calls for the necessity of
+explicit definitions and frameworks outlining
+hallucination within NLP, highlighting poten-
+tial challenges, and our survey inputs provide
+a thematic understanding of the influence and
+ramifications of hallucination in society.
+1 Introduction
+Recent advancements in Natural Language Pro-
+cessing (NLP) have expanded beyond traditional
+Machine Learning tools, evolving into sociotech-
+nical systems that combine social and technical
+aspects to achieve specific goals (Gautam et al.,
+2024; Narayanan Venkit, 2023). They have now
+become integral in various domains such as health,
+policy-making, and entertainment, (Jin and Mihal-
+cea, 2022; Werning, 2024) showcasing their sig-
+nificant impact on daily life. However, language
+models (LM) exhibit negative behaviours such as
+hallucination and biases (Bender et al., 2021; Gupta
+et al., 2024). This has catalyzed a surge in research
+investigating the phenomenon of hallucinations in
+NLP (Ji et al., 2023a), reflected in the escalating
+number of peer-reviewed publications on the topic,
+as illustrated in Fig 1, sourced from SCOPUS.
+Within the NLP domain, various frameworks
+have emerged to define hallucination, primarily
+emphasizing its negative aspect. Hallucination here
+refers to the model’s production of references to
+non-existent objects or statements, lacking support-
+ing examples in the training data (Ji et al., 2023a).
+Figure 1: Articles published each year (from 2013 to
+2023) in SCOPUS that contain the term ‘hallucination’
+AND (‘NLP’ OR ‘AI’) in the title, abstract, or keywords.
+Despite the growing research on this topic, there is
+still a notable divide in our understanding, a lack
+of a unified framework, and a need for precise defi-
+nitions (Filippova, 2020a).
+The necessity to understand this gap is accentu-
+ated by research demonstrating the societal impacts
+of hallucinations (Dahl et al., 2024). Hence, there
+is a growing need to explore how the field of NLP
+conceptualizes hallucination. In line with this im-
+perative, the following questions guide this study:
+• RQ1: What are the definitions and frame-
+works used to explain hallucinations in NLP?
+• RQ2: What is the current understanding of
+researchers about hallucinations, and how do
+they encounter them in their work?
+To answer the RQ1, we first conduct an audit
+of the field of hallucinations in NLP by surveying
+103 peer-reviewed articles1. Subsequently, we con-
+duct a survey to 171 researchers and academics in
+the field to gather their perspectives on this phe-
+nomenon, providing a novel contribution to the
+literature, addressing RQ2. By surveying NLP prac-
+titioners, the paper incorporates real-world perspec-
+tives, enriching the theoretical discussions with
+1https://github.com/PranavNV/The-Thing-Called-
+Hallucination
+6528

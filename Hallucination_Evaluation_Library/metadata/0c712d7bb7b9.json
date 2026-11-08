@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "MARS: Meaning-Aware Response Scoring for Uncertainty Estimation in Generative LLMs"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2024.acl-long.419.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2024.acl-long.419/"
+  ],
+  "og:description": [
+    "Yavuz Faruk Bakman, Duygu Nur Yaldiz, Baturalp Buyukates, Chenyang Tao, Dimitrios Dimitriadis, Salman Avestimehr. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2024."
+  ]
+}

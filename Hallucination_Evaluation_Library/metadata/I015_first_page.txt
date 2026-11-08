@@ -1,0 +1,94 @@
+Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics
+V olume 1: Long Papers, pages 3340 - 3354
+May 22-27, 2022 c⃝2022 Association for Computational Linguistics
+Hallucinated but Factual! Inspecting the Factuality of Hallucinations in
+Abstractive Summarization
+Meng Cao Yue Dong Jackie Chi Kit Cheung
+School of Computer Science, McGill University, Montreal, QC, Canada
+MILA, Montreal, QC, Canada
+{meng.cao@mail, yue.dong2@mail, jcheung@cs}.mcgill.ca
+Abstract
+State-of-the-art abstractive summarization sys-
+tems often generate hallucinations; i.e., con-
+tent that is not directly inferable from the
+source text. Despite being assumed incor-
+rect, we find that much hallucinated content
+is factual, namely consistent with world knowl-
+edge. These factual hallucinations can be bene-
+ficial in a summary by providing useful back-
+ground information. In this work, we propose a
+novel detection approach that separates factual
+from non-factual hallucinations of entities. Our
+method utilizes an entity’s prior and posterior
+probabilities according to pre-trained and fine-
+tuned masked language models, respectively.
+Empirical results suggest that our approach out-
+performs five baselines and strongly correlates
+with human judgments. Furthermore, we show
+that our detector, when used as a reward signal
+in an off-line reinforcement learning (RL) al-
+gorithm, significantly improves the factuality
+of summaries while maintaining the level of
+abstractiveness.1
+1 Introduction
+State-of-the-art abstractive summarization systems
+can generate fluent summaries with high automatic
+evaluation scores in terms of ROUGE (Lin, 2004).
+However, recent studies have shown that these sys-
+tems are prone to hallucinate content that is not
+supported by the source document (Maynez et al.,
+2020; Kang and Hashimoto, 2020; Durmus et al.,
+2020; Zhao et al., 2020; Filippova, 2020; Kryscin-
+ski et al., 2020). For instance, Maynez et al. (2020)
+discovered that 64.1% of the summaries generated
+by a BERT-based abstractive summarization model
+on XSUM (Narayan et al., 2018a) contain halluci-
+nations.
+Previous studies commonly assume that hal-
+lucination is an undesirable behavior in abstrac-
+tive summarization systems. They investigate the
+1https://github.com/mcao516/EntFA
+Source:
+Under the proposals, 120,000 additional asylum seekers
+will be distributed among EU nations, with binding quotas.
+(...) Mr Juncker told the European Parliament it was “not
+a time to take fright”. (...) He said tackling the crisis was
+“a matter of humanity and human dignity”. “It is true that
+Europe cannot house all the misery in the world. But we
+have to put it into perspective.” (...)
+Generation:
+European Commission President Jean-Claude Juncker has
+set out his proposals for dealing with the migrant crisis
+in a speech to MEPs, saying Europe cannot house all the
+misery in the world.
+Table 1: Example of factual hallucinations in a BART
+generated summary on XS UM. Neither the title “Euro-
+pean Commission President” nor the first name “Jean-
+Claude” is mentioned in the document but both are
+factual.
+cause of model hallucination (Kang and Hashimoto,
+2020; Wang and Sennrich, 2020) and propose meth-
+ods that reduce the frequency of all hallucinations
+(Filippova, 2020; Zhao et al., 2020; Nan et al.,
+2021; Narayan et al., 2021).
+Our stance in this paper is that hallucinations
+are not always undesirable: many factual halluci-
+nations provide additional world knowledge that
+is important for summary comprehension. Table 1
+presents one such example from XS UM: the hallu-
+cinated content European Commission President
+provides additional background information on the
+role of Mr . Juncker. Factual hallucinations refer to
+content that is verifiable by world knowledge but
+not inferable from source text.
+We thus argue that not all hallucinations should
+be treated equally; in particular, factual hallucina-
+tions may be less deleterious or even potentially
+beneficial to to be included in a summary, as op-
+posed to non-factual ones. We propose a method
+to classify entities according to whether they are
+hallucinations and whether they are factual (if hal-
+lucinated). We focus on entities (e.g., persons, lo-
+cations, dates, cardinal numbers) because they are
+necessary to express the most salient pieces of in-
+3340

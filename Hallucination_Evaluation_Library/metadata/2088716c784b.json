@@ -1,0 +1,94 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2310.19347: Improving Factual Consistency of News Summarization by Contrastive Preference Optimization"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Improving Factual Consistency of News Summarization by Contrastive Preference Optimization"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2310.19347v4"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Despite the recent progress in news summarization made by large language models (LLMs), they often generate summaries that are factually inconsistent with original articles, known as \"hallucinations\" in text generation. Unlike previous small models (e.g., BART, T5), current LLMs make fewer silly mistakes but more sophisticated ones, such as imposing cause and effect, adding false details, overgeneralizing, etc. These hallucinations are challenging to detect through traditional methods, which poses great challenges for improving the factual consistency of text summarization. In this paper, we propose Contrastive Preference Optimization (CPO) to disentangle the LLMs' propensities to generate faithful and fake content. Furthermore, we adopt a probing-based specific training method to improve their capacity of distinguishing two types of propensities. In this way, LLMs can execute the instructions more accurately and have enhanced perception of hallucinations. Experimental results show that CPO significantly improves the reliability of summarization based on LLMs."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Improving Factual Consistency of News Summarization by Contrastive..."
+  ],
+  "twitter:description": [
+    "Despite the recent progress in news summarization made by large language models (LLMs), they often generate summaries that are factually inconsistent with original articles, known as..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Improving Factual Consistency of News Summarization by Contrastive Preference Optimization"
+  ],
+  "citation_author": [
+    "Feng, Huawen",
+    "Fan, Yan",
+    "Liu, Xiong",
+    "Lin, Ting-En",
+    "Yao, Zekun",
+    "Wu, Yuchuan",
+    "Huang, Fei",
+    "Li, Yongbin",
+    "Ma, Qianli"
+  ],
+  "citation_doi": [
+    "10.18653/v1/2024.findings-emnlp.648"
+  ],
+  "citation_date": [
+    "2023/10/30"
+  ],
+  "citation_online_date": [
+    "2025/02/13"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2310.19347"
+  ],
+  "citation_arxiv_id": [
+    "2310.19347"
+  ],
+  "citation_abstract": [
+    "Despite the recent progress in news summarization made by large language models (LLMs), they often generate summaries that are factually inconsistent with original articles, known as \"hallucinations\" in text generation. Unlike previous small models (e.g., BART, T5), current LLMs make fewer silly mistakes but more sophisticated ones, such as imposing cause and effect, adding false details, overgeneralizing, etc. These hallucinations are challenging to detect through traditional methods, which poses great challenges for improving the factual consistency of text summarization. In this paper, we propose Contrastive Preference Optimization (CPO) to disentangle the LLMs' propensities to generate faithful and fake content. Furthermore, we adopt a probing-based specific training method to improve their capacity of distinguishing two types of propensities. In this way, LLMs can execute the instructions more accurately and have enhanced perception of hallucinations. Experimental results show that CPO significantly improves the reliability of summarization based on LLMs."
+  ]
+}

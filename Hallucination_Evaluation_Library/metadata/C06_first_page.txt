@@ -1,0 +1,92 @@
+HaluEval: A Large-Scale Hallucination Evaluation Benchmark
+for Large Language Models
+Junyi Li1,3,4∗, Xiaoxue Cheng1∗, Wayne Xin Zhao1,4†
+, Jian-Yun Nie3 and Ji-Rong Wen1,2,4
+1Gaoling School of Artificial Intelligence, Renmin University of China
+2School of Information, Renmin University of China
+3DIRO, Université de Montréal
+4Beijing Key Laboratory of Big Data Management and Analysis Methods
+lijunyi@ruc.edu.cn chengxiaoxue3@gmail.com batmanfly@gmail.com
+Abstract
+Large language models (LLMs), such as Chat-
+GPT, are prone to generate hallucinations, i.e.,
+content that conflicts with the source or cannot
+be verified by the factual knowledge. To un-
+derstand what types of content and to which ex-
+tent LLMs are apt to hallucinate, we introduce
+the Hallucination Evaluation benchmark for
+Large Language Models (HaluEval), a large
+collection of generated and human-annotated
+hallucinated samples for evaluating the perfor-
+mance of LLMs in recognizing hallucination.
+To generate these samples automatically, we
+propose a two-stage framework, i.e., sampling-
+then-filtering. Besides, we hire some human
+labelers to annotate the hallucinations in Chat-
+GPT responses. The empirical results suggest
+that ChatGPT is likely to generate hallucinated
+content related to specific topics by fabricating
+unverifiable information (i.e., about 19.5% re-
+sponses). Moreover, existing LLMs face great
+challenges in recognizing the hallucinations in
+texts. However, our experiments also prove
+that providing external knowledge or adding
+reasoning steps can help LLMs recognize hal-
+lucinations. Our benchmark can be accessed at
+https://github.com/RUCAIBox/HaluEval.
+1 Introduction
+The advent of large language models (LLMs) (Zhao
+et al., 2023) has ushered in a paradigm shift in nat-
+ural language processing (NLP), making unprece-
+dented progress in text generation and understand-
+ing (Brown et al., 2020; Li et al., 2021). The re-
+markable language ability makes LLMs core in a
+number of products with millions of users, such as
+the coding assistant Copilot and recent ChatGPT.
+Despite these prominent capabilities of LLMs
+trained on large text corpus, recent work has shown
+that LLMs are prone to suffer from hallucination
+generations across various applications (Ji et al.,
+∗Equal contributions
+†Corresponding author
+User Query Retrieve the oldest photo of a cat
+ChatGPT There is no definitive answer to this question
+as “the oldest photo of a cat” is subjective and varies based
+on different sources and definitions. However, one can-
+didate for the oldest cat photo is the daguerreotype
+“Cat with Blue Ribbon,” taken by photographer Antoine
+Claudet in 1840. The photo depicts a cat sitting on a table,
+gazing directly at the camera, and wearing a blue ribbon
+tied around its neck. [...]
+Table 1: An example from Alpaca (Taori et al., 2023)
+showing that ChatGPT might generate hallucinated con-
+tents (green) that cannot be verified by existing source.
+2023; Bang et al., 2023; Sun et al., 2023), where
+the generated content is either in conflict with ex-
+isting source or cannot be verified by the available
+knowledge resources. The issue of hallucination
+makes the deployment of LLMs potentially risky in
+real-world applications. Most exiting work mainly
+focuses on investigating the causes of hallucination
+for specific tasks and small language models (Cao
+et al., 2022; Zheng et al., 2023; Das et al., 2023).
+However, it still remains unclear what types of con-
+tent and to which extent LLMs tend to hallucinate.
+To facilitate research in this direction, we present
+the Hallucination Evaluation benchmark for Large
+Language Models (HaluEval): a large collection
+of 35,000 hallucinated/normal samples for LLMs
+analysis and evaluation. HaluEval includes 5,000
+general user queries with ChatGPT responses and
+30,000 task-specific examples from three tasks, i.e.,
+question answering, knowledge-grounded dialogue,
+and text summarization. The construction pipeline
+of HaluEval is depicted in Figure 1. For general
+user queries, we adopt the 52K instruction tuning
+dataset from Alpaca (Taori et al., 2023) for hu-
+man annotation. To further screen out user queries
+where LLMs are most likely to produce hallucina-
+tions, we use ChatGPT to sample three responses
+for each query and only retain 5, 000 queries with
+the lowest similarity among three responses. Ac-
+arXiv:2305.11747v3  [cs.CL]  23 Oct 2023

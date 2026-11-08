@@ -1,0 +1,104 @@
+Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 7752–7767
+August 11-16, 2024 ©2024 Association for Computational Linguistics
+MARS: Meaning-Aware Response Scoring
+for Uncertainty Estimation in Generative LLMs
+Yavuz Faruk Bakman
+USC
+ybakman@usc.edu
+Duygu Nur Yaldiz
+USC
+yaldiz@usc.edu
+Baturalp Buyukates
+USC
+buyukate@usc.edu
+Chenyang Tao∗
+Amazon AI
+chenyt@amazon.com
+Dimitrios Dimitriadis∗
+Amazon AI
+dbdim@amazon.com
+Salman Avestimehr
+USC
+avestime@usc.edu
+Abstract
+Generative Large Language Models (LLMs)
+are widely utilized for their excellence in vari-
+ous tasks. However, their tendency to produce
+inaccurate or misleading outputs poses a po-
+tential risk, particularly in high-stakes environ-
+ments. Therefore, estimating the correctness
+of generative LLM outputs is an important task
+for enhanced reliability. Uncertainty Estima-
+tion (UE) in generative LLMs is an evolving
+domain, where SOTA probability-based meth-
+ods commonly employ length-normalized scor-
+ing. In this work, we propose Meaning-Aware
+Response Scoring (MARS) as an alternative
+to length-normalized scoring for UE methods.
+MARS is a novel scoring function that con-
+siders the semantic contribution of each to-
+ken in the generated sequence in the context
+of the question. We demonstrate that inte-
+grating MARS into UE methods results in a
+universal and significant improvement in UE
+performance. We conduct experiments using
+three distinct closed-book question-answering
+datasets across five popular pre-trained LLMs.
+Lastly, we validate the efficacy of MARS on a
+Medical QA dataset. Code can be found here.
+1 Introduction
+Generative Large Language Models (LLMs) have
+risen in popularity due to their remarkable ability
+to understand, generate, and process human lan-
+guage at an unprecedented scale and accuracy (Ye
+et al., 2023; OpenAI, 2023; Touvron et al., 2023).
+These models have become the state-of-the-art in
+various fields, including machine translation, con-
+tent generation, and even scientific research (Huang
+et al., 2023; OpenAI, 2023) due to their capability
+to handle diverse tasks such as text summarization,
+sentiment analysis, and question-answering in a
+few-shot or zero-shot manner.
+*This work does not relate to their position at Amazon.
+Despite their growing popularity and success,
+generative LLMs are not infallible and can some-
+times produce erroneous or misleading outputs,
+especially when dealing with complex reasoning
+problems or closed-book questions. This limitation
+becomes particularly critical in question-answering
+systems used in high-stakes environments. Quanti-
+fying the uncertainty of generative LLM responses
+in such scenarios is not just beneficial but essential
+for ensuring trustworthy operation. For example, in
+a medical advice application, accurately assessing
+the uncertainty of the responses provided by LLMs
+can prevent the provision of incorrect medical ad-
+vice. This is crucial because erroneous advice may
+lead to devastating medical missteps or misunder-
+standings. Thus, understanding and quantifying
+uncertainty helps in reliable risk assessment and
+in maintaining the overall quality of the answers
+provided, ensuring that users can assess how much
+reliance they should place on LLM responses.
+Uncertainty Estimation (UE) is a well-studied
+problem in classification scenarios, especially in
+the computer vision domain (Lakshminarayanan
+et al., 2017; Gal and Ghahramani, 2016; Shen et al.,
+2021). The proposed UE methods in classification
+tasks, which rely on the class probabilities, are not
+directly applicable to generative LLMs due to the
+auto-regressive generative structure of LLMs (Ma-
+linin and Gales, 2021), which implies that LLMs
+generate text sequentially by predicting each sub-
+sequent word based on the combined context of all
+preceding words. This process differs significantly
+from classification tasks, where the output is typ-
+ically a single label or a set of labels assigned to
+an entire input, without the sequential and context-
+accumulating nature of generative LLMs.
+Recent work (Malinin and Gales, 2021), formal-
+izes how to adapt popular UE methods developed
+for classification tasks to the context of generative
+LLMs. They propose using length-normalized scor-
+ing to estimate the likelihood of a sequence gener-
+7752

@@ -1,0 +1,90 @@
+Detecting and Mitigating Hallucinations in Multilingual Summarisation
+1Yifu Qiu 1Yftah Ziser 2Anna Korhonen 1Edoardo M. Ponti 1Shay B. Cohen
+1Institute for Language, Cognition and Computation, University of Edinburgh
+2Language Technology Lab, University of Cambridge
+{yifu.qiu,yftah.ziser,eponti,scohen}@ed.ac.uk
+Abstract
+Hallucinations pose a significant challenge to
+the reliability of neural models for abstractive
+summarisation. While automatically gener-
+ated summaries may be fluent, they often lack
+faithfulness to the original document. This is-
+sue becomes even more pronounced in low-
+resource languages, where summarisation re-
+quires cross-lingual transfer. With the existing
+faithful metrics focusing on English, even mea-
+suring the extent of this phenomenon in cross-
+lingual settings is hard. To address this, we
+first develop a novel metric, mFACT, evaluat-
+ing the faithfulness of non-English summaries,
+leveraging translation-based transfer from mul-
+tiple English faithfulness metrics. Through ex-
+tensive experiments in multiple languages, we
+demonstrate that mFACT is best suited to de-
+tect hallucinations compared to alternative met-
+rics. With mFACT, we assess a broad range
+of multilingual large language models, and
+find that they all tend to hallucinate often in
+languages different from English. We then
+propose a simple but effective method to re-
+duce hallucinations in cross-lingual transfer,
+which weighs the loss of each training example
+by its faithfulness score. This method dras-
+tically increases both performance and faith-
+fulness according to both automatic and hu-
+man evaluation when compared to strong base-
+lines for cross-lingual transfer such as MAD-X.
+Our code and dataset are available at https:
+//github.com/yfqiu-nlp/mfact-summ.
+1 Introduction
+Recent neural abstractive summarisation models
+(Lewis et al., 2020; Liu and Liu, 2021; Liu et al.,
+2022; Fonseca et al., 2022; Ravaut et al., 2022)
+have shown promise in terms of ROUGE scores
+(Lin and Och, 2004). However, a well-known prob-
+lem with these models is hallucination (Maynez
+et al., 2020; Kryscinski et al., 2020; Laban et al.,
+2022; Cao et al., 2022a)—generating summaries
+that cannot be supported by ground-truth knowl-
+edge (e.g., news, documents, meeting notes). Anec-
+dotally, it was shown that the percentage of gen-
+erated summaries for CNN/DailyMail (Hermann
+et al., 2015; See et al., 2017) and XSum (Narayan
+et al., 2018) containing hallucinations amounts to
+up to 74.8% and 96.9% (Pagnoni et al., 2021), re-
+spectively. Hallucinations hinder the reliability of
+abstractive summarisation systems by potentially
+misleading users with the misinformation they pro-
+duce.
+In addition, current summarisation models, open-
+source or proprietary, struggle in low-resource set-
+tings (Parida and Motlicek, 2019; Hasan et al.,
+2021; Bai et al., 2021; Urlana et al., 2023), when
+the target language is under-represented (e.g., Viet-
+namese and Urdu). Fortunately, cross-lingual trans-
+fer methods (Pfeiffer et al., 2020b; Xue et al., 2021;
+Hu et al., 2020) leverage task-specific knowledge
+learned from a resource-rich source language to
+summarise documents in many resource-poor tar-
+get languages, in a zero-shot fashion or only with
+few annotated examples. Nevertheless, it remains
+unclear to what extent cross-lingual summarisation
+suffers from the problem of hallucination, com-
+pared to monolingual systems where English is the
+only language.
+The main challenge in addressing this question
+is that most faithfulness evaluation metrics are
+available only for English and do not support low-
+resource languages. Hence, our first contribution
+(Section 2) is a model-based metric (mFACT) that
+measures the factual consistency of multilingual
+conditional generation, obtained from four diverse
+English faithfulness metrics (Goyal and Durrett,
+2021; Fabbri et al., 2022; Cao et al., 2022a) via
+‘translate train’ knowledge transfer (Artetxe et al.,
+2020). As illustrated in Figure 1, we use existing
+faithfulness metrics to label the English document–
+summary pairs as positive (i.e., faithful) or negative
+(i.e., hallucinated) and translate them into each tar-
+get language. We then train a classifier in each
+arXiv:2305.13632v2  [cs.CL]  26 Oct 2023

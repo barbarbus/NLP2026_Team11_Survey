@@ -1,0 +1,85 @@
+Findings of the Association for Computational Linguistics: EMNLP 2025, pages 9946–9959
+November 4-9, 2025 ©2025 Association for Computational Linguistics
+Bold Claims or Self-Doubt?
+Factuality Hallucination Type Detection via Belief State
+Dongyu Zhang1,2, Qingqing Hong1,2, Bingxuan Hou1,2,
+Jiayi Lin1,2, Chenyang Zhang1,2, Jialin Li1,2, Junli Wang1,2*
+1 Key Laboratory of Embedded System and Service Computing (Tongji University),
+Ministry of Education, Shanghai 201804, China.
+2 National (Province-Ministry Joint) Collaborative Innovation Center for
+Financial Network Security, Tongji University, Shanghai 201804, China.
+{yidu, 2332012, 2432023, 2331908,
+inkzhangcy, 2233032, junliwang}@tongji.edu.cn
+Abstract
+Large language models are prone to generating
+hallucination that deviates from factual infor-
+mation. Existing studies mainly focus on de-
+tecting the presence of hallucinations but lack
+a systematic classification approach, which hin-
+ders deeper exploration of their characteris-
+tics. To address this, we introduce the concept
+of belief state, which quantifies the model’s
+confidence in its own responses. We define
+the belief state of the model based on self-
+consistency, leveraging answer repetition rates
+to label confident and uncertain states. Based
+on this, we categorize factuality hallucination
+into two types: Overconfident Hallucination
+and Unaware Hallucination. Furthermore, we
+propose BAFH, a factuality hallucination type
+detection method. By training a classifier on
+model’s hidden states, we establish a link be-
+tween hidden states and belief states, enabling
+efficient and automatic hallucination type de-
+tection. Experimental results demonstrate the
+effectiveness of BAFH and the differences be-
+tween hallucination types.
+1 Introduction
+Large Language Models (LLMs) have demon-
+strated remarkable capabilities in various Natural
+Language Processing tasks (Achiam et al., 2023).
+However, there’s a concerning trend where they
+exhibit an inclination to generate hallucination (Co-
+hen et al., 2023; Ren et al., 2023; Huang et al.,
+2025), which makes it risky to deploy LLMs in
+practical scenarios. Consequently, accurately de-
+tecting and addressing hallucination has become a
+significant research challenge (Huang et al., 2025).
+Existing LLM hallucination detection methods
+mainly focus on identifying factual errors in LLM
+outputs, which are commonly referred to as factu-
+ality hallucination (Li et al., 2023; Manakul et al.,
+* Corresponding author. This work was supported in part
+by the National Key Research and Development Program of
+China under Grant 2022YFB4501704.
+Figure 1: Our proposed two types of factuality halluci-
+nation. Red represents incorrect, and green represents
+correct.
+2023; Liu et al., 2025). For instance, Chern et al.
+(2023) utilize external tools for evidence gathering
+to detect factual errors. If the model’s output does
+not align with evidence, it is considered a potential
+hallucination (Manakul et al., 2023; Zhang et al.,
+2023a; Azaria and Mitchell, 2023). Another cate-
+gory of methods do not rely on external knowledge,
+but instead detect hallucination by estimating the
+uncertainty of model outputs (Varshney et al., 2023;
+Luo et al., 2023; Yao et al., 2024). For example,
+MIND (Su et al., 2024) leverages the hidden states
+of LLMs for real-time hallucination detection with-
+out requiring manual annotations.
+Despite significant progress in factuality hallu-
+cination detection, existing work still has notable
+limitations. Current research primarily focuses on
+detecting the presence of factuality hallucination,
+with insufficient attention given to the detailed anal-
+ysis of specific types of hallucination. A few stud-
+ies (Huang et al., 2025; Zhang et al., 2023b) that
+have attempted to classify hallucination typically
+base on semantic errors (e.g., factual or logical
+errors), but they lack a general classification frame-
+work and automated methods. These limitations
+constrain deeper understanding of the hallucination
+mechanisms in LLMs.
+Therefore, we focus on factuality hallucination
+9946

@@ -1,0 +1,88 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2310.01469: LLM Lies: Hallucinations are not Bugs, but Features as Adversarial Examples"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "LLM Lies: Hallucinations are not Bugs, but Features as Adversarial Examples"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2310.01469v3"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "Large Language Models (LLMs), including GPT-3.5, LLaMA, and PaLM, seem to be knowledgeable and able to adapt to many tasks. However, we still cannot completely trust their answers, since LLMs suffer from \\textbf{hallucination}\\textemdash fabricating non-existent facts, deceiving users with or without their awareness. However, the reasons for their existence and pervasiveness remain unclear. In this paper, we demonstrate that nonsensical prompts composed of random tokens can also elicit the LLMs to respond with hallucinations. Moreover, we provide both theoretical and experimental evidence that transformers can be manipulated to produce specific pre-define tokens by perturbing its input sequence. This phenomenon forces us to revisit that \\emph{hallucination may be another view of adversarial examples}, and it shares similar characteristics with conventional adversarial examples as a basic property of LLMs. Therefore, we formalize an automatic hallucination triggering method as the \\textit{hallucination attack} in an adversarial way. Finally, we explore the basic properties of attacked adversarial prompts and propose a simple yet effective defense strategy. Our code is released on GitHub\\footnote{https://github.com/PKU-YuanGroup/Hallucination-Attack}."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "LLM Lies: Hallucinations are not Bugs, but Features as Adversarial Examples"
+  ],
+  "twitter:description": [
+    "Large Language Models (LLMs), including GPT-3.5, LLaMA, and PaLM, seem to be knowledgeable and able to adapt to many tasks. However, we still cannot completely trust their answers, since LLMs..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "LLM Lies: Hallucinations are not Bugs, but Features as Adversarial Examples"
+  ],
+  "citation_author": [
+    "Yao, Jia-Yu",
+    "Ning, Kun-Peng",
+    "Liu, Zhen-Hui",
+    "Ning, Mu-Nan",
+    "Liu, Yu-Yang",
+    "Yuan, Li"
+  ],
+  "citation_date": [
+    "2023/10/02"
+  ],
+  "citation_online_date": [
+    "2024/08/04"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2310.01469"
+  ],
+  "citation_arxiv_id": [
+    "2310.01469"
+  ],
+  "citation_abstract": [
+    "Large Language Models (LLMs), including GPT-3.5, LLaMA, and PaLM, seem to be knowledgeable and able to adapt to many tasks. However, we still cannot completely trust their answers, since LLMs suffer from \\textbf{hallucination}\\textemdash fabricating non-existent facts, deceiving users with or without their awareness. However, the reasons for their existence and pervasiveness remain unclear. In this paper, we demonstrate that nonsensical prompts composed of random tokens can also elicit the LLMs to respond with hallucinations. Moreover, we provide both theoretical and experimental evidence that transformers can be manipulated to produce specific pre-define tokens by perturbing its input sequence. This phenomenon forces us to revisit that \\emph{hallucination may be another view of adversarial examples}, and it shares similar characteristics with conventional adversarial examples as a basic property of LLMs. Therefore, we formalize an automatic hallucination triggering method as the \\textit{hallucination attack} in an adversarial way. Finally, we explore the basic properties of attacked adversarial prompts and propose a simple yet effective defense strategy. Our code is released on GitHub\\footnote{https://github.com/PKU-YuanGroup/Hallucination-Attack}."
+  ]
+}

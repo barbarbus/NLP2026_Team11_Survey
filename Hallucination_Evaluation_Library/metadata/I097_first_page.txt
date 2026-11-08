@@ -1,0 +1,39 @@
+ChainPoll: A H IGH EFFICACY METHOD FOR LLM
+HALLUCINATION DETECTION
+Robert Friel
+Galileo Technologies Inc.
+Atindriyo Sanyal
+Galileo Technologies Inc.
+October 31, 2023
+ABSTRACT
+Large language models (LLMs) have witnessed significant advancements in generating coherent, intelligent,
+and contextually relevant responses. However, the presence of hallucinations – inaccurate or unmotivated
+claims – remains a persistent challenge, motivating the development of automated metrics for the detection of
+hallucinations in LLM outputs.
+We make two contributions: ChainPoll, a novel hallucination detection methodology that substantially out-
+performs existing alternatives, and RealHall, a carefully curated suite of benchmark datasets for evaluating
+hallucination detection metrics proposed in recent literature.
+To construct RealHall, we critically review tasks and datasets used in prior work on hallucination detection,
+finding that many of them have very limited relevance to the powerful LLMs used in practice today. To get rid
+of this limitation, we select four datasets that are truly challenging for state-of-the-art (modern era) LLMs and
+relevant to real world applications.
+We use RealHall to perform a head-to-head and non-biased comparison between ChainPoll and a wide range of
+hallucination metrics proposed in recent literature and showcase that ChainPoll achieves superior performance
+across all four of the benchmarks in RealHall, with an aggregate AUROC of 0.781, beating the next best
+theoretical algorithm by 11%, and beating industry standards for LLMs by over 23%, while simultaneously
+being cheaper to compute and significantly more explainable than alternative metrics.
+We propose 2 new metrics to quantify LLM hallucinations - Adherence and Correctness. The former pertinent to
+Retrieval Augmented Generation (RAG) workflows measuring an LLM’s reasoning abilities within the provided
+documents and context, while the latter focused capturing general logical and reasoning based mistakes.
+Contents
+1 Introduction 2
+1.1 Summary of contributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2 Organization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2 Problem statement 3
+2.1 Approach . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 RealHall 4
+3.1 RealHall datasets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.1.1 RealHall Closed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.1.2 RealHall Open . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 Metrics 6
+arXiv:2310.18344v1  [cs.CL]  22 Oct 2023

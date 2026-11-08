@@ -1,0 +1,92 @@
+Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 24128–24156
+July 27 - August 1, 2025 ©2025 Association for Computational Linguistics
+HalluLens: LLM Hallucination Benchmark
+Yejin Bang§*, Ziwei Ji§∗, Alan Schelten‡, Anthony Hartshorn‡, Tara Fowler‡,
+Cheng Zhang‡, Nicola Cancedda†, Pascale Fung†§
+†FAIR at Meta ‡GenAI at Meta §HKUST
+yjbang@connect.ust.hk, pascale@ece.ust.hk
+Abstract
+Large language models (LLMs) often gener-
+ate responses that deviate from user input or
+training data, a phenomenon known as “hal-
+lucination.” These hallucinations undermine
+user trust and hinder the adoption of genera-
+tive AI systems. Addressing hallucinations is
+important for the advancement of LLMs. This
+paper introduces a comprehensive hallucina-
+tion benchmark HalluLens, incorporating both
+extrinsic and intrinsic evaluation tasks, built
+upon a clear taxonomy of hallucination. A ma-
+jor challenge in benchmarking hallucinations
+is the lack of a unified framework due to in-
+consistent definitions and categorizations. We
+disentangle LLM hallucination from “factual-
+ity” and propose a taxonomy distinguishing ex-
+trinsic and intrinsic hallucinations to promote
+consistency and facilitate research. We empha-
+size extrinsic hallucinations – where generated
+content deviates from training data – as they
+become increasingly relevant with LLM ad-
+vancements. However, no benchmark is solely
+dedicated to extrinsic hallucinations. To ad-
+dress this gap, HalluLens introduces three new
+extrinsic tasks with dynamic test set generation
+to mitigate data leakage and ensure robustness.
+We release codebase for extrinsic hallucination
+benchmark.1
+1 Introduction
+Large language models (LLMs) are known to gen-
+erate responses that could be inconsistent with the
+user input, or existing knowledge – a phenomenon
+commonly referred to as “hallucination”. Such
+hallucinations can pose significant challenges to
+user trust and acceptance of generative AI sys-
+tems. Therefore, identifying and mitigating hal-
+lucinations is important for the broader adoption
+and further development of LLMs. We believe that
+a comprehensive, reliable, and ungameable evalua-
+tion is the first step toward effective mitigation.
+*Work done during internship at FAIR
+1https://github.com/facebookresearch/HalluLens
+One of the key challenges in benchmarking hal-
+lucinations in LLMs is the lack of consensus on the
+definitions of various types and sources of halluci-
+nations, leading to the absence of a unified frame-
+work for comprehensive evaluation. While several
+benchmarks exist for evaluating LLM hallucination
+(Li et al., 2024; Ming et al., 2024; Ji et al., 2024;
+Sun et al., 2024), they often do not specify the types
+of hallucination being considered, or the categories
+are inconsistent with one another. This results in in-
+consistent coverage and a gap in research insights.
+Moreover, as LLMs advance, the LLM hallu-
+cination is often conflated with “factuality” (Wei
+et al., 2024a; Lin et al., 2022; Mallen et al., 2023a).
+Although “hallucination” and “factuality” overlap,
+they are distinct challenges necessitating separate
+benchmarks and solutions (Wang et al., 2023; Au-
+genstein et al., 2024). In particular, factuality re-
+quires an oracle external to the model to define a
+ground truth as its nature of update over time. Hal-
+lucination is defined as a model behavior where its
+output is found to be inconsistent with eitherits pre-
+training corpus or the input context. Whereas the
+oracle for factuality can be difficult to define and
+even controversial at times, an oracle for halluci-
+nation can be defined internally with respect to the
+model. Our first objective is to delineate and clarify
+different types of hallucinations by disentangling
+“hallucination” from “factuality” and providing a
+taxonomy that promotes consistency and facilitates
+further research.
+We consider there to be two main types of LLM
+hallucinations, namely “intrinsic” and “extrinsic”
+hallucinations. Intrinsic hallucinations are gener-
+ated texts that contradict the source query. This
+happens during machine translation or text sum-
+marization, for example, where the generated text
+contains statements that either contradicts or do
+not exist in the source query. Such hallucinations
+are generally easily verifiable with respect to the
+source. In addition, LLMs are also capable of gen-
+24128

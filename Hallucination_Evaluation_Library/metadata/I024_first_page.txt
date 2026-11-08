@@ -1,0 +1,95 @@
+Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (V olume 1: Long Papers) , pages 10879–10899
+August 11-16, 2024 ©2024 Association for Computational Linguistics
+The Dawn After the Dark: An Empirical Study on Factuality Hallucination
+in Large Language Models
+Junyi Li1,3, Jie Chen1, Ruiyang Ren1, Xiaoxue Cheng1 , Wayne Xin Zhao1∗
+,
+Jian-Yun Nie3 and Ji-Rong Wen1,2
+1Gaoling School of Artificial Intelligence, Renmin University of China
+2School of Information, Renmin University of China
+3DIRO, Université de Montréal
+{lijunyi, ptyzchenjie}@ruc.edu.cn batmanfly@gmail.com
+Abstract
+In the era of large language models (LLMs),
+hallucination ( i.e., the tendency to generate
+factually incorrect content) poses great chal-
+lenges to trustworthy and reliable deployment
+of LLMs in real-world applications. To tackle
+the hallucination, three key questions should
+be well studied: how to detect hallucinations
+(detection), why do LLMs hallucinate (source),
+and what can be done to mitigate them ( miti-
+gation). To address these challenges, this work
+presents a systematic empirical study on LLM
+hallucinations, focused on the three aspects
+of hallucination detection, source and mitiga-
+tion. Specially, we construct a new halluci-
+nation benchmark HaluEval 2.0, and design
+a simple yet effective detection method for
+LLM hallucinations. Furthermore, we zoom
+into the different training or utilization stages
+of LLMs and extensively analyze the poten-
+tial factors that lead to the LLM hallucina-
+tions. Finally, we implement and examine
+a series of widely used techniques to miti-
+gate the hallucinations in LLMs. Our work
+has led to several important findings to under-
+stand the hallucination origin and mitigate the
+hallucinations in LLMs. Our code and data
+can be accessed athttps://github.com/
+RUCAIBox/HaluEval-2.0.
+1 Introduction
+Large language models (LLMs) (Zhao et al., 2023)
+have shown remarkable potential in a wide range of
+natural language processing applications (Brown
+et al., 2020; Ouyang et al., 2022; OpenAI, 2023).
+However, despite the significant improvement in
+model capacity, a persistent challenge lies in their
+tendency to hallucinate, i.e., generate content that
+looks plausible but is factually incorrect (Huang
+et al., 2023; Ji et al., 2023a; Zhang et al., 2023b).
+This issue severely restricts the deployment of
+LLMs in real-world applications (e.g., clinical diag-
+∗Corresponding author
+noses), where the reliable generation of trustworthy
+text is of utmost importance.
+In the era of LLMs, there has been a significant
+surge of research interests in hallucinations (Yao
+et al., 2023; Das et al., 2023; Dhuliawala et al.,
+2023a; Varshney et al., 2023; Manakul et al., 2023).
+These studies are mainly centered around three in-
+terleaved questions, i.e., why do LLMs hallucinate,
+how to detect hallucinations, and what can be done
+to mitigate them? The three key questions pose
+great challenges to the research community, while
+existing empirical work mostly focuses on analyz-
+ing or addressing individual challenges, still lack-
+ing a systematic and in-depth experimental study
+on LLM hallucinations. To bridge this gap, a more
+comprehensive analysis is needed to thoroughly
+research the aforementioned three questions.
+For deciphering the mystery of hallucination in
+LLMs, we aim to conduct a comprehensive and sys-
+tematic empirical study on hallucination detection,
+source, and mitigation. In particular, we mainly
+focus on studying factuality hallucination, which
+has become one of the primary erroneous sources
+for LLMs (Huang et al., 2023; Zhang et al., 2023b).
+To carry out our research, we zoom into the dif-
+ferent stages to train and use LLMs, including pre-
+training, supervised fine-tuning (SFT), reinforce-
+ment learning from human feedback (RLHF), and
+inference, and thus can conduct more in-depth anal-
+ysis of potential impact of each stage on model hal-
+lucination. This analysis approach is quite different
+from prior work, where they mostly study the im-
+pact of individual stages or strategies to attribute or
+mitigate the hallucinations.
+To conduct our empirical study, we first extend
+previous work (Li et al., 2023a) and construct a new
+benchmark HaluEval 2.0 for evaluating the factu-
+ality hallucination in LLMs. Our benchmark con-
+tains 8,770 questions from five domains including
+biomedicine, finance, science, education, and open
+domain. To detect factual errors in LLM responses,
+10879

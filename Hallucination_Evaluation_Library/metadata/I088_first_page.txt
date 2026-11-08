@@ -1,0 +1,89 @@
+SAC3: Reliable Hallucination Detection in Black-Box Language Models via
+Semantic-aware Cross-check Consistency
+Jiaxin Zhang1, Zhuohang Li 2, Kamalika Das 1, Bradley Malin 2,3, Sricharan Kumar 1
+1Intuit AI Research 2Vanderbilt University 3Vanderbilt University Medical Center
+{jiaxin_zhang, kamalika_das, sricharan_kumar}@intuit.com
+{zhuohang.li, b.malin}@vanderbilt.edu
+Abstract
+Hallucination detection is a critical step toward
+understanding the trustworthiness of modern
+language models (LMs). To achieve this goal,
+we re-examine existing detection approaches
+based on the self-consistency of LMs and un-
+cover two types of hallucinations resulting from
+1) question-level and 2) model-level, which
+cannot be effectively identified through self-
+consistency check alone. Building upon this
+discovery, we propose a novel sampling-based
+method, i.e., semantic-aware cross-check con-
+sistency (SAC3) that expands on the principle
+of self-consistency checking. Our SAC3 ap-
+proach incorporates additional mechanisms to
+detect both question-level and model-level hal-
+lucinations by leveraging advances including
+semantically equivalent question perturbation
+and cross-model response consistency check-
+ing. Through extensive and systematic empiri-
+cal analysis, we demonstrate thatSAC3 outper-
+forms the state of the art in detecting both non-
+factual and factual statements across multiple
+question-answering and open-domain genera-
+tion benchmarks.1
+1 Introduction
+Large-scale pre-trained language models (LMs)
+have demonstrated exceptional adaptability across
+a diverse array of natural language tasks that re-
+quire generating open-ended responses based on
+user prompt comprehension (Zhao et al., 2023).
+However, prominent LMs like GPT (Brown et al.,
+2020) and PaLM (Chowdhery et al., 2022), often
+exhibit a tendency to produce exceedingly confi-
+dent, yet erroneous, assertions commonly referred
+to as hallucinations. This phenomenon signifi-
+cantly impedes their applicability in domains where
+factual accuracy is of utmost importance.
+Hallucinations can be detected through the assis-
+tance of metrics that capture the uncertainty about
+1All resources are available at https://github.com/
+intuit/sac3.
+the output sequences. However, these metrics re-
+quire access to token-level log probabilities, which
+are not available in commercial black-box LMs
+like ChatGPT or Bard that only offer limited API
+access. To overcome this limitation, recent studies
+explore sampling-based approaches for approxi-
+mating uncertainty estimation (Lin et al., 2023)
+through establishing a connection between confi-
+dence and self-consistency (Manakul et al., 2023;
+Mündler et al., 2023). The underlying premise
+of this principle is that LMs are more inclined to
+generate consistent responses when high probabil-
+ities are assigned to tokens in the answer, which,
+in turn, implies a level of factuality. In contrast,
+inconsistent responses are more likely to contain
+hallucinations. To operationalize this concept, cur-
+rent approaches are designed to sample multiple
+responses from the LMs for a given question and
+then compose a hallucination score for each sen-
+tence based on the level of response consistency.
+Key Observations. In this work, we investigate
+the relationship between the self-consistency of
+LMs and the occurrence of hallucinations in a di-
+verse range of tasks. Our investigation indicates
+that while self-inconsistency in LMs often coin-
+cides with hallucination, self-consistency does not
+necessarily guarantee factual answers, as shown in
+Figure 1. Our findings challenge the notion that
+self-consistency alone can serve as a reliable indi-
+cator of veracity, as it is demonstrated that LMs can
+exhibit various tiers of hallucination that elude de-
+tection through self-consistency checks. One such
+tier is question-level hallucination, where LMs con-
+sistently generate incorrect answers in response to
+specific questions (e.g., Table 1). We reveal that
+by reformulating the questions, it is possible to
+mitigate such instances of hallucinations. Addi-
+tionally, our work further reveals the existence of
+model-level hallucinations, whereby different LMs
+show discrepancies in their propensity for halluci-
+arXiv:2311.01740v2  [cs.CL]  18 Feb 2024

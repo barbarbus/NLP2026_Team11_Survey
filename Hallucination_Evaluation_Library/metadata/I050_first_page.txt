@@ -1,0 +1,80 @@
+GraphEval: A Knowledge-Graph Based LLM Hallucination
+Evaluation Framework
+Hannah Sansford1,*, Nicholas Richardson 2, Hermina Petric Maretic 2 and Juba Nait Saada 2
+1University of Bristol, UK
+2Amazon Science
+Abstract
+Methods to evaluate Large Language Model (LLM) responses and detect inconsistencies, also known as hallucinations, with
+respect to the provided knowledge, are becoming increasingly important for LLM applications. Current metrics fall short in
+their ability to provide explainable decisions, systematically check all pieces of information in the response, and are often too
+computationally expensive to be used in practice. We present GraphEval: a hallucination evaluation framework based on
+representing information in Knowledge Graph (KG) structures. Our method identifies the specific triples in the KG that are
+prone to hallucinations and hence provides more insight into where in the response a hallucination has occurred, if at all,
+than previous methods. Furthermore, using our approach in conjunction with state-of-the-art natural language inference
+(NLI) models leads to an improvement in balanced accuracy on various hallucination benchmarks, compared to using the raw
+NLI models. Lastly, we explore the use of GraphEval for hallucination correction by leveraging the structure of the KG, a
+method we name GraphCorrect, and demonstrate that the majority of hallucinations can indeed be rectified.
+Keywords
+Large Language Models, Knowledge Graphs, Hallucination Detection, Hallucination Correction
+1. Introduction
+As the size and power of LLMs have drastically increased
+over recent years, so has the number of potential appli-
+cations. Arguably, one of the biggest blockers to imple-
+menting these models in practice is their tendency to
+hallucinate - returning seemingly plausible, but untrue,
+responses. Here, we focus on the problem of detecting
+hallucinations with respect to the provided context that
+the LLM should use as its source of knowledge; detecting
+hallucinations that have deviated from the LLM’s original
+training data is out of the scope of this work. In appli-
+cations where certainty in a response is critical, such as
+medical diagnosis, the existence of hallucinations that
+arise from a given context is especially limiting. There-
+fore, it is of utmost importance to develop successful
+methods to detect these hallucinations and, when it is
+of interest to address or correct them, provide clarity on
+which aspect of the response is likely a hallucination.
+The importance of this issue is reflected in the amount of
+research being published on the topic - see Ji et al. [12]
+for a recent survey of this area.
+Performing evaluation on natural language is a challeng-
+ing task that researchers have been interested in long
+KiL’24: Workshop on Knowledge-infused Learning co-located with
+30th ACM KDD Conference, August 26, 2024, Barcelona, Spain
+*Work done during an internship with Amazon.
+/envel⌢pe-⌢penhannah.sansford@bristol.ac.uk (H. Sansford); nchls@amazon.es
+(N. Richardson); maretich@amazon.co.uk (H. Petric Maretic);
+jubans@amazon.co.uk (J. Nait Saada)
+© 2024 Copyright for this paper by its authors. Use permitted under Creative Commons License
+Attribution 4.0 International (CC BY 4.0).
+before hallucinations were at the forefront of the prob-
+lem. Methods have evolved a great deal from traditional
+N-gram based metrics, such as BLEU [ 26] and ROUGE
+[17], to much more intricate LLM-based evaluation met-
+rics with user-defined evaluation criteria, such as G-Eval
+[18]. More recently, techniques to mitigate the preva-
+lence of hallucinations in generated outputs leveraging
+Retrieval Augmented Generation (RAG) [ 16] and rea-
+soning on knowledge graphs (KGs) [ 19, 34] have been
+proposed. The former suggested the concatenation of rel-
+evant contextual data into the prompt to ground the LLM
+response, while the latter enforced a more robust reason-
+ing process through providing grounding information in
+KG structures [1]. As successful as these approaches have
+been, they do not fully circumvent the need to evaluate
+LLM outputs.
+Inspired by current research harnessing KGs to provide
+grounded LLM responses, we propose GraphEval - a hal-
+lucination detection framework based on the represen-
+tation of information in KG structures. To the best of
+our knowledge, we are the first to apply KGs to an LLM-
+based hallucination evaluation framework, and in doing
+so we provide a higher level of insight into where in
+the output a hallucination has occurred than any previ-
+ous metrics. Additionally, we demonstrate how using
+our method in conjunction with current state-of-the-art
+hallucination detection methods improves their classi-
+fication accuracy on various benchmarks. Finally, we
+consider the problem of hallucination correction and we
+introduce GraphCorrect, showcasing how GraphEval can
+arXiv:2407.10793v1  [cs.CL]  15 Jul 2024

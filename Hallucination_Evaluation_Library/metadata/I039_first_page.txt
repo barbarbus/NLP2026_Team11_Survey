@@ -1,0 +1,95 @@
+Zero-shot Faithful Factual Error Correction
+Kung-Hsiang Huang♠ Hou Pong Chan♡ Heng Ji♠
+♠Department of Computer Science, University of Illinois Urbana-Champaign
+♡Faculty of Science and Technology, University of Macau
+♠{khhuang3, hengji}@illinois.edu
+♡hpchan@um.edu.mo
+Abstract
+Faithfully correcting factual errors is critical
+for maintaining the integrity of textual
+knowledge bases and preventing hallucinations
+in generative models. Drawing on humans’
+ability to identify and correct factual errors, we
+present a zero-shot framework that formulates
+questions about input claims, looks for correct
+answers in the given evidence, and assesses
+the faithfulness of each correction based on its
+consistency with the evidence. Our zero-shot
+framework outperforms fully-supervised ap-
+proaches, as demonstrated by experiments on
+the FEVER and SCIFACT datasets, where our
+outputs are shown to be more faithful. More
+importantly, the decomposability nature of our
+framework inherently provides interpretability.
+Additionally, to reveal the most suitable
+metrics for evaluating factual error corrections,
+we analyze the correlation between commonly
+used metrics with human judgments in terms
+of three different dimensions regarding
+intelligibility and faithfulness.1
+1 Introduction
+The task of correcting factual errors is in high de-
+mand and requires a significant amount of human
+effort. The English Wikipedia serves as a notable
+case in point. It is continually updated by over
+120K editors, with an average of around six factual
+edits made per minute2. Using machines to correct
+factual errors could allow the articles to be updated
+with the most current information automatically.
+This process, due to its high speed, can help retain
+the integrity of the content and prevent the spread
+of false or misleading information.
+In addition, the hallucination issues have been
+shown to be a prime concern for neural models,
+1The code and data have been made publicly available:
+https://github.com/khuangaf/ZeroFEC
+2https://en.wikipedia.org/wiki/
+Wikipedia:Statistics
+Unfaithful Factual Error Correction
+Evidence
+The novel COVID ‐ 19 is
+highly contagious and
+is transmitted mostly
+through respiratory
+droplets. But, whether
+its transmission can be
+forwarded by touching
+a surface (i.e., a
+fomite) is uncertain.... COVID-19 has a case fatality rate of below 2%.
+Final Correction
+COVID-19 is not infectious.
+Input Claim
+Figure 1: An example of a factual but unfaithful
+correction leading to misleading information. While
+it is technically true that the majority of people
+infected with COVID-19 will recover, there is no
+information in the evidence that supports the final
+correction. Additionally, when this statement is taken
+out of context, it could mislead people to believe that
+COVID-19 is not dangerous and that there is no need
+for precautions, which is false. A factual and faithful
+correction is “COVID-19 is highly contagious.”.
+where they are prone to generate content factu-
+ally inconsistent with the input sources due to the
+unfaithful training samples (Maynez et al., 2020)
+and the implicit “knowledge” it learned during
+pre-training (Niven and Kao, 2019). Factual er-
+ror correction can be used in both pre-processing
+and post-processing steps to rectify the factual in-
+consistencies in training data and generated texts,
+respectively. This can help build trust and confi-
+dence in the reliability of language models.
+Prior work typically formulates factual error cor-
+rection as a sequence-to-sequence task, either in a
+fully supervised or in a distantly supervised man-
+ner (Shah et al., 2020; Thorne and Vlachos, 2021).
+While these approaches have made great strides in
+generating fluent and grammatically valid correc-
+tions, they only focus on the aspect of factuality:
+whether the outputs are aligned with facts. Little
+emphasis was placed on faithfulness: the factual
+consistency of the outputs with the evidence. Faith-
+fulness is critical in this task as it indicates whether
+a generated correction reflects the information we
+intend to update. If faithfulness is not ensured,
+arXiv:2305.07982v2  [cs.CL]  27 May 2023

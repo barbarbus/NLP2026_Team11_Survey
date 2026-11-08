@@ -1,0 +1,116 @@
+SUMMA C: Re-Visiting NLI-based Models for
+Inconsistency Detection in Summarization
+Philippe Laban
+UC Berkeley
+Tobias Schnabel
+Microsoft
+Paul N. Bennett
+Microsoft
+Marti A. Hearst
+UC Berkeley∗
+Abstract
+In the summarization domain, a key require-
+ment for summaries is to be factually con-
+sistent with the input document. Previous
+work has found that natural language in-
+ference (NLI) models do not perform com-
+petitively when applied to inconsistency de-
+tection. In this work, we revisit the use
+of NLI for inconsistency detection, ﬁnding
+that past work suffered from a mismatch
+in input granularity between NLI datasets
+(sentence-level), and inconsistency detec-
+tion (document level). We provide a highly
+effective and light-weight method called
+SUMMA CConv that enables NLI models to
+be successfully used for this task by seg-
+menting documents into sentence units and
+aggregating scores between pairs of sen-
+tences. On our newly introduced benchmark
+called SUMMA C (Summary Consistency)
+consisting of six large inconsistency detec-
+tion datasets, S UMMA CConv obtains state-
+of-the-art results with a balanced accuracy
+of 74.4%, a 5% point improvement com-
+pared to prior work.
+1 Introduction
+Recent progress in text summarization has been
+remarkable, with ROUGE record-setting models
+published every few months, and human evalua-
+tions indicating that automatically generated sum-
+maries are matching human-written summaries in
+terms of ﬂuency and informativeness (Zhang et al.,
+2020a).
+A major limitation of current summarization
+models is their inability to remain factually consis-
+tent with the respective input document. Summary
+inconsistencies are diverse – from inversions (i.e.,
+negation) to incorrect use of an entity (i.e., sub-
+ject, object swapping), or hallucinations (i.e., in-
+troduction of entity not in the original document).
+∗Author emails: {phillab,hearst}@berkeley.edu, {To-
+bias.Schnabel,Paul.N.Bennett}@microsoft.com
+One possible site, known as
+Arcadia Planitia, is covered in
+strange sinuous features. 
+Arcadia Planitia is in Mars'
+northern lowlands.
+The shapes could be signs that the
+area is actually made of glaciers,
+which are large masses of slow-
+moving ice.
+Scientists are studying Mars to learn
+about the Red Planet and find
+landing sites for future missions. 
+D1
+D3
+D4
+There are strange
+shape patterns on
+Arcadia Planitia. 
+Document Summary
+0.98
+0.99
+0.02
+Sentence-Level NLI
+Document-Level NLI
+P(Y = entail | document, summary) = 0.91
+This makes Arcadia
+Planitia ideal for
+future missions.
+The shapes could
+indicate the area might
+be made of glaciers.
+D2
+S2
+S1
+S3
+P(Y = entail | Di, Sj)
+Figure 1: Example document with an inconsis-
+tent summary. When running each sentence pair
+(Di, Sj) through an NLI model, S3 is not entailed
+by any document sentence. However, when run-
+ning the entire (document, summary) at once, the
+NLI model incorrectly predicts that the document
+highly entails the entire summary.
+Recent studies have shown that in some scenarios,
+even state-of-the-art pre-trained language models
+can generate inconsistent summaries in more than
+70% of all cases (Pagnoni et al., 2021). This has
+led to accelerated research around summary in-
+consistency detection.
+A closely-related task to inconsistency detec-
+tion is textual entailment, also referred to as Nat-
+ural Language Inference (NLI), in which a hy-
+pothesis sentence must be classiﬁed as either en-
+tailed by, neutral or contradicting a premise sen-
+tence. Enabled by the crowd-sourcing of large
+NLI datasets such as SNLI (Bowman et al., 2015)
+and MNLI (Williams et al., 2018), modern ar-
+chitectures have achieved close to human perfor-
+mance at the task.
+The similarity of NLI to inconsistency detec-
+tion, as well as the availability of high-performing
+NLI models, led to early attempts at using NLI
+to detect consistency errors in summaries. These
+arXiv:2111.09525v1  [cs.CL]  18 Nov 2021

@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "Language Models Hallucinate, but May Excel at Fact Verification"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2024.naacl-long.62.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2024.naacl-long.62/"
+  ],
+  "og:description": [
+    "Jian Guan, Jesse Dodge, David Wadden, Minlie Huang, Hao Peng. Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2024."
+  ]
+}

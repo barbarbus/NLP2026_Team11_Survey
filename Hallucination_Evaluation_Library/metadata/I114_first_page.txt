@@ -1,0 +1,93 @@
+Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics , pages 1059–1075
+May 2-6, 2023 ©2023 Association for Computational Linguistics
+Looking for a Needle in a Haystack:
+A Comprehensive Study of Hallucinations in Neural Machine Translation
+Nuno M. Guerreiro1,2 Elena Voita4 André F. T. Martins1,2,3
+1Instituto de Telecomunicações, Lisbon, Portugal
+2Instituto Superior Técnico & LUMLIS (Lisbon ELLIS Unit), Lisbon, Portugal
+3Unbabel, Lisbon, Portugal 4University of Edinburgh, Scotland
+{nuno.s.guerreiro, andre.t.martins}@tecnico.ulisboa.pt lena-voita@hotmail.com
+Abstract
+Although the problem of hallucinations in neu-
+ral machine translation (NMT) has received
+some attention, research on this highly patho-
+logical phenomenon lacks solid ground. Pre-
+vious work has been limited in several ways:
+it often resorts to artificial settings where the
+problem is amplified, it disregards some (com-
+mon) types of hallucinations, and it does not
+validate adequacy of detection heuristics. In
+this paper, we set foundations for the study
+of NMT hallucinations. First, we work in a
+natural setting, i.e., in-domain data without
+artificial noise neither in training nor in in-
+ference. Next, we annotate a dataset of over
+3.4k sentences indicating different kinds of crit-
+ical errors and hallucinations. Then, we turn
+to detection methods and both revisit methods
+used previously and propose using glass-box
+uncertainty-based detectors. Overall, we show
+that for preventive settings, (i) previously used
+methods are largely inadequate, (ii) sequence
+log-probability works best and performs on par
+with reference-based methods. Finally, we pro-
+pose DEHALLUCINATOR , a simple method for
+alleviating hallucinations at test time which sig-
+nificantly reduces the hallucinatory rate.
+1 Introduction
+Neural machine translation (NMT) is becom-
+ing increasingly accurate (Vaswani et al., 2017;
+Akhbardeh et al., 2021), particularly in high re-
+source language pairs where parallel data is abun-
+dant. However, even the best systems available
+today may generate hallucinations. These are ex-
+tremely pathological translations that contain con-
+tent that is unfaithful to the source sequence. Criti-
+cally, a tiny fraction of these mistakes is all it takes
+to compromise user trust or safe deployment of
+NMT models in production.
+Unfortunately, although the problem of hallu-
+cinations received some attention, research on
+this highly pathological phenomenon lacks solid
+ground. First, previous work used multiple and of-
+ten overlapping definitions and categories of hallu-
+cinations which makes it hard to draw connections
+between observations made in different works (Lee
+et al., 2018; Raunak et al., 2021; Zhou et al., 2021).
+Next, since hallucinations are extremely rare, pre-
+vious work focused on settings in which the phe-
+nomenon is amplified, e.g. perturbing data either
+in training or at inference, or evaluating under do-
+main shift (Lee et al., 2018; Raunak et al., 2021;
+Müller et al., 2020; Wang and Sennrich, 2020;
+V oita et al., 2021; Müller and Sennrich, 2021; Zhou
+et al., 2021). Critically, the analysis on these works
+mostly relied on the adequacy of the automatic hal-
+lucination detection methods they proposed. How-
+ever, it is not immediate whether these methods
+translate well to unperturbed settings.
+In this work, we set foundations for the study of
+NMT hallucinations. We take a step back from pre-
+vious work and, instead of considering perturbed
+settings for which hallucinations are more frequent,
+we consider a natural scenario and face the actual
+problem of identifying a small fraction of halluci-
+nations (a “needle”) in a large number of translated
+sentences (a “haystack”). Then, we provide a rig-
+orous comparison among hallucination detection
+methods. Apart from analysing those proposed in
+previous work (e.g., heuristics based on anomalous
+encoder-decoder attention), we also propose to use
+simple model uncertainty measures as detectors.
+For each of these methods, we select examples
+marked as hallucinations, put them together, and
+gather human annotations. As a result, we intro-
+duce a corpus of 3415 structured annotations for
+different NMT pathologies and hallucinations. We
+use this corpus for analysis and show that, in pre-
+ventive settings where high recall is desirable, pre-
+viously proposed methods are mostly inadequate,
+and filtering according to standard sequence log-
+probability performs the best. In fact, it performs
+on par with the state-of-the-art COMET (Rei et al.,
+1059

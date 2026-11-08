@@ -1,0 +1,23 @@
+{
+  "og:title": [
+    "Hallucination Detection in LLMs with Topological Divergence on Attention Graphs"
+  ],
+  "og:image": [
+    "https://aclanthology.org/thumb/2026.acl-long.704.jpg"
+  ],
+  "og:image:alt": [
+    "First page of paper PDF."
+  ],
+  "og:type": [
+    "article"
+  ],
+  "og:site_name": [
+    "ACL Anthology"
+  ],
+  "og:url": [
+    "https://aclanthology.org/2026.acl-long.704/"
+  ],
+  "og:description": [
+    "Alexandra Bazarova, Andrei Volodichev, Aleksandr Yugay, Andrey Shulga, Alina Ermilova, Konstantin Polev, Julia Belikova, Rauf Parchiev, Dmitry Simakov, Maxim Savchenko, Andrey Savchenko, Serguei Barannikov, Alexey Zaytsev. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2026."
+  ]
+}

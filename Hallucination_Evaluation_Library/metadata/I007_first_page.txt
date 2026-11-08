@@ -1,0 +1,93 @@
+Proceedings of the 2021 Conference of the North American Chapter of the
+Association for Computational Linguistics: Human Language Technologies , pages 4812–4829
+June 6–11, 2021. ©2021 Association for Computational Linguistics
+4812
+Understanding Factuality in Abstractive Summarization with FRANK:
+A Benchmark for Factuality Metrics
+Artidoro Pagnoni Vidhisha Balachandran Yulia Tsvetkov
+Language Technologies Institute
+Carnegie Mellon University
+{apagnoni,vbalacha,ytsvetko}@cs.cmu.edu
+Abstract
+Modern summarization models generate
+highly ﬂuent but often factually unreliable
+outputs. This motivated a surge of metrics
+attempting to measure the factuality of auto-
+matically generated summaries. Due to the
+lack of common benchmarks, these metrics
+cannot be compared. Moreover, all these
+methods treat factuality as a binary concept
+and fail to provide deeper insights on the
+kinds of inconsistencies made by different
+systems. To address these limitations, we
+devise a typology of factual errorsand use it to
+collect human annotations of generated sum-
+maries from state-of-the-art summarization
+systems for the CNN/DM and XSum datasets.
+Through these annotations we identify the
+proportion of different categories of factual
+errors in various summarization models and
+benchmark factuality metrics, showing their
+correlation with human judgement as well as
+their speciﬁc strengths and weaknesses.1
+1 Introduction
+Factuality is deﬁned as a measure of “whether even-
+tualities are characterized as corresponding to facts,
+possibilities, or situations that do not hold in the
+world” (Sauri, 2008; Saurí and Pustejovsky, 2012).
+In summarization, this “world” is the article, which
+is taken as ground-truth, and the output summary
+must be faithful to the article’s facts. Despite ad-
+vancements in neural abstractive summarization
+(Narayan et al., 2018; Liu and Lapata, 2019; Lewis
+et al., 2020),∼30% of summaries have factual in-
+consistencies (Cao et al., 2018). With summariza-
+tion being an integral component of information
+consumption, this highlights a need for ensuring
+summarization systems are factually consistent and
+developing methods for evaluating them.
+Common evaluation metrics for summarization
+based on n-gram overlap – BLEU, ROUGE, and
+1Code, data, and online leaderboard will be available at
+https://github.com/artidoro/frank
+METEOR (Papineni et al., 2002; Lin, 2004; Lavie
+and Agarwal, 2007) – are insufﬁcient to measure
+the factual correctness of summaries and fail to
+correlate with the human judgements of factual-
+ity (Falke et al., 2019; Kryscinski et al., 2019).
+More recent metrics proposed to improve the evalu-
+ation of summarization factuality (Kryscinski et al.,
+2020; Durmus et al., 2020; Wang et al., 2020;
+Maynez et al., 2020) cannot be compared due to
+the lack of common benchmarks. More critically,
+while these approaches differ in the way they model
+factuality, they all consider factuality as a binary
+concept, labeling summaries of any length as fac-
+tual or non-factual. They do not provide any ﬁne-
+grained understanding of the factual errors made by
+different systems that could serve as an actionable
+feedback on a system’s limitations.
+The binary factuality of a text can be difﬁcult to
+determine. Falke et al. (2019) show relatively low
+crowd–expert agreement, indicating the presence
+of subjectivity in the annotation process. Moreover,
+not all factual errors are equally important and the
+number of errors can have a signiﬁcant impact on
+the perceived factuality of a text. This suggests
+that non-factuality should be modeled as a multi-
+dimensional construct and not a label.
+In this work, we propose a linguistically moti-
+vated typology of factual errors for ﬁne-grained
+analysis of factuality in summarization systems
+(§2). Our typology is theoretically grounded in
+frame semantics (Fillmore et al., 1976; Palmer
+et al., 2005) and linguistic discourse theory (Brown
+and Yule, 1983). It provides several beneﬁts. First,
+we ﬁnd that decomposing the concept of factual-
+ity in (relatively) well-deﬁned and grounded cat-
+egories makes the ﬁnal binary decision more ob-
+jective leading to near perfect agreement between
+crowd and expert annotators (κ = 0.86). Second,
+this approach provides some measure of the de-
+gree of non-factuality both in terms of the quantity
+and the category of factual violations that appear

@@ -1,0 +1,86 @@
+Lynx: An Open Source Hallucination Evaluation Model
+Selvan Sunitha Ravi1, Bartosz Mielczarek 1, Anand Kannappan 1, Douwe Kiela 2,3, Rebecca Qian 1
+1 Patronus AI 2 Contextual AI 3 Stanford University
+Abstract
+Retrieval Augmented Generation (RAG) tech-
+niques aim to mitigate hallucinations in Large
+Language Models (LLMs). However, LLMs
+can still produce information that is unsup-
+ported or contradictory to the retrieved con-
+texts. We introduce LYNX, a SOTA halluci-
+nation detection LLM that is capable of ad-
+vanced reasoning on challenging real-world
+hallucination scenarios. To evaluate LYNX,
+we present HaluBench, a comprehensive hallu-
+cination evaluation benchmark, consisting of
+15k samples sourced from various real-world
+domains. Our experiment results show that
+LYNX outperforms GPT-4o, Claude-3-Sonnet
+and closed and open-source LLM-as-a-judge
+models on HaluBench. We release LYNX,
+HaluBench and our evaluation code for pub-
+lic access.
+1 Introduction
+Large Language Models (LLMs) learn in-depth
+knowledge from their pre-training data (Petroni
+et al., 2019) making them useful for knowledge-
+intensive downstream tasks such as Question An-
+swering. However, their knowledge cannot be eas-
+ily expanded and they often struggle with “hallu-
+cinations” (Roller et al., 2020; Dziri et al., 2022;
+Cao et al., 2022). This has led to the adaptation
+of Retrieval Augmented Generation (RAG) (Lewis
+et al., 2020) systems, which enables flexibility and
+extensibility of LLMs to internal data stores. How-
+ever, these systems are still prone to generating text
+that is inconsistent with the provided knowledge
+source (Mallen et al., 2022).
+In an ideal RAG system, LLMs exhibit “faith-
+fulness” by producing outputs that are grounded
+in the retrieved contexts. Detecting whether gen-
+erated answers are faithful to the provided context
+is therefore critical to the success of RAG systems
+in production. RAGAS (Es et al., 2023) use LLMs
+to generate statements from a question-answer pair
+and compute a faithfulness score based on how
+many statements are supported by the given con-
+text. Other methods involve using LLM-as-a-Judge
+(Zheng et al., 2023) or fine-tuning lightweight LLM
+judges (Saad-Falcon et al., 2024) to evaluate hallu-
+cinations.
+While LLMs as judges have shown promise in
+automated evaluation on certain tasks (Zheng et al.,
+2024; Zhu et al., 2023; Kim et al., 2023), hallu-
+cination detection presents a complex challenge
+as it requires language models to have ability to
+perform nuanced reasoning and disambiguation.
+Figure 1 illustrates such an example where vari-
+ous language models evaluate whether a Context-
+Question-Answer triplet contains hallucinations.
+GPT-4o and Claude-3-Sonnet both fail to identify
+that the answer, though it makes a correct statement,
+is not properly contextualized by the document and
+question.
+Additionally, closed source LLMs as judges lack
+transparency and accessibility. Open-source LLMs
+still exhibit a significant gap in performance com-
+pared to closed source alternatives (Li et al., 2023).
+The gap in baseline performance between closed
+and open-source models increases when applied to
+specialized domains such as finance and medicine
+(Islam et al., 2023; Wu et al., 2023a).
+To address these issues, we proposeLYNX (70B)
+that outperforms GPT-4o and closed source LLMs
+in hallucination detection tasks, while being fully
+reproducible and open source. LYNX (8B) pro-
+duces high quality evaluations at a fraction of the
+size and cost of closed source LLMs. LYNX is the
+first open source hallucination detection model that
+outperforms GPT-4o and closed source LLMs-as-
+Judge.
+To train LYNX, we finetune Llama-3-70B-
+Instruct on data from multiple domains, focusing
+on hard-to-detect hallucinations. We source exam-
+ples from existing Question Answer (QA) datasets
+such as CovidQA (Möller et al., 2020), PubmedQA
+arXiv:2407.08488v2  [cs.AI]  22 Jul 2024

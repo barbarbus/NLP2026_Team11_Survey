@@ -1,0 +1,37 @@
+Survey
+LLM-based NLG Evaluation:
+Current Status and Challenges
+Mingqi Gao∗, Xinyu Hu∗, Xunjian Yin, Jie Ruan,
+Xiao Pu, and Xiaojun Wan
+Peking University, Wangxuan Institute of Computer Technology
+gaomingqi@pku.edu.cn, huxinyu@pku.edu.cn, xjyin@pku.edu.cn,
+ruanjie@stu.pku.edu.cn, puxiao@stu.pku.edu.cn, wanxiaojun@pku.edu.cn
+Evaluating natural language generation (NLG) is a vital but challenging problem in natural
+language processing. Traditional evaluation metrics mainly capturing content (e.g., n-gram)
+overlap between system outputs and references are far from satisfactory, and large language
+models (LLMs) such as ChatGPT have demonstrated great potential in NLG evaluation in recent
+years. Various automatic evaluation methods based on LLMs have been proposed, including met-
+rics derived from LLMs, prompting LLMs, ﬁne-tuning LLMs, and human–LLM collaborative
+evaluation. In this survey, we ﬁrst give a taxonomy of LLM-based NLG evaluation methods, and
+discuss their pros and cons, respectively. Lastly, we discuss several open problems in this area
+and point out future research directions.
+1. Introduction
+The evaluation of natural language generation (NLG) is an important but challenging
+issue. The lack of a single standard answer and the presence of multiple quality criteria
+make evaluating NLG more challenging than other NLP tasks. For example, in news
+summarization, a good summary should capture the key information from the source
+document, remain faithful to the source document, and be expressed in logically co-
+herent and ﬂuent language, but there is not a single “correct” way to achieve this. The
+inherent difﬁculty of NLG evaluation means that human evaluation is always needed
+and regarded as the gold standard. However, due to the high cost and time-consuming
+nature of human evaluation, automatic evaluation metrics remain indispensable and
+play a crucial role in model development. Over the past two decades, many automatic
+evaluation metrics such as BLEU (Papineni et al. 2002) and BARTScore (Yuan, Neubig,
+and Liu 2021) have been developed, but none have been fully satisfactory. Some studies
+∗ Equal contribution.
+Action Editor: Kevin Duh. Submission received: 26 November 2024; revised version received: 24 February
+2025; accepted for publication: 14 March 2025.
+https://doi.org/10.1162/coli a 00561
+© 2025 Association for Computational Linguistics
+Published under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+(CC BY-NC-ND 4.0) license

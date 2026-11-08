@@ -1,0 +1,118 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2207.05221: Language Models (Mostly) Know What They Know"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Language Models (Mostly) Know What They Know"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2207.05221v4"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus we can approach self-evaluation on open-ended sampling tasks by asking models to first propose answers, and then to evaluate the probability \"P(True)\" that their answers are correct. We find encouraging performance, calibration, and scaling for P(True) on a diverse array of tasks. Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the validity of one specific possibility. Next, we investigate whether models can be trained to predict \"P(IK)\", the probability that \"I know\" the answer to a question, without reference to any particular proposed answer. Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks. The predicted P(IK) probabilities also increase appropriately in the presence of relevant source materials in the context, and in the presence of hints towards the solution of mathematical word problems. We hope these observations lay the groundwork for training more honest models, and for investigating how honesty generalizes to cases where models are trained on objectives other than the imitation of human writing."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Language Models (Mostly) Know What They Know"
+  ],
+  "twitter:description": [
+    "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Language Models (Mostly) Know What They Know"
+  ],
+  "citation_author": [
+    "Kadavath, Saurav",
+    "Conerly, Tom",
+    "Askell, Amanda",
+    "Henighan, Tom",
+    "Drain, Dawn",
+    "Perez, Ethan",
+    "Schiefer, Nicholas",
+    "Hatfield-Dodds, Zac",
+    "DasSarma, Nova",
+    "Tran-Johnson, Eli",
+    "Johnston, Scott",
+    "El-Showk, Sheer",
+    "Jones, Andy",
+    "Elhage, Nelson",
+    "Hume, Tristan",
+    "Chen, Anna",
+    "Bai, Yuntao",
+    "Bowman, Sam",
+    "Fort, Stanislav",
+    "Ganguli, Deep",
+    "Hernandez, Danny",
+    "Jacobson, Josh",
+    "Kernion, Jackson",
+    "Kravec, Shauna",
+    "Lovitt, Liane",
+    "Ndousse, Kamal",
+    "Olsson, Catherine",
+    "Ringer, Sam",
+    "Amodei, Dario",
+    "Brown, Tom",
+    "Clark, Jack",
+    "Joseph, Nicholas",
+    "Mann, Ben",
+    "McCandlish, Sam",
+    "Olah, Chris",
+    "Kaplan, Jared"
+  ],
+  "citation_date": [
+    "2022/07/11"
+  ],
+  "citation_online_date": [
+    "2022/11/21"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2207.05221"
+  ],
+  "citation_arxiv_id": [
+    "2207.05221"
+  ],
+  "citation_abstract": [
+    "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus we can approach self-evaluation on open-ended sampling tasks by asking models to first propose answers, and then to evaluate the probability \"P(True)\" that their answers are correct. We find encouraging performance, calibration, and scaling for P(True) on a diverse array of tasks. Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the validity of one specific possibility. Next, we investigate whether models can be trained to predict \"P(IK)\", the probability that \"I know\" the answer to a question, without reference to any particular proposed answer. Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks. The predicted P(IK) probabilities also increase appropriately in the presence of relevant source materials in the context, and in the presence of hints towards the solution of mathematical word problems. We hope these observations lay the groundwork for training more honest models, and for investigating how honesty generalizes to cases where models are trained on objectives other than the imitation of human writing."
+  ]
+}

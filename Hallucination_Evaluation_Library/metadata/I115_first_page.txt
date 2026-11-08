@@ -1,0 +1,72 @@
+Med-HALT: Medical Domain Hallucination Test for Large Language
+Models
+Ankit Pal, Logesh Kumar Umapathi, Malaikannan Sankarasubbu
+Saama AI Research, Chennai, India
+{ankit.pal, logesh.umapathi, malaikannan.sankarasubbu }@saama.com
+Abstract
+This research paper focuses on the challenges
+posed by hallucinations in large language mod-
+els (LLMs), particularly in the context of the
+medical domain. Hallucination, wherein these
+models generate plausible yet unverified or in-
+correct information, can have serious conse-
+quences in healthcare applications. We pro-
+pose a new benchmark and dataset, Med-HALT
+(Medical Domain Hallucination Test), designed
+specifically to evaluate and reduce hallucina-
+tions. Med-HALT provides a diverse multina-
+tional dataset derived from medical examina-
+tions across various countries and includes mul-
+tiple innovative testing modalities. Med-HALT
+includes two categories of tests reasoning and
+memory-based hallucination tests, designed to
+assess LLMs’ problem-solving and information
+retrieval abilities.
+Our study evaluated leading LLMs, including
+Text Davinci, GPT-3.5, LlaMa-2, MPT, and Fal-
+con, revealing significant differences in their
+performance. The paper provides detailed in-
+sights into the dataset, promoting transparency
+and reproducibility. Through this work, we
+aim to contribute to the development of safer
+and more reliable language models in health-
+care. Our benchmark can be found at med-
+halt.github.io
+1 Introduction
+Advancements in artificial intelligence, particu-
+larly in the area of large language models (LLMs)
+(Agrawal et al., 2022; Radford et al., 2019), have
+led to transformative applications across various do-
+mains, including healthcare (Singhal et al., 2022).
+These models possess the ability to understand and
+generate human-like text, by learning patterns from
+vast corpora of text data. and making them valuable
+resources for medical professionals, researchers,
+and students. (Singhal et al., 2023; Han et al., 2023;
+Li et al., 2023b) Despite their impressive capabil-
+Figure 1: Med-HALT: A new benchmark dataset for LLM to
+test Hallucination in Medical Domain
+ities, they are also subject to unique challenges
+such as hallucination. (Ji et al., 2022; Bang et al.,
+2023), where they generate plausible & confident
+yet incorrect or unverified information. Such hallu-
+cinations may be of minimal consequence in casual
+conversation or other contexts but can pose signif-
+icant risks when applied to the healthcare sector,
+where accuracy and reliability are of paramount
+importance.
+Misinformation in the medical domain can lead
+to severe health consequences on patient care and
+outcomes, the accuracy and reliability of informa-
+tion provided by language models can be a matter
+of life or death. They pose real-life risks, as they
+could potentially affect healthcare decisions, diag-
+nosis, and treatment plans. Hence, the development
+of methods to evaluate and mitigate such hallucina-
+tions is not just of academic interest but of practical
+importance.
+Efforts have been taken to mitigate the occur-
+rence of hallucinations in large language models
+(Li et al., 2023a; Shuster et al., 2021; Liu et al.,
+2021), but not in the medical field. The purpose of
+arXiv:2307.15343v2  [cs.CL]  14 Oct 2023

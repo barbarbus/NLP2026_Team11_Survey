@@ -1,0 +1,77 @@
+HalOmi: A Manually Annotated Benchmark for Multilingual
+Hallucination and Omission Detection in Machine Translation
+David Dale, Elena Voita, Janice Lam, Prangthip Hansanti, Christophe Ropers,
+Elahe Kalbassi, Cynthia Gao, Loïc Barrault, Marta R. Costa-jussà
+FAIR, Meta
+{daviddale,lenavoita,janilam,prangthiphansanti,chrisropers
+ekalbassi,cynthiagao,loicbarrault,costajussa}@meta.com
+Abstract
+Hallucinations in machine translation are trans-
+lations that contain information completely un-
+related to the input. Omissions are translations
+that do not include some of the input informa-
+tion. While both cases tend to be catastrophic
+errors undermining user trust, annotated data
+with these types of pathologies is extremely
+scarce and is limited to a few high-resource lan-
+guages. In this work, we release an annotated
+dataset for the hallucination and omission phe-
+nomena covering 18 translation directions with
+varying resource levels and scripts. Our anno-
+tation covers different levels of partial and full
+hallucinations as well as omissions both at the
+sentence and at the word level. Additionally,
+we revisit previous methods for hallucination
+and omission detection, show that conclusions
+made based on a single language pair largely
+do not hold for a large-scale evaluation, and
+establish new solid baselines.
+1 Introduction
+With neural machine translation systems reaching
+an overall satisfactory quality, alleviating those rare
+but severe translation pathologies that undermine
+user trust becomes very important. These patholo-
+gies include hallucinations (translations containing
+information completely unrelated to the input) and
+omissions (translations that do not include some
+of the information of the input). While under-
+standing hallucinations is receiving increasing at-
+tention (Raunak et al., 2021; Müller and Sennrich,
+2021; Zhou et al., 2021; Guerreiro et al., 2023; Dale
+et al., 2023; Guerreiro et al., 2022), progress in this
+direction is hampered by the lack of annotated data.
+To the best of our knowledge, previous datasets are
+limited to German-English data with sentence-level
+annotations of hallucinations and omissions (Guer-
+reiro et al., 2023) and Chinese-English data with
+token-level hallucination labels (Zhou et al., 2021).
+Previously available general-purpose quality as-
+sessments, such as direct assessment (DA) Gra-
+Figure 1: Dataset summary.
+ham et al. (2013), MQM (Lommel et al., 2014),
+or XSTS (Licht et al., 2022) do not seem suitable
+since they do not distinguish between hallucina-
+tions, omissions and other translation errors. In
+this work, we aim to address this limitation.
+Ideally, an evaluation dataset for hallucina-
+tion/omission detection should satisfy several con-
+ditions: (i) data has to cover a broad range of lan-
+guages with varying resource levels and scripts,
+(ii) translations should be generated naturally,
+(iii) the models that produced the translations
+have to be available, and (iv) considered model-
+ing paradigms have to cover several approaches
+(i.e., encoder-decoder vs decoder-only, single lan-
+guage pair vs multilingual, etc.). The first point
+is important because the best-performing detectors
+are different for high- and low-resource settings,
+and general conclusions cannot be made based on a
+single language pair (Section 4). Secondly, transla-
+tions have to be generated naturally as opposed to
+using specifically developed perturbations of mod-
+els and/or data because conclusions for the latter
+might not transfer for detection of natural hallucina-
+tions (Section 6). Thirdly, the corresponding model
+should be released along with the translations to
+allow evaluating “internal” detection methods. Fi-
+arXiv:2305.11746v2  [cs.CL]  6 Dec 2023

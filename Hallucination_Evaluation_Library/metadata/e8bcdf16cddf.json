@@ -1,0 +1,86 @@
+{
+  "viewport": [
+    "width=device-width, initial-scale=1"
+  ],
+  "msapplication-tilecolor": [
+    "#da532c"
+  ],
+  "theme-color": [
+    "#ffffff"
+  ],
+  "description": [
+    "Abstract page for arXiv paper 2304.01379: Extinction time of an epidemic with infection age dependent infectivity"
+  ],
+  "og:type": [
+    "website"
+  ],
+  "og:site_name": [
+    "arXiv.org"
+  ],
+  "og:title": [
+    "Extinction time of an epidemic with infection age dependent infectivity"
+  ],
+  "og:url": [
+    "https://arxiv.org/abs/2304.01379v1"
+  ],
+  "og:image": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:secure_url": [
+    "/static/browse/0.3.4/images/arxiv-logo-fb.png"
+  ],
+  "og:image:width": [
+    "1200"
+  ],
+  "og:image:height": [
+    "700"
+  ],
+  "og:image:alt": [
+    "arXiv logo"
+  ],
+  "og:description": [
+    "This paper studies the distribution function of the time of extinction of a subcritical epidemic, when a large enough proportion of the population has been immunized and/or the infectivity of the infectious individuals has been reduced, so that the effective reproduction number is less than one. We do that for a SIR/SEIR model, where infectious individuals have an infection age dependent infectivity, as in the model introduced in the 1927 seminal paper of Kermack and McKendrick. Our main conclusion is that simplifying the model as an ODE SIR model, as it is largely done in the epidemics literature, introduces a biais toward shorter extinction time."
+  ],
+  "twitter:site": [
+    "@arxiv"
+  ],
+  "twitter:card": [
+    "summary"
+  ],
+  "twitter:title": [
+    "Extinction time of an epidemic with infection age dependent infectivity"
+  ],
+  "twitter:description": [
+    "This paper studies the distribution function of the time of extinction of a subcritical epidemic, when a large enough proportion of the population has been immunized and/or the infectivity of the..."
+  ],
+  "twitter:image": [
+    "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png"
+  ],
+  "twitter:image:alt": [
+    "arXiv logo"
+  ],
+  "citation_title": [
+    "Extinction time of an epidemic with infection age dependent infectivity"
+  ],
+  "citation_author": [
+    "Mougabe-Peurkor, Anicet",
+    "Drame, Ibrahima",
+    "N'zi, Modeste",
+    "Pardoux, Etienne"
+  ],
+  "citation_date": [
+    "2023/04/03"
+  ],
+  "citation_online_date": [
+    "2023/04/03"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2304.01379"
+  ],
+  "citation_arxiv_id": [
+    "2304.01379"
+  ],
+  "citation_abstract": [
+    "This paper studies the distribution function of the time of extinction of a subcritical epidemic, when a large enough proportion of the population has been immunized and/or the infectivity of the infectious individuals has been reduced, so that the effective reproduction number is less than one. We do that for a SIR/SEIR model, where infectious individuals have an infection age dependent infectivity, as in the model introduced in the 1927 seminal paper of Kermack and McKendrick. Our main conclusion is that simplifying the model as an ODE SIR model, as it is largely done in the epidemics literature, introduces a biais toward shorter extinction time."
+  ]
+}
