@@ -1,0 +1,9 @@
+.miktex/
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+compile.log

@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\title{A Survey of Hallucination Evaluation for Large Language Models:\\Taxonomy, Reliability, and Open Challenges}
+\author{Zichen Cheng (Team Leader), Yiming Fan, Jin Li,\\ Sangduojie Yang, Lei Zhang\\Natural Language Processing Course Project}
+\begin{document}
+\maketitle
+\begin{abstract}
+Hallucination evaluation is difficult because the term covers several measurement targets and because published metrics use different references, annotation units, and test distributions. We review a curated corpus of 124 papers (16 core and 108 important), classify their research roles separately from five evaluation mechanisms, and critically compare representative methods and benchmarks. Evidence-based verification supports source-grounded decisions but inherits evidence-coverage errors; trained evaluators depend on supervision and transfer; self-consistency estimates risk without proving truth; and large-language-model judges depend on prompts, model versions, and information access. We argue that evaluator selection should begin with the target construct and decision unit, followed by matched human meta-evaluation and explicit resource accounting. We provide a traceable reading catalogue and identify unresolved issues in fine-grained localization, multilingual transfer, judge reliability, and risk--coverage evaluation.
+\end{abstract}
+
+\section{Introduction}
+Large language models (LLMs) can produce fluent claims that conflict with a source, lack evidence, or contradict world knowledge. These are related but distinct failures, and the field does not consistently call them by the same name \citep{C01,C02,C16}. Evaluation research therefore cannot be summarized by one accuracy leaderboard. TruthfulQA tests common false beliefs \citep{C05}; TRUE tests consistency with supplied grounding \citep{C11}; and RAGTruth annotates unsupported spans in retrieval-augmented outputs \citep{C12}. The reference, label unit, and aggregation rule differ across these settings.
+
+This survey asks three questions: (RQ1) what definitions, units, and error types are measured; (RQ2) what evidence and computational mechanisms evaluators use; and (RQ3) when their scores agree with human judgments and transfer across tasks, domains, languages, and model versions. Our contribution is a role-aware taxonomy, a comparison of method assumptions rather than unqualified maxima, and practical reporting rules for reliable meta-evaluation.
+
+\section{Review Protocol and Scope}
+The working corpus contains 16 core and 108 important papers. It was assembled by screening candidate studies on hallucination, factuality, faithfulness, evaluation, and fact verification, with backward and forward tracing from established surveys and benchmarks. Each included paper has a catalogue record and an individual reading note. The full catalogue, eligibility context, per-paper role and method labels, and reading evidence are preserved in the accompanying repository. We prioritize text generation, including open-domain QA, summarization, dialogue, long-form responses, and retrieval-augmented generation. Multimodal hallucination and work limited to mitigation are outside the principal analysis.
+
+For synthesis, we extract the measurement target, task, domain, granularity, required evidence, supervision, evaluator output, human reference, validation metric, model access, cost, and reproducibility conditions. This is a structured critical review, not a pooled meta-analysis: datasets and metrics are too heterogeneous for a defensible cross-paper effect estimate. The 124-paper taxonomy includes 9 surveys or conceptual papers, 20 benchmarks or data papers, 80 evaluation-method papers, 8 meta-evaluations or audits, and 7 empirical analyses. A benchmark is not counted as a new method merely because it runs one.
+
+\section{RQ1: Definition and Evaluation Unit}
+\paragraph{Reference standard.} Source faithfulness asks whether a response follows a supplied text; external factuality asks whether its claims are correct beyond that text. A true statement can be unsupported by a given source, and an incorrect source can be reproduced faithfully \citep{I035,I041}. Therefore, source-conditioned metrics cannot be interpreted as unrestricted truth detectors. The term ``hallucination'' can also encompass omissions, irrelevance, and pragmatic failure \citep{C15,C16}. Our comparisons retain each paper's operational definition rather than impose one retrospective binary label.
+
+\paragraph{Granularity.} A response-level label answers whether any error exists, whereas a span label identifies where the error occurs. FActScore decomposes long outputs into atomic facts and estimates source-relative factual precision \citep{C07}. The score is conditional on answered prompts; abstention and the number of asserted facts are separate quantities. RAGTruth supplies character-level spans and answer-level labels \citep{C12}. FELM distinguishes segments from claims \citep{C13}. These levels support different decisions: model ranking, answer filtering, and user-facing localization.
+
+\paragraph{Label transformations.} TRUE maps 11 datasets into a common grounding-consistency format \citep{C11}. This enables broad sample-level evaluation but merges some original distinctions, including contradiction and missing support. SummEval offers multiple human-rated dimensions of summary quality, only some of which directly concern factual consistency \citep{I037}. Binary mapping and multi-dimensional compression should therefore be documented, reversible where possible, and audited against original annotations.
+
+\section{RQ2: Evaluation Mechanisms}
+We use five mechanism families. They are not mutually exclusive: a system may decompose claims, retrieve documents, ask an LLM to judge evidence, and calibrate the result. Table~\ref{tab:methods} shows the principal signal and failure boundary of representative methods.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{p{0.16\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\toprule
+Family & Representative signal & Required access or evidence & Principal validity risk \\
+\midrule
+Human evaluation \citep{C14,I037} & Explicit rubric and annotator decisions & Source or external reference, depending on task & Rubric ambiguity, incomplete double annotation, disagreement \\
+Evidence verification \citep{C07,I042,I086} & Claims or QA pairs checked against passages & Trusted source and often retrieval & Missing evidence mistaken for falsehood; decomposition coverage \\
+Trained evaluators \citep{C09,I073,I092,I090} & Entailment score or learned representation probe & Training labels; sometimes internal activations & Domain transfer, synthetic shortcuts, training overlap \\
+Self-consistency \citep{C08,C10,I075} & Cross-sample disagreement, confidence, entropy & Repeated samples or token probabilities & Stable falsehoods and correlated errors \\
+LLM judge \citep{I065,I100,I104} & Prompted grading or cross-examination & Judge model; optionally retrieved evidence & Prompt and model bias, parsing, version drift \\
+\bottomrule
+\end{tabular}
+\caption{Mechanism families. The table compares information and failure modes rather than raw scores from incompatible benchmarks.}
+\label{tab:methods}
+\end{table*}
+
+\paragraph{Human evaluation.} Human labels are indispensable for defining the intended construct and auditing automatic measures, but they are not automatically a perfect reference. Instructions, adjudication, expert access to evidence, and agreement statistics must be reported \citep{C14,I037}. Agreement percentages, Cohen's kappa, and metric--human correlations measure different things.
+
+\paragraph{Reference and evidence methods.} FActScore's pipeline first decomposes a biography into facts and then checks each fact against a specified knowledge source \citep{C07}. FEQA, QAGS, QuestEval, and QAFactEval instead use generated questions and answer matching to probe summary faithfulness \citep{I042,I062,I043,I086}. RAGAs evaluates several dimensions of a RAG pipeline \citep{I057}. These approaches expose intermediate objects but inherit failures in decomposition, question coverage, retrieval, and evidence interpretation. An unsupported claim is not necessarily refuted.
+
+\paragraph{Trained evaluators.} AlignScore learns a unified alignment function from multiple tasks \citep{C09}; FactCC and TrueTeacher use generated or teacher-provided supervision \citep{I073,I095}; SummaC focuses on the input decomposition and aggregation of NLI judgments \citep{I092}. ARES combines domain-trained judges with a limited human sample to estimate aggregate RAG quality \citep{I044}. Internal-state approaches, including semantic-entropy probes, can reduce inference calls but require white-box access and inherit teacher-label assumptions \citep{I090}. Results must distinguish in-domain scoring from leave-domain or leave-generator transfer.
+
+\paragraph{Self-consistency and uncertainty.} SelfCheckGPT compares a generated passage with additional samples \citep{C08}. Semantic entropy groups meaning-equivalent answers before computing uncertainty \citep{C10}; other methods elicit or estimate confidence \citep{I083,I075}. These methods can prioritize human review without an external reference, but agreement is a proxy for truth. Repeatedly sampled answers can share the same wrong claim, while a correct rare detail can appear unstable.
+
+\paragraph{LLM judges.} Prompted judges support flexible rubrics and explanations \citep{I065,I100}, and cross-examination asks a model to challenge another model's claim \citep{I104}. However, the judge's own knowledge and style preferences, evidence access, answer order, parser, and model snapshot are part of the measurement instrument. In FELM, adding chain-of-thought improves one judge's segment F1 while lowering another's \citep{C13}; thus, prompting benefits cannot be generalized without matched comparisons.
+
+\section{RQ3: Reliability and Applicability}
+\paragraph{Match metrics to decisions.} System-level correlation helps select a generator, but says little about whether an individual answer can be filtered. Sample-level AUROC assesses ranking over thresholds; F1 depends on a specific operating point and class prevalence; span overlap evaluates localization; calibration concerns predicted probabilities. TRUE reports sample-level AUROC \citep{C11}, while RAGTruth shows substantially lower span-level than answer-level F1 in its tested configurations \citep{C12}. Reporting one as the other's ``accuracy'' is invalid. Risk--coverage curves are needed when an evaluator rejects uncertain answers.
+
+\paragraph{Interpret the denominator.} RAGTruth's reported 43.1\% hallucinated answers is based on its six historical generators, three task types, and strict source-faithfulness definition \citep{C12}; it is not a population rate for all RAG systems. A strict filtering policy in the same study reduces measured risk among retained answers but retains only a subset of inputs. FActScore's low aggregate estimation error for some generators can coexist with lower fact-level classification quality \citep{C07}. ARES obtains close aggregate support-rate estimates in two evaluated settings despite weaker per-instance judge accuracy \citep{I044}. Aggregate estimation and error detection are different goals.
+
+\paragraph{Audit the gold standard.} Some annotation designs double-label only a subset of data, and disagreements can be resolved conservatively. In SelfCheckGPT, 201 of 1908 sentences were double annotated \citep{C08}. TRUE's error analysis finds disputed labels especially among cases on which several metrics fail \citep{C11}; this is a selected conditional sample, not an estimate of the entire corpus error rate. Papers should preserve uncertain labels and original categories where possible.
+
+\paragraph{Test transfer and resources.} A score obtained with a selected Wikipedia page, a gold reference document, or domain-specific training does not establish open-web retrieval or new-domain validity. AlignScore reports both full and training-overlap-excluded averages \citep{C09}. Semantic entropy's main QA protocol removes task context and uses a semantic-equivalence judge \citep{C10}. ARES includes domain-specific synthetic training and human correction \citep{I044}. Comparisons should account for training, repeated sampling, retrieval, LLM calls, annotation, latency, and versions; historical API prices should not be reported as current costs. Multilingual translation and medical benchmarks further show that target constructs and failure costs vary by setting \citep{I111,I115}.
+
+\section{Open Problems and Recommendations}
+First, fine-grained localization still lags answer-level detection; a useful evaluation should distinguish supported, contradicted, and unverified spans, and test boundary tolerance. Second, multilingual work should evaluate native-language data and source conditions rather than assume that translated English benchmarks preserve error types \citep{I109,I111,I117}. Third, LLM judges need stable rubrics, position controls, version tracking, and independent human checks \citep{I105,I107}. Fourth, deployment-oriented meta-evaluation should report calibration, risk--coverage, and error costs in addition to ranking metrics.
+
+For source-grounded summarization or RAG, select a source-faithfulness measure and inspect evidence coverage. For open-domain long-form answers, use claim-level verification with abstention and information-quantity reporting. When no external evidence is available, use uncertainty as triage rather than certification. In high-stakes settings, retain a human escalation path matched to the cost of false positives and false negatives. In all cases, validate on the target task before importing an overall benchmark score.
+
+\section{Limitations}
+This survey relies on a curated rather than exhaustive corpus. Our categories simplify hybrid systems, and the 124 papers differ in publication version, data access, and degree of reproducibility. The numerical synthesis is deliberately selective: where test distributions, label mappings, or metrics are incompatible, we compare mechanisms and validity conditions rather than pool scores. We do not claim to have rerun the models or APIs in the reviewed papers. The accompanying evidence ledger records the conditions and unresolved checks for reported numbers.
+
+\section{Conclusion}
+Hallucination evaluation begins with a construct, not a metric name. Evidence-based checking, trained discrimination, uncertainty, and LLM judging each offer useful signals under different information and cost regimes, but none removes the need to specify the reference, unit, gold standard, and target decision. More reliable progress will come from matched meta-evaluation, explicit label and denominator accounting, and transfer tests that reflect how evaluators are actually used.
+
+\bibliography{references}
+\end{document}
