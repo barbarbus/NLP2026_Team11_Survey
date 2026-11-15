@@ -6,6 +6,8 @@
 - [可筛选、统计的逐篇分类数据（CSV）](Taxonomy_124.csv)
 - [124篇可追溯证据卡片](Evidence_Cards_124.md)
 - [代表性方法与基准比较矩阵](Comparison_Matrices.md)
+- [数值证据台账：样本条件、指标口径和解释边界](Numerical_Evidence_Ledger.md)
+- [RQ1–RQ3 英文综合论证草稿](Survey_Synthesis_Draft.md)
 
 全文提取：124/124篇，共2395页。当前正文细读笔记：124/124篇；剩余0篇尚未完成逐篇精读。
 
