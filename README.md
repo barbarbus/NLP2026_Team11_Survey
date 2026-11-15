@@ -11,6 +11,7 @@ This repository contains the course proposal and a reading corpus for a survey o
 - [124 traceable evidence cards](Reading_Notes/Evidence_Cards_124.md) and [method/benchmark comparison matrices](Reading_Notes/Comparison_Matrices.md)
 - [Numerical evidence ledger](Reading_Notes/Numerical_Evidence_Ledger.md) and [English RQ1–RQ3 synthesis draft](Reading_Notes/Survey_Synthesis_Draft.md)
 - [ACL-format survey report](report/main.pdf) and [editable LaTeX source](report/main.tex)
+- [Two-page ACL midterm report](midterm/acl_latex.pdf) and [editable source](midterm/acl_latex.tex)
 - [Proposal](proposal/Team11_Proposal.pdf)
 
 The taxonomy separates a paper's research role from its primary evaluation method, optional secondary methods, and evaluation target. A benchmark or survey is not counted as a new method merely because it uses one.

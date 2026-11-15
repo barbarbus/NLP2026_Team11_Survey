@@ -1,0 +1,5 @@
+.miktex/
+*.aux
+*.log
+*.out
+preview-*.png

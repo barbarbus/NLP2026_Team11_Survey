@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+
+\title{Midterm Progress Report: A Survey of Hallucination Evaluation for Large Language Models}
+\author{Zichen Cheng (Team Leader), Yiming Fan, Jin Li,\\ Sangduojie Yang, Lei Zhang\\ Natural Language Processing Course Project}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report progress on a survey of methods for evaluating hallucinations in large language model outputs. The working corpus contains 124 papers, including 16 core and 108 important studies. We have prepared paper-level reading notes, a role-aware taxonomy, comparison matrices, and an evidence ledger for selected quantitative claims. An eight-page ACL-format survey draft has been compiled. Our current analysis emphasizes the distinction between world factuality and source faithfulness, and between aggregate scoring and individual-error detection. The remaining work is to audit final citations with all five team members, refine the presentation, and document actual individual contributions.
+\end{abstract}
+
+\section{Research Question and Scope}
+Our project asks how hallucinations are defined, how they are measured, and when evaluation scores can be trusted. We focus on text generation in open-domain question answering, summarization, dialogue, long-form generation, and retrieval-augmented generation. The survey distinguishes externally false claims from claims unsupported by an input source; the two are not equivalent. We also distinguish response-level detection, atomic-claim scoring, and span localization. These choices determine what a benchmark label and metric score mean.
+
+\section{Work Completed}
+\paragraph{Literature corpus.} We assembled 124 locally available papers: 16 core studies and 108 important studies. The catalogue records titles, source URLs, local PDFs, related code when available, and verification status. Each paper has a detailed reading note. The core set includes foundational surveys, benchmarks such as TruthfulQA and RAGTruth, and methods such as FActScore, SelfCheckGPT, AlignScore, and semantic entropy \citep{C05,C07,C08,C09,C10,C12}.
+
+\paragraph{Taxonomy and evidence extraction.} We classified each paper along three axes: research role, primary and secondary method family, and evaluation target. The five method families are human evaluation, reference/evidence checking, trained or representation-based evaluators, self-consistency/uncertainty, and LLM-as-a-judge. Benchmarks and surveys are recorded as such rather than forced into a method family. The current primary counts are 2, 20, 27, 27, and 8 respectively; 40 papers have no single method primary category. We have also prepared 124 traceable evidence cards, method and benchmark comparison matrices, and a ledger of 20 selected numerical claims with their measurement conditions.
+
+\paragraph{Report draft.} We wrote and compiled an ACL-format English survey with eight pages of body text and two pages of references. It cites 40 papers and contains separate tables comparing benchmark constructs and method mechanisms. The manuscript is a literature synthesis, not a claim that we reran the models in those papers.
+
+\section{Preliminary Findings}
+\paragraph{Evaluation target matters.} TruthfulQA probes false beliefs in open-domain QA \citep{C05}; RAGTruth labels unsupported content relative to supplied material \citep{C12}. Their scores are therefore not estimates of the same error rate. FActScore estimates the precision of atomic facts relative to a specified knowledge source \citep{C07}. A missing supporting passage can create an apparent error even when a claim is true elsewhere. Reports should name the reference, unit, label policy, and treatment of abstentions.
+
+\paragraph{Granularity changes conclusions.} In RAGTruth, identifying whether an answer contains an error is easier than locating the erroneous characters \citep{C12}. FActScore's small model-level mean error for some generators does not imply equally reliable decisions on each individual fact \citep{C07}. We therefore separate system ranking, answer filtering, and span highlighting rather than use one generic ``accuracy'' column.
+
+\paragraph{Method families have different information requirements.} Evidence methods require adequate retrieval and claim decomposition. Trained evaluators inherit supervision and domain-transfer assumptions. Self-consistency methods can operate without external evidence, but a model may repeat a stable falsehood \citep{C08,C10}. LLM judges can apply flexible rubrics yet depend on prompt wording, model version, and access to evidence. Our comparison matrix records these requirements before comparing published performance numbers.
+
+\section{Next Steps and Risks}
+We will complete the final claim-level citation audit: each number retained in the report needs a paper version, page or table, sample condition, denominator, and metric definition. The team should review the English manuscript for missing representative studies and validate the taxonomy's cross-family cases. We will then prepare final presentation slides and a contribution statement based on work actually completed by each member. The principal risk is false comparability across benchmarks with different references and labels; the report will avoid a pooled leaderboard and state these boundaries explicitly.
+
+\begin{thebibliography}{6}
+\bibitem[Lin et~al.(2022)]{C05} Stephanie Lin, Jacob Hilton, and Owain Evans. 2022. TruthfulQA: Measuring how models mimic human falsehoods. In \emph{ACL}.
+\bibitem[Min et~al.(2023)]{C07} Sewon Min et~al. 2023. FActScore: Fine-grained atomic evaluation of factual precision in long form text generation. In \emph{EMNLP}.
+\bibitem[Manakul et~al.(2023)]{C08} Potsawee Manakul, Adian Liusie, and Mark J. F. Gales. 2023. SelfCheckGPT: Zero-resource black-box hallucination detection. In \emph{EMNLP}.
+\bibitem[Zha et~al.(2023)]{C09} Yuheng Zha et~al. 2023. AlignScore: Evaluating factual consistency with a unified alignment function. In \emph{ACL}.
+\bibitem[Farquhar et~al.(2024)]{C10} Sebastian Farquhar et~al. 2024. Detecting hallucinations in large language models using semantic entropy. \emph{Nature}.
+\bibitem[Niu et~al.(2024)]{C12} Cheng Niu et~al. 2024. RAGTruth: A hallucination corpus for developing trustworthy retrieval-augmented language models. In \emph{ACL}.
+\end{thebibliography}
+\end{document}
